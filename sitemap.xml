@@ -5,6 +5,11 @@
 <url> <loc>https://awslabs.github.io/aws-lambda-powertools-python/aws-lambda-powertools-python/core/logger/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://awslabs.github.io/aws-lambda-powertools-python/aws-lambda-powertools-python/core/metrics/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://awslabs.github.io/aws-lambda-powertools-python/aws-lambda-powertools-python/core/tracer/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://awslabs.github.io/aws-lambda-powertools-python/aws-lambda-powertools-python/utilities/batch/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://awslabs.github.io/aws-lambda-powertools-python/aws-lambda-powertools-python/utilities/data_classes/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://awslabs.github.io/aws-lambda-powertools-python/aws-lambda-powertools-python/utilities/middleware_factory/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://awslabs.github.io/aws-lambda-powertools-python/aws-lambda-powertools-python/utilities/parameters/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://awslabs.github.io/aws-lambda-powertools-python/aws-lambda-powertools-python/utilities/parser/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://awslabs.github.io/aws-lambda-powertools-python/aws-lambda-powertools-python/utilities/typing/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://awslabs.github.io/aws-lambda-powertools-python/aws-lambda-powertools-python/utilities/validation/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 </urlset>

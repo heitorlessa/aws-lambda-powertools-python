@@ -1,0 +1,1515 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.5" />
+<title>aws_lambda_powertools.utilities.data_classes API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>aws_lambda_powertools.utilities.data_classes</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from .alb_event import ALBEvent
+from .api_gateway_proxy_event import APIGatewayProxyEvent, APIGatewayProxyEventV2
+from .cloud_watch_logs_event import CloudWatchLogsEvent
+from .dynamo_db_stream_event import DynamoDBStreamEvent
+from .event_bridge_event import EventBridgeEvent
+from .kinesis_stream_event import KinesisStreamEvent
+from .s3_event import S3Event
+from .ses_event import SESEvent
+from .sns_event import SNSEvent
+from .sqs_event import SQSEvent
+
+__all__ = [
+    &#34;APIGatewayProxyEvent&#34;,
+    &#34;APIGatewayProxyEventV2&#34;,
+    &#34;ALBEvent&#34;,
+    &#34;CloudWatchLogsEvent&#34;,
+    &#34;DynamoDBStreamEvent&#34;,
+    &#34;EventBridgeEvent&#34;,
+    &#34;KinesisStreamEvent&#34;,
+    &#34;S3Event&#34;,
+    &#34;SESEvent&#34;,
+    &#34;SNSEvent&#34;,
+    &#34;SQSEvent&#34;,
+]</code></pre>
+</details>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="aws_lambda_powertools.utilities.data_classes.alb_event" href="alb_event.html">aws_lambda_powertools.utilities.data_classes.alb_event</a></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt><code class="name"><a title="aws_lambda_powertools.utilities.data_classes.api_gateway_proxy_event" href="api_gateway_proxy_event.html">aws_lambda_powertools.utilities.data_classes.api_gateway_proxy_event</a></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt><code class="name"><a title="aws_lambda_powertools.utilities.data_classes.cloud_watch_logs_event" href="cloud_watch_logs_event.html">aws_lambda_powertools.utilities.data_classes.cloud_watch_logs_event</a></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt><code class="name"><a title="aws_lambda_powertools.utilities.data_classes.cognito_user_pool_event" href="cognito_user_pool_event.html">aws_lambda_powertools.utilities.data_classes.cognito_user_pool_event</a></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt><code class="name"><a title="aws_lambda_powertools.utilities.data_classes.common" href="common.html">aws_lambda_powertools.utilities.data_classes.common</a></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt><code class="name"><a title="aws_lambda_powertools.utilities.data_classes.dynamo_db_stream_event" href="dynamo_db_stream_event.html">aws_lambda_powertools.utilities.data_classes.dynamo_db_stream_event</a></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt><code class="name"><a title="aws_lambda_powertools.utilities.data_classes.event_bridge_event" href="event_bridge_event.html">aws_lambda_powertools.utilities.data_classes.event_bridge_event</a></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt><code class="name"><a title="aws_lambda_powertools.utilities.data_classes.kinesis_stream_event" href="kinesis_stream_event.html">aws_lambda_powertools.utilities.data_classes.kinesis_stream_event</a></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt><code class="name"><a title="aws_lambda_powertools.utilities.data_classes.s3_event" href="s3_event.html">aws_lambda_powertools.utilities.data_classes.s3_event</a></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt><code class="name"><a title="aws_lambda_powertools.utilities.data_classes.ses_event" href="ses_event.html">aws_lambda_powertools.utilities.data_classes.ses_event</a></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt><code class="name"><a title="aws_lambda_powertools.utilities.data_classes.sns_event" href="sns_event.html">aws_lambda_powertools.utilities.data_classes.sns_event</a></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt><code class="name"><a title="aws_lambda_powertools.utilities.data_classes.sqs_event" href="sqs_event.html">aws_lambda_powertools.utilities.data_classes.sqs_event</a></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="aws_lambda_powertools.utilities.data_classes.ALBEvent"><code class="flex name class">
+<span>class <span class="ident">ALBEvent</span></span>
+<span>(</span><span>data)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Application load balancer event</p>
+<h2 id="documentation">Documentation:</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/lambda/latest/dg/services-alb.html">https://docs.aws.amazon.com/lambda/latest/dg/services-alb.html</a></li>
+</ul></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ALBEvent(BaseProxyEvent):
+    &#34;&#34;&#34;Application load balancer event
+
+    Documentation:
+    --------------
+    - https://docs.aws.amazon.com/lambda/latest/dg/services-alb.html
+    &#34;&#34;&#34;
+
+    @property
+    def request_context(self) -&gt; ALBEventRequestContext:
+        return ALBEventRequestContext(self._data)
+
+    @property
+    def http_method(self) -&gt; str:
+        return self[&#34;httpMethod&#34;]
+
+    @property
+    def path(self) -&gt; str:
+        return self[&#34;path&#34;]
+
+    @property
+    def multi_value_query_string_parameters(self) -&gt; Optional[Dict[str, List[str]]]:
+        return self.get(&#34;multiValueQueryStringParameters&#34;)
+
+    @property
+    def multi_value_headers(self) -&gt; Optional[Dict[str, List[str]]]:
+        return self.get(&#34;multiValueHeaders&#34;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent" href="common.html#aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent">BaseProxyEvent</a></li>
+<li><a title="aws_lambda_powertools.utilities.data_classes.common.DictWrapper" href="common.html#aws_lambda_powertools.utilities.data_classes.common.DictWrapper">DictWrapper</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.data_classes.ALBEvent.http_method"><code class="name">var <span class="ident">http_method</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def http_method(self) -&gt; str:
+    return self[&#34;httpMethod&#34;]</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.ALBEvent.multi_value_headers"><code class="name">var <span class="ident">multi_value_headers</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def multi_value_headers(self) -&gt; Optional[Dict[str, List[str]]]:
+    return self.get(&#34;multiValueHeaders&#34;)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.ALBEvent.multi_value_query_string_parameters"><code class="name">var <span class="ident">multi_value_query_string_parameters</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def multi_value_query_string_parameters(self) -&gt; Optional[Dict[str, List[str]]]:
+    return self.get(&#34;multiValueQueryStringParameters&#34;)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.ALBEvent.path"><code class="name">var <span class="ident">path</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def path(self) -&gt; str:
+    return self[&#34;path&#34;]</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.ALBEvent.request_context"><code class="name">var <span class="ident">request_context</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def request_context(self) -&gt; ALBEventRequestContext:
+    return ALBEventRequestContext(self._data)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent" href="common.html#aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent">BaseProxyEvent</a></b></code>:
+<ul class="hlist">
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent.get_header_value" href="common.html#aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent.get_header_value">get_header_value</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent.get_query_string_value" href="common.html#aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent.get_query_string_value">get_query_string_value</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent"><code class="flex name class">
+<span>class <span class="ident">APIGatewayProxyEvent</span></span>
+<span>(</span><span>data)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>AWS Lambda proxy V1</p>
+<h2 id="documentation">Documentation:</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html">https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html</a></li>
+</ul></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class APIGatewayProxyEvent(BaseProxyEvent):
+    &#34;&#34;&#34;AWS Lambda proxy V1
+
+    Documentation:
+    --------------
+    - https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html
+    &#34;&#34;&#34;
+
+    @property
+    def version(self) -&gt; str:
+        return self[&#34;version&#34;]
+
+    @property
+    def resource(self) -&gt; str:
+        return self[&#34;resource&#34;]
+
+    @property
+    def path(self) -&gt; str:
+        return self[&#34;path&#34;]
+
+    @property
+    def http_method(self) -&gt; str:
+        &#34;&#34;&#34;The HTTP method used. Valid values include: DELETE, GET, HEAD, OPTIONS, PATCH, POST, and PUT.&#34;&#34;&#34;
+        return self[&#34;httpMethod&#34;]
+
+    @property
+    def multi_value_headers(self) -&gt; Dict[str, List[str]]:
+        return self[&#34;multiValueHeaders&#34;]
+
+    @property
+    def multi_value_query_string_parameters(self) -&gt; Optional[Dict[str, List[str]]]:
+        return self.get(&#34;multiValueQueryStringParameters&#34;)
+
+    @property
+    def request_context(self) -&gt; APIGatewayEventRequestContext:
+        return APIGatewayEventRequestContext(self._data)
+
+    @property
+    def path_parameters(self) -&gt; Optional[Dict[str, str]]:
+        return self.get(&#34;pathParameters&#34;)
+
+    @property
+    def stage_variables(self) -&gt; Optional[Dict[str, str]]:
+        return self.get(&#34;stageVariables&#34;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent" href="common.html#aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent">BaseProxyEvent</a></li>
+<li><a title="aws_lambda_powertools.utilities.data_classes.common.DictWrapper" href="common.html#aws_lambda_powertools.utilities.data_classes.common.DictWrapper">DictWrapper</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.http_method"><code class="name">var <span class="ident">http_method</span></code></dt>
+<dd>
+<section class="desc"><p>The HTTP method used. Valid values include: DELETE, GET, HEAD, OPTIONS, PATCH, POST, and PUT.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def http_method(self) -&gt; str:
+    &#34;&#34;&#34;The HTTP method used. Valid values include: DELETE, GET, HEAD, OPTIONS, PATCH, POST, and PUT.&#34;&#34;&#34;
+    return self[&#34;httpMethod&#34;]</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.multi_value_headers"><code class="name">var <span class="ident">multi_value_headers</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def multi_value_headers(self) -&gt; Dict[str, List[str]]:
+    return self[&#34;multiValueHeaders&#34;]</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.multi_value_query_string_parameters"><code class="name">var <span class="ident">multi_value_query_string_parameters</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def multi_value_query_string_parameters(self) -&gt; Optional[Dict[str, List[str]]]:
+    return self.get(&#34;multiValueQueryStringParameters&#34;)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.path"><code class="name">var <span class="ident">path</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def path(self) -&gt; str:
+    return self[&#34;path&#34;]</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.path_parameters"><code class="name">var <span class="ident">path_parameters</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def path_parameters(self) -&gt; Optional[Dict[str, str]]:
+    return self.get(&#34;pathParameters&#34;)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.request_context"><code class="name">var <span class="ident">request_context</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def request_context(self) -&gt; APIGatewayEventRequestContext:
+    return APIGatewayEventRequestContext(self._data)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.resource"><code class="name">var <span class="ident">resource</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def resource(self) -&gt; str:
+    return self[&#34;resource&#34;]</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.stage_variables"><code class="name">var <span class="ident">stage_variables</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def stage_variables(self) -&gt; Optional[Dict[str, str]]:
+    return self.get(&#34;stageVariables&#34;)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.version"><code class="name">var <span class="ident">version</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def version(self) -&gt; str:
+    return self[&#34;version&#34;]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent" href="common.html#aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent">BaseProxyEvent</a></b></code>:
+<ul class="hlist">
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent.get_header_value" href="common.html#aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent.get_header_value">get_header_value</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent.get_query_string_value" href="common.html#aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent.get_query_string_value">get_query_string_value</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2"><code class="flex name class">
+<span>class <span class="ident">APIGatewayProxyEventV2</span></span>
+<span>(</span><span>data)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>AWS Lambda proxy V2 event</p>
+<h2 id="notes">Notes:</h2>
+<p>Format 2.0 doesn't have multiValueHeaders or multiValueQueryStringParameters fields. Duplicate headers
+are combined with commas and included in the headers field. Duplicate query strings are combined with
+commas and included in the queryStringParameters field.</p>
+<p>Format 2.0 includes a new cookies field. All cookie headers in the request are combined with commas and
+added to the cookies field. In the response to the client, each cookie becomes a set-cookie header.</p>
+<h2 id="documentation">Documentation:</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html">https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html</a></li>
+</ul></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class APIGatewayProxyEventV2(BaseProxyEvent):
+    &#34;&#34;&#34;AWS Lambda proxy V2 event
+
+    Notes:
+    -----
+    Format 2.0 doesn&#39;t have multiValueHeaders or multiValueQueryStringParameters fields. Duplicate headers
+    are combined with commas and included in the headers field. Duplicate query strings are combined with
+    commas and included in the queryStringParameters field.
+
+    Format 2.0 includes a new cookies field. All cookie headers in the request are combined with commas and
+    added to the cookies field. In the response to the client, each cookie becomes a set-cookie header.
+
+    Documentation:
+    --------------
+    - https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-lambda.html
+    &#34;&#34;&#34;
+
+    @property
+    def version(self) -&gt; str:
+        return self[&#34;version&#34;]
+
+    @property
+    def route_key(self) -&gt; str:
+        return self[&#34;routeKey&#34;]
+
+    @property
+    def raw_path(self) -&gt; str:
+        return self[&#34;rawPath&#34;]
+
+    @property
+    def raw_query_string(self) -&gt; str:
+        return self[&#34;rawQueryString&#34;]
+
+    @property
+    def cookies(self) -&gt; Optional[List[str]]:
+        return self.get(&#34;cookies&#34;)
+
+    @property
+    def request_context(self) -&gt; RequestContextV2:
+        return RequestContextV2(self._data)
+
+    @property
+    def path_parameters(self) -&gt; Optional[Dict[str, str]]:
+        return self.get(&#34;pathParameters&#34;)
+
+    @property
+    def stage_variables(self) -&gt; Optional[Dict[str, str]]:
+        return self.get(&#34;stageVariables&#34;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent" href="common.html#aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent">BaseProxyEvent</a></li>
+<li><a title="aws_lambda_powertools.utilities.data_classes.common.DictWrapper" href="common.html#aws_lambda_powertools.utilities.data_classes.common.DictWrapper">DictWrapper</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.cookies"><code class="name">var <span class="ident">cookies</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def cookies(self) -&gt; Optional[List[str]]:
+    return self.get(&#34;cookies&#34;)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.path_parameters"><code class="name">var <span class="ident">path_parameters</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def path_parameters(self) -&gt; Optional[Dict[str, str]]:
+    return self.get(&#34;pathParameters&#34;)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.raw_path"><code class="name">var <span class="ident">raw_path</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def raw_path(self) -&gt; str:
+    return self[&#34;rawPath&#34;]</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.raw_query_string"><code class="name">var <span class="ident">raw_query_string</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def raw_query_string(self) -&gt; str:
+    return self[&#34;rawQueryString&#34;]</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.request_context"><code class="name">var <span class="ident">request_context</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def request_context(self) -&gt; RequestContextV2:
+    return RequestContextV2(self._data)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.route_key"><code class="name">var <span class="ident">route_key</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def route_key(self) -&gt; str:
+    return self[&#34;routeKey&#34;]</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.stage_variables"><code class="name">var <span class="ident">stage_variables</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def stage_variables(self) -&gt; Optional[Dict[str, str]]:
+    return self.get(&#34;stageVariables&#34;)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.version"><code class="name">var <span class="ident">version</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def version(self) -&gt; str:
+    return self[&#34;version&#34;]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent" href="common.html#aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent">BaseProxyEvent</a></b></code>:
+<ul class="hlist">
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent.get_header_value" href="common.html#aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent.get_header_value">get_header_value</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent.get_query_string_value" href="common.html#aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent.get_query_string_value">get_query_string_value</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.CloudWatchLogsEvent"><code class="flex name class">
+<span>class <span class="ident">CloudWatchLogsEvent</span></span>
+<span>(</span><span>data)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>CloudWatch Logs log stream event</p>
+<p>You can use a Lambda function to monitor and analyze logs from an Amazon CloudWatch Logs log stream.</p>
+<h2 id="documentation">Documentation:</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/lambda/latest/dg/services-cloudwatchlogs.html">https://docs.aws.amazon.com/lambda/latest/dg/services-cloudwatchlogs.html</a></li>
+</ul></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CloudWatchLogsEvent(DictWrapper):
+    &#34;&#34;&#34;CloudWatch Logs log stream event
+
+    You can use a Lambda function to monitor and analyze logs from an Amazon CloudWatch Logs log stream.
+
+    Documentation:
+    --------------
+    - https://docs.aws.amazon.com/lambda/latest/dg/services-cloudwatchlogs.html
+    &#34;&#34;&#34;
+
+    _decompressed_logs_data = None
+    _json_logs_data = None
+
+    @property
+    def raw_logs_data(self) -&gt; str:
+        &#34;&#34;&#34;The value of the `data` field is a Base64 encoded ZIP archive.&#34;&#34;&#34;
+        return self[&#34;awslogs&#34;][&#34;data&#34;]
+
+    @property
+    def decompress_logs_data(self) -&gt; bytes:
+        &#34;&#34;&#34;Decode and decompress log data&#34;&#34;&#34;
+        if self._decompressed_logs_data is None:
+            payload = base64.b64decode(self.raw_logs_data)
+            self._decompressed_logs_data = zlib.decompress(payload, zlib.MAX_WBITS | 32)
+        return self._decompressed_logs_data
+
+    def parse_logs_data(self) -&gt; CloudWatchLogsDecodedData:
+        &#34;&#34;&#34;Decode, decompress and parse json data as CloudWatchLogsDecodedData&#34;&#34;&#34;
+        if self._json_logs_data is None:
+            self._json_logs_data = json.loads(self.decompress_logs_data.decode(&#34;UTF-8&#34;))
+        return CloudWatchLogsDecodedData(self._json_logs_data)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.data_classes.common.DictWrapper" href="common.html#aws_lambda_powertools.utilities.data_classes.common.DictWrapper">DictWrapper</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.data_classes.CloudWatchLogsEvent.decompress_logs_data"><code class="name">var <span class="ident">decompress_logs_data</span></code></dt>
+<dd>
+<section class="desc"><p>Decode and decompress log data</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def decompress_logs_data(self) -&gt; bytes:
+    &#34;&#34;&#34;Decode and decompress log data&#34;&#34;&#34;
+    if self._decompressed_logs_data is None:
+        payload = base64.b64decode(self.raw_logs_data)
+        self._decompressed_logs_data = zlib.decompress(payload, zlib.MAX_WBITS | 32)
+    return self._decompressed_logs_data</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.CloudWatchLogsEvent.raw_logs_data"><code class="name">var <span class="ident">raw_logs_data</span></code></dt>
+<dd>
+<section class="desc"><p>The value of the <code>data</code> field is a Base64 encoded ZIP archive.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def raw_logs_data(self) -&gt; str:
+    &#34;&#34;&#34;The value of the `data` field is a Base64 encoded ZIP archive.&#34;&#34;&#34;
+    return self[&#34;awslogs&#34;][&#34;data&#34;]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.data_classes.CloudWatchLogsEvent.parse_logs_data"><code class="name flex">
+<span>def <span class="ident">parse_logs_data</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Decode, decompress and parse json data as CloudWatchLogsDecodedData</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse_logs_data(self) -&gt; CloudWatchLogsDecodedData:
+    &#34;&#34;&#34;Decode, decompress and parse json data as CloudWatchLogsDecodedData&#34;&#34;&#34;
+    if self._json_logs_data is None:
+        self._json_logs_data = json.loads(self.decompress_logs_data.decode(&#34;UTF-8&#34;))
+    return CloudWatchLogsDecodedData(self._json_logs_data)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.DynamoDBStreamEvent"><code class="flex name class">
+<span>class <span class="ident">DynamoDBStreamEvent</span></span>
+<span>(</span><span>data)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Dynamo DB Stream Event</p>
+<h2 id="documentation">Documentation:</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html">https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html</a></li>
+</ul></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DynamoDBStreamEvent(DictWrapper):
+    &#34;&#34;&#34;Dynamo DB Stream Event
+
+    Documentation:
+    -------------
+    - https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html
+    &#34;&#34;&#34;
+
+    @property
+    def records(self) -&gt; Iterator[DynamoDBRecord]:
+        for record in self[&#34;Records&#34;]:
+            yield DynamoDBRecord(record)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.data_classes.common.DictWrapper" href="common.html#aws_lambda_powertools.utilities.data_classes.common.DictWrapper">DictWrapper</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.data_classes.DynamoDBStreamEvent.records"><code class="name">var <span class="ident">records</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def records(self) -&gt; Iterator[DynamoDBRecord]:
+    for record in self[&#34;Records&#34;]:
+        yield DynamoDBRecord(record)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent"><code class="flex name class">
+<span>class <span class="ident">EventBridgeEvent</span></span>
+<span>(</span><span>data)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Amazon EventBridge Event</p>
+<h2 id="documentation">Documentation:</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/eventbridge/latest/userguide/aws-events.html">https://docs.aws.amazon.com/eventbridge/latest/userguide/aws-events.html</a></li>
+</ul></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EventBridgeEvent(DictWrapper):
+    &#34;&#34;&#34;Amazon EventBridge Event
+
+    Documentation:
+    --------------
+    - https://docs.aws.amazon.com/eventbridge/latest/userguide/aws-events.html
+    &#34;&#34;&#34;
+
+    @property
+    def get_id(self) -&gt; str:
+        &#34;&#34;&#34;A unique value is generated for every event. This can be helpful in tracing events as
+        they move through rules to targets, and are processed.&#34;&#34;&#34;
+        # Note: this name conflicts with existing python builtins
+        return self[&#34;id&#34;]
+
+    @property
+    def version(self) -&gt; str:
+        &#34;&#34;&#34;By default, this is set to 0 (zero) in all events.&#34;&#34;&#34;
+        return self[&#34;version&#34;]
+
+    @property
+    def account(self) -&gt; str:
+        &#34;&#34;&#34;The 12-digit number identifying an AWS account.&#34;&#34;&#34;
+        return self[&#34;account&#34;]
+
+    @property
+    def time(self) -&gt; str:
+        &#34;&#34;&#34;The event timestamp, which can be specified by the service originating the event.
+
+        If the event spans a time interval, the service might choose to report the start time, so
+        this value can be noticeably before the time the event is actually received.
+        &#34;&#34;&#34;
+        return self[&#34;time&#34;]
+
+    @property
+    def region(self) -&gt; str:
+        &#34;&#34;&#34;Identifies the AWS region where the event originated.&#34;&#34;&#34;
+        return self[&#34;region&#34;]
+
+    @property
+    def resources(self) -&gt; List[str]:
+        &#34;&#34;&#34;This JSON array contains ARNs that identify resources that are involved in the event.
+        Inclusion of these ARNs is at the discretion of the service.&#34;&#34;&#34;
+        return self[&#34;resources&#34;]
+
+    @property
+    def source(self) -&gt; str:
+        &#34;&#34;&#34;Identifies the service that sourced the event. All events sourced from within AWS begin with &#34;aws.&#34; &#34;&#34;&#34;
+        return self[&#34;source&#34;]
+
+    @property
+    def detail_type(self) -&gt; str:
+        &#34;&#34;&#34;Identifies, in combination with the source field, the fields and values that appear in the detail field.&#34;&#34;&#34;
+        return self[&#34;detail-type&#34;]
+
+    @property
+    def detail(self) -&gt; Dict[str, Any]:
+        &#34;&#34;&#34;A JSON object, whose content is at the discretion of the service originating the event. &#34;&#34;&#34;
+        return self[&#34;detail&#34;]
+
+    @property
+    def replay_name(self) -&gt; Optional[str]:
+        &#34;&#34;&#34;Identifies whether the event is being replayed and what is the name of the replay.&#34;&#34;&#34;
+        return self[&#34;replay-name&#34;]</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.data_classes.common.DictWrapper" href="common.html#aws_lambda_powertools.utilities.data_classes.common.DictWrapper">DictWrapper</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.account"><code class="name">var <span class="ident">account</span></code></dt>
+<dd>
+<section class="desc"><p>The 12-digit number identifying an AWS account.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def account(self) -&gt; str:
+    &#34;&#34;&#34;The 12-digit number identifying an AWS account.&#34;&#34;&#34;
+    return self[&#34;account&#34;]</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.detail"><code class="name">var <span class="ident">detail</span></code></dt>
+<dd>
+<section class="desc"><p>A JSON object, whose content is at the discretion of the service originating the event.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def detail(self) -&gt; Dict[str, Any]:
+    &#34;&#34;&#34;A JSON object, whose content is at the discretion of the service originating the event. &#34;&#34;&#34;
+    return self[&#34;detail&#34;]</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.detail_type"><code class="name">var <span class="ident">detail_type</span></code></dt>
+<dd>
+<section class="desc"><p>Identifies, in combination with the source field, the fields and values that appear in the detail field.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def detail_type(self) -&gt; str:
+    &#34;&#34;&#34;Identifies, in combination with the source field, the fields and values that appear in the detail field.&#34;&#34;&#34;
+    return self[&#34;detail-type&#34;]</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.get_id"><code class="name">var <span class="ident">get_id</span></code></dt>
+<dd>
+<section class="desc"><p>A unique value is generated for every event. This can be helpful in tracing events as
+they move through rules to targets, and are processed.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def get_id(self) -&gt; str:
+    &#34;&#34;&#34;A unique value is generated for every event. This can be helpful in tracing events as
+    they move through rules to targets, and are processed.&#34;&#34;&#34;
+    # Note: this name conflicts with existing python builtins
+    return self[&#34;id&#34;]</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.region"><code class="name">var <span class="ident">region</span></code></dt>
+<dd>
+<section class="desc"><p>Identifies the AWS region where the event originated.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def region(self) -&gt; str:
+    &#34;&#34;&#34;Identifies the AWS region where the event originated.&#34;&#34;&#34;
+    return self[&#34;region&#34;]</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.replay_name"><code class="name">var <span class="ident">replay_name</span></code></dt>
+<dd>
+<section class="desc"><p>Identifies whether the event is being replayed and what is the name of the replay.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def replay_name(self) -&gt; Optional[str]:
+    &#34;&#34;&#34;Identifies whether the event is being replayed and what is the name of the replay.&#34;&#34;&#34;
+    return self[&#34;replay-name&#34;]</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.resources"><code class="name">var <span class="ident">resources</span></code></dt>
+<dd>
+<section class="desc"><p>This JSON array contains ARNs that identify resources that are involved in the event.
+Inclusion of these ARNs is at the discretion of the service.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def resources(self) -&gt; List[str]:
+    &#34;&#34;&#34;This JSON array contains ARNs that identify resources that are involved in the event.
+    Inclusion of these ARNs is at the discretion of the service.&#34;&#34;&#34;
+    return self[&#34;resources&#34;]</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.source"><code class="name">var <span class="ident">source</span></code></dt>
+<dd>
+<section class="desc"><p>Identifies the service that sourced the event. All events sourced from within AWS begin with "aws."</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def source(self) -&gt; str:
+    &#34;&#34;&#34;Identifies the service that sourced the event. All events sourced from within AWS begin with &#34;aws.&#34; &#34;&#34;&#34;
+    return self[&#34;source&#34;]</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.time"><code class="name">var <span class="ident">time</span></code></dt>
+<dd>
+<section class="desc"><p>The event timestamp, which can be specified by the service originating the event.</p>
+<p>If the event spans a time interval, the service might choose to report the start time, so
+this value can be noticeably before the time the event is actually received.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def time(self) -&gt; str:
+    &#34;&#34;&#34;The event timestamp, which can be specified by the service originating the event.
+
+    If the event spans a time interval, the service might choose to report the start time, so
+    this value can be noticeably before the time the event is actually received.
+    &#34;&#34;&#34;
+    return self[&#34;time&#34;]</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.version"><code class="name">var <span class="ident">version</span></code></dt>
+<dd>
+<section class="desc"><p>By default, this is set to 0 (zero) in all events.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def version(self) -&gt; str:
+    &#34;&#34;&#34;By default, this is set to 0 (zero) in all events.&#34;&#34;&#34;
+    return self[&#34;version&#34;]</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.KinesisStreamEvent"><code class="flex name class">
+<span>class <span class="ident">KinesisStreamEvent</span></span>
+<span>(</span><span>data)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Kinesis stream event</p>
+<h2 id="documentation">Documentation:</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html">https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html</a></li>
+</ul></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class KinesisStreamEvent(DictWrapper):
+    &#34;&#34;&#34;Kinesis stream event
+
+    Documentation:
+    --------------
+    - https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html
+    &#34;&#34;&#34;
+
+    @property
+    def records(self) -&gt; Iterator[KinesisStreamRecord]:
+        for record in self[&#34;Records&#34;]:
+            yield KinesisStreamRecord(record)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.data_classes.common.DictWrapper" href="common.html#aws_lambda_powertools.utilities.data_classes.common.DictWrapper">DictWrapper</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.data_classes.KinesisStreamEvent.records"><code class="name">var <span class="ident">records</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def records(self) -&gt; Iterator[KinesisStreamRecord]:
+    for record in self[&#34;Records&#34;]:
+        yield KinesisStreamRecord(record)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.S3Event"><code class="flex name class">
+<span>class <span class="ident">S3Event</span></span>
+<span>(</span><span>data)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>S3 event notification</p>
+<h2 id="documentation">Documentation:</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/lambda/latest/dg/with-s3.html">https://docs.aws.amazon.com/lambda/latest/dg/with-s3.html</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html">https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/notification-content-structure.html">https://docs.aws.amazon.com/AmazonS3/latest/dev/notification-content-structure.html</a></li>
+</ul></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class S3Event(DictWrapper):
+    &#34;&#34;&#34;S3 event notification
+
+    Documentation:
+    -------------
+    - https://docs.aws.amazon.com/lambda/latest/dg/with-s3.html
+    - https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html
+    - https://docs.aws.amazon.com/AmazonS3/latest/dev/notification-content-structure.html
+    &#34;&#34;&#34;
+
+    @property
+    def records(self) -&gt; Iterator[S3EventRecord]:
+        for record in self[&#34;Records&#34;]:
+            yield S3EventRecord(record)
+
+    @property
+    def record(self) -&gt; S3EventRecord:
+        &#34;&#34;&#34;Get the first s3 event record&#34;&#34;&#34;
+        return next(self.records)
+
+    @property
+    def bucket_name(self) -&gt; str:
+        &#34;&#34;&#34;Get the bucket name for the first s3 event record&#34;&#34;&#34;
+        return self[&#34;Records&#34;][0][&#34;s3&#34;][&#34;bucket&#34;][&#34;name&#34;]
+
+    @property
+    def object_key(self) -&gt; str:
+        &#34;&#34;&#34;Get the object key for the first s3 event record and unquote plus&#34;&#34;&#34;
+        return unquote_plus(self[&#34;Records&#34;][0][&#34;s3&#34;][&#34;object&#34;][&#34;key&#34;])</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.data_classes.common.DictWrapper" href="common.html#aws_lambda_powertools.utilities.data_classes.common.DictWrapper">DictWrapper</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.data_classes.S3Event.bucket_name"><code class="name">var <span class="ident">bucket_name</span></code></dt>
+<dd>
+<section class="desc"><p>Get the bucket name for the first s3 event record</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def bucket_name(self) -&gt; str:
+    &#34;&#34;&#34;Get the bucket name for the first s3 event record&#34;&#34;&#34;
+    return self[&#34;Records&#34;][0][&#34;s3&#34;][&#34;bucket&#34;][&#34;name&#34;]</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.S3Event.object_key"><code class="name">var <span class="ident">object_key</span></code></dt>
+<dd>
+<section class="desc"><p>Get the object key for the first s3 event record and unquote plus</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def object_key(self) -&gt; str:
+    &#34;&#34;&#34;Get the object key for the first s3 event record and unquote plus&#34;&#34;&#34;
+    return unquote_plus(self[&#34;Records&#34;][0][&#34;s3&#34;][&#34;object&#34;][&#34;key&#34;])</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.S3Event.record"><code class="name">var <span class="ident">record</span></code></dt>
+<dd>
+<section class="desc"><p>Get the first s3 event record</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def record(self) -&gt; S3EventRecord:
+    &#34;&#34;&#34;Get the first s3 event record&#34;&#34;&#34;
+    return next(self.records)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.S3Event.records"><code class="name">var <span class="ident">records</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def records(self) -&gt; Iterator[S3EventRecord]:
+    for record in self[&#34;Records&#34;]:
+        yield S3EventRecord(record)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.SESEvent"><code class="flex name class">
+<span>class <span class="ident">SESEvent</span></span>
+<span>(</span><span>data)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Amazon SES to receive message event trigger</p>
+<p>NOTE: There is a 30-second timeout on RequestResponse invocations.</p>
+<h2 id="documentation">Documentation:</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/lambda/latest/dg/services-ses.html">https://docs.aws.amazon.com/lambda/latest/dg/services-ses.html</a></li>
+<li><a href="https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-lambda.html">https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-lambda.html</a></li>
+</ul></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SESEvent(DictWrapper):
+    &#34;&#34;&#34;Amazon SES to receive message event trigger
+
+    NOTE: There is a 30-second timeout on RequestResponse invocations.
+
+    Documentation:
+    --------------
+    - https://docs.aws.amazon.com/lambda/latest/dg/services-ses.html
+    - https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-lambda.html
+    &#34;&#34;&#34;
+
+    @property
+    def records(self) -&gt; Iterator[SESEventRecord]:
+        for record in self[&#34;Records&#34;]:
+            yield SESEventRecord(record)
+
+    @property
+    def record(self) -&gt; SESEventRecord:
+        return next(self.records)
+
+    @property
+    def mail(self) -&gt; SESMail:
+        return self.record.ses.mail
+
+    @property
+    def receipt(self) -&gt; SESReceipt:
+        return self.record.ses.receipt</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.data_classes.common.DictWrapper" href="common.html#aws_lambda_powertools.utilities.data_classes.common.DictWrapper">DictWrapper</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.data_classes.SESEvent.mail"><code class="name">var <span class="ident">mail</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def mail(self) -&gt; SESMail:
+    return self.record.ses.mail</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.SESEvent.receipt"><code class="name">var <span class="ident">receipt</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def receipt(self) -&gt; SESReceipt:
+    return self.record.ses.receipt</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.SESEvent.record"><code class="name">var <span class="ident">record</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def record(self) -&gt; SESEventRecord:
+    return next(self.records)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.SESEvent.records"><code class="name">var <span class="ident">records</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def records(self) -&gt; Iterator[SESEventRecord]:
+    for record in self[&#34;Records&#34;]:
+        yield SESEventRecord(record)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.SNSEvent"><code class="flex name class">
+<span>class <span class="ident">SNSEvent</span></span>
+<span>(</span><span>data)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>SNS Event</p>
+<h2 id="documentation">Documentation:</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/lambda/latest/dg/with-sns.html">https://docs.aws.amazon.com/lambda/latest/dg/with-sns.html</a></li>
+</ul></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SNSEvent(DictWrapper):
+    &#34;&#34;&#34;SNS Event
+
+    Documentation:
+    -------------
+    - https://docs.aws.amazon.com/lambda/latest/dg/with-sns.html
+    &#34;&#34;&#34;
+
+    @property
+    def records(self) -&gt; Iterator[SNSEventRecord]:
+        for record in self[&#34;Records&#34;]:
+            yield SNSEventRecord(record)
+
+    @property
+    def record(self) -&gt; SNSEventRecord:
+        &#34;&#34;&#34;Return the first SNS event record&#34;&#34;&#34;
+        return next(self.records)
+
+    @property
+    def sns_message(self) -&gt; str:
+        &#34;&#34;&#34;Return the message for the first sns event record&#34;&#34;&#34;
+        return self.record.sns.message</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.data_classes.common.DictWrapper" href="common.html#aws_lambda_powertools.utilities.data_classes.common.DictWrapper">DictWrapper</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.data_classes.SNSEvent.record"><code class="name">var <span class="ident">record</span></code></dt>
+<dd>
+<section class="desc"><p>Return the first SNS event record</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def record(self) -&gt; SNSEventRecord:
+    &#34;&#34;&#34;Return the first SNS event record&#34;&#34;&#34;
+    return next(self.records)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.SNSEvent.records"><code class="name">var <span class="ident">records</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def records(self) -&gt; Iterator[SNSEventRecord]:
+    for record in self[&#34;Records&#34;]:
+        yield SNSEventRecord(record)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.SNSEvent.sns_message"><code class="name">var <span class="ident">sns_message</span></code></dt>
+<dd>
+<section class="desc"><p>Return the message for the first sns event record</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def sns_message(self) -&gt; str:
+    &#34;&#34;&#34;Return the message for the first sns event record&#34;&#34;&#34;
+    return self.record.sns.message</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="aws_lambda_powertools.utilities.data_classes.SQSEvent"><code class="flex name class">
+<span>class <span class="ident">SQSEvent</span></span>
+<span>(</span><span>data)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>SQS Event</p>
+<h2 id="documentation">Documentation:</h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html">https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html</a></li>
+</ul></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SQSEvent(DictWrapper):
+    &#34;&#34;&#34;SQS Event
+
+    Documentation:
+    --------------
+    - https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html
+    &#34;&#34;&#34;
+
+    @property
+    def records(self) -&gt; Iterator[SQSRecord]:
+        for record in self[&#34;Records&#34;]:
+            yield SQSRecord(record)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.data_classes.common.DictWrapper" href="common.html#aws_lambda_powertools.utilities.data_classes.common.DictWrapper">DictWrapper</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.data_classes.SQSEvent.records"><code class="name">var <span class="ident">records</span></code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def records(self) -&gt; Iterator[SQSRecord]:
+    for record in self[&#34;Records&#34;]:
+        yield SQSRecord(record)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="aws_lambda_powertools.utilities" href="../index.html">aws_lambda_powertools.utilities</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.alb_event" href="alb_event.html">aws_lambda_powertools.utilities.data_classes.alb_event</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.api_gateway_proxy_event" href="api_gateway_proxy_event.html">aws_lambda_powertools.utilities.data_classes.api_gateway_proxy_event</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.cloud_watch_logs_event" href="cloud_watch_logs_event.html">aws_lambda_powertools.utilities.data_classes.cloud_watch_logs_event</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.cognito_user_pool_event" href="cognito_user_pool_event.html">aws_lambda_powertools.utilities.data_classes.cognito_user_pool_event</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.common" href="common.html">aws_lambda_powertools.utilities.data_classes.common</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.dynamo_db_stream_event" href="dynamo_db_stream_event.html">aws_lambda_powertools.utilities.data_classes.dynamo_db_stream_event</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.event_bridge_event" href="event_bridge_event.html">aws_lambda_powertools.utilities.data_classes.event_bridge_event</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.kinesis_stream_event" href="kinesis_stream_event.html">aws_lambda_powertools.utilities.data_classes.kinesis_stream_event</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.s3_event" href="s3_event.html">aws_lambda_powertools.utilities.data_classes.s3_event</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.ses_event" href="ses_event.html">aws_lambda_powertools.utilities.data_classes.ses_event</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.sns_event" href="sns_event.html">aws_lambda_powertools.utilities.data_classes.sns_event</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.sqs_event" href="sqs_event.html">aws_lambda_powertools.utilities.data_classes.sqs_event</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.data_classes.ALBEvent" href="#aws_lambda_powertools.utilities.data_classes.ALBEvent">ALBEvent</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.ALBEvent.http_method" href="#aws_lambda_powertools.utilities.data_classes.ALBEvent.http_method">http_method</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.ALBEvent.multi_value_headers" href="#aws_lambda_powertools.utilities.data_classes.ALBEvent.multi_value_headers">multi_value_headers</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.ALBEvent.multi_value_query_string_parameters" href="#aws_lambda_powertools.utilities.data_classes.ALBEvent.multi_value_query_string_parameters">multi_value_query_string_parameters</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.ALBEvent.path" href="#aws_lambda_powertools.utilities.data_classes.ALBEvent.path">path</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.ALBEvent.request_context" href="#aws_lambda_powertools.utilities.data_classes.ALBEvent.request_context">request_context</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent" href="#aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent">APIGatewayProxyEvent</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.http_method" href="#aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.http_method">http_method</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.multi_value_headers" href="#aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.multi_value_headers">multi_value_headers</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.multi_value_query_string_parameters" href="#aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.multi_value_query_string_parameters">multi_value_query_string_parameters</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.path" href="#aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.path">path</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.path_parameters" href="#aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.path_parameters">path_parameters</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.request_context" href="#aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.request_context">request_context</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.resource" href="#aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.resource">resource</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.stage_variables" href="#aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.stage_variables">stage_variables</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.version" href="#aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEvent.version">version</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2" href="#aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2">APIGatewayProxyEventV2</a></code></h4>
+<ul class="two-column">
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.cookies" href="#aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.cookies">cookies</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.path_parameters" href="#aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.path_parameters">path_parameters</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.raw_path" href="#aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.raw_path">raw_path</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.raw_query_string" href="#aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.raw_query_string">raw_query_string</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.request_context" href="#aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.request_context">request_context</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.route_key" href="#aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.route_key">route_key</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.stage_variables" href="#aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.stage_variables">stage_variables</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.version" href="#aws_lambda_powertools.utilities.data_classes.APIGatewayProxyEventV2.version">version</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.data_classes.CloudWatchLogsEvent" href="#aws_lambda_powertools.utilities.data_classes.CloudWatchLogsEvent">CloudWatchLogsEvent</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.CloudWatchLogsEvent.decompress_logs_data" href="#aws_lambda_powertools.utilities.data_classes.CloudWatchLogsEvent.decompress_logs_data">decompress_logs_data</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.CloudWatchLogsEvent.parse_logs_data" href="#aws_lambda_powertools.utilities.data_classes.CloudWatchLogsEvent.parse_logs_data">parse_logs_data</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.CloudWatchLogsEvent.raw_logs_data" href="#aws_lambda_powertools.utilities.data_classes.CloudWatchLogsEvent.raw_logs_data">raw_logs_data</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.data_classes.DynamoDBStreamEvent" href="#aws_lambda_powertools.utilities.data_classes.DynamoDBStreamEvent">DynamoDBStreamEvent</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.DynamoDBStreamEvent.records" href="#aws_lambda_powertools.utilities.data_classes.DynamoDBStreamEvent.records">records</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent" href="#aws_lambda_powertools.utilities.data_classes.EventBridgeEvent">EventBridgeEvent</a></code></h4>
+<ul class="two-column">
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.account" href="#aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.account">account</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.detail" href="#aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.detail">detail</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.detail_type" href="#aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.detail_type">detail_type</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.get_id" href="#aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.get_id">get_id</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.region" href="#aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.region">region</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.replay_name" href="#aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.replay_name">replay_name</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.resources" href="#aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.resources">resources</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.source" href="#aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.source">source</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.time" href="#aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.time">time</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.version" href="#aws_lambda_powertools.utilities.data_classes.EventBridgeEvent.version">version</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.data_classes.KinesisStreamEvent" href="#aws_lambda_powertools.utilities.data_classes.KinesisStreamEvent">KinesisStreamEvent</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.KinesisStreamEvent.records" href="#aws_lambda_powertools.utilities.data_classes.KinesisStreamEvent.records">records</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.data_classes.S3Event" href="#aws_lambda_powertools.utilities.data_classes.S3Event">S3Event</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.S3Event.bucket_name" href="#aws_lambda_powertools.utilities.data_classes.S3Event.bucket_name">bucket_name</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.S3Event.object_key" href="#aws_lambda_powertools.utilities.data_classes.S3Event.object_key">object_key</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.S3Event.record" href="#aws_lambda_powertools.utilities.data_classes.S3Event.record">record</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.S3Event.records" href="#aws_lambda_powertools.utilities.data_classes.S3Event.records">records</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.data_classes.SESEvent" href="#aws_lambda_powertools.utilities.data_classes.SESEvent">SESEvent</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.SESEvent.mail" href="#aws_lambda_powertools.utilities.data_classes.SESEvent.mail">mail</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.SESEvent.receipt" href="#aws_lambda_powertools.utilities.data_classes.SESEvent.receipt">receipt</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.SESEvent.record" href="#aws_lambda_powertools.utilities.data_classes.SESEvent.record">record</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.SESEvent.records" href="#aws_lambda_powertools.utilities.data_classes.SESEvent.records">records</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.data_classes.SNSEvent" href="#aws_lambda_powertools.utilities.data_classes.SNSEvent">SNSEvent</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.SNSEvent.record" href="#aws_lambda_powertools.utilities.data_classes.SNSEvent.record">record</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.SNSEvent.records" href="#aws_lambda_powertools.utilities.data_classes.SNSEvent.records">records</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.SNSEvent.sns_message" href="#aws_lambda_powertools.utilities.data_classes.SNSEvent.sns_message">sns_message</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.data_classes.SQSEvent" href="#aws_lambda_powertools.utilities.data_classes.SQSEvent">SQSEvent</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.data_classes.SQSEvent.records" href="#aws_lambda_powertools.utilities.data_classes.SQSEvent.records">records</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.5</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

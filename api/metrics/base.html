@@ -30,6 +30,7 @@ import logging
 import numbers
 import os
 import pathlib
+from collections import defaultdict
 from enum import Enum
 from typing import Any, Dict, List, Union
 
@@ -105,7 +106,7 @@ class MetricManager:
 
     def __init__(
         self,
-        metric_set: Dict[str, str] = None,
+        metric_set: Dict[str, Any] = None,
         dimension_set: Dict = None,
         namespace: str = None,
         metadata_set: Dict[str, Any] = None,
@@ -119,7 +120,7 @@ class MetricManager:
         self._metric_unit_options = list(MetricUnit.__members__)
         self.metadata_set = self.metadata_set if metadata_set is not None else {}
 
-    def add_metric(self, name: str, unit: MetricUnit, value: Union[float, int]):
+    def add_metric(self, name: str, unit: Union[MetricUnit, str], value: float):
         &#34;&#34;&#34;Adds given metric
 
         Example
@@ -136,7 +137,7 @@ class MetricManager:
         ----------
         name : str
             Metric name
-        unit : MetricUnit
+        unit : Union[MetricUnit, str]
             `aws_lambda_powertools.helper.models.MetricUnit`
         value : float
             Metric value
@@ -150,7 +151,9 @@ class MetricManager:
             raise MetricValueError(f&#34;{value} is not a valid number&#34;)
 
         unit = self.__extract_metric_unit_value(unit=unit)
-        metric = {&#34;Unit&#34;: unit, &#34;Value&#34;: float(value)}
+        metric: Dict = self.metric_set.get(name, defaultdict(list))
+        metric[&#34;Unit&#34;] = unit
+        metric[&#34;Value&#34;].append(float(value))
         logger.debug(f&#34;Adding metric: {name} with {metric}&#34;)
         self.metric_set[name] = metric
 
@@ -172,6 +175,8 @@ class MetricManager:
             Dictionary of metrics to serialize, by default None
         dimensions : Dict, optional
             Dictionary of dimensions to serialize, by default None
+        metadata: Dict, optional
+            Dictionary of metadata to serialize, by default None
 
         Example
         -------
@@ -206,10 +211,10 @@ class MetricManager:
         logger.debug({&#34;details&#34;: &#34;Serializing metrics&#34;, &#34;metrics&#34;: metrics, &#34;dimensions&#34;: dimensions})
 
         metric_names_and_units: List[Dict[str, str]] = []  # [ { &#34;Name&#34;: &#34;metric_name&#34;, &#34;Unit&#34;: &#34;Count&#34; } ]
-        metric_names_and_values: Dict[str, str] = {}  # { &#34;metric_name&#34;: 1.0 }
+        metric_names_and_values: Dict[str, float] = {}  # { &#34;metric_name&#34;: 1.0 }
 
         for metric_name in metrics:
-            metric: str = metrics[metric_name]
+            metric: dict = metrics[metric_name]
             metric_value: int = metric.get(&#34;Value&#34;, 0)
             metric_unit: str = metric.get(&#34;Unit&#34;, &#34;&#34;)
 
@@ -283,7 +288,7 @@ class MetricManager:
 
         Parameters
         ----------
-        name : str
+        key : str
             Metadata key
         value : any
             Metadata value
@@ -403,7 +408,7 @@ will adhere to the schema, will be serialized and validated against EMF Schema.<
 
     def __init__(
         self,
-        metric_set: Dict[str, str] = None,
+        metric_set: Dict[str, Any] = None,
         dimension_set: Dict = None,
         namespace: str = None,
         metadata_set: Dict[str, Any] = None,
@@ -417,7 +422,7 @@ will adhere to the schema, will be serialized and validated against EMF Schema.<
         self._metric_unit_options = list(MetricUnit.__members__)
         self.metadata_set = self.metadata_set if metadata_set is not None else {}
 
-    def add_metric(self, name: str, unit: MetricUnit, value: Union[float, int]):
+    def add_metric(self, name: str, unit: Union[MetricUnit, str], value: float):
         &#34;&#34;&#34;Adds given metric
 
         Example
@@ -434,7 +439,7 @@ will adhere to the schema, will be serialized and validated against EMF Schema.<
         ----------
         name : str
             Metric name
-        unit : MetricUnit
+        unit : Union[MetricUnit, str]
             `aws_lambda_powertools.helper.models.MetricUnit`
         value : float
             Metric value
@@ -448,7 +453,9 @@ will adhere to the schema, will be serialized and validated against EMF Schema.<
             raise MetricValueError(f&#34;{value} is not a valid number&#34;)
 
         unit = self.__extract_metric_unit_value(unit=unit)
-        metric = {&#34;Unit&#34;: unit, &#34;Value&#34;: float(value)}
+        metric: Dict = self.metric_set.get(name, defaultdict(list))
+        metric[&#34;Unit&#34;] = unit
+        metric[&#34;Value&#34;].append(float(value))
         logger.debug(f&#34;Adding metric: {name} with {metric}&#34;)
         self.metric_set[name] = metric
 
@@ -470,6 +477,8 @@ will adhere to the schema, will be serialized and validated against EMF Schema.<
             Dictionary of metrics to serialize, by default None
         dimensions : Dict, optional
             Dictionary of dimensions to serialize, by default None
+        metadata: Dict, optional
+            Dictionary of metadata to serialize, by default None
 
         Example
         -------
@@ -504,10 +513,10 @@ will adhere to the schema, will be serialized and validated against EMF Schema.<
         logger.debug({&#34;details&#34;: &#34;Serializing metrics&#34;, &#34;metrics&#34;: metrics, &#34;dimensions&#34;: dimensions})
 
         metric_names_and_units: List[Dict[str, str]] = []  # [ { &#34;Name&#34;: &#34;metric_name&#34;, &#34;Unit&#34;: &#34;Count&#34; } ]
-        metric_names_and_values: Dict[str, str] = {}  # { &#34;metric_name&#34;: 1.0 }
+        metric_names_and_values: Dict[str, float] = {}  # { &#34;metric_name&#34;: 1.0 }
 
         for metric_name in metrics:
-            metric: str = metrics[metric_name]
+            metric: dict = metrics[metric_name]
             metric_value: int = metric.get(&#34;Value&#34;, 0)
             metric_unit: str = metric.get(&#34;Unit&#34;, &#34;&#34;)
 
@@ -581,7 +590,7 @@ will adhere to the schema, will be serialized and validated against EMF Schema.<
 
         Parameters
         ----------
-        name : str
+        key : str
             Metadata key
         value : any
             Metadata value
@@ -698,7 +707,7 @@ use add_dimensions method.</p>
 </code></pre>
 <h2 id="parameters">Parameters</h2>
 <dl>
-<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dt><strong><code>key</code></strong> :&ensp;<code>str</code></dt>
 <dd>Metadata key</dd>
 <dt><strong><code>value</code></strong> :&ensp;<code>any</code></dt>
 <dd>Metadata value</dd>
@@ -724,7 +733,7 @@ use add_dimensions method.</p>
 
     Parameters
     ----------
-    name : str
+    key : str
         Metadata key
     value : any
         Metadata value
@@ -756,7 +765,7 @@ use add_dimensions method.</p>
 <dl>
 <dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
 <dd>Metric name</dd>
-<dt><strong><code>unit</code></strong> :&ensp;<a title="aws_lambda_powertools.metrics.base.MetricUnit" href="#aws_lambda_powertools.metrics.base.MetricUnit"><code>MetricUnit</code></a></dt>
+<dt><strong><code>unit</code></strong> :&ensp;<code>Union</code>[<code>MetricUnit</code>, <code>str</code>]</dt>
 <dd><code>aws_lambda_powertools.helper.models.MetricUnit</code></dd>
 <dt><strong><code>value</code></strong> :&ensp;<code>float</code></dt>
 <dd>Metric value</dd>
@@ -770,7 +779,7 @@ use add_dimensions method.</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def add_metric(self, name: str, unit: MetricUnit, value: Union[float, int]):
+<pre><code class="python">def add_metric(self, name: str, unit: Union[MetricUnit, str], value: float):
     &#34;&#34;&#34;Adds given metric
 
     Example
@@ -787,7 +796,7 @@ use add_dimensions method.</p>
     ----------
     name : str
         Metric name
-    unit : MetricUnit
+    unit : Union[MetricUnit, str]
         `aws_lambda_powertools.helper.models.MetricUnit`
     value : float
         Metric value
@@ -801,7 +810,9 @@ use add_dimensions method.</p>
         raise MetricValueError(f&#34;{value} is not a valid number&#34;)
 
     unit = self.__extract_metric_unit_value(unit=unit)
-    metric = {&#34;Unit&#34;: unit, &#34;Value&#34;: float(value)}
+    metric: Dict = self.metric_set.get(name, defaultdict(list))
+    metric[&#34;Unit&#34;] = unit
+    metric[&#34;Value&#34;].append(float(value))
     logger.debug(f&#34;Adding metric: {name} with {metric}&#34;)
     self.metric_set[name] = metric
 
@@ -826,6 +837,8 @@ use add_dimensions method.</p>
 <dd>Dictionary of metrics to serialize, by default None</dd>
 <dt><strong><code>dimensions</code></strong> :&ensp;<code>Dict</code>, optional</dt>
 <dd>Dictionary of dimensions to serialize, by default None</dd>
+<dt><strong><code>metadata</code></strong> :&ensp;<code>Dict</code>, optional</dt>
+<dd>Dictionary of metadata to serialize, by default None</dd>
 </dl>
 <h2 id="example">Example</h2>
 <p><strong>Serialize metrics into EMF format</strong></p>
@@ -856,6 +869,8 @@ ret = metrics.serialize_metric_set()
         Dictionary of metrics to serialize, by default None
     dimensions : Dict, optional
         Dictionary of dimensions to serialize, by default None
+    metadata: Dict, optional
+        Dictionary of metadata to serialize, by default None
 
     Example
     -------
@@ -890,10 +905,10 @@ ret = metrics.serialize_metric_set()
     logger.debug({&#34;details&#34;: &#34;Serializing metrics&#34;, &#34;metrics&#34;: metrics, &#34;dimensions&#34;: dimensions})
 
     metric_names_and_units: List[Dict[str, str]] = []  # [ { &#34;Name&#34;: &#34;metric_name&#34;, &#34;Unit&#34;: &#34;Count&#34; } ]
-    metric_names_and_values: Dict[str, str] = {}  # { &#34;metric_name&#34;: 1.0 }
+    metric_names_and_values: Dict[str, float] = {}  # { &#34;metric_name&#34;: 1.0 }
 
     for metric_name in metrics:
-        metric: str = metrics[metric_name]
+        metric: dict = metrics[metric_name]
         metric_value: int = metric.get(&#34;Value&#34;, 0)
         metric_unit: str = metric.get(&#34;Unit&#34;, &#34;&#34;)
 

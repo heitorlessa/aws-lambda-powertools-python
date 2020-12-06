@@ -34,6 +34,7 @@ from distutils.util import strtobool
 from typing import Any, Callable, Dict, Union
 
 from .exceptions import InvalidLoggerSamplingRateError
+from .filters import SuppressFilter
 from .formatter import JsonFormatter
 from .lambda_context import build_lambda_context_model
 
@@ -162,16 +163,6 @@ class Logger(logging.Logger):  # lgtm [py/missing-call-to-init]
         # https://github.com/awslabs/aws-lambda-powertools-python/issues/97
         return getattr(self._logger, name)
 
-    def _get_log_level(self, level: Union[str, int]) -&gt; Union[str, int]:
-        &#34;&#34;&#34; Returns preferred log level set by the customer in upper case &#34;&#34;&#34;
-        if isinstance(level, int):
-            return level
-
-        log_level: str = level or os.getenv(&#34;LOG_LEVEL&#34;)
-        log_level = log_level.upper() if log_level is not None else logging.INFO
-
-        return log_level
-
     def _get_logger(self):
         &#34;&#34;&#34; Returns a Logger named {self.service}, or {self.service.filename} for child loggers&#34;&#34;&#34;
         logger_name = self.service
@@ -180,26 +171,8 @@ class Logger(logging.Logger):  # lgtm [py/missing-call-to-init]
 
         return logging.getLogger(logger_name)
 
-    def _get_caller_filename(self):
-        &#34;&#34;&#34; Return caller filename by finding the caller frame &#34;&#34;&#34;
-        # Current frame         =&gt; _get_logger()
-        # Previous frame        =&gt; logger.py
-        # Before previous frame =&gt; Caller
-        frame = inspect.currentframe()
-        caller_frame = frame.f_back.f_back.f_back
-        filename = caller_frame.f_globals[&#34;__name__&#34;]
-
-        return filename
-
     def _init_logger(self, **kwargs):
         &#34;&#34;&#34;Configures new logger&#34;&#34;&#34;
-
-        # Lambda by default configures the root logger handler
-        # therefore, we need to remove it to prevent messages being logged twice
-        # when customers use our Logger
-        logger.debug(&#34;Removing Lambda root handler whether it exists&#34;)
-        root_logger = logging.getLogger()
-        root_logger.handlers.clear()
 
         # Skip configuration if it&#39;s a child logger to prevent
         # multiple handlers being attached as well as different sampling mechanisms
@@ -209,6 +182,13 @@ class Logger(logging.Logger):  # lgtm [py/missing-call-to-init]
             self._logger.setLevel(self.log_level)
             self._logger.addHandler(self._handler)
             self.structure_logs(**kwargs)
+
+            logger.debug(&#34;Adding filter in root logger to suppress child logger records to bubble up&#34;)
+            for handler in logging.root.handlers:
+                # It&#39;ll add a filter to suppress any child logger from self.service
+                # Where service is Order, it&#39;ll reject parent logger Order,
+                # and child loggers such as Order.checkout, Order.shared
+                handler.addFilter(SuppressFilter(self.service))
 
     def _configure_sampling(self):
         &#34;&#34;&#34;Dynamically set log level based on sampling rate
@@ -233,6 +213,8 @@ class Logger(logging.Logger):  # lgtm [py/missing-call-to-init]
 
         Parameters
         ----------
+        lambda_handler : Callable
+            Method to inject the lambda context
         log_event : bool, optional
             Instructs logger to log Lambda Event, by default False
 
@@ -280,14 +262,14 @@ class Logger(logging.Logger):  # lgtm [py/missing-call-to-init]
 
         @functools.wraps(lambda_handler)
         def decorate(event, context):
+            lambda_context = build_lambda_context_model(context)
+            cold_start = _is_cold_start()
+            self.structure_logs(append=True, cold_start=cold_start, **lambda_context.__dict__)
+
             if log_event:
                 logger.debug(&#34;Event received&#34;)
                 self.info(event)
 
-            lambda_context = build_lambda_context_model(context)
-            cold_start = _is_cold_start()
-
-            self.structure_logs(append=True, cold_start=cold_start, **lambda_context.__dict__)
             return lambda_handler(event, context)
 
         return decorate
@@ -316,6 +298,29 @@ class Logger(logging.Logger):  # lgtm [py/missing-call-to-init]
             else:
                 # Set a new formatter for a logger handler
                 handler.setFormatter(JsonFormatter(**self._default_log_keys, **kwargs))
+
+    @staticmethod
+    def _get_log_level(level: Union[str, int]) -&gt; Union[str, int]:
+        &#34;&#34;&#34; Returns preferred log level set by the customer in upper case &#34;&#34;&#34;
+        if isinstance(level, int):
+            return level
+
+        log_level: str = level or os.getenv(&#34;LOG_LEVEL&#34;)
+        log_level = log_level.upper() if log_level is not None else logging.INFO
+
+        return log_level
+
+    @staticmethod
+    def _get_caller_filename():
+        &#34;&#34;&#34; Return caller filename by finding the caller frame &#34;&#34;&#34;
+        # Current frame         =&gt; _get_logger()
+        # Previous frame        =&gt; logger.py
+        # Before previous frame =&gt; Caller
+        frame = inspect.currentframe()
+        caller_frame = frame.f_back.f_back.f_back
+        filename = caller_frame.f_globals[&#34;__name__&#34;]
+
+        return filename
 
 
 def set_package_logger(
@@ -602,16 +607,6 @@ $ export POWERTOOLS_LOGGER_SAMPLE_RATE=0.01 # 1% debug sampling
         # https://github.com/awslabs/aws-lambda-powertools-python/issues/97
         return getattr(self._logger, name)
 
-    def _get_log_level(self, level: Union[str, int]) -&gt; Union[str, int]:
-        &#34;&#34;&#34; Returns preferred log level set by the customer in upper case &#34;&#34;&#34;
-        if isinstance(level, int):
-            return level
-
-        log_level: str = level or os.getenv(&#34;LOG_LEVEL&#34;)
-        log_level = log_level.upper() if log_level is not None else logging.INFO
-
-        return log_level
-
     def _get_logger(self):
         &#34;&#34;&#34; Returns a Logger named {self.service}, or {self.service.filename} for child loggers&#34;&#34;&#34;
         logger_name = self.service
@@ -620,26 +615,8 @@ $ export POWERTOOLS_LOGGER_SAMPLE_RATE=0.01 # 1% debug sampling
 
         return logging.getLogger(logger_name)
 
-    def _get_caller_filename(self):
-        &#34;&#34;&#34; Return caller filename by finding the caller frame &#34;&#34;&#34;
-        # Current frame         =&gt; _get_logger()
-        # Previous frame        =&gt; logger.py
-        # Before previous frame =&gt; Caller
-        frame = inspect.currentframe()
-        caller_frame = frame.f_back.f_back.f_back
-        filename = caller_frame.f_globals[&#34;__name__&#34;]
-
-        return filename
-
     def _init_logger(self, **kwargs):
         &#34;&#34;&#34;Configures new logger&#34;&#34;&#34;
-
-        # Lambda by default configures the root logger handler
-        # therefore, we need to remove it to prevent messages being logged twice
-        # when customers use our Logger
-        logger.debug(&#34;Removing Lambda root handler whether it exists&#34;)
-        root_logger = logging.getLogger()
-        root_logger.handlers.clear()
 
         # Skip configuration if it&#39;s a child logger to prevent
         # multiple handlers being attached as well as different sampling mechanisms
@@ -649,6 +626,13 @@ $ export POWERTOOLS_LOGGER_SAMPLE_RATE=0.01 # 1% debug sampling
             self._logger.setLevel(self.log_level)
             self._logger.addHandler(self._handler)
             self.structure_logs(**kwargs)
+
+            logger.debug(&#34;Adding filter in root logger to suppress child logger records to bubble up&#34;)
+            for handler in logging.root.handlers:
+                # It&#39;ll add a filter to suppress any child logger from self.service
+                # Where service is Order, it&#39;ll reject parent logger Order,
+                # and child loggers such as Order.checkout, Order.shared
+                handler.addFilter(SuppressFilter(self.service))
 
     def _configure_sampling(self):
         &#34;&#34;&#34;Dynamically set log level based on sampling rate
@@ -673,6 +657,8 @@ $ export POWERTOOLS_LOGGER_SAMPLE_RATE=0.01 # 1% debug sampling
 
         Parameters
         ----------
+        lambda_handler : Callable
+            Method to inject the lambda context
         log_event : bool, optional
             Instructs logger to log Lambda Event, by default False
 
@@ -720,14 +706,14 @@ $ export POWERTOOLS_LOGGER_SAMPLE_RATE=0.01 # 1% debug sampling
 
         @functools.wraps(lambda_handler)
         def decorate(event, context):
+            lambda_context = build_lambda_context_model(context)
+            cold_start = _is_cold_start()
+            self.structure_logs(append=True, cold_start=cold_start, **lambda_context.__dict__)
+
             if log_event:
                 logger.debug(&#34;Event received&#34;)
                 self.info(event)
 
-            lambda_context = build_lambda_context_model(context)
-            cold_start = _is_cold_start()
-
-            self.structure_logs(append=True, cold_start=cold_start, **lambda_context.__dict__)
             return lambda_handler(event, context)
 
         return decorate
@@ -755,7 +741,30 @@ $ export POWERTOOLS_LOGGER_SAMPLE_RATE=0.01 # 1% debug sampling
                 handler.formatter.update_formatter(**kwargs)
             else:
                 # Set a new formatter for a logger handler
-                handler.setFormatter(JsonFormatter(**self._default_log_keys, **kwargs))</code></pre>
+                handler.setFormatter(JsonFormatter(**self._default_log_keys, **kwargs))
+
+    @staticmethod
+    def _get_log_level(level: Union[str, int]) -&gt; Union[str, int]:
+        &#34;&#34;&#34; Returns preferred log level set by the customer in upper case &#34;&#34;&#34;
+        if isinstance(level, int):
+            return level
+
+        log_level: str = level or os.getenv(&#34;LOG_LEVEL&#34;)
+        log_level = log_level.upper() if log_level is not None else logging.INFO
+
+        return log_level
+
+    @staticmethod
+    def _get_caller_filename():
+        &#34;&#34;&#34; Return caller filename by finding the caller frame &#34;&#34;&#34;
+        # Current frame         =&gt; _get_logger()
+        # Previous frame        =&gt; logger.py
+        # Before previous frame =&gt; Caller
+        frame = inspect.currentframe()
+        caller_frame = frame.f_back.f_back.f_back
+        filename = caller_frame.f_globals[&#34;__name__&#34;]
+
+        return filename</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -771,6 +780,8 @@ $ export POWERTOOLS_LOGGER_SAMPLE_RATE=0.01 # 1% debug sampling
 <section class="desc"><p>Decorator to capture Lambda contextual info and inject into logger</p>
 <h2 id="parameters">Parameters</h2>
 <dl>
+<dt><strong><code>lambda_handler</code></strong> :&ensp;<code>Callable</code></dt>
+<dd>Method to inject the lambda context</dd>
 <dt><strong><code>log_event</code></strong> :&ensp;<code>bool</code>, optional</dt>
 <dd>Instructs logger to log Lambda Event, by default False</dd>
 </dl>
@@ -812,6 +823,8 @@ def handler(event, context):
 
     Parameters
     ----------
+    lambda_handler : Callable
+        Method to inject the lambda context
     log_event : bool, optional
         Instructs logger to log Lambda Event, by default False
 
@@ -859,14 +872,14 @@ def handler(event, context):
 
     @functools.wraps(lambda_handler)
     def decorate(event, context):
+        lambda_context = build_lambda_context_model(context)
+        cold_start = _is_cold_start()
+        self.structure_logs(append=True, cold_start=cold_start, **lambda_context.__dict__)
+
         if log_event:
             logger.debug(&#34;Event received&#34;)
             self.info(event)
 
-        lambda_context = build_lambda_context_model(context)
-        cold_start = _is_cold_start()
-
-        self.structure_logs(append=True, cold_start=cold_start, **lambda_context.__dict__)
         return lambda_handler(event, context)
 
     return decorate</code></pre>

@@ -490,8 +490,8 @@ a given name.</dd>
             Maximum age of the cached value
         transform: str, optional
             Optional transformation of the parameter value. Supported values
-            are &#34;json&#34; for JSON strings and &#34;binary&#34; for base 64 encoded
-            values.
+            are &#34;json&#34; for JSON strings, &#34;binary&#34; for base 64 encoded
+            values or &#34;auto&#34; which looks at the attribute key to determine the type.
         raise_on_transform_error: bool, optional
             Raises an exception if any transform fails, otherwise this will
             return a None value for each transform that failed
@@ -520,7 +520,11 @@ a given name.</dd>
 
         if transform is not None:
             for (key, value) in values.items():
-                values[key] = transform_value(value, transform, raise_on_transform_error)
+                _transform = get_transform_method(key, transform)
+                if _transform is None:
+                    continue
+
+                values[key] = transform_value(value, _transform, raise_on_transform_error)
 
         self.store[key] = ExpirableValue(values, datetime.now() + timedelta(seconds=max_age),)
 
@@ -651,8 +655,8 @@ a given name.</dd>
 <dd>Maximum age of the cached value</dd>
 <dt><strong><code>transform</code></strong> :&ensp;<code>str</code>, optional</dt>
 <dd>Optional transformation of the parameter value. Supported values
-are "json" for JSON strings and "binary" for base 64 encoded
-values.</dd>
+are "json" for JSON strings, "binary" for base 64 encoded
+values or "auto" which looks at the attribute key to determine the type.</dd>
 <dt><strong><code>raise_on_transform_error</code></strong> :&ensp;<code>bool</code>, optional</dt>
 <dd>Raises an exception if any transform fails, otherwise this will
 return a None value for each transform that failed</dd>
@@ -690,8 +694,8 @@ a given path.</dd>
         Maximum age of the cached value
     transform: str, optional
         Optional transformation of the parameter value. Supported values
-        are &#34;json&#34; for JSON strings and &#34;binary&#34; for base 64 encoded
-        values.
+        are &#34;json&#34; for JSON strings, &#34;binary&#34; for base 64 encoded
+        values or &#34;auto&#34; which looks at the attribute key to determine the type.
     raise_on_transform_error: bool, optional
         Raises an exception if any transform fails, otherwise this will
         return a None value for each transform that failed
@@ -720,7 +724,11 @@ a given path.</dd>
 
     if transform is not None:
         for (key, value) in values.items():
-            values[key] = transform_value(value, transform, raise_on_transform_error)
+            _transform = get_transform_method(key, transform)
+            if _transform is None:
+                continue
+
+            values[key] = transform_value(value, _transform, raise_on_transform_error)
 
     self.store[key] = ExpirableValue(values, datetime.now() + timedelta(seconds=max_age),)
 
@@ -1451,7 +1459,7 @@ a given name.</dd>
 <pre><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.parameters import SecretsProvider
 &gt;&gt;&gt; secrets_provider = SecretsProvider()
 &gt;&gt;&gt;
-&gt;&gt;&gt; value secrets_provider.get("my-parameter")
+&gt;&gt;&gt; value = secrets_provider.get("my-parameter")
 &gt;&gt;&gt;
 &gt;&gt;&gt; print(value)
 My parameter value
@@ -1498,7 +1506,7 @@ My parameter value
         &gt;&gt;&gt; from aws_lambda_powertools.utilities.parameters import SecretsProvider
         &gt;&gt;&gt; secrets_provider = SecretsProvider()
         &gt;&gt;&gt;
-        &gt;&gt;&gt; value secrets_provider.get(&#34;my-parameter&#34;)
+        &gt;&gt;&gt; value = secrets_provider.get(&#34;my-parameter&#34;)
         &gt;&gt;&gt;
         &gt;&gt;&gt; print(value)
         My parameter value

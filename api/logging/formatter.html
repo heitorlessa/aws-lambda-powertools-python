@@ -26,28 +26,7 @@
 </summary>
 <pre><code class="python">import json
 import logging
-from typing import Any
-
-
-def json_formatter(unserialized_value: Any):
-    &#34;&#34;&#34;JSON custom serializer to cast unserialisable values to strings.
-
-    Example
-    -------
-
-    **Serialize unserialisable value to string**
-
-        class X: pass
-        value = {&#34;x&#34;: X()}
-
-        json.dumps(value, default=json_formatter)
-
-    Parameters
-    ----------
-    unserialized_value: Any
-        Python object unserializable by JSON
-    &#34;&#34;&#34;
-    return str(unserialized_value)
+import os
 
 
 class JsonFormatter(logging.Formatter):
@@ -65,22 +44,40 @@ class JsonFormatter(logging.Formatter):
         &#34;&#34;&#34;Return a JsonFormatter instance.
 
         The `json_default` kwarg is used to specify a formatter for otherwise
-        unserialisable values.  It must not throw.  Defaults to a function that
+        unserializable values.  It must not throw.  Defaults to a function that
         coerces the value to a string.
+
+        The `log_record_order` kwarg is used to specify the order of the keys used in
+        the structured json logs. By default the order is: &#34;level&#34;, &#34;location&#34;, &#34;message&#34;, &#34;timestamp&#34;,
+        &#34;service&#34; and &#34;sampling_rate&#34;.
 
         Other kwargs are used to specify log field format strings.
         &#34;&#34;&#34;
-        datefmt = kwargs.pop(&#34;datefmt&#34;, None)
-
-        super(JsonFormatter, self).__init__(datefmt=datefmt)
+        # Set the default unserializable function, by default values will be cast as str.
+        self.default_json_formatter = kwargs.pop(&#34;json_default&#34;, str)
+        # Set the insertion order for the log messages
+        self.format_dict = dict.fromkeys(kwargs.pop(&#34;log_record_order&#34;, [&#34;level&#34;, &#34;location&#34;, &#34;message&#34;, &#34;timestamp&#34;]))
         self.reserved_keys = [&#34;timestamp&#34;, &#34;level&#34;, &#34;location&#34;]
-        self.format_dict = {
-            &#34;timestamp&#34;: &#34;%(asctime)s&#34;,
+        # Set the date format used by `asctime`
+        super(JsonFormatter, self).__init__(datefmt=kwargs.pop(&#34;datefmt&#34;, None))
+
+        self.format_dict.update(self._build_root_keys(**kwargs))
+
+    @staticmethod
+    def _build_root_keys(**kwargs):
+        return {
             &#34;level&#34;: &#34;%(levelname)s&#34;,
             &#34;location&#34;: &#34;%(funcName)s:%(lineno)d&#34;,
+            &#34;timestamp&#34;: &#34;%(asctime)s&#34;,
+            **kwargs,
         }
-        self.format_dict.update(kwargs)
-        self.default_json_formatter = kwargs.pop(&#34;json_default&#34;, json_formatter)
+
+    @staticmethod
+    def _get_latest_trace_id():
+        xray_trace_id = os.getenv(&#34;_X_AMZN_TRACE_ID&#34;)
+        trace_id = xray_trace_id.split(&#34;;&#34;)[0].replace(&#34;Root=&#34;, &#34;&#34;) if xray_trace_id else None
+
+        return trace_id
 
     def update_formatter(self, **kwargs):
         self.format_dict.update(kwargs)
@@ -90,6 +87,7 @@ class JsonFormatter(logging.Formatter):
         record_dict[&#34;asctime&#34;] = self.formatTime(record, self.datefmt)
 
         log_dict = {}
+
         for key, value in self.format_dict.items():
             if value and key in self.reserved_keys:
                 # converts default logging expr to its record value
@@ -110,22 +108,22 @@ class JsonFormatter(logging.Formatter):
             except (json.decoder.JSONDecodeError, TypeError, ValueError):
                 pass
 
-        if record.exc_info:
+        if record.exc_info and not record.exc_text:
             # Cache the traceback text to avoid converting it multiple times
             # (it&#39;s constant anyway)
             # from logging.Formatter:format
-            if not record.exc_text:  # pragma: no cover
-                record.exc_text = self.formatException(record.exc_info)
+            record.exc_text = self.formatException(record.exc_info)
 
         if record.exc_text:
             log_dict[&#34;exception&#34;] = record.exc_text
 
-        json_record = json.dumps(log_dict, default=self.default_json_formatter)
+        # fetch latest X-Ray Trace ID, if any
+        log_dict.update({&#34;xray_trace_id&#34;: self._get_latest_trace_id()})
 
-        if hasattr(json_record, &#34;decode&#34;):  # pragma: no cover
-            json_record = json_record.decode(&#34;utf-8&#34;)
+        # Filter out top level key with values that are None
+        log_dict = {k: v for k, v in log_dict.items() if v is not None}
 
-        return json_record</code></pre>
+        return json.dumps(log_dict, default=self.default_json_formatter)</code></pre>
 </details>
 </section>
 <section>
@@ -133,51 +131,6 @@ class JsonFormatter(logging.Formatter):
 <section>
 </section>
 <section>
-<h2 class="section-title" id="header-functions">Functions</h2>
-<dl>
-<dt id="aws_lambda_powertools.logging.formatter.json_formatter"><code class="name flex">
-<span>def <span class="ident">json_formatter</span></span>(<span>unserialized_value)</span>
-</code></dt>
-<dd>
-<section class="desc"><p>JSON custom serializer to cast unserialisable values to strings.</p>
-<h2 id="example">Example</h2>
-<p><strong>Serialize unserialisable value to string</strong></p>
-<pre><code>class X: pass
-value = {"x": X()}
-
-json.dumps(value, default=json_formatter)
-</code></pre>
-<h2 id="parameters">Parameters</h2>
-<dl>
-<dt><strong><code>unserialized_value</code></strong> :&ensp;<code>Any</code></dt>
-<dd>Python object unserializable by JSON</dd>
-</dl></section>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def json_formatter(unserialized_value: Any):
-    &#34;&#34;&#34;JSON custom serializer to cast unserialisable values to strings.
-
-    Example
-    -------
-
-    **Serialize unserialisable value to string**
-
-        class X: pass
-        value = {&#34;x&#34;: X()}
-
-        json.dumps(value, default=json_formatter)
-
-    Parameters
-    ----------
-    unserialized_value: Any
-        Python object unserializable by JSON
-    &#34;&#34;&#34;
-    return str(unserialized_value)</code></pre>
-</details>
-</dd>
-</dl>
 </section>
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
@@ -196,10 +149,13 @@ the parse d value is used in the output record.</p>
 <p>Originally taken from <a href="https://gitlab.com/hadrien/aws_lambda_logging/">https://gitlab.com/hadrien/aws_lambda_logging/</a></p>
 <p>Return a JsonFormatter instance.</p>
 <p>The <code>json_default</code> kwarg is used to specify a formatter for otherwise
-unserialisable values.
+unserializable values.
 It must not throw.
 Defaults to a function that
 coerces the value to a string.</p>
+<p>The <code>log_record_order</code> kwarg is used to specify the order of the keys used in
+the structured json logs. By default the order is: "level", "location", "message", "timestamp",
+"service" and "sampling_rate".</p>
 <p>Other kwargs are used to specify log field format strings.</p></section>
 <details class="source">
 <summary>
@@ -220,22 +176,40 @@ coerces the value to a string.</p>
         &#34;&#34;&#34;Return a JsonFormatter instance.
 
         The `json_default` kwarg is used to specify a formatter for otherwise
-        unserialisable values.  It must not throw.  Defaults to a function that
+        unserializable values.  It must not throw.  Defaults to a function that
         coerces the value to a string.
+
+        The `log_record_order` kwarg is used to specify the order of the keys used in
+        the structured json logs. By default the order is: &#34;level&#34;, &#34;location&#34;, &#34;message&#34;, &#34;timestamp&#34;,
+        &#34;service&#34; and &#34;sampling_rate&#34;.
 
         Other kwargs are used to specify log field format strings.
         &#34;&#34;&#34;
-        datefmt = kwargs.pop(&#34;datefmt&#34;, None)
-
-        super(JsonFormatter, self).__init__(datefmt=datefmt)
+        # Set the default unserializable function, by default values will be cast as str.
+        self.default_json_formatter = kwargs.pop(&#34;json_default&#34;, str)
+        # Set the insertion order for the log messages
+        self.format_dict = dict.fromkeys(kwargs.pop(&#34;log_record_order&#34;, [&#34;level&#34;, &#34;location&#34;, &#34;message&#34;, &#34;timestamp&#34;]))
         self.reserved_keys = [&#34;timestamp&#34;, &#34;level&#34;, &#34;location&#34;]
-        self.format_dict = {
-            &#34;timestamp&#34;: &#34;%(asctime)s&#34;,
+        # Set the date format used by `asctime`
+        super(JsonFormatter, self).__init__(datefmt=kwargs.pop(&#34;datefmt&#34;, None))
+
+        self.format_dict.update(self._build_root_keys(**kwargs))
+
+    @staticmethod
+    def _build_root_keys(**kwargs):
+        return {
             &#34;level&#34;: &#34;%(levelname)s&#34;,
             &#34;location&#34;: &#34;%(funcName)s:%(lineno)d&#34;,
+            &#34;timestamp&#34;: &#34;%(asctime)s&#34;,
+            **kwargs,
         }
-        self.format_dict.update(kwargs)
-        self.default_json_formatter = kwargs.pop(&#34;json_default&#34;, json_formatter)
+
+    @staticmethod
+    def _get_latest_trace_id():
+        xray_trace_id = os.getenv(&#34;_X_AMZN_TRACE_ID&#34;)
+        trace_id = xray_trace_id.split(&#34;;&#34;)[0].replace(&#34;Root=&#34;, &#34;&#34;) if xray_trace_id else None
+
+        return trace_id
 
     def update_formatter(self, **kwargs):
         self.format_dict.update(kwargs)
@@ -245,6 +219,7 @@ coerces the value to a string.</p>
         record_dict[&#34;asctime&#34;] = self.formatTime(record, self.datefmt)
 
         log_dict = {}
+
         for key, value in self.format_dict.items():
             if value and key in self.reserved_keys:
                 # converts default logging expr to its record value
@@ -265,22 +240,22 @@ coerces the value to a string.</p>
             except (json.decoder.JSONDecodeError, TypeError, ValueError):
                 pass
 
-        if record.exc_info:
+        if record.exc_info and not record.exc_text:
             # Cache the traceback text to avoid converting it multiple times
             # (it&#39;s constant anyway)
             # from logging.Formatter:format
-            if not record.exc_text:  # pragma: no cover
-                record.exc_text = self.formatException(record.exc_info)
+            record.exc_text = self.formatException(record.exc_info)
 
         if record.exc_text:
             log_dict[&#34;exception&#34;] = record.exc_text
 
-        json_record = json.dumps(log_dict, default=self.default_json_formatter)
+        # fetch latest X-Ray Trace ID, if any
+        log_dict.update({&#34;xray_trace_id&#34;: self._get_latest_trace_id()})
 
-        if hasattr(json_record, &#34;decode&#34;):  # pragma: no cover
-            json_record = json_record.decode(&#34;utf-8&#34;)
+        # Filter out top level key with values that are None
+        log_dict = {k: v for k, v in log_dict.items() if v is not None}
 
-        return json_record</code></pre>
+        return json.dumps(log_dict, default=self.default_json_formatter)</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -310,6 +285,7 @@ it is formatted using formatException() and appended to the message.</p></sectio
     record_dict[&#34;asctime&#34;] = self.formatTime(record, self.datefmt)
 
     log_dict = {}
+
     for key, value in self.format_dict.items():
         if value and key in self.reserved_keys:
             # converts default logging expr to its record value
@@ -330,22 +306,22 @@ it is formatted using formatException() and appended to the message.</p></sectio
         except (json.decoder.JSONDecodeError, TypeError, ValueError):
             pass
 
-    if record.exc_info:
+    if record.exc_info and not record.exc_text:
         # Cache the traceback text to avoid converting it multiple times
         # (it&#39;s constant anyway)
         # from logging.Formatter:format
-        if not record.exc_text:  # pragma: no cover
-            record.exc_text = self.formatException(record.exc_info)
+        record.exc_text = self.formatException(record.exc_info)
 
     if record.exc_text:
         log_dict[&#34;exception&#34;] = record.exc_text
 
-    json_record = json.dumps(log_dict, default=self.default_json_formatter)
+    # fetch latest X-Ray Trace ID, if any
+    log_dict.update({&#34;xray_trace_id&#34;: self._get_latest_trace_id()})
 
-    if hasattr(json_record, &#34;decode&#34;):  # pragma: no cover
-        json_record = json_record.decode(&#34;utf-8&#34;)
+    # Filter out top level key with values that are None
+    log_dict = {k: v for k, v in log_dict.items() if v is not None}
 
-    return json_record</code></pre>
+    return json.dumps(log_dict, default=self.default_json_formatter)</code></pre>
 </details>
 </dd>
 <dt id="aws_lambda_powertools.logging.formatter.JsonFormatter.update_formatter"><code class="name flex">
@@ -375,11 +351,6 @@ it is formatted using formatException() and appended to the message.</p></sectio
 <li><h3>Super-module</h3>
 <ul>
 <li><code><a title="aws_lambda_powertools.logging" href="index.html">aws_lambda_powertools.logging</a></code></li>
-</ul>
-</li>
-<li><h3><a href="#header-functions">Functions</a></h3>
-<ul class="">
-<li><code><a title="aws_lambda_powertools.logging.formatter.json_formatter" href="#aws_lambda_powertools.logging.formatter.json_formatter">json_formatter</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>

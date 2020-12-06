@@ -42,6 +42,9 @@ DEFAULT_MAX_AGE_SECS = 5
 ExpirableValue = namedtuple(&#34;ExpirableValue&#34;, [&#34;value&#34;, &#34;ttl&#34;])
 # These providers will be dynamically initialized on first use of the helper functions
 DEFAULT_PROVIDERS = {}
+TRANSFORM_METHOD_JSON = &#34;json&#34;
+TRANSFORM_METHOD_BINARY = &#34;binary&#34;
+SUPPORTED_TRANSFORM_METHODS = [TRANSFORM_METHOD_JSON, TRANSFORM_METHOD_BINARY]
 
 
 class BaseProvider(ABC):
@@ -142,8 +145,8 @@ class BaseProvider(ABC):
             Maximum age of the cached value
         transform: str, optional
             Optional transformation of the parameter value. Supported values
-            are &#34;json&#34; for JSON strings and &#34;binary&#34; for base 64 encoded
-            values.
+            are &#34;json&#34; for JSON strings, &#34;binary&#34; for base 64 encoded
+            values or &#34;auto&#34; which looks at the attribute key to determine the type.
         raise_on_transform_error: bool, optional
             Raises an exception if any transform fails, otherwise this will
             return a None value for each transform that failed
@@ -172,7 +175,11 @@ class BaseProvider(ABC):
 
         if transform is not None:
             for (key, value) in values.items():
-                values[key] = transform_value(value, transform, raise_on_transform_error)
+                _transform = get_transform_method(key, transform)
+                if _transform is None:
+                    continue
+
+                values[key] = transform_value(value, _transform, raise_on_transform_error)
 
         self.store[key] = ExpirableValue(values, datetime.now() + timedelta(seconds=max_age),)
 
@@ -184,6 +191,45 @@ class BaseProvider(ABC):
         Retrieve multiple parameter values from the underlying parameter store
         &#34;&#34;&#34;
         raise NotImplementedError()
+
+
+def get_transform_method(key: str, transform: Optional[str] = None) -&gt; Optional[str]:
+    &#34;&#34;&#34;
+    Determine the transform method
+
+    Examples
+    -------
+        &gt;&gt;&gt; get_transform_method(&#34;key&#34;, &#34;any_other_value&#34;)
+        &#39;any_other_value&#39;
+        &gt;&gt;&gt; get_transform_method(&#34;key.json&#34;, &#34;auto&#34;)
+        &#39;json&#39;
+        &gt;&gt;&gt; get_transform_method(&#34;key.binary&#34;, &#34;auto&#34;)
+        &#39;binary&#39;
+        &gt;&gt;&gt; get_transform_method(&#34;key&#34;, &#34;auto&#34;)
+        None
+        &gt;&gt;&gt; get_transform_method(&#34;key&#34;, None)
+        None
+
+    Parameters
+    ---------
+    key: str
+        Only used when the tranform is &#34;auto&#34;.
+    transform: str, optional
+        Original transform method, only &#34;auto&#34; will try to detect the transform method by the key
+
+    Returns
+    ------
+    Optional[str]:
+        The transform method either when transform is &#34;auto&#34; then None, &#34;json&#34; or &#34;binary&#34; is returned
+        or the original transform method
+    &#34;&#34;&#34;
+    if transform != &#34;auto&#34;:
+        return transform
+
+    for transform_method in SUPPORTED_TRANSFORM_METHODS:
+        if key.endswith(&#34;.&#34; + transform_method):
+            return transform_method
+    return None
 
 
 def transform_value(value: str, transform: str, raise_on_transform_error: bool = True) -&gt; Union[dict, bytes, None]:
@@ -207,9 +253,9 @@ def transform_value(value: str, transform: str, raise_on_transform_error: bool =
     &#34;&#34;&#34;
 
     try:
-        if transform == &#34;json&#34;:
+        if transform == TRANSFORM_METHOD_JSON:
             return json.loads(value)
-        elif transform == &#34;binary&#34;:
+        elif transform == TRANSFORM_METHOD_BINARY:
             return base64.b64decode(value)
         else:
             raise ValueError(f&#34;Invalid transform type &#39;{transform}&#39;&#34;)
@@ -227,6 +273,79 @@ def transform_value(value: str, transform: str, raise_on_transform_error: bool =
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="aws_lambda_powertools.utilities.parameters.base.get_transform_method"><code class="name flex">
+<span>def <span class="ident">get_transform_method</span></span>(<span>key, transform=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Determine the transform method</p>
+<h2 id="examples">Examples</h2>
+<pre><code>&gt;&gt;&gt; get_transform_method("key", "any_other_value")
+'any_other_value'
+&gt;&gt;&gt; get_transform_method("key.json", "auto")
+'json'
+&gt;&gt;&gt; get_transform_method("key.binary", "auto")
+'binary'
+&gt;&gt;&gt; get_transform_method("key", "auto")
+None
+&gt;&gt;&gt; get_transform_method("key", None)
+None
+</code></pre>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>key</code></strong> :&ensp;<code>str</code></dt>
+<dd>Only used when the tranform is "auto".</dd>
+<dt><strong><code>transform</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Original transform method, only "auto" will try to detect the transform method by the key</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Optional</code>[<code>str</code>]:</dt>
+<dd>The transform method either when transform is "auto" then None, "json" or "binary" is returned
+or the original transform method</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_transform_method(key: str, transform: Optional[str] = None) -&gt; Optional[str]:
+    &#34;&#34;&#34;
+    Determine the transform method
+
+    Examples
+    -------
+        &gt;&gt;&gt; get_transform_method(&#34;key&#34;, &#34;any_other_value&#34;)
+        &#39;any_other_value&#39;
+        &gt;&gt;&gt; get_transform_method(&#34;key.json&#34;, &#34;auto&#34;)
+        &#39;json&#39;
+        &gt;&gt;&gt; get_transform_method(&#34;key.binary&#34;, &#34;auto&#34;)
+        &#39;binary&#39;
+        &gt;&gt;&gt; get_transform_method(&#34;key&#34;, &#34;auto&#34;)
+        None
+        &gt;&gt;&gt; get_transform_method(&#34;key&#34;, None)
+        None
+
+    Parameters
+    ---------
+    key: str
+        Only used when the tranform is &#34;auto&#34;.
+    transform: str, optional
+        Original transform method, only &#34;auto&#34; will try to detect the transform method by the key
+
+    Returns
+    ------
+    Optional[str]:
+        The transform method either when transform is &#34;auto&#34; then None, &#34;json&#34; or &#34;binary&#34; is returned
+        or the original transform method
+    &#34;&#34;&#34;
+    if transform != &#34;auto&#34;:
+        return transform
+
+    for transform_method in SUPPORTED_TRANSFORM_METHODS:
+        if key.endswith(&#34;.&#34; + transform_method):
+            return transform_method
+    return None</code></pre>
+</details>
+</dd>
 <dt id="aws_lambda_powertools.utilities.parameters.base.transform_value"><code class="name flex">
 <span>def <span class="ident">transform_value</span></span>(<span>value, transform, raise_on_transform_error=True)</span>
 </code></dt>
@@ -270,9 +389,9 @@ return a None value for each transform that failed</dd>
     &#34;&#34;&#34;
 
     try:
-        if transform == &#34;json&#34;:
+        if transform == TRANSFORM_METHOD_JSON:
             return json.loads(value)
-        elif transform == &#34;binary&#34;:
+        elif transform == TRANSFORM_METHOD_BINARY:
             return base64.b64decode(value)
         else:
             raise ValueError(f&#34;Invalid transform type &#39;{transform}&#39;&#34;)
@@ -396,8 +515,8 @@ return a None value for each transform that failed</dd>
             Maximum age of the cached value
         transform: str, optional
             Optional transformation of the parameter value. Supported values
-            are &#34;json&#34; for JSON strings and &#34;binary&#34; for base 64 encoded
-            values.
+            are &#34;json&#34; for JSON strings, &#34;binary&#34; for base 64 encoded
+            values or &#34;auto&#34; which looks at the attribute key to determine the type.
         raise_on_transform_error: bool, optional
             Raises an exception if any transform fails, otherwise this will
             return a None value for each transform that failed
@@ -426,7 +545,11 @@ return a None value for each transform that failed</dd>
 
         if transform is not None:
             for (key, value) in values.items():
-                values[key] = transform_value(value, transform, raise_on_transform_error)
+                _transform = get_transform_method(key, transform)
+                if _transform is None:
+                    continue
+
+                values[key] = transform_value(value, _transform, raise_on_transform_error)
 
         self.store[key] = ExpirableValue(values, datetime.now() + timedelta(seconds=max_age),)
 
@@ -557,8 +680,8 @@ a given name.</dd>
 <dd>Maximum age of the cached value</dd>
 <dt><strong><code>transform</code></strong> :&ensp;<code>str</code>, optional</dt>
 <dd>Optional transformation of the parameter value. Supported values
-are "json" for JSON strings and "binary" for base 64 encoded
-values.</dd>
+are "json" for JSON strings, "binary" for base 64 encoded
+values or "auto" which looks at the attribute key to determine the type.</dd>
 <dt><strong><code>raise_on_transform_error</code></strong> :&ensp;<code>bool</code>, optional</dt>
 <dd>Raises an exception if any transform fails, otherwise this will
 return a None value for each transform that failed</dd>
@@ -596,8 +719,8 @@ a given path.</dd>
         Maximum age of the cached value
     transform: str, optional
         Optional transformation of the parameter value. Supported values
-        are &#34;json&#34; for JSON strings and &#34;binary&#34; for base 64 encoded
-        values.
+        are &#34;json&#34; for JSON strings, &#34;binary&#34; for base 64 encoded
+        values or &#34;auto&#34; which looks at the attribute key to determine the type.
     raise_on_transform_error: bool, optional
         Raises an exception if any transform fails, otherwise this will
         return a None value for each transform that failed
@@ -626,7 +749,11 @@ a given path.</dd>
 
     if transform is not None:
         for (key, value) in values.items():
-            values[key] = transform_value(value, transform, raise_on_transform_error)
+            _transform = get_transform_method(key, transform)
+            if _transform is None:
+                continue
+
+            values[key] = transform_value(value, _transform, raise_on_transform_error)
 
     self.store[key] = ExpirableValue(values, datetime.now() + timedelta(seconds=max_age),)
 
@@ -673,6 +800,7 @@ a given path.</dd>
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.parameters.base.get_transform_method" href="#aws_lambda_powertools.utilities.parameters.base.get_transform_method">get_transform_method</a></code></li>
 <li><code><a title="aws_lambda_powertools.utilities.parameters.base.transform_value" href="#aws_lambda_powertools.utilities.parameters.base.transform_value">transform_value</a></code></li>
 </ul>
 </li>
