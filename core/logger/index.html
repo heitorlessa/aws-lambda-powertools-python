@@ -1029,7 +1029,7 @@
 
 <span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
  <span class="n">order_id</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;order_id&quot;</span><span class="p">)</span>
-<span class="hll"> <span class="n">logger</span><span class="o">.</span><span class="n">structure_logs</span><span class="p">(</span><span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">order_id</span><span class="o">=</span><span class="n">order_id</span><span class="p">)</span> <span class="c1"># highlight-line</span>
+<span class="hll"> <span class="n">logger</span><span class="o">.</span><span class="n">structure_logs</span><span class="p">(</span><span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">order_id</span><span class="o">=</span><span class="n">order_id</span><span class="p">)</span>
 </span> <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Collecting payment&quot;</span><span class="p">)</span>
     <span class="o">...</span>
 </code></pre></div>
@@ -1288,11 +1288,11 @@
 7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span>
 
 <span class="c1"># override default values for location and timestamp format</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">stdout</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;[</span><span class="si">%(funcName)s</span><span class="s2">] </span><span class="si">%(module)s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">datefmt</span><span class="o">=</span><span class="s2">&quot;fake-datefmt&quot;</span><span class="p">)</span> <span class="c1"># highlight-line</span>
-
+<span class="hll"><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">stdout</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;[</span><span class="si">%(funcName)s</span><span class="s2">] </span><span class="si">%(module)s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">datefmt</span><span class="o">=</span><span class="s2">&quot;fake-datefmt&quot;</span><span class="p">)</span>
+</span>
 <span class="c1"># suppress location key</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">stdout</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># highlight-line</span>
-</code></pre></div>
+<span class="hll"><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">stdout</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</span></code></pre></div>
 </td></tr></table>
 </div>
 </div>
@@ -1307,11 +1307,11 @@
 7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span>
 
 <span class="c1"># make message as the first key</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">stdout</span><span class="p">,</span> <span class="n">log_record_order</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">])</span> <span class="c1"># highlight-line</span>
-
+<span class="hll"><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">stdout</span><span class="p">,</span> <span class="n">log_record_order</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">])</span>
+</span>
 <span class="c1"># Default key sorting order</span>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">stdout</span><span class="p">,</span> <span class="n">log_record_order</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;level&quot;</span><span class="p">,</span><span class="s2">&quot;location&quot;</span><span class="p">,</span><span class="s2">&quot;message&quot;</span><span class="p">,</span><span class="s2">&quot;timestamp&quot;</span><span class="p">])</span> <span class="c1"># highlight-line</span>
-</code></pre></div>
+<span class="hll"><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="n">stdout</span><span class="p">,</span> <span class="n">log_record_order</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;level&quot;</span><span class="p">,</span><span class="s2">&quot;location&quot;</span><span class="p">,</span><span class="s2">&quot;message&quot;</span><span class="p">,</span><span class="s2">&quot;timestamp&quot;</span><span class="p">])</span>
+</span></code></pre></div>
 </td></tr></table>
 </div>
 </div>
@@ -1331,8 +1331,8 @@
 <span class="k">try</span><span class="p">:</span>
      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;something went wrong&quot;</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-     <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Received an exception&quot;</span><span class="p">)</span> <span class="c1"># highlight-line</span>
-</code></pre></div>
+<span class="hll">     <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Received an exception&quot;</span><span class="p">)</span>
+</span></code></pre></div>
 </td></tr></table>
 </div>
 <input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><label for="__tabbed_12_2">CloudWatch Logs</label><div class="tabbed-content">

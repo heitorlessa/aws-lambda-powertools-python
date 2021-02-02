@@ -817,9 +817,9 @@
 
 <span class="n">json_schema_dict</span> <span class="o">=</span> <span class="p">{</span><span class="o">..</span><span class="p">}</span>
 
-<span class="hll"><span class="nd">@validator</span><span class="p">(</span><span class="n">inbound_schema</span><span class="o">=</span><span class="n">json_schema_dict</span><span class="p">,</span> <span class="n">envelope</span><span class="o">=</span><span class="s2">&quot;detail&quot;</span><span class="p">)</span> <span class="c1"># highlight-line</span>
+<span class="hll"><span class="nd">@validator</span><span class="p">(</span><span class="n">inbound_schema</span><span class="o">=</span><span class="n">json_schema_dict</span><span class="p">,</span> <span class="n">envelope</span><span class="o">=</span><span class="s2">&quot;detail&quot;</span><span class="p">)</span>
 </span><span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-<span class="hll">    <span class="n">validate</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="n">event</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">json_schema_dict</span><span class="p">,</span> <span class="n">envelope</span><span class="o">=</span><span class="s2">&quot;detail&quot;</span><span class="p">)</span> <span class="c1"># highlight-line</span>
+<span class="hll">    <span class="n">validate</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="n">event</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">json_schema_dict</span><span class="p">,</span> <span class="n">envelope</span><span class="o">=</span><span class="s2">&quot;detail&quot;</span><span class="p">)</span>
 </span>    <span class="k">return</span> <span class="n">event</span>
 </code></pre></div>
 </td></tr></table>

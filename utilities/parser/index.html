@@ -840,7 +840,7 @@
     <span class="n">optional_field</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="c1"># this field may or may not be available when parsing</span>
 
 
-<span class="hll"><span class="nd">@event_parser</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">Order</span><span class="p">)</span> <span class="c1"># highlight-line</span>
+<span class="hll"><span class="nd">@event_parser</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">Order</span><span class="p">)</span>
 </span><span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">Order</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>
@@ -926,7 +926,7 @@
     <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
             <span class="c1"># this will cause a validation error</span>
-<span class="hll">            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1015938732</span><span class="p">],</span> <span class="c1"># highlight-line</span>
+<span class="hll">            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1015938732</span><span class="p">],</span>
 </span>            <span class="s2">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
             <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;item xpto&quot;</span>
         <span class="p">}</span>
@@ -935,7 +935,7 @@
 
 <span class="k">def</span> <span class="nf">my_function</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
-<span class="hll">        <span class="n">parsed_payload</span><span class="p">:</span> <span class="n">Order</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">Order</span><span class="p">)</span> <span class="c1"># highlight-line</span>
+<span class="hll">        <span class="n">parsed_payload</span><span class="p">:</span> <span class="n">Order</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">Order</span><span class="p">)</span>
 </span>        <span class="c1"># payload dict is now parsed into our model</span>
         <span class="k">return</span> <span class="n">parsed_payload</span><span class="o">.</span><span class="n">items</span>
     <span class="k">except</span> <span class="n">ValidationError</span><span class="p">:</span>
