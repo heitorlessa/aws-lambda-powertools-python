@@ -31,6 +31,7 @@
 Parameter retrieval and caching utility
 &#34;&#34;&#34;
 
+from .appconfig import AppConfigProvider, get_app_config
 from .base import BaseProvider
 from .dynamodb import DynamoDBProvider
 from .exceptions import GetParameterError, TransformParameterError
@@ -38,12 +39,14 @@ from .secrets import SecretsProvider, get_secret
 from .ssm import SSMProvider, get_parameter, get_parameters
 
 __all__ = [
+    &#34;AppConfigProvider&#34;,
     &#34;BaseProvider&#34;,
     &#34;GetParameterError&#34;,
     &#34;DynamoDBProvider&#34;,
     &#34;SecretsProvider&#34;,
     &#34;SSMProvider&#34;,
     &#34;TransformParameterError&#34;,
+    &#34;get_app_config&#34;,
     &#34;get_parameter&#34;,
     &#34;get_parameters&#34;,
     &#34;get_secret&#34;,
@@ -53,6 +56,10 @@ __all__ = [
 <section>
 <h2 class="section-title" id="header-submodules">Sub-modules</h2>
 <dl>
+<dt><code class="name"><a title="aws_lambda_powertools.utilities.parameters.appconfig" href="appconfig.html">aws_lambda_powertools.utilities.parameters.appconfig</a></code></dt>
+<dd>
+<section class="desc"><p>AWS App Config configuration retrieval and caching utility</p></section>
+</dd>
 <dt><code class="name"><a title="aws_lambda_powertools.utilities.parameters.base" href="base.html">aws_lambda_powertools.utilities.parameters.base</a></code></dt>
 <dd>
 <section class="desc"><p>Base for Parameter providers</p></section>
@@ -80,6 +87,110 @@ __all__ = [
 <section>
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
+<dt id="aws_lambda_powertools.utilities.parameters.get_app_config"><code class="name flex">
+<span>def <span class="ident">get_app_config</span></span>(<span>name, environment, application=None, transform=None, **sdk_options)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Retrieve a configuration value from AWS App Config.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the configuration</dd>
+<dt><strong><code>environment</code></strong> :&ensp;<code>str</code></dt>
+<dd>Environment of the configuration</dd>
+<dt><strong><code>application</code></strong> :&ensp;<code>str</code></dt>
+<dd>Application of the configuration</dd>
+<dt><strong><code>transform</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Transforms the content from a JSON object ('json') or base64 binary string ('binary')</dd>
+<dt><strong><code>sdk_options</code></strong> :&ensp;<code>dict</code>, optional</dt>
+<dd>Dictionary of options that will be passed to the Parameter Store get_parameter API call</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><a title="aws_lambda_powertools.utilities.parameters.GetParameterError" href="#aws_lambda_powertools.utilities.parameters.GetParameterError"><code>GetParameterError</code></a></dt>
+<dd>When the parameter provider fails to retrieve a parameter value for
+a given name.</dd>
+<dt><a title="aws_lambda_powertools.utilities.parameters.TransformParameterError" href="#aws_lambda_powertools.utilities.parameters.TransformParameterError"><code>TransformParameterError</code></a></dt>
+<dd>When the parameter provider fails to transform a parameter value.</dd>
+</dl>
+<h2 id="example">Example</h2>
+<p><strong>Retrieves the latest version of configuration value from App Config</strong></p>
+<pre><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.parameters import get_app_config
+&gt;&gt;&gt;
+&gt;&gt;&gt; value = get_app_config("my_config", environment="my_env", application="my_env")
+&gt;&gt;&gt;
+&gt;&gt;&gt; print(value)
+My configuration value
+</code></pre>
+<p><strong>Retrieves a confiugration value and decodes it using a JSON decoder</strong></p>
+<pre><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities.parameters import get_parameter
+&gt;&gt;&gt;
+&gt;&gt;&gt; value = get_app_config("my_config", environment="my_env", application="my_env", transform='json')
+&gt;&gt;&gt;
+&gt;&gt;&gt; print(value)
+My configuration's JSON value
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_app_config(
+    name: str, environment: str, application: Optional[str] = None, transform: Optional[str] = None, **sdk_options
+) -&gt; Union[str, list, dict, bytes]:
+    &#34;&#34;&#34;
+    Retrieve a configuration value from AWS App Config.
+
+    Parameters
+    ----------
+    name: str
+        Name of the configuration
+    environment: str
+        Environment of the configuration
+    application: str
+        Application of the configuration
+    transform: str, optional
+        Transforms the content from a JSON object (&#39;json&#39;) or base64 binary string (&#39;binary&#39;)
+    sdk_options: dict, optional
+        Dictionary of options that will be passed to the Parameter Store get_parameter API call
+
+    Raises
+    ------
+    GetParameterError
+        When the parameter provider fails to retrieve a parameter value for
+        a given name.
+    TransformParameterError
+        When the parameter provider fails to transform a parameter value.
+
+    Example
+    -------
+    **Retrieves the latest version of configuration value from App Config**
+
+        &gt;&gt;&gt; from aws_lambda_powertools.utilities.parameters import get_app_config
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; value = get_app_config(&#34;my_config&#34;, environment=&#34;my_env&#34;, application=&#34;my_env&#34;)
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; print(value)
+        My configuration value
+
+    **Retrieves a confiugration value and decodes it using a JSON decoder**
+
+        &gt;&gt;&gt; from aws_lambda_powertools.utilities.parameters import get_parameter
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; value = get_app_config(&#34;my_config&#34;, environment=&#34;my_env&#34;, application=&#34;my_env&#34;, transform=&#39;json&#39;)
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; print(value)
+        My configuration&#39;s JSON value
+    &#34;&#34;&#34;
+
+    # Only create the provider if this function is called at least once
+    if &#34;appconfig&#34; not in DEFAULT_PROVIDERS:
+        DEFAULT_PROVIDERS[&#34;appconfig&#34;] = AppConfigProvider(environment=environment, application=application)
+
+    sdk_options[&#34;ClientId&#34;] = CLIENT_ID
+
+    return DEFAULT_PROVIDERS[&#34;appconfig&#34;].get(name, transform=transform, **sdk_options)</code></pre>
+</details>
+</dd>
 <dt id="aws_lambda_powertools.utilities.parameters.get_parameter"><code class="name flex">
 <span>def <span class="ident">get_parameter</span></span>(<span>name, transform=None, decrypt=False, **sdk_options)</span>
 </code></dt>
@@ -382,6 +493,155 @@ a given name.</dd>
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
+<dt id="aws_lambda_powertools.utilities.parameters.AppConfigProvider"><code class="flex name class">
+<span>class <span class="ident">AppConfigProvider</span></span>
+<span>(</span><span>environment, application=None, config=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>AWS App Config Provider</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>environment</code></strong> :&ensp;<code>str</code></dt>
+<dd>Environment of the configuration to pass during client initialization</dd>
+<dt><strong><code>application</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Application of the configuration to pass during client initialization</dd>
+<dt><strong><code>config</code></strong> :&ensp;<code>botocore.config.Config</code>, optional</dt>
+<dd>Botocore configuration to pass during client initialization</dd>
+</dl>
+<h2 id="example">Example</h2>
+<p><strong>Retrieves the latest configuration value from App Config</strong></p>
+<pre><code>&gt;&gt;&gt; from aws_lambda_powertools.utilities import parameters
+&gt;&gt;&gt; appconf_provider = parameters.AppConfigProvider(environment="my_env", application="my_app")
+&gt;&gt;&gt;
+&gt;&gt;&gt; value : bytes = appconf_provider.get("my_conf")
+&gt;&gt;&gt;
+&gt;&gt;&gt; print(value)
+My configuration value
+</code></pre>
+<p><strong>Retrieves a configuration value from App Config in another AWS region</strong></p>
+<pre><code>&gt;&gt;&gt; from botocore.config import Config
+&gt;&gt;&gt; from aws_lambda_powertools.utilities import parameters
+&gt;&gt;&gt;
+&gt;&gt;&gt; config = Config(region_name="us-west-1")
+&gt;&gt;&gt; appconf_provider = parameters.AppConfigProvider(environment="my_env", application="my_app", config=config)
+&gt;&gt;&gt;
+&gt;&gt;&gt; value : bytes = appconf_provider.get("my_conf")
+&gt;&gt;&gt;
+&gt;&gt;&gt; print(value)
+My configuration value
+</code></pre>
+<p>Initialize the App Config client</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AppConfigProvider(BaseProvider):
+    &#34;&#34;&#34;
+    AWS App Config Provider
+
+    Parameters
+    ----------
+    environment: str
+        Environment of the configuration to pass during client initialization
+    application: str, optional
+        Application of the configuration to pass during client initialization
+    config: botocore.config.Config, optional
+        Botocore configuration to pass during client initialization
+
+    Example
+    -------
+    **Retrieves the latest configuration value from App Config**
+
+        &gt;&gt;&gt; from aws_lambda_powertools.utilities import parameters
+        &gt;&gt;&gt; appconf_provider = parameters.AppConfigProvider(environment=&#34;my_env&#34;, application=&#34;my_app&#34;)
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; value : bytes = appconf_provider.get(&#34;my_conf&#34;)
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; print(value)
+        My configuration value
+
+    **Retrieves a configuration value from App Config in another AWS region**
+
+        &gt;&gt;&gt; from botocore.config import Config
+        &gt;&gt;&gt; from aws_lambda_powertools.utilities import parameters
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; config = Config(region_name=&#34;us-west-1&#34;)
+        &gt;&gt;&gt; appconf_provider = parameters.AppConfigProvider(environment=&#34;my_env&#34;, application=&#34;my_app&#34;, config=config)
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; value : bytes = appconf_provider.get(&#34;my_conf&#34;)
+        &gt;&gt;&gt;
+        &gt;&gt;&gt; print(value)
+        My configuration value
+
+    &#34;&#34;&#34;
+
+    client = None
+
+    def __init__(
+        self, environment: str, application: Optional[str] = None, config: Optional[Config] = None,
+    ):
+        &#34;&#34;&#34;
+        Initialize the App Config client
+        &#34;&#34;&#34;
+
+        config = config or Config()
+        self.client = boto3.client(&#34;appconfig&#34;, config=config)
+        self.application = application or os.getenv(&#34;POWERTOOLS_SERVICE_NAME&#34;) or &#34;application_undefined&#34;
+        self.environment = environment
+        self.current_version = &#34;&#34;
+
+        super().__init__()
+
+    def _get(self, name: str, **sdk_options) -&gt; str:
+        &#34;&#34;&#34;
+        Retrieve a parameter value from AWS App config.
+
+        Parameters
+        ----------
+        name: str
+            Name of the configuration
+        environment: str
+            Environment of the configuration
+        sdk_options: dict, optional
+            Dictionary of options that will be passed to the Parameter Store get_parameter API call
+        &#34;&#34;&#34;
+
+        sdk_options[&#34;Configuration&#34;] = name
+        sdk_options[&#34;Application&#34;] = self.application
+        sdk_options[&#34;Environment&#34;] = self.environment
+        sdk_options[&#34;ClientId&#34;] = CLIENT_ID
+
+        response = self.client.get_configuration(**sdk_options)
+        return response[&#34;Content&#34;].read()  # read() of botocore.response.StreamingBody
+
+    def _get_multiple(self, path: str, **sdk_options) -&gt; Dict[str, str]:
+        &#34;&#34;&#34;
+        Retrieving multiple parameter values is not supported with AWS App Config Provider
+        &#34;&#34;&#34;
+        raise NotImplementedError()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.parameters.base.BaseProvider" href="base.html#aws_lambda_powertools.utilities.parameters.base.BaseProvider">BaseProvider</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.parameters.AppConfigProvider.client"><code class="name">var <span class="ident">client</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="aws_lambda_powertools.utilities.parameters.base.BaseProvider" href="base.html#aws_lambda_powertools.utilities.parameters.base.BaseProvider">BaseProvider</a></b></code>:
+<ul class="hlist">
+<li><code><a title="aws_lambda_powertools.utilities.parameters.base.BaseProvider.get" href="base.html#aws_lambda_powertools.utilities.parameters.base.BaseProvider.get">get</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parameters.base.BaseProvider.get_multiple" href="base.html#aws_lambda_powertools.utilities.parameters.base.BaseProvider.get_multiple">get_multiple</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
 <dt id="aws_lambda_powertools.utilities.parameters.BaseProvider"><code class="flex name class">
 <span>class <span class="ident">BaseProvider</span></span>
 </code></dt>
@@ -543,6 +803,7 @@ a given name.</dd>
 </ul>
 <h3>Subclasses</h3>
 <ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.parameters.appconfig.AppConfigProvider" href="appconfig.html#aws_lambda_powertools.utilities.parameters.appconfig.AppConfigProvider">AppConfigProvider</a></li>
 <li><a title="aws_lambda_powertools.utilities.parameters.dynamodb.DynamoDBProvider" href="dynamodb.html#aws_lambda_powertools.utilities.parameters.dynamodb.DynamoDBProvider">DynamoDBProvider</a></li>
 <li><a title="aws_lambda_powertools.utilities.parameters.secrets.SecretsProvider" href="secrets.html#aws_lambda_powertools.utilities.parameters.secrets.SecretsProvider">SecretsProvider</a></li>
 <li><a title="aws_lambda_powertools.utilities.parameters.ssm.SSMProvider" href="ssm.html#aws_lambda_powertools.utilities.parameters.ssm.SSMProvider">SSMProvider</a></li>
@@ -1053,11 +1314,7 @@ c   Parameter value c
             response = self.table.query(**sdk_options)
             items.extend(response.get(&#34;Items&#34;, []))
 
-        retval = {}
-        for item in items:
-            retval[item[self.sort_attr]] = item[self.value_attr]
-
-        return retval</code></pre>
+        return {item[self.sort_attr]: item[self.value_attr] for item in items}</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -1628,6 +1885,7 @@ My parameter value
 </li>
 <li><h3><a href="#header-submodules">Sub-modules</a></h3>
 <ul>
+<li><code><a title="aws_lambda_powertools.utilities.parameters.appconfig" href="appconfig.html">aws_lambda_powertools.utilities.parameters.appconfig</a></code></li>
 <li><code><a title="aws_lambda_powertools.utilities.parameters.base" href="base.html">aws_lambda_powertools.utilities.parameters.base</a></code></li>
 <li><code><a title="aws_lambda_powertools.utilities.parameters.dynamodb" href="dynamodb.html">aws_lambda_powertools.utilities.parameters.dynamodb</a></code></li>
 <li><code><a title="aws_lambda_powertools.utilities.parameters.exceptions" href="exceptions.html">aws_lambda_powertools.utilities.parameters.exceptions</a></code></li>
@@ -1637,6 +1895,7 @@ My parameter value
 </li>
 <li><h3><a href="#header-functions">Functions</a></h3>
 <ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.parameters.get_app_config" href="#aws_lambda_powertools.utilities.parameters.get_app_config">get_app_config</a></code></li>
 <li><code><a title="aws_lambda_powertools.utilities.parameters.get_parameter" href="#aws_lambda_powertools.utilities.parameters.get_parameter">get_parameter</a></code></li>
 <li><code><a title="aws_lambda_powertools.utilities.parameters.get_parameters" href="#aws_lambda_powertools.utilities.parameters.get_parameters">get_parameters</a></code></li>
 <li><code><a title="aws_lambda_powertools.utilities.parameters.get_secret" href="#aws_lambda_powertools.utilities.parameters.get_secret">get_secret</a></code></li>
@@ -1644,6 +1903,12 @@ My parameter value
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.parameters.AppConfigProvider" href="#aws_lambda_powertools.utilities.parameters.AppConfigProvider">AppConfigProvider</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.parameters.AppConfigProvider.client" href="#aws_lambda_powertools.utilities.parameters.AppConfigProvider.client">client</a></code></li>
+</ul>
+</li>
 <li>
 <h4><code><a title="aws_lambda_powertools.utilities.parameters.BaseProvider" href="#aws_lambda_powertools.utilities.parameters.BaseProvider">BaseProvider</a></code></h4>
 <ul class="">

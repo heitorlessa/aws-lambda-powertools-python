@@ -39,7 +39,7 @@ class SuppressFilter(logging.Filter):
         created by loggers who don&#39;t have a handler.
         &#34;&#34;&#34;
         logger = record.name
-        return False if self.logger in logger else True</code></pre>
+        return self.logger not in logger</code></pre>
 </details>
 </section>
 <section>
@@ -83,7 +83,7 @@ name is specified, allow every event.</p></section>
         created by loggers who don&#39;t have a handler.
         &#34;&#34;&#34;
         logger = record.name
-        return False if self.logger in logger else True</code></pre>
+        return self.logger not in logger</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -111,7 +111,7 @@ created by loggers who don't have a handler.</p></section>
     created by loggers who don&#39;t have a handler.
     &#34;&#34;&#34;
     logger = record.name
-    return False if self.logger in logger else True</code></pre>
+    return self.logger not in logger</code></pre>
 </details>
 </dd>
 </dl>

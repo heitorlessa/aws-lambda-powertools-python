@@ -68,11 +68,25 @@ __all__ = [
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
 <dt id="aws_lambda_powertools.utilities.validation.validate"><code class="name flex">
-<span>def <span class="ident">validate</span></span>(<span>event, schema=None, envelope=None, jmespath_options=None)</span>
+<span>def <span class="ident">validate</span></span>(<span>event, schema=None, formats=None, envelope=None, jmespath_options=None)</span>
 </code></dt>
 <dd>
 <section class="desc"><p>Standalone function to validate event data using a JSON Schema</p>
 <p>Typically used when you need more control over the validation process.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>event</code></strong> :&ensp;<code>Dict</code></dt>
+<dd>Lambda event to be validated</dd>
+<dt><strong><code>schema</code></strong> :&ensp;<code>Dict</code></dt>
+<dd>JSON Schema to validate incoming event</dd>
+<dt><strong><code>envelope</code></strong> :&ensp;<code>Dict</code></dt>
+<dd>JMESPath expression to filter data against</dd>
+<dt><strong><code>jmespath_options</code></strong> :&ensp;<code>Dict</code></dt>
+<dd>Alternative JMESPath options to be included when filtering expr</dd>
+<dt><strong><code>formats</code></strong> :&ensp;<code>Dict</code></dt>
+<dd>Custom formats containing a key (e.g. int64) and a value expressed as regex or callback returning bool</dd>
+</dl>
+<h2 id="example">Example</h2>
 <p><strong>Validate event</strong></p>
 <pre><code>from aws_lambda_powertools.utilities.validation import validate
 
@@ -115,17 +129,6 @@ def handler(event, context):
     validate(event=event, schema=json_schema_dict, envelope="awslogs.powertools_base64_gzip(data) | powertools_json(@).logEvents[*]")
     return event
 </code></pre>
-<h2 id="parameters">Parameters</h2>
-<dl>
-<dt><strong><code>event</code></strong> :&ensp;<code>Dict</code></dt>
-<dd>Lambda event to be validated</dd>
-<dt><strong><code>schema</code></strong> :&ensp;<code>Dict</code></dt>
-<dd>JSON Schema to validate incoming event</dd>
-<dt><strong><code>envelope</code></strong> :&ensp;<code>Dict</code></dt>
-<dd>JMESPath expression to filter data against</dd>
-<dt><strong><code>jmespath_options</code></strong> :&ensp;<code>Dict</code></dt>
-<dd>Alternative JMESPath options to be included when filtering expr</dd>
-</dl>
 <h2 id="raises">Raises</h2>
 <dl>
 <dt><a title="aws_lambda_powertools.utilities.validation.SchemaValidationError" href="#aws_lambda_powertools.utilities.validation.SchemaValidationError"><code>SchemaValidationError</code></a></dt>
@@ -139,10 +142,32 @@ def handler(event, context):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def validate(event: Dict, schema: Dict = None, envelope: str = None, jmespath_options: Dict = None):
+<pre><code class="python">def validate(
+    event: Dict,
+    schema: Dict = None,
+    formats: Optional[Dict] = None,
+    envelope: str = None,
+    jmespath_options: Dict = None,
+):
     &#34;&#34;&#34;Standalone function to validate event data using a JSON Schema
 
      Typically used when you need more control over the validation process.
+
+    Parameters
+    ----------
+    event : Dict
+        Lambda event to be validated
+    schema : Dict
+        JSON Schema to validate incoming event
+    envelope : Dict
+        JMESPath expression to filter data against
+    jmespath_options : Dict
+        Alternative JMESPath options to be included when filtering expr
+    formats: Dict
+        Custom formats containing a key (e.g. int64) and a value expressed as regex or callback returning bool
+
+    Example
+    -------
 
     **Validate event**
 
@@ -192,17 +217,6 @@ def handler(event, context):
             validate(event=event, schema=json_schema_dict, envelope=&#34;awslogs.powertools_base64_gzip(data) | powertools_json(@).logEvents[*]&#34;)
             return event
 
-    Parameters
-    ----------
-    event : Dict
-        Lambda event to be validated
-    schema : Dict
-        JSON Schema to validate incoming event
-    envelope : Dict
-        JMESPath expression to filter data against
-    jmespath_options : Dict
-        Alternative JMESPath options to be included when filtering expr
-
     Raises
     ------
     SchemaValidationError
@@ -215,14 +229,35 @@ def handler(event, context):
     if envelope:
         event = unwrap_event_from_envelope(data=event, envelope=envelope, jmespath_options=jmespath_options)
 
-    validate_data_against_schema(data=event, schema=schema)</code></pre>
+    validate_data_against_schema(data=event, schema=schema, formats=formats)</code></pre>
 </details>
 </dd>
 <dt id="aws_lambda_powertools.utilities.validation.validator"><code class="name flex">
-<span>def <span class="ident">validator</span></span>(<span>handler, event, context, inbound_schema=None, outbound_schema=None, envelope=None, jmespath_options=None)</span>
+<span>def <span class="ident">validator</span></span>(<span>handler, event, context, inbound_schema=None, inbound_formats=None, outbound_schema=None, outbound_formats=None, envelope=None, jmespath_options=None)</span>
 </code></dt>
 <dd>
 <section class="desc"><p>Lambda handler decorator to validate incoming/outbound data using a JSON Schema</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>handler</code></strong> :&ensp;<code>Callable</code></dt>
+<dd>Method to annotate on</dd>
+<dt><strong><code>event</code></strong> :&ensp;<code>Dict</code></dt>
+<dd>Lambda event to be validated</dd>
+<dt><strong><code>context</code></strong> :&ensp;<code>Any</code></dt>
+<dd>Lambda context object</dd>
+<dt><strong><code>inbound_schema</code></strong> :&ensp;<code>Dict</code></dt>
+<dd>JSON Schema to validate incoming event</dd>
+<dt><strong><code>outbound_schema</code></strong> :&ensp;<code>Dict</code></dt>
+<dd>JSON Schema to validate outbound event</dd>
+<dt><strong><code>envelope</code></strong> :&ensp;<code>Dict</code></dt>
+<dd>JMESPath expression to filter data against</dd>
+<dt><strong><code>jmespath_options</code></strong> :&ensp;<code>Dict</code></dt>
+<dd>Alternative JMESPath options to be included when filtering expr</dd>
+<dt><strong><code>inbound_formats</code></strong> :&ensp;<code>Dict</code></dt>
+<dd>Custom formats containing a key (e.g. int64) and a value expressed as regex or callback returning bool</dd>
+<dt><strong><code>outbound_formats</code></strong> :&ensp;<code>Dict</code></dt>
+<dd>Custom formats containing a key (e.g. int64) and a value expressed as regex or callback returning bool</dd>
+</dl>
 <h2 id="example">Example</h2>
 <p><strong>Validate incoming event</strong></p>
 <pre><code>from aws_lambda_powertools.utilities.validation import validator
@@ -273,23 +308,6 @@ def handler(event, context):
 def handler(event, context):
     return event
 </code></pre>
-<h2 id="parameters">Parameters</h2>
-<dl>
-<dt><strong><code>handler</code></strong> :&ensp;<code>Callable</code></dt>
-<dd>Method to annotate on</dd>
-<dt><strong><code>event</code></strong> :&ensp;<code>Dict</code></dt>
-<dd>Lambda event to be validated</dd>
-<dt><strong><code>context</code></strong> :&ensp;<code>Any</code></dt>
-<dd>Lambda context object</dd>
-<dt><strong><code>inbound_schema</code></strong> :&ensp;<code>Dict</code></dt>
-<dd>JSON Schema to validate incoming event</dd>
-<dt><strong><code>outbound_schema</code></strong> :&ensp;<code>Dict</code></dt>
-<dd>JSON Schema to validate outbound event</dd>
-<dt><strong><code>envelope</code></strong> :&ensp;<code>Dict</code></dt>
-<dd>JMESPath expression to filter data against</dd>
-<dt><strong><code>jmespath_options</code></strong> :&ensp;<code>Dict</code></dt>
-<dd>Alternative JMESPath options to be included when filtering expr</dd>
-</dl>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>Any</code></dt>
@@ -314,11 +332,34 @@ def validator(
     event: Union[Dict, str],
     context: Any,
     inbound_schema: Dict = None,
+    inbound_formats: Optional[Dict] = None,
     outbound_schema: Dict = None,
+    outbound_formats: Optional[Dict] = None,
     envelope: str = None,
     jmespath_options: Dict = None,
 ) -&gt; Any:
     &#34;&#34;&#34;Lambda handler decorator to validate incoming/outbound data using a JSON Schema
+
+    Parameters
+    ----------
+    handler : Callable
+        Method to annotate on
+    event : Dict
+        Lambda event to be validated
+    context : Any
+        Lambda context object
+    inbound_schema : Dict
+        JSON Schema to validate incoming event
+    outbound_schema : Dict
+        JSON Schema to validate outbound event
+    envelope : Dict
+        JMESPath expression to filter data against
+    jmespath_options : Dict
+        Alternative JMESPath options to be included when filtering expr
+    inbound_formats: Dict
+        Custom formats containing a key (e.g. int64) and a value expressed as regex or callback returning bool
+    outbound_formats: Dict
+        Custom formats containing a key (e.g. int64) and a value expressed as regex or callback returning bool
 
     Example
     -------
@@ -379,23 +420,6 @@ def validator(
         def handler(event, context):
             return event
 
-    Parameters
-    ----------
-    handler : Callable
-        Method to annotate on
-    event : Dict
-        Lambda event to be validated
-    context : Any
-        Lambda context object
-    inbound_schema : Dict
-        JSON Schema to validate incoming event
-    outbound_schema : Dict
-        JSON Schema to validate outbound event
-    envelope : Dict
-        JMESPath expression to filter data against
-    jmespath_options : Dict
-        Alternative JMESPath options to be included when filtering expr
-
     Returns
     -------
     Any
@@ -415,13 +439,13 @@ def validator(
 
     if inbound_schema:
         logger.debug(&#34;Validating inbound event&#34;)
-        validate_data_against_schema(data=event, schema=inbound_schema)
+        validate_data_against_schema(data=event, schema=inbound_schema, formats=inbound_formats)
 
     response = handler(event, context)
 
     if outbound_schema:
         logger.debug(&#34;Validating outbound event&#34;)
-        validate_data_against_schema(data=response, schema=outbound_schema)
+        validate_data_against_schema(data=response, schema=outbound_schema, formats=outbound_formats)
 
     return response</code></pre>
 </details>

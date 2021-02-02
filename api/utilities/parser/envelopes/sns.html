@@ -27,7 +27,7 @@
 <pre><code class="python">import logging
 from typing import Any, Dict, List, Optional, Union
 
-from ..models import SnsModel
+from ..models import SnsModel, SnsNotificationModel, SqsModel
 from ..types import Model
 from .base import BaseEnvelope
 
@@ -61,10 +61,42 @@ class SnsEnvelope(BaseEnvelope):
         &#34;&#34;&#34;
         logger.debug(f&#34;Parsing incoming data with SNS model {SnsModel}&#34;)
         parsed_envelope = SnsModel.parse_obj(data)
-        output = []
         logger.debug(f&#34;Parsing SNS records in `body` with {model}&#34;)
+        return [self._parse(data=record.Sns.Message, model=model) for record in parsed_envelope.Records]
+
+
+class SnsSqsEnvelope(BaseEnvelope):
+    &#34;&#34;&#34;SNS plus SQS Envelope to extract array of Records
+
+    Published messages from SNS to SQS has a slightly different payload.
+    Since SNS payload is marshalled into `Record` key in SQS, we have to:
+
+    1. Parse SQS schema with incoming data
+    2. Unmarshall SNS payload and parse against SNS Notification model not SNS/SNS Record
+    3. Finally, parse provided model against payload extracted
+    &#34;&#34;&#34;
+
+    def parse(self, data: Optional[Union[Dict[str, Any], Any]], model: Model) -&gt; List[Optional[Model]]:
+        &#34;&#34;&#34;Parses records found with model provided
+
+        Parameters
+        ----------
+        data : Dict
+            Lambda event to be parsed
+        model : Model
+            Data model provided to parse after extracting data using envelope
+
+        Returns
+        -------
+        List
+            List of records parsed with model provided
+        &#34;&#34;&#34;
+        logger.debug(f&#34;Parsing incoming data with SQS model {SqsModel}&#34;)
+        parsed_envelope = SqsModel.parse_obj(data)
+        output = []
         for record in parsed_envelope.Records:
-            output.append(self._parse(data=record.Sns.Message, model=model))
+            sns_notification = SnsNotificationModel.parse_raw(record.body)
+            output.append(self._parse(data=sns_notification.Message, model=model))
         return output</code></pre>
 </details>
 </section>
@@ -117,11 +149,8 @@ all items in the list will be parsed as str and npt as JSON (and vice versa)</p>
         &#34;&#34;&#34;
         logger.debug(f&#34;Parsing incoming data with SNS model {SnsModel}&#34;)
         parsed_envelope = SnsModel.parse_obj(data)
-        output = []
         logger.debug(f&#34;Parsing SNS records in `body` with {model}&#34;)
-        for record in parsed_envelope.Records:
-            output.append(self._parse(data=record.Sns.Message, model=model))
-        return output</code></pre>
+        return [self._parse(data=record.Sns.Message, model=model) for record in parsed_envelope.Records]</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -168,10 +197,111 @@ all items in the list will be parsed as str and npt as JSON (and vice versa)</p>
     &#34;&#34;&#34;
     logger.debug(f&#34;Parsing incoming data with SNS model {SnsModel}&#34;)
     parsed_envelope = SnsModel.parse_obj(data)
-    output = []
     logger.debug(f&#34;Parsing SNS records in `body` with {model}&#34;)
+    return [self._parse(data=record.Sns.Message, model=model) for record in parsed_envelope.Records]</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.envelopes.sns.SnsSqsEnvelope"><code class="flex name class">
+<span>class <span class="ident">SnsSqsEnvelope</span></span>
+</code></dt>
+<dd>
+<section class="desc"><p>SNS plus SQS Envelope to extract array of Records</p>
+<p>Published messages from SNS to SQS has a slightly different payload.
+Since SNS payload is marshalled into <code>Record</code> key in SQS, we have to:</p>
+<ol>
+<li>Parse SQS schema with incoming data</li>
+<li>Unmarshall SNS payload and parse against SNS Notification model not SNS/SNS Record</li>
+<li>Finally, parse provided model against payload extracted</li>
+</ol></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SnsSqsEnvelope(BaseEnvelope):
+    &#34;&#34;&#34;SNS plus SQS Envelope to extract array of Records
+
+    Published messages from SNS to SQS has a slightly different payload.
+    Since SNS payload is marshalled into `Record` key in SQS, we have to:
+
+    1. Parse SQS schema with incoming data
+    2. Unmarshall SNS payload and parse against SNS Notification model not SNS/SNS Record
+    3. Finally, parse provided model against payload extracted
+    &#34;&#34;&#34;
+
+    def parse(self, data: Optional[Union[Dict[str, Any], Any]], model: Model) -&gt; List[Optional[Model]]:
+        &#34;&#34;&#34;Parses records found with model provided
+
+        Parameters
+        ----------
+        data : Dict
+            Lambda event to be parsed
+        model : Model
+            Data model provided to parse after extracting data using envelope
+
+        Returns
+        -------
+        List
+            List of records parsed with model provided
+        &#34;&#34;&#34;
+        logger.debug(f&#34;Parsing incoming data with SQS model {SqsModel}&#34;)
+        parsed_envelope = SqsModel.parse_obj(data)
+        output = []
+        for record in parsed_envelope.Records:
+            sns_notification = SnsNotificationModel.parse_raw(record.body)
+            output.append(self._parse(data=sns_notification.Message, model=model))
+        return output</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.parser.envelopes.base.BaseEnvelope" href="base.html#aws_lambda_powertools.utilities.parser.envelopes.base.BaseEnvelope">BaseEnvelope</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.parser.envelopes.sns.SnsSqsEnvelope.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>self, data, model)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Parses records found with model provided</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>Dict</code></dt>
+<dd>Lambda event to be parsed</dd>
+<dt><strong><code>model</code></strong> :&ensp;<code>Model</code></dt>
+<dd>Data model provided to parse after extracting data using envelope</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>List</code></dt>
+<dd>List of records parsed with model provided</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse(self, data: Optional[Union[Dict[str, Any], Any]], model: Model) -&gt; List[Optional[Model]]:
+    &#34;&#34;&#34;Parses records found with model provided
+
+    Parameters
+    ----------
+    data : Dict
+        Lambda event to be parsed
+    model : Model
+        Data model provided to parse after extracting data using envelope
+
+    Returns
+    -------
+    List
+        List of records parsed with model provided
+    &#34;&#34;&#34;
+    logger.debug(f&#34;Parsing incoming data with SQS model {SqsModel}&#34;)
+    parsed_envelope = SqsModel.parse_obj(data)
+    output = []
     for record in parsed_envelope.Records:
-        output.append(self._parse(data=record.Sns.Message, model=model))
+        sns_notification = SnsNotificationModel.parse_raw(record.body)
+        output.append(self._parse(data=sns_notification.Message, model=model))
     return output</code></pre>
 </details>
 </dd>
@@ -197,6 +327,12 @@ all items in the list will be parsed as str and npt as JSON (and vice versa)</p>
 <h4><code><a title="aws_lambda_powertools.utilities.parser.envelopes.sns.SnsEnvelope" href="#aws_lambda_powertools.utilities.parser.envelopes.sns.SnsEnvelope">SnsEnvelope</a></code></h4>
 <ul class="">
 <li><code><a title="aws_lambda_powertools.utilities.parser.envelopes.sns.SnsEnvelope.parse" href="#aws_lambda_powertools.utilities.parser.envelopes.sns.SnsEnvelope.parse">parse</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.parser.envelopes.sns.SnsSqsEnvelope" href="#aws_lambda_powertools.utilities.parser.envelopes.sns.SnsSqsEnvelope">SnsSqsEnvelope</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.parser.envelopes.sns.SnsSqsEnvelope.parse" href="#aws_lambda_powertools.utilities.parser.envelopes.sns.SnsSqsEnvelope.parse">parse</a></code></li>
 </ul>
 </li>
 </ul>

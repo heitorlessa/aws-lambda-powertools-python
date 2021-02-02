@@ -163,7 +163,31 @@ class SqsModel(BaseModel):
     binaryValue: Optional[str]
     stringListValues: List[str] = []
     binaryListValues: List[str] = []
-    dataType: str</code></pre>
+    dataType: str
+
+    # context on why it&#39;s commented: https://github.com/awslabs/aws-lambda-powertools-python/pull/118
+    # Amazon SQS supports the logical data types String, Number, and Binary with optional custom data type
+    # labels with the format .custom-data-type.
+    # https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes
+    # @validator(&#34;dataType&#34;)
+    # def valid_type(cls, v):  # noqa: VNE001,E800 # noqa: E800
+    #     pattern = re.compile(&#34;Number.*|String.*|Binary.*&#34;) # noqa: E800
+    #     if not pattern.match(v): # noqa: E800
+    #         raise TypeError(&#34;data type is invalid&#34;) # noqa: E800
+    #     return v # noqa: E800
+    #
+    # # validate that dataType and value are not None and match
+    # @root_validator
+    # def check_str_and_binary_values(cls, values): # noqa: E800
+    #     binary_val, str_val = values.get(&#34;binaryValue&#34;, &#34;&#34;), values.get(&#34;stringValue&#34;, &#34;&#34;) # noqa: E800
+    #     data_type = values.get(&#34;dataType&#34;) # noqa: E800
+    #     if not str_val and not binary_val: # noqa: E800
+    #         raise TypeError(&#34;both binaryValue and stringValue are missing&#34;) # noqa: E800
+    #     if data_type.startswith(&#34;Binary&#34;) and not binary_val: # noqa: E800
+    #         raise TypeError(&#34;binaryValue is missing&#34;) # noqa: E800
+    #     if (data_type.startswith(&#34;String&#34;) or data_type.startswith(&#34;Number&#34;)) and not str_val: # noqa: E800
+    #         raise TypeError(&#34;stringValue is missing&#34;) # noqa: E800
+    #     return values # noqa: E800</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">

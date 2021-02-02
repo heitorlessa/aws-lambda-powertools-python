@@ -222,14 +222,20 @@ $ export POWERTOOLS_LOGGER_SAMPLE_RATE=0.01 # 1% debug sampling
         stream: sys.stdout = None,
         **kwargs,
     ):
-        self.service = service or os.getenv(&#34;POWERTOOLS_SERVICE_NAME&#34;) or &#34;service_undefined&#34;
-        self.sampling_rate = sampling_rate or os.getenv(&#34;POWERTOOLS_LOGGER_SAMPLE_RATE&#34;) or 0.0
+        self.service = resolve_env_var_choice(
+            choice=service, env=os.getenv(constants.SERVICE_NAME_ENV, &#34;service_undefined&#34;)
+        )
+        self.sampling_rate = resolve_env_var_choice(
+            choice=sampling_rate, env=os.getenv(constants.LOGGER_LOG_SAMPLING_RATE, 0.0)
+        )
+        self._is_deduplication_disabled = resolve_truthy_env_var_choice(
+            env=os.getenv(constants.LOGGER_LOG_DEDUPLICATION_ENV, &#34;false&#34;)
+        )
         self.log_level = self._get_log_level(level)
         self.child = child
         self._handler = logging.StreamHandler(stream) if stream is not None else logging.StreamHandler(sys.stdout)
         self._default_log_keys = {&#34;service&#34;: self.service, &#34;sampling_rate&#34;: self.sampling_rate}
         self._logger = self._get_logger()
-
         self._init_logger(**kwargs)
 
     def __getattr__(self, name):
@@ -248,21 +254,36 @@ $ export POWERTOOLS_LOGGER_SAMPLE_RATE=0.01 # 1% debug sampling
     def _init_logger(self, **kwargs):
         &#34;&#34;&#34;Configures new logger&#34;&#34;&#34;
 
-        # Skip configuration if it&#39;s a child logger to prevent
-        # multiple handlers being attached as well as different sampling mechanisms
-        # and multiple messages from being logged as handlers can be duplicated
-        if not self.child:
-            self._configure_sampling()
-            self._logger.setLevel(self.log_level)
-            self._logger.addHandler(self._handler)
-            self.structure_logs(**kwargs)
+        # Skip configuration if it&#39;s a child logger or a pre-configured logger
+        # to prevent the following:
+        #   a) multiple handlers being attached
+        #   b) different sampling mechanisms
+        #   c) multiple messages from being logged as handlers can be duplicated
+        is_logger_preconfigured = getattr(self._logger, &#34;init&#34;, False)
+        if self.child or is_logger_preconfigured:
+            return
 
+        self._configure_sampling()
+        self._logger.setLevel(self.log_level)
+        self._logger.addHandler(self._handler)
+        self.structure_logs(**kwargs)
+
+        # Pytest Live Log feature duplicates log records for colored output
+        # but we explicitly add a filter for log deduplication.
+        # This flag disables this protection when you explicit want logs to be duplicated (#262)
+        if not self._is_deduplication_disabled:
             logger.debug(&#34;Adding filter in root logger to suppress child logger records to bubble up&#34;)
             for handler in logging.root.handlers:
                 # It&#39;ll add a filter to suppress any child logger from self.service
-                # Where service is Order, it&#39;ll reject parent logger Order,
-                # and child loggers such as Order.checkout, Order.shared
+                # Example: `Logger(service=&#34;order&#34;)`, where service is Order
+                # It&#39;ll reject all loggers starting with `order` e.g. order.checkout, order.shared
                 handler.addFilter(SuppressFilter(self.service))
+
+        # as per bug in #249, we should not be pre-configuring an existing logger
+        # therefore we set a custom attribute in the Logger that will be returned
+        # std logging will return the same Logger with our attribute if name is reused
+        logger.debug(f&#34;Marking logger {self.service} as preconfigured&#34;)
+        self._logger.init = True
 
     def _configure_sampling(self):
         &#34;&#34;&#34;Dynamically set log level based on sampling rate
@@ -282,7 +303,7 @@ $ export POWERTOOLS_LOGGER_SAMPLE_RATE=0.01 # 1% debug sampling
                 f&#34;Please review POWERTOOLS_LOGGER_SAMPLE_RATE environment variable.&#34;
             )
 
-    def inject_lambda_context(self, lambda_handler: Callable[[Dict, Any], Any] = None, log_event: bool = False):
+    def inject_lambda_context(self, lambda_handler: Callable[[Dict, Any], Any] = None, log_event: bool = None):
         &#34;&#34;&#34;Decorator to capture Lambda contextual info and inject into logger
 
         Parameters
@@ -331,8 +352,9 @@ $ export POWERTOOLS_LOGGER_SAMPLE_RATE=0.01 # 1% debug sampling
             logger.debug(&#34;Decorator called with parameters&#34;)
             return functools.partial(self.inject_lambda_context, log_event=log_event)
 
-        log_event_env_option = str(os.getenv(&#34;POWERTOOLS_LOGGER_LOG_EVENT&#34;, &#34;false&#34;))
-        log_event = strtobool(log_event_env_option) or log_event
+        log_event = resolve_truthy_env_var_choice(
+            choice=log_event, env=os.getenv(constants.LOGGER_LOG_EVENT_ENV, &#34;false&#34;)
+        )
 
         @functools.wraps(lambda_handler)
         def decorate(event, context):
@@ -380,9 +402,10 @@ $ export POWERTOOLS_LOGGER_SAMPLE_RATE=0.01 # 1% debug sampling
             return level
 
         log_level: str = level or os.getenv(&#34;LOG_LEVEL&#34;)
-        log_level = log_level.upper() if log_level is not None else logging.INFO
+        if log_level is None:
+            return logging.INFO
 
-        return log_level
+        return log_level.upper()
 
     @staticmethod
     def _get_caller_filename():
@@ -392,9 +415,7 @@ $ export POWERTOOLS_LOGGER_SAMPLE_RATE=0.01 # 1% debug sampling
         # Before previous frame =&gt; Caller
         frame = inspect.currentframe()
         caller_frame = frame.f_back.f_back.f_back
-        filename = caller_frame.f_globals[&#34;__name__&#34;]
-
-        return filename</code></pre>
+        return caller_frame.f_globals[&#34;__name__&#34;]</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -404,7 +425,7 @@ $ export POWERTOOLS_LOGGER_SAMPLE_RATE=0.01 # 1% debug sampling
 <h3>Methods</h3>
 <dl>
 <dt id="aws_lambda_powertools.logging.Logger.inject_lambda_context"><code class="name flex">
-<span>def <span class="ident">inject_lambda_context</span></span>(<span>self, lambda_handler=None, log_event=False)</span>
+<span>def <span class="ident">inject_lambda_context</span></span>(<span>self, lambda_handler=None, log_event=None)</span>
 </code></dt>
 <dd>
 <section class="desc"><p>Decorator to capture Lambda contextual info and inject into logger</p>
@@ -448,7 +469,7 @@ def handler(event, context):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def inject_lambda_context(self, lambda_handler: Callable[[Dict, Any], Any] = None, log_event: bool = False):
+<pre><code class="python">def inject_lambda_context(self, lambda_handler: Callable[[Dict, Any], Any] = None, log_event: bool = None):
     &#34;&#34;&#34;Decorator to capture Lambda contextual info and inject into logger
 
     Parameters
@@ -497,8 +518,9 @@ def handler(event, context):
         logger.debug(&#34;Decorator called with parameters&#34;)
         return functools.partial(self.inject_lambda_context, log_event=log_event)
 
-    log_event_env_option = str(os.getenv(&#34;POWERTOOLS_LOGGER_LOG_EVENT&#34;, &#34;false&#34;))
-    log_event = strtobool(log_event_env_option) or log_event
+    log_event = resolve_truthy_env_var_choice(
+        choice=log_event, env=os.getenv(constants.LOGGER_LOG_EVENT_ENV, &#34;false&#34;)
+    )
 
     @functools.wraps(lambda_handler)
     def decorate(event, context):

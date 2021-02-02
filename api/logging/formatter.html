@@ -27,6 +27,33 @@
 <pre><code class="python">import json
 import logging
 import os
+from typing import Dict, Iterable, Optional, Union
+
+from ..shared import constants
+
+STD_LOGGING_KEYS = (
+    &#34;name&#34;,
+    &#34;msg&#34;,
+    &#34;args&#34;,
+    &#34;levelname&#34;,
+    &#34;levelno&#34;,
+    &#34;pathname&#34;,
+    &#34;filename&#34;,
+    &#34;module&#34;,
+    &#34;exc_info&#34;,
+    &#34;exc_text&#34;,
+    &#34;stack_info&#34;,
+    &#34;lineno&#34;,
+    &#34;funcName&#34;,
+    &#34;created&#34;,
+    &#34;msecs&#34;,
+    &#34;relativeCreated&#34;,
+    &#34;thread&#34;,
+    &#34;threadName&#34;,
+    &#34;processName&#34;,
+    &#34;process&#34;,
+    &#34;asctime&#34;,
+)
 
 
 class JsonFormatter(logging.Formatter):
@@ -56,12 +83,12 @@ class JsonFormatter(logging.Formatter):
         # Set the default unserializable function, by default values will be cast as str.
         self.default_json_formatter = kwargs.pop(&#34;json_default&#34;, str)
         # Set the insertion order for the log messages
-        self.format_dict = dict.fromkeys(kwargs.pop(&#34;log_record_order&#34;, [&#34;level&#34;, &#34;location&#34;, &#34;message&#34;, &#34;timestamp&#34;]))
+        self.log_format = dict.fromkeys(kwargs.pop(&#34;log_record_order&#34;, [&#34;level&#34;, &#34;location&#34;, &#34;message&#34;, &#34;timestamp&#34;]))
         self.reserved_keys = [&#34;timestamp&#34;, &#34;level&#34;, &#34;location&#34;]
         # Set the date format used by `asctime`
         super(JsonFormatter, self).__init__(datefmt=kwargs.pop(&#34;datefmt&#34;, None))
 
-        self.format_dict.update(self._build_root_keys(**kwargs))
+        self.log_format.update(self._build_root_keys(**kwargs))
 
     @staticmethod
     def _build_root_keys(**kwargs):
@@ -74,56 +101,102 @@ class JsonFormatter(logging.Formatter):
 
     @staticmethod
     def _get_latest_trace_id():
-        xray_trace_id = os.getenv(&#34;_X_AMZN_TRACE_ID&#34;)
-        trace_id = xray_trace_id.split(&#34;;&#34;)[0].replace(&#34;Root=&#34;, &#34;&#34;) if xray_trace_id else None
-
-        return trace_id
+        xray_trace_id = os.getenv(constants.XRAY_TRACE_ID_ENV)
+        return xray_trace_id.split(&#34;;&#34;)[0].replace(&#34;Root=&#34;, &#34;&#34;) if xray_trace_id else None
 
     def update_formatter(self, **kwargs):
-        self.format_dict.update(kwargs)
+        self.log_format.update(kwargs)
+
+    @staticmethod
+    def _extract_log_message(log_record: logging.LogRecord) -&gt; Union[Dict, str, bool, Iterable]:
+        &#34;&#34;&#34;Extract message from log record and attempt to JSON decode it
+
+        Parameters
+        ----------
+        log_record : logging.LogRecord
+            Log record to extract message from
+
+        Returns
+        -------
+        message: Union[Dict, str, bool, Iterable]
+            Extracted message
+        &#34;&#34;&#34;
+        if isinstance(log_record.msg, dict):
+            return log_record.msg
+
+        message: str = log_record.getMessage()
+
+        # Attempt to decode non-str messages e.g. msg = &#39;{&#34;x&#34;: &#34;y&#34;}&#39;
+        try:
+            message = json.loads(log_record.msg)
+        except (json.decoder.JSONDecodeError, TypeError, ValueError):
+            pass
+
+        return message
+
+    def _extract_log_exception(self, log_record: logging.LogRecord) -&gt; Optional[str]:
+        &#34;&#34;&#34;Format traceback information, if available
+
+        Parameters
+        ----------
+        log_record : logging.LogRecord
+            Log record to extract message from
+
+        Returns
+        -------
+        log_record: Optional[str]
+            Log record with constant traceback info
+        &#34;&#34;&#34;
+        if log_record.exc_info:
+            return self.formatException(log_record.exc_info)
+
+        return None
+
+    def _extract_log_keys(self, log_record: logging.LogRecord) -&gt; Dict:
+        &#34;&#34;&#34;Extract and parse custom and reserved log keys
+
+        Parameters
+        ----------
+        log_record : logging.LogRecord
+            Log record to extract keys from
+
+        Returns
+        -------
+        formatted_log: Dict
+            Structured log as dictionary
+        &#34;&#34;&#34;
+        record_dict = log_record.__dict__.copy()  # has extra kwargs we are after
+        record_dict[&#34;asctime&#34;] = self.formatTime(log_record, self.datefmt)
+
+        formatted_log = {}
+
+        # We have to iterate over a default or existing log structure
+        # then replace any logging expression for reserved keys e.g. &#39;%(level)s&#39; to &#39;INFO&#39;
+        # and lastly add or replace incoming keys (those added within the constructor or .structure_logs method)
+        for key, value in self.log_format.items():
+            if value and key in self.reserved_keys:
+                formatted_log[key] = value % record_dict
+            else:
+                formatted_log[key] = value
+
+        # pick up extra keys when logging a new message e.g. log.info(&#34;my message&#34;, extra={&#34;additional_key&#34;: &#34;value&#34;}
+        # these messages will be added to the root of the final structure not within `message` key
+        for key, value in record_dict.items():
+            if key not in STD_LOGGING_KEYS:
+                formatted_log[key] = value
+
+        return formatted_log
 
     def format(self, record):  # noqa: A003
-        record_dict = record.__dict__.copy()
-        record_dict[&#34;asctime&#34;] = self.formatTime(record, self.datefmt)
-
-        log_dict = {}
-
-        for key, value in self.format_dict.items():
-            if value and key in self.reserved_keys:
-                # converts default logging expr to its record value
-                # e.g. &#39;%(asctime)s&#39; to &#39;2020-04-24 09:35:40,698&#39;
-                log_dict[key] = value % record_dict
-            else:
-                log_dict[key] = value
-
-        if isinstance(record_dict[&#34;msg&#34;], dict):
-            log_dict[&#34;message&#34;] = record_dict[&#34;msg&#34;]
-        else:
-            log_dict[&#34;message&#34;] = record.getMessage()
-
-            # Attempt to decode the message as JSON, if so, merge it with the
-            # overall message for clarity.
-            try:
-                log_dict[&#34;message&#34;] = json.loads(log_dict[&#34;message&#34;])
-            except (json.decoder.JSONDecodeError, TypeError, ValueError):
-                pass
-
-        if record.exc_info and not record.exc_text:
-            # Cache the traceback text to avoid converting it multiple times
-            # (it&#39;s constant anyway)
-            # from logging.Formatter:format
-            record.exc_text = self.formatException(record.exc_info)
-
-        if record.exc_text:
-            log_dict[&#34;exception&#34;] = record.exc_text
-
-        # fetch latest X-Ray Trace ID, if any
-        log_dict.update({&#34;xray_trace_id&#34;: self._get_latest_trace_id()})
+        formatted_log = self._extract_log_keys(log_record=record)
+        formatted_log[&#34;message&#34;] = self._extract_log_message(log_record=record)
+        formatted_log[&#34;exception&#34;] = self._extract_log_exception(log_record=record)
+        formatted_log.update({&#34;xray_trace_id&#34;: self._get_latest_trace_id()})  # fetch latest Trace ID, if any
 
         # Filter out top level key with values that are None
-        log_dict = {k: v for k, v in log_dict.items() if v is not None}
+        formatted_log = {k: v for k, v in formatted_log.items() if v is not None}
 
-        return json.dumps(log_dict, default=self.default_json_formatter)</code></pre>
+        return json.dumps(formatted_log, default=self.default_json_formatter)</code></pre>
 </details>
 </section>
 <section>
@@ -188,12 +261,12 @@ the structured json logs. By default the order is: "level", "location", "message
         # Set the default unserializable function, by default values will be cast as str.
         self.default_json_formatter = kwargs.pop(&#34;json_default&#34;, str)
         # Set the insertion order for the log messages
-        self.format_dict = dict.fromkeys(kwargs.pop(&#34;log_record_order&#34;, [&#34;level&#34;, &#34;location&#34;, &#34;message&#34;, &#34;timestamp&#34;]))
+        self.log_format = dict.fromkeys(kwargs.pop(&#34;log_record_order&#34;, [&#34;level&#34;, &#34;location&#34;, &#34;message&#34;, &#34;timestamp&#34;]))
         self.reserved_keys = [&#34;timestamp&#34;, &#34;level&#34;, &#34;location&#34;]
         # Set the date format used by `asctime`
         super(JsonFormatter, self).__init__(datefmt=kwargs.pop(&#34;datefmt&#34;, None))
 
-        self.format_dict.update(self._build_root_keys(**kwargs))
+        self.log_format.update(self._build_root_keys(**kwargs))
 
     @staticmethod
     def _build_root_keys(**kwargs):
@@ -206,56 +279,102 @@ the structured json logs. By default the order is: "level", "location", "message
 
     @staticmethod
     def _get_latest_trace_id():
-        xray_trace_id = os.getenv(&#34;_X_AMZN_TRACE_ID&#34;)
-        trace_id = xray_trace_id.split(&#34;;&#34;)[0].replace(&#34;Root=&#34;, &#34;&#34;) if xray_trace_id else None
-
-        return trace_id
+        xray_trace_id = os.getenv(constants.XRAY_TRACE_ID_ENV)
+        return xray_trace_id.split(&#34;;&#34;)[0].replace(&#34;Root=&#34;, &#34;&#34;) if xray_trace_id else None
 
     def update_formatter(self, **kwargs):
-        self.format_dict.update(kwargs)
+        self.log_format.update(kwargs)
+
+    @staticmethod
+    def _extract_log_message(log_record: logging.LogRecord) -&gt; Union[Dict, str, bool, Iterable]:
+        &#34;&#34;&#34;Extract message from log record and attempt to JSON decode it
+
+        Parameters
+        ----------
+        log_record : logging.LogRecord
+            Log record to extract message from
+
+        Returns
+        -------
+        message: Union[Dict, str, bool, Iterable]
+            Extracted message
+        &#34;&#34;&#34;
+        if isinstance(log_record.msg, dict):
+            return log_record.msg
+
+        message: str = log_record.getMessage()
+
+        # Attempt to decode non-str messages e.g. msg = &#39;{&#34;x&#34;: &#34;y&#34;}&#39;
+        try:
+            message = json.loads(log_record.msg)
+        except (json.decoder.JSONDecodeError, TypeError, ValueError):
+            pass
+
+        return message
+
+    def _extract_log_exception(self, log_record: logging.LogRecord) -&gt; Optional[str]:
+        &#34;&#34;&#34;Format traceback information, if available
+
+        Parameters
+        ----------
+        log_record : logging.LogRecord
+            Log record to extract message from
+
+        Returns
+        -------
+        log_record: Optional[str]
+            Log record with constant traceback info
+        &#34;&#34;&#34;
+        if log_record.exc_info:
+            return self.formatException(log_record.exc_info)
+
+        return None
+
+    def _extract_log_keys(self, log_record: logging.LogRecord) -&gt; Dict:
+        &#34;&#34;&#34;Extract and parse custom and reserved log keys
+
+        Parameters
+        ----------
+        log_record : logging.LogRecord
+            Log record to extract keys from
+
+        Returns
+        -------
+        formatted_log: Dict
+            Structured log as dictionary
+        &#34;&#34;&#34;
+        record_dict = log_record.__dict__.copy()  # has extra kwargs we are after
+        record_dict[&#34;asctime&#34;] = self.formatTime(log_record, self.datefmt)
+
+        formatted_log = {}
+
+        # We have to iterate over a default or existing log structure
+        # then replace any logging expression for reserved keys e.g. &#39;%(level)s&#39; to &#39;INFO&#39;
+        # and lastly add or replace incoming keys (those added within the constructor or .structure_logs method)
+        for key, value in self.log_format.items():
+            if value and key in self.reserved_keys:
+                formatted_log[key] = value % record_dict
+            else:
+                formatted_log[key] = value
+
+        # pick up extra keys when logging a new message e.g. log.info(&#34;my message&#34;, extra={&#34;additional_key&#34;: &#34;value&#34;}
+        # these messages will be added to the root of the final structure not within `message` key
+        for key, value in record_dict.items():
+            if key not in STD_LOGGING_KEYS:
+                formatted_log[key] = value
+
+        return formatted_log
 
     def format(self, record):  # noqa: A003
-        record_dict = record.__dict__.copy()
-        record_dict[&#34;asctime&#34;] = self.formatTime(record, self.datefmt)
-
-        log_dict = {}
-
-        for key, value in self.format_dict.items():
-            if value and key in self.reserved_keys:
-                # converts default logging expr to its record value
-                # e.g. &#39;%(asctime)s&#39; to &#39;2020-04-24 09:35:40,698&#39;
-                log_dict[key] = value % record_dict
-            else:
-                log_dict[key] = value
-
-        if isinstance(record_dict[&#34;msg&#34;], dict):
-            log_dict[&#34;message&#34;] = record_dict[&#34;msg&#34;]
-        else:
-            log_dict[&#34;message&#34;] = record.getMessage()
-
-            # Attempt to decode the message as JSON, if so, merge it with the
-            # overall message for clarity.
-            try:
-                log_dict[&#34;message&#34;] = json.loads(log_dict[&#34;message&#34;])
-            except (json.decoder.JSONDecodeError, TypeError, ValueError):
-                pass
-
-        if record.exc_info and not record.exc_text:
-            # Cache the traceback text to avoid converting it multiple times
-            # (it&#39;s constant anyway)
-            # from logging.Formatter:format
-            record.exc_text = self.formatException(record.exc_info)
-
-        if record.exc_text:
-            log_dict[&#34;exception&#34;] = record.exc_text
-
-        # fetch latest X-Ray Trace ID, if any
-        log_dict.update({&#34;xray_trace_id&#34;: self._get_latest_trace_id()})
+        formatted_log = self._extract_log_keys(log_record=record)
+        formatted_log[&#34;message&#34;] = self._extract_log_message(log_record=record)
+        formatted_log[&#34;exception&#34;] = self._extract_log_exception(log_record=record)
+        formatted_log.update({&#34;xray_trace_id&#34;: self._get_latest_trace_id()})  # fetch latest Trace ID, if any
 
         # Filter out top level key with values that are None
-        log_dict = {k: v for k, v in log_dict.items() if v is not None}
+        formatted_log = {k: v for k, v in formatted_log.items() if v is not None}
 
-        return json.dumps(log_dict, default=self.default_json_formatter)</code></pre>
+        return json.dumps(formatted_log, default=self.default_json_formatter)</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -281,47 +400,15 @@ it is formatted using formatException() and appended to the message.</p></sectio
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def format(self, record):  # noqa: A003
-    record_dict = record.__dict__.copy()
-    record_dict[&#34;asctime&#34;] = self.formatTime(record, self.datefmt)
-
-    log_dict = {}
-
-    for key, value in self.format_dict.items():
-        if value and key in self.reserved_keys:
-            # converts default logging expr to its record value
-            # e.g. &#39;%(asctime)s&#39; to &#39;2020-04-24 09:35:40,698&#39;
-            log_dict[key] = value % record_dict
-        else:
-            log_dict[key] = value
-
-    if isinstance(record_dict[&#34;msg&#34;], dict):
-        log_dict[&#34;message&#34;] = record_dict[&#34;msg&#34;]
-    else:
-        log_dict[&#34;message&#34;] = record.getMessage()
-
-        # Attempt to decode the message as JSON, if so, merge it with the
-        # overall message for clarity.
-        try:
-            log_dict[&#34;message&#34;] = json.loads(log_dict[&#34;message&#34;])
-        except (json.decoder.JSONDecodeError, TypeError, ValueError):
-            pass
-
-    if record.exc_info and not record.exc_text:
-        # Cache the traceback text to avoid converting it multiple times
-        # (it&#39;s constant anyway)
-        # from logging.Formatter:format
-        record.exc_text = self.formatException(record.exc_info)
-
-    if record.exc_text:
-        log_dict[&#34;exception&#34;] = record.exc_text
-
-    # fetch latest X-Ray Trace ID, if any
-    log_dict.update({&#34;xray_trace_id&#34;: self._get_latest_trace_id()})
+    formatted_log = self._extract_log_keys(log_record=record)
+    formatted_log[&#34;message&#34;] = self._extract_log_message(log_record=record)
+    formatted_log[&#34;exception&#34;] = self._extract_log_exception(log_record=record)
+    formatted_log.update({&#34;xray_trace_id&#34;: self._get_latest_trace_id()})  # fetch latest Trace ID, if any
 
     # Filter out top level key with values that are None
-    log_dict = {k: v for k, v in log_dict.items() if v is not None}
+    formatted_log = {k: v for k, v in formatted_log.items() if v is not None}
 
-    return json.dumps(log_dict, default=self.default_json_formatter)</code></pre>
+    return json.dumps(formatted_log, default=self.default_json_formatter)</code></pre>
 </details>
 </dd>
 <dt id="aws_lambda_powertools.logging.formatter.JsonFormatter.update_formatter"><code class="name flex">
@@ -334,7 +421,7 @@ it is formatted using formatException() and appended to the message.</p></sectio
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def update_formatter(self, **kwargs):
-    self.format_dict.update(kwargs)</code></pre>
+    self.log_format.update(kwargs)</code></pre>
 </details>
 </dd>
 </dl>

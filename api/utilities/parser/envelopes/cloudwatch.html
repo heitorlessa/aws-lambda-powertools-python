@@ -62,10 +62,9 @@ class CloudWatchLogsEnvelope(BaseEnvelope):
         logger.debug(f&#34;Parsing incoming data with SNS model {CloudWatchLogsModel}&#34;)
         parsed_envelope = CloudWatchLogsModel.parse_obj(data)
         logger.debug(f&#34;Parsing CloudWatch records in `body` with {model}&#34;)
-        output = []
-        for record in parsed_envelope.awslogs.decoded_data.logEvents:
-            output.append(self._parse(data=record.message, model=model))
-        return output</code></pre>
+        return [
+            self._parse(data=record.message, model=model) for record in parsed_envelope.awslogs.decoded_data.logEvents
+        ]</code></pre>
 </details>
 </section>
 <section>
@@ -118,10 +117,9 @@ Regardless of its type it'll be parsed into a BaseModel object.</p>
         logger.debug(f&#34;Parsing incoming data with SNS model {CloudWatchLogsModel}&#34;)
         parsed_envelope = CloudWatchLogsModel.parse_obj(data)
         logger.debug(f&#34;Parsing CloudWatch records in `body` with {model}&#34;)
-        output = []
-        for record in parsed_envelope.awslogs.decoded_data.logEvents:
-            output.append(self._parse(data=record.message, model=model))
-        return output</code></pre>
+        return [
+            self._parse(data=record.message, model=model) for record in parsed_envelope.awslogs.decoded_data.logEvents
+        ]</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -169,10 +167,9 @@ Regardless of its type it'll be parsed into a BaseModel object.</p>
     logger.debug(f&#34;Parsing incoming data with SNS model {CloudWatchLogsModel}&#34;)
     parsed_envelope = CloudWatchLogsModel.parse_obj(data)
     logger.debug(f&#34;Parsing CloudWatch records in `body` with {model}&#34;)
-    output = []
-    for record in parsed_envelope.awslogs.decoded_data.logEvents:
-        output.append(self._parse(data=record.message, model=model))
-    return output</code></pre>
+    return [
+        self._parse(data=record.message, model=model) for record in parsed_envelope.awslogs.decoded_data.logEvents
+    ]</code></pre>
 </details>
 </dd>
 </dl>

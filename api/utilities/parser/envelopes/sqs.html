@@ -61,11 +61,8 @@ class SqsEnvelope(BaseEnvelope):
         &#34;&#34;&#34;
         logger.debug(f&#34;Parsing incoming data with SQS model {SqsModel}&#34;)
         parsed_envelope = SqsModel.parse_obj(data)
-        output = []
         logger.debug(f&#34;Parsing SQS records in `body` with {model}&#34;)
-        for record in parsed_envelope.Records:
-            output.append(self._parse(data=record.body, model=model))
-        return output</code></pre>
+        return [self._parse(data=record.body, model=model) for record in parsed_envelope.Records]</code></pre>
 </details>
 </section>
 <section>
@@ -117,11 +114,8 @@ all items in the list will be parsed as str and npt as JSON (and vice versa)</p>
         &#34;&#34;&#34;
         logger.debug(f&#34;Parsing incoming data with SQS model {SqsModel}&#34;)
         parsed_envelope = SqsModel.parse_obj(data)
-        output = []
         logger.debug(f&#34;Parsing SQS records in `body` with {model}&#34;)
-        for record in parsed_envelope.Records:
-            output.append(self._parse(data=record.body, model=model))
-        return output</code></pre>
+        return [self._parse(data=record.body, model=model) for record in parsed_envelope.Records]</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -168,11 +162,8 @@ all items in the list will be parsed as str and npt as JSON (and vice versa)</p>
     &#34;&#34;&#34;
     logger.debug(f&#34;Parsing incoming data with SQS model {SqsModel}&#34;)
     parsed_envelope = SqsModel.parse_obj(data)
-    output = []
     logger.debug(f&#34;Parsing SQS records in `body` with {model}&#34;)
-    for record in parsed_envelope.Records:
-        output.append(self._parse(data=record.body, model=model))
-    return output</code></pre>
+    return [self._parse(data=record.body, model=model) for record in parsed_envelope.Records]</code></pre>
 </details>
 </dd>
 </dl>

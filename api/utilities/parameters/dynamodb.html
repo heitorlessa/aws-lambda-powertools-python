@@ -233,11 +233,7 @@ class DynamoDBProvider(BaseProvider):
             response = self.table.query(**sdk_options)
             items.extend(response.get(&#34;Items&#34;, []))
 
-        retval = {}
-        for item in items:
-            retval[item[self.sort_attr]] = item[self.value_attr]
-
-        return retval</code></pre>
+        return {item[self.sort_attr]: item[self.value_attr] for item in items}</code></pre>
 </details>
 </section>
 <section>
@@ -565,11 +561,7 @@ c   Parameter value c
             response = self.table.query(**sdk_options)
             items.extend(response.get(&#34;Items&#34;, []))
 
-        retval = {}
-        for item in items:
-            retval[item[self.sort_attr]] = item[self.value_attr]
-
-        return retval</code></pre>
+        return {item[self.sort_attr]: item[self.value_attr] for item in items}</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">

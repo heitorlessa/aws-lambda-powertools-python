@@ -36,6 +36,12 @@ class DictWrapper:
     def __getitem__(self, key: str) -&gt; Any:
         return self._data[key]
 
+    def __eq__(self, other: Any) -&gt; bool:
+        if not isinstance(other, DictWrapper):
+            return False
+
+        return self._data == other._data
+
     def get(self, key: str) -&gt; Optional[Any]:
         return self._data.get(key)
 
@@ -343,6 +349,12 @@ def query_string_parameters(self) -&gt; Optional[Dict[str, str]]:
 
     def __getitem__(self, key: str) -&gt; Any:
         return self._data[key]
+
+    def __eq__(self, other: Any) -&gt; bool:
+        if not isinstance(other, DictWrapper):
+            return False
+
+        return self._data == other._data
 
     def get(self, key: str) -&gt; Optional[Any]:
         return self._data.get(key)</code></pre>

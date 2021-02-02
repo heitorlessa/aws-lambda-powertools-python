@@ -58,16 +58,14 @@ class DynamoDBStreamEnvelope(BaseEnvelope):
         &#34;&#34;&#34;
         logger.debug(f&#34;Parsing incoming data with DynamoDB Stream model {DynamoDBStreamModel}&#34;)
         parsed_envelope = DynamoDBStreamModel.parse_obj(data)
-        output = []
         logger.debug(f&#34;Parsing DynamoDB Stream new and old records with {model}&#34;)
-        for record in parsed_envelope.Records:
-            output.append(
-                {
-                    &#34;NewImage&#34;: self._parse(data=record.dynamodb.NewImage, model=model),
-                    &#34;OldImage&#34;: self._parse(data=record.dynamodb.OldImage, model=model),
-                }
-            )
-        return output</code></pre>
+        return [
+            {
+                &#34;NewImage&#34;: self._parse(data=record.dynamodb.NewImage, model=model),
+                &#34;OldImage&#34;: self._parse(data=record.dynamodb.OldImage, model=model),
+            }
+            for record in parsed_envelope.Records
+        ]</code></pre>
 </details>
 </section>
 <section>
@@ -114,16 +112,14 @@ length of the list is the record's amount in the original event.</p></section>
         &#34;&#34;&#34;
         logger.debug(f&#34;Parsing incoming data with DynamoDB Stream model {DynamoDBStreamModel}&#34;)
         parsed_envelope = DynamoDBStreamModel.parse_obj(data)
-        output = []
         logger.debug(f&#34;Parsing DynamoDB Stream new and old records with {model}&#34;)
-        for record in parsed_envelope.Records:
-            output.append(
-                {
-                    &#34;NewImage&#34;: self._parse(data=record.dynamodb.NewImage, model=model),
-                    &#34;OldImage&#34;: self._parse(data=record.dynamodb.OldImage, model=model),
-                }
-            )
-        return output</code></pre>
+        return [
+            {
+                &#34;NewImage&#34;: self._parse(data=record.dynamodb.NewImage, model=model),
+                &#34;OldImage&#34;: self._parse(data=record.dynamodb.OldImage, model=model),
+            }
+            for record in parsed_envelope.Records
+        ]</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -170,16 +166,14 @@ length of the list is the record's amount in the original event.</p></section>
     &#34;&#34;&#34;
     logger.debug(f&#34;Parsing incoming data with DynamoDB Stream model {DynamoDBStreamModel}&#34;)
     parsed_envelope = DynamoDBStreamModel.parse_obj(data)
-    output = []
     logger.debug(f&#34;Parsing DynamoDB Stream new and old records with {model}&#34;)
-    for record in parsed_envelope.Records:
-        output.append(
-            {
-                &#34;NewImage&#34;: self._parse(data=record.dynamodb.NewImage, model=model),
-                &#34;OldImage&#34;: self._parse(data=record.dynamodb.OldImage, model=model),
-            }
-        )
-    return output</code></pre>
+    return [
+        {
+            &#34;NewImage&#34;: self._parse(data=record.dynamodb.NewImage, model=model),
+            &#34;OldImage&#34;: self._parse(data=record.dynamodb.OldImage, model=model),
+        }
+        for record in parsed_envelope.Records
+    ]</code></pre>
 </details>
 </dd>
 </dl>

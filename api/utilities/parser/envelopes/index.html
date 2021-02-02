@@ -29,7 +29,7 @@ from .cloudwatch import CloudWatchLogsEnvelope
 from .dynamodb import DynamoDBStreamEnvelope
 from .event_bridge import EventBridgeEnvelope
 from .kinesis import KinesisDataStreamEnvelope
-from .sns import SnsEnvelope
+from .sns import SnsEnvelope, SnsSqsEnvelope
 from .sqs import SqsEnvelope
 
 __all__ = [
@@ -38,6 +38,7 @@ __all__ = [
     &#34;EventBridgeEnvelope&#34;,
     &#34;KinesisDataStreamEnvelope&#34;,
     &#34;SnsEnvelope&#34;,
+    &#34;SnsSqsEnvelope&#34;,
     &#34;SqsEnvelope&#34;,
     &#34;BaseEnvelope&#34;,
 ]</code></pre>
@@ -153,6 +154,7 @@ __all__ = [
 <li><a title="aws_lambda_powertools.utilities.parser.envelopes.event_bridge.EventBridgeEnvelope" href="event_bridge.html#aws_lambda_powertools.utilities.parser.envelopes.event_bridge.EventBridgeEnvelope">EventBridgeEnvelope</a></li>
 <li><a title="aws_lambda_powertools.utilities.parser.envelopes.kinesis.KinesisDataStreamEnvelope" href="kinesis.html#aws_lambda_powertools.utilities.parser.envelopes.kinesis.KinesisDataStreamEnvelope">KinesisDataStreamEnvelope</a></li>
 <li><a title="aws_lambda_powertools.utilities.parser.envelopes.sns.SnsEnvelope" href="sns.html#aws_lambda_powertools.utilities.parser.envelopes.sns.SnsEnvelope">SnsEnvelope</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.envelopes.sns.SnsSqsEnvelope" href="sns.html#aws_lambda_powertools.utilities.parser.envelopes.sns.SnsSqsEnvelope">SnsSqsEnvelope</a></li>
 <li><a title="aws_lambda_powertools.utilities.parser.envelopes.sqs.SqsEnvelope" href="sqs.html#aws_lambda_powertools.utilities.parser.envelopes.sqs.SqsEnvelope">SqsEnvelope</a></li>
 </ul>
 <h3>Methods</h3>
@@ -239,10 +241,9 @@ Regardless of its type it'll be parsed into a BaseModel object.</p>
         logger.debug(f&#34;Parsing incoming data with SNS model {CloudWatchLogsModel}&#34;)
         parsed_envelope = CloudWatchLogsModel.parse_obj(data)
         logger.debug(f&#34;Parsing CloudWatch records in `body` with {model}&#34;)
-        output = []
-        for record in parsed_envelope.awslogs.decoded_data.logEvents:
-            output.append(self._parse(data=record.message, model=model))
-        return output</code></pre>
+        return [
+            self._parse(data=record.message, model=model) for record in parsed_envelope.awslogs.decoded_data.logEvents
+        ]</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -290,10 +291,9 @@ Regardless of its type it'll be parsed into a BaseModel object.</p>
     logger.debug(f&#34;Parsing incoming data with SNS model {CloudWatchLogsModel}&#34;)
     parsed_envelope = CloudWatchLogsModel.parse_obj(data)
     logger.debug(f&#34;Parsing CloudWatch records in `body` with {model}&#34;)
-    output = []
-    for record in parsed_envelope.awslogs.decoded_data.logEvents:
-        output.append(self._parse(data=record.message, model=model))
-    return output</code></pre>
+    return [
+        self._parse(data=record.message, model=model) for record in parsed_envelope.awslogs.decoded_data.logEvents
+    ]</code></pre>
 </details>
 </dd>
 </dl>
@@ -333,16 +333,14 @@ length of the list is the record's amount in the original event.</p></section>
         &#34;&#34;&#34;
         logger.debug(f&#34;Parsing incoming data with DynamoDB Stream model {DynamoDBStreamModel}&#34;)
         parsed_envelope = DynamoDBStreamModel.parse_obj(data)
-        output = []
         logger.debug(f&#34;Parsing DynamoDB Stream new and old records with {model}&#34;)
-        for record in parsed_envelope.Records:
-            output.append(
-                {
-                    &#34;NewImage&#34;: self._parse(data=record.dynamodb.NewImage, model=model),
-                    &#34;OldImage&#34;: self._parse(data=record.dynamodb.OldImage, model=model),
-                }
-            )
-        return output</code></pre>
+        return [
+            {
+                &#34;NewImage&#34;: self._parse(data=record.dynamodb.NewImage, model=model),
+                &#34;OldImage&#34;: self._parse(data=record.dynamodb.OldImage, model=model),
+            }
+            for record in parsed_envelope.Records
+        ]</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -389,16 +387,14 @@ length of the list is the record's amount in the original event.</p></section>
     &#34;&#34;&#34;
     logger.debug(f&#34;Parsing incoming data with DynamoDB Stream model {DynamoDBStreamModel}&#34;)
     parsed_envelope = DynamoDBStreamModel.parse_obj(data)
-    output = []
     logger.debug(f&#34;Parsing DynamoDB Stream new and old records with {model}&#34;)
-    for record in parsed_envelope.Records:
-        output.append(
-            {
-                &#34;NewImage&#34;: self._parse(data=record.dynamodb.NewImage, model=model),
-                &#34;OldImage&#34;: self._parse(data=record.dynamodb.OldImage, model=model),
-            }
-        )
-    return output</code></pre>
+    return [
+        {
+            &#34;NewImage&#34;: self._parse(data=record.dynamodb.NewImage, model=model),
+            &#34;OldImage&#34;: self._parse(data=record.dynamodb.OldImage, model=model),
+        }
+        for record in parsed_envelope.Records
+    ]</code></pre>
 </details>
 </dd>
 </dl>
@@ -503,7 +499,7 @@ all items in the list will be parsed as str and npt as JSON (and vice versa)</p>
 <pre><code class="python">class KinesisDataStreamEnvelope(BaseEnvelope):
     &#34;&#34;&#34;Kinesis Data Stream Envelope to extract array of Records
 
-    The record&#39;s data parameter is a base64 encoded string which is parsed into a bytes array, 
+    The record&#39;s data parameter is a base64 encoded string which is parsed into a bytes array,
     though it can also be a JSON encoded string.
     Regardless of its type it&#39;ll be parsed into a BaseModel object.
 
@@ -528,11 +524,10 @@ all items in the list will be parsed as str and npt as JSON (and vice versa)</p>
         &#34;&#34;&#34;
         logger.debug(f&#34;Parsing incoming data with Kinesis model {KinesisDataStreamModel}&#34;)
         parsed_envelope: KinesisDataStreamModel = KinesisDataStreamModel.parse_obj(data)
-        output = []
         logger.debug(f&#34;Parsing Kinesis records in `body` with {model}&#34;)
-        for record in parsed_envelope.Records:
-            output.append(self._parse(data=record.kinesis.data.decode(&#34;utf-8&#34;), model=model))
-        return output</code></pre>
+        return [
+            self._parse(data=record.kinesis.data.decode(&#34;utf-8&#34;), model=model) for record in parsed_envelope.Records
+        ]</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -579,11 +574,10 @@ all items in the list will be parsed as str and npt as JSON (and vice versa)</p>
     &#34;&#34;&#34;
     logger.debug(f&#34;Parsing incoming data with Kinesis model {KinesisDataStreamModel}&#34;)
     parsed_envelope: KinesisDataStreamModel = KinesisDataStreamModel.parse_obj(data)
-    output = []
     logger.debug(f&#34;Parsing Kinesis records in `body` with {model}&#34;)
-    for record in parsed_envelope.Records:
-        output.append(self._parse(data=record.kinesis.data.decode(&#34;utf-8&#34;), model=model))
-    return output</code></pre>
+    return [
+        self._parse(data=record.kinesis.data.decode(&#34;utf-8&#34;), model=model) for record in parsed_envelope.Records
+    ]</code></pre>
 </details>
 </dd>
 </dl>
@@ -628,11 +622,8 @@ all items in the list will be parsed as str and npt as JSON (and vice versa)</p>
         &#34;&#34;&#34;
         logger.debug(f&#34;Parsing incoming data with SNS model {SnsModel}&#34;)
         parsed_envelope = SnsModel.parse_obj(data)
-        output = []
         logger.debug(f&#34;Parsing SNS records in `body` with {model}&#34;)
-        for record in parsed_envelope.Records:
-            output.append(self._parse(data=record.Sns.Message, model=model))
-        return output</code></pre>
+        return [self._parse(data=record.Sns.Message, model=model) for record in parsed_envelope.Records]</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -679,10 +670,111 @@ all items in the list will be parsed as str and npt as JSON (and vice versa)</p>
     &#34;&#34;&#34;
     logger.debug(f&#34;Parsing incoming data with SNS model {SnsModel}&#34;)
     parsed_envelope = SnsModel.parse_obj(data)
-    output = []
     logger.debug(f&#34;Parsing SNS records in `body` with {model}&#34;)
+    return [self._parse(data=record.Sns.Message, model=model) for record in parsed_envelope.Records]</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.envelopes.SnsSqsEnvelope"><code class="flex name class">
+<span>class <span class="ident">SnsSqsEnvelope</span></span>
+</code></dt>
+<dd>
+<section class="desc"><p>SNS plus SQS Envelope to extract array of Records</p>
+<p>Published messages from SNS to SQS has a slightly different payload.
+Since SNS payload is marshalled into <code>Record</code> key in SQS, we have to:</p>
+<ol>
+<li>Parse SQS schema with incoming data</li>
+<li>Unmarshall SNS payload and parse against SNS Notification model not SNS/SNS Record</li>
+<li>Finally, parse provided model against payload extracted</li>
+</ol></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SnsSqsEnvelope(BaseEnvelope):
+    &#34;&#34;&#34;SNS plus SQS Envelope to extract array of Records
+
+    Published messages from SNS to SQS has a slightly different payload.
+    Since SNS payload is marshalled into `Record` key in SQS, we have to:
+
+    1. Parse SQS schema with incoming data
+    2. Unmarshall SNS payload and parse against SNS Notification model not SNS/SNS Record
+    3. Finally, parse provided model against payload extracted
+    &#34;&#34;&#34;
+
+    def parse(self, data: Optional[Union[Dict[str, Any], Any]], model: Model) -&gt; List[Optional[Model]]:
+        &#34;&#34;&#34;Parses records found with model provided
+
+        Parameters
+        ----------
+        data : Dict
+            Lambda event to be parsed
+        model : Model
+            Data model provided to parse after extracting data using envelope
+
+        Returns
+        -------
+        List
+            List of records parsed with model provided
+        &#34;&#34;&#34;
+        logger.debug(f&#34;Parsing incoming data with SQS model {SqsModel}&#34;)
+        parsed_envelope = SqsModel.parse_obj(data)
+        output = []
+        for record in parsed_envelope.Records:
+            sns_notification = SnsNotificationModel.parse_raw(record.body)
+            output.append(self._parse(data=sns_notification.Message, model=model))
+        return output</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.parser.envelopes.base.BaseEnvelope" href="base.html#aws_lambda_powertools.utilities.parser.envelopes.base.BaseEnvelope">BaseEnvelope</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.parser.envelopes.SnsSqsEnvelope.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>self, data, model)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Parses records found with model provided</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>Dict</code></dt>
+<dd>Lambda event to be parsed</dd>
+<dt><strong><code>model</code></strong> :&ensp;<code>Model</code></dt>
+<dd>Data model provided to parse after extracting data using envelope</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>List</code></dt>
+<dd>List of records parsed with model provided</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse(self, data: Optional[Union[Dict[str, Any], Any]], model: Model) -&gt; List[Optional[Model]]:
+    &#34;&#34;&#34;Parses records found with model provided
+
+    Parameters
+    ----------
+    data : Dict
+        Lambda event to be parsed
+    model : Model
+        Data model provided to parse after extracting data using envelope
+
+    Returns
+    -------
+    List
+        List of records parsed with model provided
+    &#34;&#34;&#34;
+    logger.debug(f&#34;Parsing incoming data with SQS model {SqsModel}&#34;)
+    parsed_envelope = SqsModel.parse_obj(data)
+    output = []
     for record in parsed_envelope.Records:
-        output.append(self._parse(data=record.Sns.Message, model=model))
+        sns_notification = SnsNotificationModel.parse_raw(record.body)
+        output.append(self._parse(data=sns_notification.Message, model=model))
     return output</code></pre>
 </details>
 </dd>
@@ -728,11 +820,8 @@ all items in the list will be parsed as str and npt as JSON (and vice versa)</p>
         &#34;&#34;&#34;
         logger.debug(f&#34;Parsing incoming data with SQS model {SqsModel}&#34;)
         parsed_envelope = SqsModel.parse_obj(data)
-        output = []
         logger.debug(f&#34;Parsing SQS records in `body` with {model}&#34;)
-        for record in parsed_envelope.Records:
-            output.append(self._parse(data=record.body, model=model))
-        return output</code></pre>
+        return [self._parse(data=record.body, model=model) for record in parsed_envelope.Records]</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -779,11 +868,8 @@ all items in the list will be parsed as str and npt as JSON (and vice versa)</p>
     &#34;&#34;&#34;
     logger.debug(f&#34;Parsing incoming data with SQS model {SqsModel}&#34;)
     parsed_envelope = SqsModel.parse_obj(data)
-    output = []
     logger.debug(f&#34;Parsing SQS records in `body` with {model}&#34;)
-    for record in parsed_envelope.Records:
-        output.append(self._parse(data=record.body, model=model))
-    return output</code></pre>
+    return [self._parse(data=record.body, model=model) for record in parsed_envelope.Records]</code></pre>
 </details>
 </dd>
 </dl>
@@ -849,6 +935,12 @@ all items in the list will be parsed as str and npt as JSON (and vice versa)</p>
 <h4><code><a title="aws_lambda_powertools.utilities.parser.envelopes.SnsEnvelope" href="#aws_lambda_powertools.utilities.parser.envelopes.SnsEnvelope">SnsEnvelope</a></code></h4>
 <ul class="">
 <li><code><a title="aws_lambda_powertools.utilities.parser.envelopes.SnsEnvelope.parse" href="#aws_lambda_powertools.utilities.parser.envelopes.SnsEnvelope.parse">parse</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.parser.envelopes.SnsSqsEnvelope" href="#aws_lambda_powertools.utilities.parser.envelopes.SnsSqsEnvelope">SnsSqsEnvelope</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.parser.envelopes.SnsSqsEnvelope.parse" href="#aws_lambda_powertools.utilities.parser.envelopes.SnsSqsEnvelope.parse">parse</a></code></li>
 </ul>
 </li>
 <li>

@@ -315,7 +315,18 @@ def prepare_data(cls, value):
     OldImage: Optional[Dict[str, Any]]
     SequenceNumber: str
     SizeBytes: int
-    StreamViewType: Literal[&#34;NEW_AND_OLD_IMAGES&#34;, &#34;KEYS_ONLY&#34;, &#34;NEW_IMAGE&#34;, &#34;OLD_IMAGE&#34;]</code></pre>
+    StreamViewType: Literal[&#34;NEW_AND_OLD_IMAGES&#34;, &#34;KEYS_ONLY&#34;, &#34;NEW_IMAGE&#34;, &#34;OLD_IMAGE&#34;]
+
+    # context on why it&#39;s commented: https://github.com/awslabs/aws-lambda-powertools-python/pull/118
+    # since both images are optional, they can both be None. However, at least one must
+    # exist in a legal model of NEW_AND_OLD_IMAGES type
+    # @root_validator
+    # def check_one_image_exists(cls, values): # noqa: E800
+    #     new_img, old_img = values.get(&#34;NewImage&#34;), values.get(&#34;OldImage&#34;) # noqa: E800
+    #     stream_type = values.get(&#34;StreamViewType&#34;) # noqa: E800
+    #     if stream_type == &#34;NEW_AND_OLD_IMAGES&#34; and not new_img and not old_img: # noqa: E800
+    #         raise TypeError(&#34;DynamoDB streams model failed validation, missing both new &amp; old stream images&#34;) # noqa: E800,E501
+    #     return values # noqa: E800</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -612,7 +623,7 @@ def data_base64_decode(cls, value):
 </dd>
 <dt id="aws_lambda_powertools.utilities.parser.models.SnsNotificationModel"><code class="flex name class">
 <span>class <span class="ident">SnsNotificationModel</span></span>
-<span>(</span><span>*, Subject=None, TopicArn, UnsubscribeUrl, Type, MessageAttributes, Message, MessageId, SigningCertUrl, Signature, Timestamp, SignatureVersion)</span>
+<span>(</span><span>*, Subject=None, TopicArn, UnsubscribeUrl, Type, MessageAttributes=None, Message, MessageId, SigningCertUrl, Signature, Timestamp, SignatureVersion)</span>
 </code></dt>
 <dd>
 <section class="desc"><p>Create a new model by parsing and validating input data from keyword arguments.</p>
@@ -626,19 +637,48 @@ def data_base64_decode(cls, value):
     TopicArn: str
     UnsubscribeUrl: HttpUrl
     Type: Literal[&#34;Notification&#34;]
-    MessageAttributes: Dict[str, SnsMsgAttributeModel]
+    MessageAttributes: Optional[Dict[str, SnsMsgAttributeModel]]
     Message: str
     MessageId: str
     SigningCertUrl: HttpUrl
     Signature: str
     Timestamp: datetime
-    SignatureVersion: str</code></pre>
+    SignatureVersion: str
+
+    @root_validator(pre=True)
+    def check_sqs_protocol(cls, values):
+        sqs_rewritten_keys = (&#34;UnsubscribeURL&#34;, &#34;SigningCertURL&#34;)
+        if any(key in sqs_rewritten_keys for key in values):
+            values[&#34;UnsubscribeUrl&#34;] = values.pop(&#34;UnsubscribeURL&#34;)
+            values[&#34;SigningCertUrl&#34;] = values.pop(&#34;SigningCertURL&#34;)
+        return values</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
 <li>pydantic.main.BaseModel</li>
 <li>pydantic.utils.Representation</li>
 </ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.parser.models.SnsNotificationModel.check_sqs_protocol"><code class="name flex">
+<span>def <span class="ident">check_sqs_protocol</span></span>(<span>values)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@root_validator(pre=True)
+def check_sqs_protocol(cls, values):
+    sqs_rewritten_keys = (&#34;UnsubscribeURL&#34;, &#34;SigningCertURL&#34;)
+    if any(key in sqs_rewritten_keys for key in values):
+        values[&#34;UnsubscribeUrl&#34;] = values.pop(&#34;UnsubscribeURL&#34;)
+        values[&#34;SigningCertUrl&#34;] = values.pop(&#34;SigningCertURL&#34;)
+    return values</code></pre>
+</details>
+</dd>
+</dl>
 </dd>
 <dt id="aws_lambda_powertools.utilities.parser.models.SnsRecordModel"><code class="flex name class">
 <span>class <span class="ident">SnsRecordModel</span></span>
@@ -806,6 +846,9 @@ def data_base64_decode(cls, value):
 </li>
 <li>
 <h4><code><a title="aws_lambda_powertools.utilities.parser.models.SnsNotificationModel" href="#aws_lambda_powertools.utilities.parser.models.SnsNotificationModel">SnsNotificationModel</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.parser.models.SnsNotificationModel.check_sqs_protocol" href="#aws_lambda_powertools.utilities.parser.models.SnsNotificationModel.check_sqs_protocol">check_sqs_protocol</a></code></li>
+</ul>
 </li>
 <li>
 <h4><code><a title="aws_lambda_powertools.utilities.parser.models.SnsRecordModel" href="#aws_lambda_powertools.utilities.parser.models.SnsRecordModel">SnsRecordModel</a></code></h4>

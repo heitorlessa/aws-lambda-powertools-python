@@ -99,7 +99,18 @@ class DynamoDBStreamModel(BaseModel):
     OldImage: Optional[Dict[str, Any]]
     SequenceNumber: str
     SizeBytes: int
-    StreamViewType: Literal[&#34;NEW_AND_OLD_IMAGES&#34;, &#34;KEYS_ONLY&#34;, &#34;NEW_IMAGE&#34;, &#34;OLD_IMAGE&#34;]</code></pre>
+    StreamViewType: Literal[&#34;NEW_AND_OLD_IMAGES&#34;, &#34;KEYS_ONLY&#34;, &#34;NEW_IMAGE&#34;, &#34;OLD_IMAGE&#34;]
+
+    # context on why it&#39;s commented: https://github.com/awslabs/aws-lambda-powertools-python/pull/118
+    # since both images are optional, they can both be None. However, at least one must
+    # exist in a legal model of NEW_AND_OLD_IMAGES type
+    # @root_validator
+    # def check_one_image_exists(cls, values): # noqa: E800
+    #     new_img, old_img = values.get(&#34;NewImage&#34;), values.get(&#34;OldImage&#34;) # noqa: E800
+    #     stream_type = values.get(&#34;StreamViewType&#34;) # noqa: E800
+    #     if stream_type == &#34;NEW_AND_OLD_IMAGES&#34; and not new_img and not old_img: # noqa: E800
+    #         raise TypeError(&#34;DynamoDB streams model failed validation, missing both new &amp; old stream images&#34;) # noqa: E800,E501
+    #     return values # noqa: E800</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
