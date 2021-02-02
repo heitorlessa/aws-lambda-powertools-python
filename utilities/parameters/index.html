@@ -6,6 +6,8 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Utility">
+      
       
       
       
@@ -62,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#parameters" class="md-skip">
+        <a href="#ssm-parameter-store" class="md-skip">
           Skip to content
         </a>
       
@@ -325,8 +327,6 @@
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Parameters
@@ -341,21 +341,12 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#utility" class="md-nav__link">
-    Utility
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#ssm-parameter-store" class="md-nav__link">
@@ -547,21 +538,12 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#utility" class="md-nav__link">
-    Utility
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#ssm-parameter-store" class="md-nav__link">
@@ -681,9 +663,9 @@
                   </a>
                 
                 
-                <h1 id="parameters">Parameters</h1>
-<h2 id="utility">Utility</h2>
-<p>The parameters utility provides a way to retrieve parameter values from <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html">AWS Systems Manager Parameter Store</a>, <a href="https://aws.amazon.com/secrets-manager/">AWS Secrets Manager</a> or <a href="https://aws.amazon.com/dynamodb/">Amazon DynamoDB</a>. It also provides a base class to create your parameter provider implementation.</p>
+                  <h1>Parameters</h1>
+                
+                <p>The parameters utility provides a way to retrieve parameter values from <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html">AWS Systems Manager Parameter Store</a>, <a href="https://aws.amazon.com/secrets-manager/">AWS Secrets Manager</a> or <a href="https://aws.amazon.com/dynamodb/">Amazon DynamoDB</a>. It also provides a base class to create your parameter provider implementation.</p>
 <p><strong>Key features</strong></p>
 <ul>
 <li>Retrieve one or multiple parameters from the underlying provider</li>
@@ -1365,6 +1347,8 @@ The following will retrieve the latest version and store it in the cache.</p>
 </tr>
 </tbody>
 </table>
+                
+                  
                 
               
               

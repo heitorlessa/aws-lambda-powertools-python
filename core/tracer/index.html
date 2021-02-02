@@ -6,6 +6,8 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Core utility">
+      
       
       
       
@@ -62,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tracer" class="md-skip">
+        <a href="#initialization" class="md-skip">
           Skip to content
         </a>
       
@@ -244,8 +246,6 @@
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Tracer
@@ -260,21 +260,12 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#core-utility" class="md-nav__link">
-    Core utility
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#initialization" class="md-nav__link">
@@ -562,21 +553,12 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#core-utility" class="md-nav__link">
-    Core utility
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#initialization" class="md-nav__link">
@@ -711,9 +693,9 @@
                   </a>
                 
                 
-                <h1 id="tracer">Tracer</h1>
-<h2 id="core-utility">Core utility</h2>
-<p>Tracer is an opinionated thin wrapper for <a href="https://github.com/aws/aws-xray-sdk-python/">AWS X-Ray Python SDK</a>.</p>
+                  <h1>Tracer</h1>
+                
+                <p>Tracer is an opinionated thin wrapper for <a href="https://github.com/aws/aws-xray-sdk-python/">AWS X-Ray Python SDK</a>.</p>
 <p><img alt="Tracer showcase" src="../../media/tracer_utility_showcase.png" /></p>
 <p><strong>Key features</strong></p>
 <ul>
@@ -1120,6 +1102,8 @@ decorated function response contains a file-like object or a <a href="https://bo
 <li>Use a namespace when adding metadata to group data more easily</li>
 <li>Annotations and metadata are added to the current subsegment opened. If you want them in a specific subsegment, use a <a href="https://github.com/aws/aws-xray-sdk-python/#start-a-custom-segmentsubsegment">context manager</a> via the escape hatch mechanism</li>
 </ul>
+                
+                  
                 
               
               
