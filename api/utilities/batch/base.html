@@ -112,7 +112,7 @@ class BasePartialProcessor(ABC):
         self.success_messages.append(record)
         return entry
 
-    def failure_handler(self, record: Any, exception: Exception):
+    def failure_handler(self, record: Any, exception: Tuple):
         &#34;&#34;&#34;
         Failure callback
 
@@ -121,8 +121,9 @@ class BasePartialProcessor(ABC):
         tuple
             &#34;fail&#34;, exceptions args, original record
         &#34;&#34;&#34;
-        entry = (&#34;fail&#34;, exception.args, record)
-        logger.debug(f&#34;Record processing exception: {exception}&#34;)
+        exception_string = f&#34;{exception[0]}:{exception[1]}&#34;
+        entry = (&#34;fail&#34;, exception_string, record)
+        logger.debug(f&#34;Record processing exception: {exception_string}&#34;)
         self.exceptions.append(exception)
         self.fail_messages.append(record)
         return entry
@@ -349,7 +350,7 @@ def batch_processor(
         self.success_messages.append(record)
         return entry
 
-    def failure_handler(self, record: Any, exception: Exception):
+    def failure_handler(self, record: Any, exception: Tuple):
         &#34;&#34;&#34;
         Failure callback
 
@@ -358,8 +359,9 @@ def batch_processor(
         tuple
             &#34;fail&#34;, exceptions args, original record
         &#34;&#34;&#34;
-        entry = (&#34;fail&#34;, exception.args, record)
-        logger.debug(f&#34;Record processing exception: {exception}&#34;)
+        exception_string = f&#34;{exception[0]}:{exception[1]}&#34;
+        entry = (&#34;fail&#34;, exception_string, record)
+        logger.debug(f&#34;Record processing exception: {exception_string}&#34;)
         self.exceptions.append(exception)
         self.fail_messages.append(record)
         return entry</code></pre>
@@ -388,7 +390,7 @@ def batch_processor(
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def failure_handler(self, record: Any, exception: Exception):
+<pre><code class="python">def failure_handler(self, record: Any, exception: Tuple):
     &#34;&#34;&#34;
     Failure callback
 
@@ -397,8 +399,9 @@ def batch_processor(
     tuple
         &#34;fail&#34;, exceptions args, original record
     &#34;&#34;&#34;
-    entry = (&#34;fail&#34;, exception.args, record)
-    logger.debug(f&#34;Record processing exception: {exception}&#34;)
+    exception_string = f&#34;{exception[0]}:{exception[1]}&#34;
+    entry = (&#34;fail&#34;, exception_string, record)
+    logger.debug(f&#34;Record processing exception: {exception_string}&#34;)
     self.exceptions.append(exception)
     self.fail_messages.append(record)
     return entry</code></pre>

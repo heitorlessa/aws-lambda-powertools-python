@@ -28,10 +28,28 @@
 <pre><code class="python">&#34;&#34;&#34;
 Batch processing exceptions
 &#34;&#34;&#34;
+import traceback
 
 
 class SQSBatchProcessingError(Exception):
-    &#34;&#34;&#34;When at least one message within a batch could not be processed&#34;&#34;&#34;</code></pre>
+    &#34;&#34;&#34;When at least one message within a batch could not be processed&#34;&#34;&#34;
+
+    def __init__(self, msg=&#34;&#34;, child_exceptions=()):
+        super().__init__(msg)
+        self.msg = msg
+        self.child_exceptions = child_exceptions
+
+    # Overriding this method so we can output all child exception tracebacks when we raise this exception to prevent
+    # errors being lost. See https://github.com/awslabs/aws-lambda-powertools-python/issues/275
+    def __str__(self):
+        parent_exception_str = super(SQSBatchProcessingError, self).__str__()
+        exception_list = [f&#34;{parent_exception_str}\n&#34;]
+        for exception in self.child_exceptions:
+            extype, ex, tb = exception
+            formatted = &#34;&#34;.join(traceback.format_exception(extype, ex, tb))
+            exception_list.append(formatted)
+
+        return &#34;\n&#34;.join(exception_list)</code></pre>
 </details>
 </section>
 <section>
@@ -45,7 +63,7 @@ class SQSBatchProcessingError(Exception):
 <dl>
 <dt id="aws_lambda_powertools.utilities.batch.exceptions.SQSBatchProcessingError"><code class="flex name class">
 <span>class <span class="ident">SQSBatchProcessingError</span></span>
-<span>(</span><span>...)</span>
+<span>(</span><span>msg='', child_exceptions=())</span>
 </code></dt>
 <dd>
 <section class="desc"><p>When at least one message within a batch could not be processed</p></section>
@@ -54,7 +72,24 @@ class SQSBatchProcessingError(Exception):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class SQSBatchProcessingError(Exception):
-    &#34;&#34;&#34;When at least one message within a batch could not be processed&#34;&#34;&#34;</code></pre>
+    &#34;&#34;&#34;When at least one message within a batch could not be processed&#34;&#34;&#34;
+
+    def __init__(self, msg=&#34;&#34;, child_exceptions=()):
+        super().__init__(msg)
+        self.msg = msg
+        self.child_exceptions = child_exceptions
+
+    # Overriding this method so we can output all child exception tracebacks when we raise this exception to prevent
+    # errors being lost. See https://github.com/awslabs/aws-lambda-powertools-python/issues/275
+    def __str__(self):
+        parent_exception_str = super(SQSBatchProcessingError, self).__str__()
+        exception_list = [f&#34;{parent_exception_str}\n&#34;]
+        for exception in self.child_exceptions:
+            extype, ex, tb = exception
+            formatted = &#34;&#34;.join(traceback.format_exception(extype, ex, tb))
+            exception_list.append(formatted)
+
+        return &#34;\n&#34;.join(exception_list)</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">

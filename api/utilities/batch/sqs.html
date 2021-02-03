@@ -31,6 +31,7 @@
 Batch SQS utilities
 &#34;&#34;&#34;
 import logging
+import sys
 from typing import Callable, Dict, List, Optional, Tuple
 
 import boto3
@@ -117,10 +118,10 @@ class PartialSQSProcessor(BasePartialProcessor):
             An object to be processed.
         &#34;&#34;&#34;
         try:
-            result = self.handler(record)
-            return self.success_handler(record, result)
-        except Exception as exc:
-            return self.failure_handler(record, exc)
+            result = self.handler(record=record)
+            return self.success_handler(record=record, result=result)
+        except Exception:
+            return self.failure_handler(record=record, exception=sys.exc_info())
 
     def _prepare(self):
         &#34;&#34;&#34;
@@ -150,7 +151,11 @@ class PartialSQSProcessor(BasePartialProcessor):
             logger.debug(f&#34;{len(self.fail_messages)} records failed processing, but exceptions are suppressed&#34;)
         else:
             logger.debug(f&#34;{len(self.fail_messages)} records failed processing, raising exception&#34;)
-            raise SQSBatchProcessingError(list(self.exceptions))
+            raise SQSBatchProcessingError(
+                msg=f&#34;Not all records processed succesfully. {len(self.exceptions)} individual errors logged &#34;
+                f&#34;separately below.&#34;,
+                child_exceptions=self.exceptions,
+            )
 
         return delete_message_response
 
@@ -431,10 +436,10 @@ be returned to the SQS queue. This behaviour can be disabled by passing suppress
             An object to be processed.
         &#34;&#34;&#34;
         try:
-            result = self.handler(record)
-            return self.success_handler(record, result)
-        except Exception as exc:
-            return self.failure_handler(record, exc)
+            result = self.handler(record=record)
+            return self.success_handler(record=record, result=result)
+        except Exception:
+            return self.failure_handler(record=record, exception=sys.exc_info())
 
     def _prepare(self):
         &#34;&#34;&#34;
@@ -464,7 +469,11 @@ be returned to the SQS queue. This behaviour can be disabled by passing suppress
             logger.debug(f&#34;{len(self.fail_messages)} records failed processing, but exceptions are suppressed&#34;)
         else:
             logger.debug(f&#34;{len(self.fail_messages)} records failed processing, raising exception&#34;)
-            raise SQSBatchProcessingError(list(self.exceptions))
+            raise SQSBatchProcessingError(
+                msg=f&#34;Not all records processed succesfully. {len(self.exceptions)} individual errors logged &#34;
+                f&#34;separately below.&#34;,
+                child_exceptions=self.exceptions,
+            )
 
         return delete_message_response</code></pre>
 </details>
