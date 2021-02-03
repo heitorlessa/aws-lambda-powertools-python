@@ -679,7 +679,10 @@
 </td></tr></table>
 </div>
 </div>
-<p><strong>NOTE</strong>: It's not a requirement to validate both inbound and outbound schemas - You can either use one, or both.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It's not a requirement to validate both inbound and outbound schemas - You can either use one, or both.</p>
+</div>
 <h3 id="validate-function">Validate function</h3>
 <p><strong>Validate</strong> standalone function is typically used within the Lambda handler, or any other methods that perform data validation.</p>
 <p>You can also gracefully handle schema validation errors by catching <code>SchemaValidationError</code> exception.</p>
