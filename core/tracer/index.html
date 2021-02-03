@@ -1086,10 +1086,12 @@ decorated function response contains a file-like object or a <a href="https://bo
 </td></tr></table>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Tracer</span>
-<span class="hll"><span class="c1"># new instance using existing configuration</span>
-</span><span class="hll"><span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;payment&quot;</span><span class="p">)</span>
-</span></code></pre></div>
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># another_file.py</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Tracer</span>
+</span><span class="hll"><span class="c1"># new instance using existing configuration</span>
+</span><span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;payment&quot;</span><span class="p">)</span>
+</code></pre></div>
 </td></tr></table>
 <h2 id="testing-your-code">Testing your code</h2>
 <p>You can safely disable Tracer when unit testing your code using <code>POWERTOOLS_TRACE_DISABLED</code> environment variable.</p>
