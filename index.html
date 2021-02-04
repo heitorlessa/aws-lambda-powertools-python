@@ -575,30 +575,32 @@
 </code></pre></div>
 </td></tr></table>
 <h3 id="lambda-layer">Lambda Layer</h3>
-<p>Powertools is also available as a Lambda Layer. It is distributed via the <a href="https://docs.aws.amazon.com/serverlessrepo/latest/devguide/what-is-serverlessrepo.html">AWS Serverless Application Repository (SAR)</a>.
-We have two layers available, one with core dependencies <code>aws-lambda-powertools-python-layer</code> and one with extras <code>aws-lambda-powertools-python-layer-extras</code> such as <code>pydantic</code> which is required for the parser.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Extras layer does not support Python 3.6 runtime. This layer is also includes all extra dependencies and is 22.4MB zipped, ~155MB unzipped.</p>
-</div>
+<p>Powertools is also available as a Lambda Layer, and it is distributed via the <a href="https://docs.aws.amazon.com/serverlessrepo/latest/devguide/what-is-serverlessrepo.html">AWS Serverless Application Repository (SAR)</a> to support semantic versioning.</p>
 <table>
 <thead>
 <tr>
 <th>App</th>
 <th>ARN</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer">aws-lambda-powertools-python-layer</a></td>
 <td>arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer</td>
+<td>Core dependencies only; sufficient for nearly all utilities.</td>
 </tr>
 <tr>
 <td><a href="https://serverlessrepo.aws.amazon.com/applications/eu-west-1/057560766410/aws-lambda-powertools-python-layer-extras">aws-lambda-powertools-python-layer-extras</a></td>
 <td>arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer-extras</td>
+<td>Core plus extra dependencies such as <code>pydantic</code> that is required by <code>parser</code> utility.</td>
 </tr>
 </tbody>
 </table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Layer-extras</strong> does not support Python 3.6 runtime. This layer also includes all extra dependencies: <code>22.4MB zipped</code>, <code>~155MB unzipped</code>.</p>
+</div>
 <p>If using SAM, you can include this SAR App as part of your shared Layers stack, and lock to a specific semantic version. Once deployed, it'll be available across the account this is deployed to.</p>
 <div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">template.yml</label><div class="tabbed-content"></div>
 </div>
@@ -612,16 +614,19 @@ We have two layers available, one with core dependencies <code>aws-lambda-powert
   <span class="nt">Properties</span><span class="p">:</span>
     <span class="nt">Location</span><span class="p">:</span>
       <span class="nt">ApplicationId</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer</span>
-      <span class="nt">SemanticVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.9.0</span> <span class="c1"># change to latest semantic version available in SAR</span>
-</code></pre></div>
+<span class="hll">      <span class="nt">SemanticVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.10.2</span> <span class="c1"># change to latest semantic version available in SAR</span>
+</span></code></pre></div>
 </td></tr></table>
 <p>This will add a nested app stack with an output parameter <code>LayerVersionArn</code>, that you can reference inside your Lambda function definition:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">Layers</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">AwsLambdaPowertoolsPythonLayer.Outputs.LayerVersionArn</span>
-</code></pre></div>
+<span class="hll">  <span class="p p-Indicator">-</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">AwsLambdaPowertoolsPythonLayer.Outputs.LayerVersionArn</span>
+</span></code></pre></div>
 </td></tr></table>
-<p>Here is an example of an IAM role for CloudFormation with the list of IAM permissions that you need to deploy the layer:</p>
+<details class="multiple optional-class"><summary>Example IAM permissions to deploy layer</summary><blockquote>
+<p>Credits to <a href="https://github.com/mwarkentin">mwarkentin</a> for providing the scoped down IAM permissions.</p>
+</blockquote>
+<p>The region and the account id for <code>CloudFormationTransform</code> and <code>GetCfnTemplate</code> are fixed.</p>
 <div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">template.yml</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
@@ -719,7 +724,7 @@ We have two layers available, one with core dependencies <code>aws-lambda-powert
               <span class="c1"># AWS publishes to an external S3 bucket locked down to your account ID</span>
               <span class="c1"># The below example is us publishing lambda powertools</span>
               <span class="c1"># Bucket: awsserverlessrepo-changesets-plntc6bfnfj</span>
-              <span class="c1"># Key: *****/arn:aws:serverlessrepo:eu-west-1:057560766410:applications-aws-lambda-powertools-python-layer-versions-1.6.0/aeeccf50-****-****-****-*********</span>
+              <span class="c1"># Key: *****/arn:aws:serverlessrepo:eu-west-1:057560766410:applications-aws-lambda-powertools-python-layer-versions-1.10.2/aeeccf50-****-****-****-*********</span>
               <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:s3:::awsserverlessrepo-changesets-*/*</span>
           <span class="p p-Indicator">-</span> <span class="nt">Sid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">GetLayerVersion</span>
             <span class="nt">Effect</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Allow</span>
@@ -734,14 +739,11 @@ We have two layers available, one with core dependencies <code>aws-lambda-powert
 </td></tr></table>
 </div>
 </div>
-<blockquote>
-<p>Credits to <a href="https://github.com/mwarkentin">mwarkentin</a> for providing the scoped down IAM permissions.</p>
-</blockquote>
-<p>The region and the account id for <code>CloudFormationTransform</code> and <code>GetCfnTemplate</code> are fixed.</p>
-<p>You can fetch the available versions via the API with:</p>
+</details>
+<p>You can fetch available versions via SAR API with:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>aws serverlessrepo list-application-versions <span class="se">\</span>
-  --application-id arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer
+    --application-id arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer
 </code></pre></div>
 </td></tr></table>
 <h2 id="features">Features</h2>
@@ -883,12 +885,12 @@ We have two layers available, one with core dependencies <code>aws-lambda-powert
 </div>
 <h2 id="tenets">Tenets</h2>
 <ul>
-<li><strong>AWS Lambda only</strong> – We optimise for AWS Lambda function environments and supported runtimes only. Utilities might work with web frameworks and non-Lambda environments, though they are not officially supported.</li>
-<li><strong>Eases the adoption of best practices</strong> – The main priority of the utilities is to facilitate best practices adoption, as defined in the AWS Well-Architected Serverless Lens; all other functionality is optional.</li>
-<li><strong>Keep it lean</strong> – Additional dependencies are carefully considered for security and ease of maintenance, and prevent negatively impacting startup time.</li>
-<li><strong>We strive for backwards compatibility</strong> – New features and changes should keep backwards compatibility. If a breaking change cannot be avoided, the deprecation and migration process should be clearly defined.</li>
-<li><strong>We work backwards from the community</strong> – We aim to strike a balance of what would work best for 80% of customers. Emerging practices are considered and discussed via Requests for Comment (RFCs)</li>
-<li><strong>Idiomatic</strong> – Utilities follow programming language idioms and language-specific best practices.</li>
+<li><strong>AWS Lambda only</strong>. We optimise for AWS Lambda function environments and supported runtimes only. Utilities might work with web frameworks and non-Lambda environments, though they are not officially supported.</li>
+<li><strong>Eases the adoption of best practices</strong>. The main priority of the utilities is to facilitate best practices adoption, as defined in the AWS Well-Architected Serverless Lens; all other functionality is optional.</li>
+<li><strong>Keep it lean</strong>. Additional dependencies are carefully considered for security and ease of maintenance, and prevent negatively impacting startup time.</li>
+<li><strong>We strive for backwards compatibility</strong>. New features and changes should keep backwards compatibility. If a breaking change cannot be avoided, the deprecation and migration process should be clearly defined.</li>
+<li><strong>We work backwards from the community</strong>. We aim to strike a balance of what would work best for 80% of customers. Emerging practices are considered and discussed via Requests for Comment (RFCs)</li>
+<li><strong>Idiomatic</strong>. Utilities follow programming language idioms and language-specific best practices.</li>
 </ul>
 <p><em><code>*</code> Core utilities are Tracer, Logger and Metrics. Optional utilities may vary across languages.</em></p>
                 

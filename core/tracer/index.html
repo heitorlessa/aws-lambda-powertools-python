@@ -911,38 +911,64 @@ decorated function response contains a file-like object or a <a href="https://bo
 5
 6
 7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
 <span class="kn">import</span> <span class="nn">contextlib</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Tracer</span>
+
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
 
 <span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">collect_payment</span><span class="p">():</span>
-    <span class="o">...</span>
+<span class="hll"><span class="k">async</span> <span class="k">def</span> <span class="nf">collect_payment</span><span class="p">():</span>
+</span>    <span class="o">...</span>
 </code></pre></div>
 </td></tr></table>
 </div>
 <input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Context manager</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
-<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
-<span class="k">def</span> <span class="nf">collect_payment_ctxman</span><span class="p">():</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">contextlib</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Tracer</span>
+
+<span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
+
+<span class="hll"><span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
+</span><span class="hll"><span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
+</span><span class="k">def</span> <span class="nf">collect_payment_ctxman</span><span class="p">():</span>
     <span class="k">yield</span> <span class="n">result</span>
     <span class="o">...</span>
 </code></pre></div>
 </td></tr></table>
 </div>
 <input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><label for="__tabbed_3_3">Generators</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">contextlib</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Tracer</span>
+
+<span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
+
+<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
 <span class="k">def</span> <span class="nf">collect_payment_gen</span><span class="p">():</span>
-    <span class="k">yield</span> <span class="n">result</span>
-    <span class="o">...</span>
+<span class="hll">    <span class="k">yield</span> <span class="n">result</span>
+</span>    <span class="o">...</span>
 </code></pre></div>
 </td></tr></table>
 </div>
