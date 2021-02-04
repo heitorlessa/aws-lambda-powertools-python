@@ -720,15 +720,15 @@
  8
  9
 10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">Resources</span><span class="p">:</span>
-    <span class="nt">HelloWorldFunction</span><span class="p">:</span>
-        <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
-        <span class="nt">Properties</span><span class="p">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">...</span>
-        <span class="nt">Runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python3.8</span>
-<span class="hll">        <span class="nt">Tracing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Active</span>
-</span>        <span class="nt">Environment</span><span class="p">:</span>
-            <span class="nt">Variables</span><span class="p">:</span>
-                <span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">example</span>
+  <span class="nt">HelloWorldFunction</span><span class="p">:</span>
+    <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
+    <span class="nt">Properties</span><span class="p">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">...</span>
+    <span class="nt">Runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python3.8</span>
+<span class="hll">    <span class="nt">Tracing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Active</span>
+</span>    <span class="nt">Environment</span><span class="p">:</span>
+      <span class="nt">Variables</span><span class="p">:</span>
+        <span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">example</span>
 </code></pre></div>
 </td></tr></table>
 </div>
@@ -797,7 +797,7 @@
 </blockquote>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><strong>Can exceptions contain sensitive information from your Lambda handler or functions, where Tracer is used?</strong></p>
+<p><strong>Where Tracer is used, can your exceptions contain any sensitive information from your Lambda handler or functions?</strong></p>
 </div>
 <p>You can disable Tracer from capturing their exceptions as tracing metadata with <strong><code>capture_error=False</code></strong> parameter in both capture_lambda_handler and capture_method decorators.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -812,9 +812,9 @@
 </code></pre></div>
 </td></tr></table>
 <h3 id="annotations-metadata">Annotations &amp; Metadata</h3>
-<p>Annotations are key-values indexed by AWS X-Ray on a per trace basis. You can use them to filter traces as well as to create <a href="https://aws.amazon.com/about-aws/whats-new/2018/11/aws-xray-adds-the-ability-to-group-traces/">Trace Groups</a>.
+<p><strong>Annotations</strong> are key-values indexed by AWS X-Ray on a per trace basis. You can use them to filter traces as well as to create <a href="https://aws.amazon.com/about-aws/whats-new/2018/11/aws-xray-adds-the-ability-to-group-traces/">Trace Groups</a>.
 You can add annotations using <code>put_annotation</code> method from Tracer.</p>
-<p>Metadata are non-indexed values that can add additional context for an operation.
+<p><strong>Metadata</strong> are non-indexed values that can add additional context for an operation.
 You can add metadata using <code>put_metadata</code> method from Tracer.</p>
 <div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Annotations</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
