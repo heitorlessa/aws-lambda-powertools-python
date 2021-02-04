@@ -600,17 +600,21 @@ We have two layers available, one with core dependencies <code>aws-lambda-powert
 </tbody>
 </table>
 <p>If using SAM, you can include this SAR App as part of your shared Layers stack, and lock to a specific semantic version. Once deployed, it'll be available across the account this is deployed to.</p>
-<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">template.yml</label><div class="tabbed-content">
-<p>``` yaml
-AwsLambdaPowertoolsPythonLayer:
-  Type: AWS::Serverless::Application
-  Properties:
-    Location:
-      ApplicationId: arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer
-      SemanticVersion: 1.9.0 # change to latest semantic version available in SAR</p>
+<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">template.yml</label><div class="tabbed-content"></div>
 </div>
-</div>
-<p>```</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AwsLambdaPowertoolsPythonLayer</span><span class="p">:</span>
+  <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Application</span>
+  <span class="nt">Properties</span><span class="p">:</span>
+    <span class="nt">Location</span><span class="p">:</span>
+      <span class="nt">ApplicationId</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer</span>
+      <span class="nt">SemanticVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.9.0</span> <span class="c1"># change to latest semantic version available in SAR</span>
+</code></pre></div>
+</td></tr></table>
 <p>This will add a nested app stack with an output parameter <code>LayerVersionArn</code>, that you can reference inside your Lambda function definition:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">Layers</span><span class="p">:</span>
