@@ -11,7 +11,7 @@
       
       
       
-      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <link rel="shortcut icon" href="../../media/aws-logo-light.svg">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.7">
     
     
@@ -887,12 +887,10 @@
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
-3
-4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span>
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span>
 <span class="hll"><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span> <span class="c1"># Sets service via env var</span>
-</span>
-<span class="hll"><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;example&quot;</span><span class="p">)</span> <span class="c1"># Sets service via parameter explicitly</span>
-</span></code></pre></div>
+</span><span class="c1"># OR logger = Logger(service=&quot;example&quot;)</span>
+</code></pre></div>
 </td></tr></table>
 </div>
 </div>

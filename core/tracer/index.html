@@ -11,7 +11,7 @@
       
       
       
-      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <link rel="shortcut icon" href="../../media/aws-logo-light.svg">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.7">
     
     
@@ -794,20 +794,14 @@
  7
  8
  9
-10
-11
-12
-13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Tracer</span>
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Tracer</span>
 </span>
-<span class="c1"># Implicit definition when POWERTOOLS_SERVICE_NAME env var is set</span>
-<span class="hll"><span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
-</span>
-<span class="c1"># Explicit definition</span>
-<span class="c1"># tracer = Tracer(service=&quot;booking&quot;)</span>
+<span class="hll"><span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span> <span class="c1"># Sets service via env var</span>
+</span><span class="c1"># OR tracer = Tracer(service=&quot;example&quot;)</span>
 
-<span class="hll"><span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
-</span><span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="n">charge_id</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;charge_id&#39;</span><span class="p">)</span>
+<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
+<span class="hll"><span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+</span>    <span class="n">charge_id</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;charge_id&#39;</span><span class="p">)</span>
     <span class="n">payment</span> <span class="o">=</span> <span class="n">collect_payment</span><span class="p">(</span><span class="n">charge_id</span><span class="p">)</span>
     <span class="o">...</span>
 </code></pre></div>
