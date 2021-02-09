@@ -104,36 +104,6 @@
       </div>
     </div>
     
-      <label class="md-header-nav__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-      </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-    
     
       <div class="md-header-nav__source">
         
@@ -237,7 +207,7 @@
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" data-md-state="indeterminate" type="checkbox" id="nav-3" checked>
       
       <label class="md-nav__link" for="nav-3">
         Core utilities
@@ -673,12 +643,12 @@
 <p>When authoring Lambda functions, you often need to understand the schema of the event dictionary which is passed to the
 handler. There are several common event types which follow a specific schema, depending on the service triggering the
 Lambda function.</p>
-<h2 id="utilizing-the-data-classes">Utilizing the data classes</h2>
+<h2 id="utilizing-the-data-classes">Utilizing the data classes<a class="headerlink" href="#utilizing-the-data-classes" title="Permanent link">&para;</a></h2>
 <p>The classes are initialized by passing in the Lambda event object into the constructor of the appropriate data class.
 For example, if your Lambda function is being triggered by an API Gateway proxy integration, you can use the
 <code>APIGatewayProxyEvent</code> class.</p>
 <p><img alt="Utilities Data Classes" src="../../media/utilities_data_classes.png" /></p>
-<h2 id="supported-event-sources">Supported event sources</h2>
+<h2 id="supported-event-sources">Supported event sources<a class="headerlink" href="#supported-event-sources" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -738,7 +708,7 @@ For example, if your Lambda function is being triggered by an API Gateway proxy 
 <p>The examples provided below are far from exhaustive - the data classes themselves are designed to provide a form of
 documentation inherently (via autocompletion, types and docstrings).</p>
 </div>
-<h2 id="api-gateway-proxy">API Gateway Proxy</h2>
+<h2 id="api-gateway-proxy">API Gateway Proxy<a class="headerlink" href="#api-gateway-proxy" title="Permanent link">&para;</a></h2>
 <p>Typically used for API Gateway REST API or HTTP API using v1 proxy event.</p>
 <div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">lambda_app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -764,7 +734,7 @@ documentation inherently (via autocompletion, types and docstrings).</p>
 </td></tr></table>
 </div>
 </div>
-<h2 id="api-gateway-proxy-v2">API Gateway Proxy v2</h2>
+<h2 id="api-gateway-proxy-v2">API Gateway Proxy v2<a class="headerlink" href="#api-gateway-proxy-v2" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">lambda_app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -787,7 +757,7 @@ documentation inherently (via autocompletion, types and docstrings).</p>
 </td></tr></table>
 </div>
 </div>
-<h2 id="cloudwatch-logs">CloudWatch Logs</h2>
+<h2 id="cloudwatch-logs">CloudWatch Logs<a class="headerlink" href="#cloudwatch-logs" title="Permanent link">&para;</a></h2>
 <p>CloudWatch Logs events by default are compressed and base64 encoded. You can use the helper function provided to decode,
 decompress and parse json data from the event.</p>
 <div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">lambda_app.py</label><div class="tabbed-content">
@@ -812,7 +782,7 @@ decompress and parse json data from the event.</p>
 </td></tr></table>
 </div>
 </div>
-<h2 id="cognito-user-pool">Cognito User Pool</h2>
+<h2 id="cognito-user-pool">Cognito User Pool<a class="headerlink" href="#cognito-user-pool" title="Permanent link">&para;</a></h2>
 <p>Cognito User Pools have several <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html#cognito-user-identity-pools-working-with-aws-lambda-trigger-sources">different Lambda trigger sources</a>, all of which map to a different data class, which
 can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_event</code>:</p>
 <table>
@@ -883,7 +853,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </td></tr></table>
 </div>
 </div>
-<h2 id="dynamodb-streams">DynamoDB Streams</h2>
+<h2 id="dynamodb-streams">DynamoDB Streams<a class="headerlink" href="#dynamodb-streams" title="Permanent link">&para;</a></h2>
 <p>The DynamoDB data class utility provides the base class for <code>DynamoDBStreamEvent</code>, a typed class for
 attributes values (<code>AttributeValue</code>), as well as enums for stream view type (<code>StreamViewType</code>) and event type
 (<code>DynamoDBRecordEventName</code>).</p>
@@ -911,7 +881,7 @@ attributes values (<code>AttributeValue</code>), as well as enums for stream vie
 </td></tr></table>
 </div>
 </div>
-<h2 id="eventbridge">EventBridge</h2>
+<h2 id="eventbridge">EventBridge<a class="headerlink" href="#eventbridge" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">lambda_app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -926,7 +896,7 @@ attributes values (<code>AttributeValue</code>), as well as enums for stream vie
 </td></tr></table>
 </div>
 </div>
-<h2 id="kinesis-streams">Kinesis streams</h2>
+<h2 id="kinesis-streams">Kinesis streams<a class="headerlink" href="#kinesis-streams" title="Permanent link">&para;</a></h2>
 <p>Kinesis events by default contain base64 encoded data. You can use the helper function to access the data either as json
 or plain text, depending on the original payload.</p>
 <div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">lambda_app.py</label><div class="tabbed-content">
@@ -957,7 +927,7 @@ or plain text, depending on the original payload.</p>
 </td></tr></table>
 </div>
 </div>
-<h2 id="s3">S3</h2>
+<h2 id="s3">S3<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">lambda_app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
@@ -984,7 +954,7 @@ or plain text, depending on the original payload.</p>
 </td></tr></table>
 </div>
 </div>
-<h2 id="ses">SES</h2>
+<h2 id="ses">SES<a class="headerlink" href="#ses" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">lambda_app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
@@ -1011,7 +981,7 @@ or plain text, depending on the original payload.</p>
 </td></tr></table>
 </div>
 </div>
-<h2 id="sns">SNS</h2>
+<h2 id="sns">SNS<a class="headerlink" href="#sns" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">lambda_app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
@@ -1038,7 +1008,7 @@ or plain text, depending on the original payload.</p>
 </td></tr></table>
 </div>
 </div>
-<h2 id="sqs">SQS</h2>
+<h2 id="sqs">SQS<a class="headerlink" href="#sqs" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">lambda_app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -1060,6 +1030,17 @@ or plain text, depending on the original payload.</p>
 </div>
 </div>
                 
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2021-02-02
+    
+  </small>
+</div>
                   
                 
               
@@ -1115,6 +1096,10 @@ or plain text, depending on the original payload.</p>
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 - Present by Amazon Web Services
+          </div>
+        
         Made with
         <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs
@@ -1133,7 +1118,7 @@ or plain text, depending on the original payload.</p>
       <script>
         app = initialize({
           base: "../..",
-          features: ['navigation.sections'],
+          features: ['navigation.sections', 'navigation.expand'],
           search: Object.assign({
             worker: "../../assets/javascripts/worker/search.9c0e82ba.min.js"
           }, typeof search !== "undefined" && search)

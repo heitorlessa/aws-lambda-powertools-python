@@ -104,36 +104,6 @@
       </div>
     </div>
     
-      <label class="md-header-nav__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-      </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-    
     
       <div class="md-header-nav__source">
         
@@ -237,7 +207,7 @@
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" data-md-state="indeterminate" type="checkbox" id="nav-3" checked>
       
       <label class="md-nav__link" for="nav-3">
         Core utilities
@@ -741,7 +711,7 @@
 <p>This will install <a href="https://github.com/samuelcolvin/pydantic">pydantic</a> and <a href="https://github.com/python/typing/tree/master/typing_extensions">typing_extensions</a></p>
 </div>
 <p>Install parser's extra dependencies using <strong><code>pip install aws-lambda-powertools[pydantic]</code></strong>.</p>
-<h2 id="defining-models">Defining models</h2>
+<h2 id="defining-models">Defining models<a class="headerlink" href="#defining-models" title="Permanent link">&para;</a></h2>
 <p>You can define models to parse incoming events by inheriting from <code>BaseModel</code>.</p>
 <div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">hello_world_model.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -774,9 +744,9 @@
 </div>
 </div>
 <p>These are simply Python classes that inherit from BaseModel. <strong>Parser</strong> enforces type hints declared in your model at runtime.</p>
-<h2 id="parsing-events">Parsing events</h2>
+<h2 id="parsing-events">Parsing events<a class="headerlink" href="#parsing-events" title="Permanent link">&para;</a></h2>
 <p>You can parse inbound events using <strong>event_parser</strong> decorator, or the standalone <code>parse</code> function. Both are also able to parse either dictionary or JSON string as an input.</p>
-<h3 id="event_parser-decorator">event_parser decorator</h3>
+<h3 id="event_parser-decorator">event_parser decorator<a class="headerlink" href="#event_parser-decorator" title="Permanent link">&para;</a></h3>
 <p>Use the decorator for fail fast scenarios where you want your Lambda function to raise an exception in the event of a malformed payload.</p>
 <p><code>event_parser</code> decorator will throw a <code>ValidationError</code> if your event cannot be parsed according to the model.</p>
 <blockquote>
@@ -866,7 +836,7 @@
 </td></tr></table>
 </div>
 </div>
-<h3 id="parse-function">parse function</h3>
+<h3 id="parse-function">parse function<a class="headerlink" href="#parse-function" title="Permanent link">&para;</a></h3>
 <p>Use this standalone function when you want more control over the data validation process, for example returning a 400 error for malformed payloads.</p>
 <div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">parse_standalone_example.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -946,7 +916,7 @@
 </td></tr></table>
 </div>
 </div>
-<h2 id="built-in-models">Built-in models</h2>
+<h2 id="built-in-models">Built-in models<a class="headerlink" href="#built-in-models" title="Permanent link">&para;</a></h2>
 <p>Parser comes with the following built-in models:</p>
 <table>
 <thead>
@@ -994,7 +964,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="extending-built-in-models">extending built-in models</h3>
+<h3 id="extending-built-in-models">extending built-in models<a class="headerlink" href="#extending-built-in-models" title="Permanent link">&para;</a></h3>
 <p>You can extend them to include your own models, and yet have all other known fields parsed along the way.</p>
 <p><strong>EventBridge example</strong></p>
 <div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">extending_builtin_models.py</label><div class="tabbed-content">
@@ -1104,7 +1074,7 @@
 <li>Defined how part of our EventBridge event should look like by overriding <code>detail</code> key within our <code>OrderEventModel</code></li>
 <li>Parser parsed the original event against <code>OrderEventModel</code></li>
 </ol>
-<h2 id="envelopes">Envelopes</h2>
+<h2 id="envelopes">Envelopes<a class="headerlink" href="#envelopes" title="Permanent link">&para;</a></h2>
 <p>When trying to parse your payloads wrapped in a known structure, you might encounter the following situations:</p>
 <ul>
 <li>Your actual payload is wrapped around a known structure, for example Lambda Event Sources like EventBridge</li>
@@ -1191,7 +1161,7 @@
 <li>Parser parsed the original event against the EventBridge model</li>
 <li>Parser then parsed the <code>detail</code> key using <code>UserModel</code></li>
 </ol>
-<h3 id="built-in-envelopes">built-in envelopes</h3>
+<h3 id="built-in-envelopes">built-in envelopes<a class="headerlink" href="#built-in-envelopes" title="Permanent link">&para;</a></h3>
 <p>Parser comes with the following built-in envelopes, where <code>Model</code> in the return section is your given model.</p>
 <table>
 <thead>
@@ -1239,7 +1209,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="bringing-your-own-envelope">bringing your own envelope</h3>
+<h3 id="bringing-your-own-envelope">bringing your own envelope<a class="headerlink" href="#bringing-your-own-envelope" title="Permanent link">&para;</a></h3>
 <p>You can create your own Envelope model and logic by inheriting from <code>BaseEnvelope</code>, and implementing the <code>parse</code> method.</p>
 <p>Here's a snippet of how the EventBridge envelope we demonstrated previously is implemented.</p>
 <p><strong>EventBridge Model</strong></p>
@@ -1343,7 +1313,7 @@
 <li>Then, we parsed the incoming data with our envelope to confirm it matches EventBridge's structure defined in <code>EventBridgeModel</code></li>
 <li>Lastly, we call <code>_parse</code> from <code>BaseEnvelope</code> to parse the data in our envelope (.detail) using the customer model</li>
 </ol>
-<h2 id="data-model-validation">Data model validation</h2>
+<h2 id="data-model-validation">Data model validation<a class="headerlink" href="#data-model-validation" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This is radically different from the <strong>Validator utility</strong> which validates events against JSON Schema.</p>
@@ -1359,7 +1329,7 @@
 <li>You must raise either <code>ValueError</code>, <code>TypeError</code>, or <code>AssertionError</code> when value is not compliant</li>
 <li>You must return the value(s) itself if compliant</li>
 </ul>
-<h3 id="validating-fields">validating fields</h3>
+<h3 id="validating-fields">validating fields<a class="headerlink" href="#validating-fields" title="Permanent link">&para;</a></h3>
 <p>Quick validation to verify whether the field <code>message</code> has the value of <code>hello world</code>.</p>
 <div class="tabbed-set" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">deep_data_validation.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -1428,7 +1398,7 @@
 </td></tr></table>
 </div>
 </div>
-<h3 id="validating-entire-model">validating entire model</h3>
+<h3 id="validating-entire-model">validating entire model<a class="headerlink" href="#validating-entire-model" title="Permanent link">&para;</a></h3>
 <p><code>root_validator</code> can help when you have a complex validation mechanism. For example finding whether data has been omitted, comparing field values, etc.</p>
 <div class="tabbed-set" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">validate_all_field_values.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -1480,7 +1450,7 @@
 <p class="admonition-title">Info</p>
 <p>You can read more about validating list items, reusing validators, validating raw inputs, and a lot more in <a href="https://pydantic-docs.helpmanual.io/usage/validators/">Pydantic's documentation</a>.</p>
 </div>
-<h2 id="advanced-use-cases">Advanced use cases</h2>
+<h2 id="advanced-use-cases">Advanced use cases<a class="headerlink" href="#advanced-use-cases" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p><strong>Looking to auto-generate models from JSON, YAML, JSON Schemas, OpenApi, etc?</strong></p>
@@ -1555,7 +1525,7 @@
 </div>
 </div>
 <p>These can be quite useful when manipulating models that later need to be serialized as inputs for services like DynamoDB, EventBridge, etc.</p>
-<h2 id="faq">FAQ</h2>
+<h2 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h2>
 <p><strong>When should I use parser vs data_classes utility?</strong></p>
 <p>Use data classes utility when you're after autocomplete, self-documented attributes and helpers to extract data from common event sources.</p>
 <p>Parser is best suited for those looking for a trade-off between defining their models for deep validation, parsing and autocomplete for an additional dependency to be brought in.</p>
@@ -1643,6 +1613,17 @@
 </td></tr></table>
                 
                   
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2021-02-02
+    
+  </small>
+</div>
+                  
                 
               
               
@@ -1683,6 +1664,10 @@
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 - Present by Amazon Web Services
+          </div>
+        
         Made with
         <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs
@@ -1701,7 +1686,7 @@
       <script>
         app = initialize({
           base: "../..",
-          features: ['navigation.sections'],
+          features: ['navigation.sections', 'navigation.expand'],
           search: Object.assign({
             worker: "../../assets/javascripts/worker/search.9c0e82ba.min.js"
           }, typeof search !== "undefined" && search)
