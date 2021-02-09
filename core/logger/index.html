@@ -1686,7 +1686,7 @@ for the given name and level to the logging module. By default, this logs all bo
 </div>
 <p><strong>What's the difference between <code>structure_log</code> and <code>extra</code>?</strong></p>
 <p>Keys added with <code>structure_log</code> will persist across multiple log messages while keys added via <code>extra</code> will only be available in a given log message operation.</p>
-<p>Here's an example where we persist payment_id not request_id. Note that payment_id remains in both log messages while booking_id is only available in the first message.</p>
+<p>Here's an example where we persist <code>payment_id</code> not <code>request_id</code>. Note that <code>payment_id</code> remains in both log messages while <code>booking_id</code> is only available in the first message.</p>
 <div class="tabbed-set" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">lambda_handler.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
