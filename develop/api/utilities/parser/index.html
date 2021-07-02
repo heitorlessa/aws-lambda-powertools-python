@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>aws_lambda_powertools.utilities.parser API documentation</title>
+<meta name="description" content="Advanced event_parser utility" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>aws_lambda_powertools.utilities.parser</code></h1>
+</header>
+<section id="section-intro">
+<p>Advanced event_parser utility</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Advanced event_parser utility
+&#34;&#34;&#34;
+from . import envelopes
+from .envelopes import BaseEnvelope
+from .parser import event_parser, parse
+from .pydantic import BaseModel, Field, ValidationError, root_validator, validator
+
+__all__ = [
+    &#34;event_parser&#34;,
+    &#34;parse&#34;,
+    &#34;envelopes&#34;,
+    &#34;BaseEnvelope&#34;,
+    &#34;BaseModel&#34;,
+    &#34;Field&#34;,
+    &#34;validator&#34;,
+    &#34;root_validator&#34;,
+    &#34;ValidationError&#34;,
+]</code></pre>
+</details>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="aws_lambda_powertools.utilities.parser.envelopes" href="envelopes/index.html">aws_lambda_powertools.utilities.parser.envelopes</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="aws_lambda_powertools.utilities.parser.exceptions" href="exceptions.html">aws_lambda_powertools.utilities.parser.exceptions</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="aws_lambda_powertools.utilities.parser.models" href="models/index.html">aws_lambda_powertools.utilities.parser.models</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="aws_lambda_powertools.utilities.parser.parser" href="parser.html">aws_lambda_powertools.utilities.parser.parser</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="aws_lambda_powertools.utilities.parser.pydantic" href="pydantic.html">aws_lambda_powertools.utilities.parser.pydantic</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="aws_lambda_powertools.utilities.parser.types" href="types.html">aws_lambda_powertools.utilities.parser.types</a></code></dt>
+<dd>
+<div class="desc"><p>Generics and other shared types used across parser</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="aws_lambda_powertools.utilities.parser.Field"><code class="name flex">
+<span>def <span class="ident">Field</span></span>(<span>default: Any = PydanticUndefined, *, default_factory: Union[Callable[[], Any], NoneType] = None, alias: unicode = None, title: unicode = None, description: unicode = None, const: bool = None, gt: float = None, ge: float = None, lt: float = None, le: float = None, multiple_of: float = None, min_items: int = None, max_items: int = None, min_length: int = None, max_length: int = None, allow_mutation: bool = True, regex: unicode = None, **extra: Any) ‑> Any</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Used to provide extra information about a field, either for the model schema or complex validation. Some arguments
+apply only to number fields (<code>int</code>, <code>float</code>, <code>Decimal</code>) and some apply only to <code>str</code>.</p>
+<p>:param default: since this is replacing the field’s default, its first argument is used
+to set the default, use ellipsis (<code>&hellip;</code>) to indicate the field is required
+:param default_factory: callable that will be called when a default value is needed for this field
+If both <code>default</code> and <code>default_factory</code> are set, an error is raised.
+:param alias: the public name of the field
+:param title: can be any string, used in the schema
+:param description: can be any string, used in the schema
+:param const: this field is required and <em>must</em> take it's default value
+:param gt: only applies to numbers, requires the field to be "greater than". The schema
+will have an <code>exclusiveMinimum</code> validation keyword
+:param ge: only applies to numbers, requires the field to be "greater than or equal to". The
+schema will have a <code>minimum</code> validation keyword
+:param lt: only applies to numbers, requires the field to be "less than". The schema
+will have an <code>exclusiveMaximum</code> validation keyword
+:param le: only applies to numbers, requires the field to be "less than or equal to". The
+schema will have a <code>maximum</code> validation keyword
+:param multiple_of: only applies to numbers, requires the field to be "a multiple of". The
+schema will have a <code>multipleOf</code> validation keyword
+:param min_length: only applies to strings, requires the field to have a minimum length. The
+schema will have a <code>maximum</code> validation keyword
+:param max_length: only applies to strings, requires the field to have a maximum length. The
+schema will have a <code>maxLength</code> validation keyword
+:param allow_mutation: a boolean which defaults to True. When False, the field raises a TypeError if the field is
+assigned on an instance.
+The BaseModel Config must set validate_assignment to True
+:param regex: only applies to strings, requires the field match agains a regular expression
+pattern string. The schema will have a <code>pattern</code> validation keyword
+:param **extra: any additional keyword arguments will be added as is to the schema</p></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.event_parser"><code class="name flex">
+<span>def <span class="ident">event_parser</span></span>(<span>handler: Callable[[Any, aws_lambda_powertools.utilities.lambda_context.LambdaContext], ~EventParserReturnType], event: Dict[str, Any], context: <a title="aws_lambda_powertools.utilities.typing.lambda_context.LambdaContext" href="../typing/lambda_context.html#aws_lambda_powertools.utilities.typing.lambda_context.LambdaContext">LambdaContext</a>, model: Type[~Model], envelope: Union[~Envelope, Type[~Envelope], NoneType] = None) ‑> ~EventParserReturnType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Lambda handler decorator to parse &amp; validate events using Pydantic models</p>
+<p>It requires a model that implements Pydantic BaseModel to parse &amp; validate the event.</p>
+<p>When an envelope is given, it'll use the following logic:</p>
+<ol>
+<li>Parse the event against the envelope model first e.g. EnvelopeModel(**event)</li>
+<li>Envelope will extract a given key to be parsed against the model e.g. event.detail</li>
+</ol>
+<p>This is useful when you need to confirm event wrapper structure, and
+b) selectively extract a portion of your payload for parsing &amp; validation.</p>
+<p>NOTE: If envelope is omitted, the complete event is parsed to match the model parameter BaseModel definition.</p>
+<h2 id="example">Example</h2>
+<p><strong>Lambda handler decorator to parse &amp; validate event</strong></p>
+<pre><code>class Order(BaseModel):
+    id: int
+    description: str
+    ...
+
+@event_parser(model=Order)
+def handler(event: Order, context: LambdaContext):
+    ...
+</code></pre>
+<p><strong>Lambda handler decorator to parse &amp; validate event - using built-in envelope</strong></p>
+<pre><code>class Order(BaseModel):
+    id: int
+    description: str
+    ...
+
+@event_parser(model=Order, envelope=envelopes.EVENTBRIDGE)
+def handler(event: Order, context: LambdaContext):
+    ...
+</code></pre>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>handler</code></strong> :&ensp;<code> Callable</code></dt>
+<dd>Method to annotate on</dd>
+<dt><strong><code>event</code></strong> :&ensp;<code>
+Dict</code></dt>
+<dd>Lambda event to be parsed &amp; validated</dd>
+<dt><strong><code>context</code></strong> :&ensp;<code> LambdaContext</code></dt>
+<dd>Lambda context object</dd>
+<dt><strong><code>model</code></strong> :&ensp;<code>
+Model</code></dt>
+<dd>Your data model that will replace the event.</dd>
+<dt><strong><code>envelope</code></strong> :&ensp;<code>Envelope</code></dt>
+<dd>Optional envelope to extract the model from</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code><a title="aws_lambda_powertools.utilities.parser.ValidationError" href="#aws_lambda_powertools.utilities.parser.ValidationError">ValidationError</a></code></dt>
+<dd>When input event does not conform with model provided</dd>
+<dt><code>InvalidModelTypeError</code></dt>
+<dd>When model given does not implement BaseModel</dd>
+<dt><code>InvalidEnvelopeError</code></dt>
+<dd>When envelope given does not implement BaseEnvelope</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@lambda_handler_decorator
+def event_parser(
+    handler: Callable[[Any, LambdaContext], EventParserReturnType],
+    event: Dict[str, Any],
+    context: LambdaContext,
+    model: Type[Model],
+    envelope: Optional[Union[Envelope, Type[Envelope]]] = None,
+) -&gt; EventParserReturnType:
+    &#34;&#34;&#34;Lambda handler decorator to parse &amp; validate events using Pydantic models
+
+    It requires a model that implements Pydantic BaseModel to parse &amp; validate the event.
+
+    When an envelope is given, it&#39;ll use the following logic:
+
+    1. Parse the event against the envelope model first e.g. EnvelopeModel(**event)
+    2. Envelope will extract a given key to be parsed against the model e.g. event.detail
+
+    This is useful when you need to confirm event wrapper structure, and
+    b) selectively extract a portion of your payload for parsing &amp; validation.
+
+    NOTE: If envelope is omitted, the complete event is parsed to match the model parameter BaseModel definition.
+
+    Example
+    -------
+    **Lambda handler decorator to parse &amp; validate event**
+
+        class Order(BaseModel):
+            id: int
+            description: str
+            ...
+
+        @event_parser(model=Order)
+        def handler(event: Order, context: LambdaContext):
+            ...
+
+    **Lambda handler decorator to parse &amp; validate event - using built-in envelope**
+
+        class Order(BaseModel):
+            id: int
+            description: str
+            ...
+
+        @event_parser(model=Order, envelope=envelopes.EVENTBRIDGE)
+        def handler(event: Order, context: LambdaContext):
+            ...
+
+    Parameters
+    ----------
+    handler:  Callable
+        Method to annotate on
+    event:    Dict
+        Lambda event to be parsed &amp; validated
+    context:  LambdaContext
+        Lambda context object
+    model:   Model
+        Your data model that will replace the event.
+    envelope: Envelope
+        Optional envelope to extract the model from
+
+    Raises
+    ------
+    ValidationError
+        When input event does not conform with model provided
+    InvalidModelTypeError
+        When model given does not implement BaseModel
+    InvalidEnvelopeError
+        When envelope given does not implement BaseEnvelope
+    &#34;&#34;&#34;
+    parsed_event = parse(event=event, model=model, envelope=envelope)
+    logger.debug(f&#34;Calling handler {handler.__name__}&#34;)
+    return handler(parsed_event, context)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>event: Dict[str, Any], model: Type[~Model], envelope: Union[~Envelope, Type[~Envelope], NoneType] = None) ‑> ~Model</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Standalone function to parse &amp; validate events using Pydantic models</p>
+<p>Typically used when you need fine-grained control over error handling compared to event_parser decorator.</p>
+<h2 id="example">Example</h2>
+<p><strong>Lambda handler decorator to parse &amp; validate event</strong></p>
+<pre><code>from aws_lambda_powertools.utilities.parser import ValidationError
+
+class Order(BaseModel):
+    id: int
+    description: str
+    ...
+
+def handler(event: Order, context: LambdaContext):
+    try:
+        parse(model=Order)
+    except ValidationError:
+        ...
+</code></pre>
+<p><strong>Lambda handler decorator to parse &amp; validate event - using built-in envelope</strong></p>
+<pre><code>class Order(BaseModel):
+    id: int
+    description: str
+    ...
+
+def handler(event: Order, context: LambdaContext):
+    try:
+        parse(model=Order, envelope=envelopes.EVENTBRIDGE)
+    except ValidationError:
+        ...
+</code></pre>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>event</code></strong> :&ensp;<code>
+Dict</code></dt>
+<dd>Lambda event to be parsed &amp; validated</dd>
+<dt><strong><code>model</code></strong> :&ensp;<code>
+Model</code></dt>
+<dd>Your data model that will replace the event</dd>
+<dt><strong><code>envelope</code></strong> :&ensp;<code>Envelope</code></dt>
+<dd>Optional envelope to extract the model from</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code><a title="aws_lambda_powertools.utilities.parser.ValidationError" href="#aws_lambda_powertools.utilities.parser.ValidationError">ValidationError</a></code></dt>
+<dd>When input event does not conform with model provided</dd>
+<dt><code>InvalidModelTypeError</code></dt>
+<dd>When model given does not implement BaseModel</dd>
+<dt><code>InvalidEnvelopeError</code></dt>
+<dd>When envelope given does not implement BaseEnvelope</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse(
+    event: Dict[str, Any], model: Type[Model], envelope: Optional[Union[Envelope, Type[Envelope]]] = None
+) -&gt; Model:
+    &#34;&#34;&#34;Standalone function to parse &amp; validate events using Pydantic models
+
+    Typically used when you need fine-grained control over error handling compared to event_parser decorator.
+
+    Example
+    -------
+
+    **Lambda handler decorator to parse &amp; validate event**
+
+        from aws_lambda_powertools.utilities.parser import ValidationError
+
+        class Order(BaseModel):
+            id: int
+            description: str
+            ...
+
+        def handler(event: Order, context: LambdaContext):
+            try:
+                parse(model=Order)
+            except ValidationError:
+                ...
+
+    **Lambda handler decorator to parse &amp; validate event - using built-in envelope**
+
+        class Order(BaseModel):
+            id: int
+            description: str
+            ...
+
+        def handler(event: Order, context: LambdaContext):
+            try:
+                parse(model=Order, envelope=envelopes.EVENTBRIDGE)
+            except ValidationError:
+                ...
+
+    Parameters
+    ----------
+    event:    Dict
+        Lambda event to be parsed &amp; validated
+    model:   Model
+        Your data model that will replace the event
+    envelope: Envelope
+        Optional envelope to extract the model from
+
+    Raises
+    ------
+    ValidationError
+        When input event does not conform with model provided
+    InvalidModelTypeError
+        When model given does not implement BaseModel
+    InvalidEnvelopeError
+        When envelope given does not implement BaseEnvelope
+    &#34;&#34;&#34;
+    if envelope and callable(envelope):
+        try:
+            logger.debug(f&#34;Parsing and validating event model with envelope={envelope}&#34;)
+            return envelope().parse(data=event, model=model)
+        except AttributeError:
+            raise InvalidEnvelopeError(f&#34;Envelope must implement BaseEnvelope, envelope={envelope}&#34;)
+
+    try:
+        logger.debug(&#34;Parsing and validating event model; no envelope used&#34;)
+        if isinstance(event, str):
+            return model.parse_raw(event)
+
+        return model.parse_obj(event)
+    except AttributeError:
+        raise InvalidModelTypeError(f&#34;Input model must implement BaseModel, model={model}&#34;)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.root_validator"><code class="name flex">
+<span>def <span class="ident">root_validator</span></span>(<span>*, pre: bool = False, allow_reuse: bool = False, skip_on_failure: bool = False) ‑> Union[classmethod, Callable[[Callable[..., Any]], classmethod]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Decorate methods on a model indicating that they should be used to validate (and perhaps modify) data either
+before or after standard model parsing/validation is performed.</p></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.validator"><code class="name flex">
+<span>def <span class="ident">validator</span></span>(<span>*fields: unicode, pre: bool = False, each_item: bool = False, always: bool = False, check_fields: bool = True, whole: bool = None, allow_reuse: bool = False) ‑> Callable[[Callable[..., Any]], classmethod]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Decorate methods on the class indicating that they should be used to validate fields
+:param fields: which field(s) the method should be called on
+:param pre: whether or not this validator should be called before the standard validators (else after)
+:param each_item: for complex objects (sets, lists etc.) whether to validate individual elements rather than the
+whole object
+:param always: whether this method and other validators should be called even if the value is missing
+:param check_fields: whether to check that the fields actually exist on the model
+:param allow_reuse: whether to track and raise an error if another validator refers to the decorated function</p></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="aws_lambda_powertools.utilities.parser.BaseEnvelope"><code class="flex name class">
+<span>class <span class="ident">BaseEnvelope</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>ABC implementation for creating a supported Envelope</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class BaseEnvelope(ABC):
+    &#34;&#34;&#34;ABC implementation for creating a supported Envelope&#34;&#34;&#34;
+
+    @staticmethod
+    def _parse(data: Optional[Union[Dict[str, Any], Any]], model: Type[Model]) -&gt; Union[Model, None]:
+        &#34;&#34;&#34;Parses envelope data against model provided
+
+        Parameters
+        ----------
+        data : Dict
+            Data to be parsed and validated
+        model : Type[Model]
+            Data model to parse and validate data against
+
+        Returns
+        -------
+        Any
+            Parsed data
+        &#34;&#34;&#34;
+        if data is None:
+            logger.debug(&#34;Skipping parsing as event is None&#34;)
+            return data
+
+        logger.debug(&#34;parsing event against model&#34;)
+        if isinstance(data, str):
+            logger.debug(&#34;parsing event as string&#34;)
+            return model.parse_raw(data)
+
+        return model.parse_obj(data)
+
+    @abstractmethod
+    def parse(self, data: Optional[Union[Dict[str, Any], Any]], model: Type[Model]):
+        &#34;&#34;&#34;Implementation to parse data against envelope model, then against the data model
+
+        NOTE: Call `_parse` method to fully parse data with model provided.
+
+        Example
+        -------
+
+        **EventBridge envelope implementation example**
+
+        def parse(...):
+            # 1. parses data against envelope model
+            parsed_envelope = EventBridgeModel(**data)
+
+            # 2. parses portion of data within the envelope against model
+            return self._parse(data=parsed_envelope.detail, model=data_model)
+        &#34;&#34;&#34;
+        return NotImplemented  # pragma: no cover</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>abc.ABC</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.parser.envelopes.apigw.ApiGatewayEnvelope" href="envelopes/apigw.html#aws_lambda_powertools.utilities.parser.envelopes.apigw.ApiGatewayEnvelope">ApiGatewayEnvelope</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.envelopes.apigwv2.ApiGatewayV2Envelope" href="envelopes/apigwv2.html#aws_lambda_powertools.utilities.parser.envelopes.apigwv2.ApiGatewayV2Envelope">ApiGatewayV2Envelope</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.envelopes.cloudwatch.CloudWatchLogsEnvelope" href="envelopes/cloudwatch.html#aws_lambda_powertools.utilities.parser.envelopes.cloudwatch.CloudWatchLogsEnvelope">CloudWatchLogsEnvelope</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.envelopes.dynamodb.DynamoDBStreamEnvelope" href="envelopes/dynamodb.html#aws_lambda_powertools.utilities.parser.envelopes.dynamodb.DynamoDBStreamEnvelope">DynamoDBStreamEnvelope</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.envelopes.event_bridge.EventBridgeEnvelope" href="envelopes/event_bridge.html#aws_lambda_powertools.utilities.parser.envelopes.event_bridge.EventBridgeEnvelope">EventBridgeEnvelope</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.envelopes.kinesis.KinesisDataStreamEnvelope" href="envelopes/kinesis.html#aws_lambda_powertools.utilities.parser.envelopes.kinesis.KinesisDataStreamEnvelope">KinesisDataStreamEnvelope</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.envelopes.sns.SnsEnvelope" href="envelopes/sns.html#aws_lambda_powertools.utilities.parser.envelopes.sns.SnsEnvelope">SnsEnvelope</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.envelopes.sns.SnsSqsEnvelope" href="envelopes/sns.html#aws_lambda_powertools.utilities.parser.envelopes.sns.SnsSqsEnvelope">SnsSqsEnvelope</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.envelopes.sqs.SqsEnvelope" href="envelopes/sqs.html#aws_lambda_powertools.utilities.parser.envelopes.sqs.SqsEnvelope">SqsEnvelope</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.parser.BaseEnvelope.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>self, data: Union[Dict[str, Any], Any, NoneType], model: Type[~Model])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Implementation to parse data against envelope model, then against the data model</p>
+<p>NOTE: Call <code>_parse</code> method to fully parse data with model provided.</p>
+<h2 id="example">Example</h2>
+<p><strong>EventBridge envelope implementation example</strong></p>
+<p>def parse(&hellip;):
+# 1. parses data against envelope model
+parsed_envelope = EventBridgeModel(**data)</p>
+<pre><code># 2. parses portion of data within the envelope against model
+return self._parse(data=parsed_envelope.detail, model=data_model)
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abstractmethod
+def parse(self, data: Optional[Union[Dict[str, Any], Any]], model: Type[Model]):
+    &#34;&#34;&#34;Implementation to parse data against envelope model, then against the data model
+
+    NOTE: Call `_parse` method to fully parse data with model provided.
+
+    Example
+    -------
+
+    **EventBridge envelope implementation example**
+
+    def parse(...):
+        # 1. parses data against envelope model
+        parsed_envelope = EventBridgeModel(**data)
+
+        # 2. parses portion of data within the envelope against model
+        return self._parse(data=parsed_envelope.detail, model=data_model)
+    &#34;&#34;&#34;
+    return NotImplemented  # pragma: no cover</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.BaseModel"><code class="flex name class">
+<span>class <span class="ident">BaseModel</span></span>
+<span>(</span><span>**data: Any)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>pydantic.utils.Representation</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.parser.models.alb.AlbModel" href="models/alb.html#aws_lambda_powertools.utilities.parser.models.alb.AlbModel">AlbModel</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.alb.AlbRequestContext" href="models/alb.html#aws_lambda_powertools.utilities.parser.models.alb.AlbRequestContext">AlbRequestContext</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.alb.AlbRequestContextData" href="models/alb.html#aws_lambda_powertools.utilities.parser.models.alb.AlbRequestContextData">AlbRequestContextData</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.apigw.APIGatewayEventAuthorizer" href="models/apigw.html#aws_lambda_powertools.utilities.parser.models.apigw.APIGatewayEventAuthorizer">APIGatewayEventAuthorizer</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.apigw.APIGatewayEventIdentity" href="models/apigw.html#aws_lambda_powertools.utilities.parser.models.apigw.APIGatewayEventIdentity">APIGatewayEventIdentity</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.apigw.APIGatewayEventRequestContext" href="models/apigw.html#aws_lambda_powertools.utilities.parser.models.apigw.APIGatewayEventRequestContext">APIGatewayEventRequestContext</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.apigw.APIGatewayProxyEventModel" href="models/apigw.html#aws_lambda_powertools.utilities.parser.models.apigw.APIGatewayProxyEventModel">APIGatewayProxyEventModel</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.apigw.ApiGatewayUserCert" href="models/apigw.html#aws_lambda_powertools.utilities.parser.models.apigw.ApiGatewayUserCert">ApiGatewayUserCert</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.apigw.ApiGatewayUserCertValidity" href="models/apigw.html#aws_lambda_powertools.utilities.parser.models.apigw.ApiGatewayUserCertValidity">ApiGatewayUserCertValidity</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.apigwv2.APIGatewayProxyEventV2Model" href="models/apigwv2.html#aws_lambda_powertools.utilities.parser.models.apigwv2.APIGatewayProxyEventV2Model">APIGatewayProxyEventV2Model</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.apigwv2.RequestContextV2" href="models/apigwv2.html#aws_lambda_powertools.utilities.parser.models.apigwv2.RequestContextV2">RequestContextV2</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.apigwv2.RequestContextV2Authorizer" href="models/apigwv2.html#aws_lambda_powertools.utilities.parser.models.apigwv2.RequestContextV2Authorizer">RequestContextV2Authorizer</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.apigwv2.RequestContextV2AuthorizerIam" href="models/apigwv2.html#aws_lambda_powertools.utilities.parser.models.apigwv2.RequestContextV2AuthorizerIam">RequestContextV2AuthorizerIam</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.apigwv2.RequestContextV2AuthorizerIamCognito" href="models/apigwv2.html#aws_lambda_powertools.utilities.parser.models.apigwv2.RequestContextV2AuthorizerIamCognito">RequestContextV2AuthorizerIamCognito</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.apigwv2.RequestContextV2AuthorizerJwt" href="models/apigwv2.html#aws_lambda_powertools.utilities.parser.models.apigwv2.RequestContextV2AuthorizerJwt">RequestContextV2AuthorizerJwt</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.apigwv2.RequestContextV2Http" href="models/apigwv2.html#aws_lambda_powertools.utilities.parser.models.apigwv2.RequestContextV2Http">RequestContextV2Http</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.cloudwatch.CloudWatchLogsData" href="models/cloudwatch.html#aws_lambda_powertools.utilities.parser.models.cloudwatch.CloudWatchLogsData">CloudWatchLogsData</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.cloudwatch.CloudWatchLogsDecode" href="models/cloudwatch.html#aws_lambda_powertools.utilities.parser.models.cloudwatch.CloudWatchLogsDecode">CloudWatchLogsDecode</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.cloudwatch.CloudWatchLogsLogEvent" href="models/cloudwatch.html#aws_lambda_powertools.utilities.parser.models.cloudwatch.CloudWatchLogsLogEvent">CloudWatchLogsLogEvent</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.cloudwatch.CloudWatchLogsModel" href="models/cloudwatch.html#aws_lambda_powertools.utilities.parser.models.cloudwatch.CloudWatchLogsModel">CloudWatchLogsModel</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.dynamodb.DynamoDBStreamChangedRecordModel" href="models/dynamodb.html#aws_lambda_powertools.utilities.parser.models.dynamodb.DynamoDBStreamChangedRecordModel">DynamoDBStreamChangedRecordModel</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.dynamodb.DynamoDBStreamModel" href="models/dynamodb.html#aws_lambda_powertools.utilities.parser.models.dynamodb.DynamoDBStreamModel">DynamoDBStreamModel</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.dynamodb.DynamoDBStreamRecordModel" href="models/dynamodb.html#aws_lambda_powertools.utilities.parser.models.dynamodb.DynamoDBStreamRecordModel">DynamoDBStreamRecordModel</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.dynamodb.UserIdentity" href="models/dynamodb.html#aws_lambda_powertools.utilities.parser.models.dynamodb.UserIdentity">UserIdentity</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.event_bridge.EventBridgeModel" href="models/event_bridge.html#aws_lambda_powertools.utilities.parser.models.event_bridge.EventBridgeModel">EventBridgeModel</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.kinesis.KinesisDataStreamModel" href="models/kinesis.html#aws_lambda_powertools.utilities.parser.models.kinesis.KinesisDataStreamModel">KinesisDataStreamModel</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.kinesis.KinesisDataStreamRecord" href="models/kinesis.html#aws_lambda_powertools.utilities.parser.models.kinesis.KinesisDataStreamRecord">KinesisDataStreamRecord</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.kinesis.KinesisDataStreamRecordPayload" href="models/kinesis.html#aws_lambda_powertools.utilities.parser.models.kinesis.KinesisDataStreamRecordPayload">KinesisDataStreamRecordPayload</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.s3.S3Bucket" href="models/s3.html#aws_lambda_powertools.utilities.parser.models.s3.S3Bucket">S3Bucket</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.s3.S3EventRecordGlacierEventData" href="models/s3.html#aws_lambda_powertools.utilities.parser.models.s3.S3EventRecordGlacierEventData">S3EventRecordGlacierEventData</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.s3.S3EventRecordGlacierRestoreEventData" href="models/s3.html#aws_lambda_powertools.utilities.parser.models.s3.S3EventRecordGlacierRestoreEventData">S3EventRecordGlacierRestoreEventData</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.s3.S3Identity" href="models/s3.html#aws_lambda_powertools.utilities.parser.models.s3.S3Identity">S3Identity</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.s3.S3Message" href="models/s3.html#aws_lambda_powertools.utilities.parser.models.s3.S3Message">S3Message</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.s3.S3Model" href="models/s3.html#aws_lambda_powertools.utilities.parser.models.s3.S3Model">S3Model</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.s3.S3Object" href="models/s3.html#aws_lambda_powertools.utilities.parser.models.s3.S3Object">S3Object</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.s3.S3OwnerIdentify" href="models/s3.html#aws_lambda_powertools.utilities.parser.models.s3.S3OwnerIdentify">S3OwnerIdentify</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.s3.S3RecordModel" href="models/s3.html#aws_lambda_powertools.utilities.parser.models.s3.S3RecordModel">S3RecordModel</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.s3.S3RequestParameters" href="models/s3.html#aws_lambda_powertools.utilities.parser.models.s3.S3RequestParameters">S3RequestParameters</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.s3.S3ResponseElements" href="models/s3.html#aws_lambda_powertools.utilities.parser.models.s3.S3ResponseElements">S3ResponseElements</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.s3_object_event.S3ObjectConfiguration" href="models/s3_object_event.html#aws_lambda_powertools.utilities.parser.models.s3_object_event.S3ObjectConfiguration">S3ObjectConfiguration</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.s3_object_event.S3ObjectContext" href="models/s3_object_event.html#aws_lambda_powertools.utilities.parser.models.s3_object_event.S3ObjectContext">S3ObjectContext</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.s3_object_event.S3ObjectLambdaEvent" href="models/s3_object_event.html#aws_lambda_powertools.utilities.parser.models.s3_object_event.S3ObjectLambdaEvent">S3ObjectLambdaEvent</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.s3_object_event.S3ObjectSessionAttributes" href="models/s3_object_event.html#aws_lambda_powertools.utilities.parser.models.s3_object_event.S3ObjectSessionAttributes">S3ObjectSessionAttributes</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.s3_object_event.S3ObjectSessionContext" href="models/s3_object_event.html#aws_lambda_powertools.utilities.parser.models.s3_object_event.S3ObjectSessionContext">S3ObjectSessionContext</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.s3_object_event.S3ObjectSessionIssuer" href="models/s3_object_event.html#aws_lambda_powertools.utilities.parser.models.s3_object_event.S3ObjectSessionIssuer">S3ObjectSessionIssuer</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.s3_object_event.S3ObjectUserIdentity" href="models/s3_object_event.html#aws_lambda_powertools.utilities.parser.models.s3_object_event.S3ObjectUserIdentity">S3ObjectUserIdentity</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.s3_object_event.S3ObjectUserRequest" href="models/s3_object_event.html#aws_lambda_powertools.utilities.parser.models.s3_object_event.S3ObjectUserRequest">S3ObjectUserRequest</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.ses.SesMail" href="models/ses.html#aws_lambda_powertools.utilities.parser.models.ses.SesMail">SesMail</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.ses.SesMailCommonHeaders" href="models/ses.html#aws_lambda_powertools.utilities.parser.models.ses.SesMailCommonHeaders">SesMailCommonHeaders</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.ses.SesMailHeaders" href="models/ses.html#aws_lambda_powertools.utilities.parser.models.ses.SesMailHeaders">SesMailHeaders</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.ses.SesMessage" href="models/ses.html#aws_lambda_powertools.utilities.parser.models.ses.SesMessage">SesMessage</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.ses.SesModel" href="models/ses.html#aws_lambda_powertools.utilities.parser.models.ses.SesModel">SesModel</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.ses.SesReceipt" href="models/ses.html#aws_lambda_powertools.utilities.parser.models.ses.SesReceipt">SesReceipt</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.ses.SesReceiptAction" href="models/ses.html#aws_lambda_powertools.utilities.parser.models.ses.SesReceiptAction">SesReceiptAction</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.ses.SesReceiptVerdict" href="models/ses.html#aws_lambda_powertools.utilities.parser.models.ses.SesReceiptVerdict">SesReceiptVerdict</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.ses.SesRecordModel" href="models/ses.html#aws_lambda_powertools.utilities.parser.models.ses.SesRecordModel">SesRecordModel</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.sns.SnsModel" href="models/sns.html#aws_lambda_powertools.utilities.parser.models.sns.SnsModel">SnsModel</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.sns.SnsMsgAttributeModel" href="models/sns.html#aws_lambda_powertools.utilities.parser.models.sns.SnsMsgAttributeModel">SnsMsgAttributeModel</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.sns.SnsNotificationModel" href="models/sns.html#aws_lambda_powertools.utilities.parser.models.sns.SnsNotificationModel">SnsNotificationModel</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.sns.SnsRecordModel" href="models/sns.html#aws_lambda_powertools.utilities.parser.models.sns.SnsRecordModel">SnsRecordModel</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.sqs.SqsAttributesModel" href="models/sqs.html#aws_lambda_powertools.utilities.parser.models.sqs.SqsAttributesModel">SqsAttributesModel</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.sqs.SqsModel" href="models/sqs.html#aws_lambda_powertools.utilities.parser.models.sqs.SqsModel">SqsModel</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.sqs.SqsMsgAttributeModel" href="models/sqs.html#aws_lambda_powertools.utilities.parser.models.sqs.SqsMsgAttributeModel">SqsMsgAttributeModel</a></li>
+<li><a title="aws_lambda_powertools.utilities.parser.models.sqs.SqsRecordModel" href="models/sqs.html#aws_lambda_powertools.utilities.parser.models.sqs.SqsRecordModel">SqsRecordModel</a></li>
+<li>pydantic.env_settings.BaseSettings</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.parser.BaseModel.Config"><code class="name">var <span class="ident">Config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.parser.BaseModel.construct"><code class="name flex">
+<span>def <span class="ident">construct</span></span>(<span>**values: Any) ‑> Model</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a new model setting <strong>dict</strong> and <strong>fields_set</strong> from trusted or pre-validated data.
+Default values are respected, but no other validation is performed.
+Behaves as if <code>Config.extra = 'allow'</code> was set since it adds all passed values</p></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.BaseModel.from_orm"><code class="name flex">
+<span>def <span class="ident">from_orm</span></span>(<span>obj: Any) ‑> Model</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.BaseModel.parse_file"><code class="name flex">
+<span>def <span class="ident">parse_file</span></span>(<span>path: Union[str, pathlib.Path], *, content_type: unicode = None, encoding: unicode = 'utf8', proto: pydantic.parse.Protocol = None, allow_pickle: bool = False) ‑> Model</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.BaseModel.parse_obj"><code class="name flex">
+<span>def <span class="ident">parse_obj</span></span>(<span>obj: Any) ‑> Model</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.BaseModel.parse_raw"><code class="name flex">
+<span>def <span class="ident">parse_raw</span></span>(<span>b: Union[str, bytes], *, content_type: unicode = None, encoding: unicode = 'utf8', proto: pydantic.parse.Protocol = None, allow_pickle: bool = False) ‑> Model</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.BaseModel.schema"><code class="name flex">
+<span>def <span class="ident">schema</span></span>(<span>by_alias: bool = True, ref_template: unicode = '#/definitions/{model}') ‑> DictStrAny</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.BaseModel.schema_json"><code class="name flex">
+<span>def <span class="ident">schema_json</span></span>(<span>*, by_alias: bool = True, ref_template: unicode = '#/definitions/{model}', **dumps_kwargs: Any) ‑> unicode</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.BaseModel.update_forward_refs"><code class="name flex">
+<span>def <span class="ident">update_forward_refs</span></span>(<span>**localns: Any) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Try to update ForwardRefs on fields based on this Model, globalns and localns.</p></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.BaseModel.validate"><code class="name flex">
+<span>def <span class="ident">validate</span></span>(<span>value: Any) ‑> Model</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.parser.BaseModel.copy"><code class="name flex">
+<span>def <span class="ident">copy</span></span>(<span>self: Model, *, include: Union[ForwardRef('AbstractSetIntStr'), ForwardRef('MappingIntStrAny')] = None, exclude: Union[ForwardRef('AbstractSetIntStr'), ForwardRef('MappingIntStrAny')] = None, update: DictStrAny = None, deep: bool = False) ‑> Model</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Duplicate a model, optionally choose which fields to include, exclude and change.</p>
+<p>:param include: fields to include in new model
+:param exclude: fields to exclude from new model, as with values this takes precedence over include
+:param update: values to change/add in the new model. Note: the data is not validated before creating
+the new model: you should trust this data
+:param deep: set to <code>True</code> to make a deep copy of the model
+:return: new model instance</p></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.BaseModel.dict"><code class="name flex">
+<span>def <span class="ident">dict</span></span>(<span>self, *, include: Union[ForwardRef('AbstractSetIntStr'), ForwardRef('MappingIntStrAny')] = None, exclude: Union[ForwardRef('AbstractSetIntStr'), ForwardRef('MappingIntStrAny')] = None, by_alias: bool = False, skip_defaults: bool = None, exclude_unset: bool = False, exclude_defaults: bool = False, exclude_none: bool = False) ‑> DictStrAny</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate a dictionary representation of the model, optionally specifying which fields to include or exclude.</p></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.BaseModel.json"><code class="name flex">
+<span>def <span class="ident">json</span></span>(<span>self, *, include: Union[ForwardRef('AbstractSetIntStr'), ForwardRef('MappingIntStrAny')] = None, exclude: Union[ForwardRef('AbstractSetIntStr'), ForwardRef('MappingIntStrAny')] = None, by_alias: bool = False, skip_defaults: bool = None, exclude_unset: bool = False, exclude_defaults: bool = False, exclude_none: bool = False, encoder: Union[Callable[[Any], Any], NoneType] = None, **dumps_kwargs: Any) ‑> unicode</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate a JSON representation of the model, <code>include</code> and <code>exclude</code> arguments as per <code>dict()</code>.</p>
+<p><code>encoder</code> is an optional function to supply as <code>default</code> to json.dumps(), other arguments as per <code>json.dumps()</code>.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.ValidationError"><code class="flex name class">
+<span>class <span class="ident">ValidationError</span></span>
+<span>(</span><span>errors: Sequence[Union[Sequence[Any], pydantic.error_wrappers.ErrorWrapper]], model: ModelOrDc)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Mixin to provide <strong>str</strong>, <strong>repr</strong>, and <strong>pretty</strong> methods. See #884 for more details.</p>
+<p><strong>pretty</strong> is used by <a href="https://python-devtools.helpmanual.io/">devtools</a> to provide human readable representations
+of objects.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>pydantic.utils.Representation</li>
+<li>builtins.ValueError</li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.parser.ValidationError.model"><code class="name">var <span class="ident">model</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.ValidationError.raw_errors"><code class="name">var <span class="ident">raw_errors</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.parser.ValidationError.errors"><code class="name flex">
+<span>def <span class="ident">errors</span></span>(<span>self) ‑> List[Dict[str, Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.parser.ValidationError.json"><code class="name flex">
+<span>def <span class="ident">json</span></span>(<span>self, *, indent: Union[NoneType, int, str] = 2) ‑> unicode</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="aws_lambda_powertools.utilities" href="../index.html">aws_lambda_powertools.utilities</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="aws_lambda_powertools.utilities.parser.envelopes" href="envelopes/index.html">aws_lambda_powertools.utilities.parser.envelopes</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.exceptions" href="exceptions.html">aws_lambda_powertools.utilities.parser.exceptions</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.models" href="models/index.html">aws_lambda_powertools.utilities.parser.models</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.parser" href="parser.html">aws_lambda_powertools.utilities.parser.parser</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.pydantic" href="pydantic.html">aws_lambda_powertools.utilities.parser.pydantic</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.types" href="types.html">aws_lambda_powertools.utilities.parser.types</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.parser.Field" href="#aws_lambda_powertools.utilities.parser.Field">Field</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.event_parser" href="#aws_lambda_powertools.utilities.parser.event_parser">event_parser</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.parse" href="#aws_lambda_powertools.utilities.parser.parse">parse</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.root_validator" href="#aws_lambda_powertools.utilities.parser.root_validator">root_validator</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.validator" href="#aws_lambda_powertools.utilities.parser.validator">validator</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.parser.BaseEnvelope" href="#aws_lambda_powertools.utilities.parser.BaseEnvelope">BaseEnvelope</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.parser.BaseEnvelope.parse" href="#aws_lambda_powertools.utilities.parser.BaseEnvelope.parse">parse</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.parser.BaseModel" href="#aws_lambda_powertools.utilities.parser.BaseModel">BaseModel</a></code></h4>
+<ul class="two-column">
+<li><code><a title="aws_lambda_powertools.utilities.parser.BaseModel.Config" href="#aws_lambda_powertools.utilities.parser.BaseModel.Config">Config</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.BaseModel.construct" href="#aws_lambda_powertools.utilities.parser.BaseModel.construct">construct</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.BaseModel.copy" href="#aws_lambda_powertools.utilities.parser.BaseModel.copy">copy</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.BaseModel.dict" href="#aws_lambda_powertools.utilities.parser.BaseModel.dict">dict</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.BaseModel.from_orm" href="#aws_lambda_powertools.utilities.parser.BaseModel.from_orm">from_orm</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.BaseModel.json" href="#aws_lambda_powertools.utilities.parser.BaseModel.json">json</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.BaseModel.parse_file" href="#aws_lambda_powertools.utilities.parser.BaseModel.parse_file">parse_file</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.BaseModel.parse_obj" href="#aws_lambda_powertools.utilities.parser.BaseModel.parse_obj">parse_obj</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.BaseModel.parse_raw" href="#aws_lambda_powertools.utilities.parser.BaseModel.parse_raw">parse_raw</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.BaseModel.schema" href="#aws_lambda_powertools.utilities.parser.BaseModel.schema">schema</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.BaseModel.schema_json" href="#aws_lambda_powertools.utilities.parser.BaseModel.schema_json">schema_json</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.BaseModel.update_forward_refs" href="#aws_lambda_powertools.utilities.parser.BaseModel.update_forward_refs">update_forward_refs</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.BaseModel.validate" href="#aws_lambda_powertools.utilities.parser.BaseModel.validate">validate</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.parser.ValidationError" href="#aws_lambda_powertools.utilities.parser.ValidationError">ValidationError</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.parser.ValidationError.errors" href="#aws_lambda_powertools.utilities.parser.ValidationError.errors">errors</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.ValidationError.json" href="#aws_lambda_powertools.utilities.parser.ValidationError.json">json</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.ValidationError.model" href="#aws_lambda_powertools.utilities.parser.ValidationError.model">model</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.parser.ValidationError.raw_errors" href="#aws_lambda_powertools.utilities.parser.ValidationError.raw_errors">raw_errors</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

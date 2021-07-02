@@ -1,0 +1,1656 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>aws_lambda_powertools.event_handler.api_gateway API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>aws_lambda_powertools.event_handler.api_gateway</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import base64
+import json
+import logging
+import re
+import zlib
+from enum import Enum
+from typing import Any, Callable, Dict, List, Optional, Set, Union
+
+from aws_lambda_powertools.shared.json_encoder import Encoder
+from aws_lambda_powertools.utilities.data_classes import ALBEvent, APIGatewayProxyEvent, APIGatewayProxyEventV2
+from aws_lambda_powertools.utilities.data_classes.common import BaseProxyEvent
+from aws_lambda_powertools.utilities.typing import LambdaContext
+
+logger = logging.getLogger(__name__)
+
+
+class ProxyEventType(Enum):
+    &#34;&#34;&#34;An enumerations of the supported proxy event types.&#34;&#34;&#34;
+
+    APIGatewayProxyEvent = &#34;APIGatewayProxyEvent&#34;
+    APIGatewayProxyEventV2 = &#34;APIGatewayProxyEventV2&#34;
+    ALBEvent = &#34;ALBEvent&#34;
+
+
+class CORSConfig(object):
+    &#34;&#34;&#34;CORS Config
+
+
+    Examples
+    --------
+
+    Simple cors example using the default permissive cors, not this should only be used during early prototyping
+
+        from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+        app = ApiGatewayResolver()
+
+        @app.get(&#34;/my/path&#34;, cors=True)
+        def with_cors():
+            return {&#34;message&#34;: &#34;Foo&#34;}
+
+    Using a custom CORSConfig where `with_cors` used the custom provided CORSConfig and `without_cors`
+    do not include any cors headers.
+
+        from aws_lambda_powertools.event_handler.api_gateway import (
+            ApiGatewayResolver, CORSConfig
+        )
+
+        cors_config = CORSConfig(
+            allow_origin=&#34;https://wwww.example.com/&#34;,
+            expose_headers=[&#34;x-exposed-response-header&#34;],
+            allow_headers=[&#34;x-custom-request-header&#34;],
+            max_age=100,
+            allow_credentials=True,
+        )
+        app = ApiGatewayResolver(cors=cors_config)
+
+        @app.get(&#34;/my/path&#34;)
+        def with_cors():
+            return {&#34;message&#34;: &#34;Foo&#34;}
+
+        @app.get(&#34;/another-one&#34;, cors=False)
+        def without_cors():
+            return {&#34;message&#34;: &#34;Foo&#34;}
+    &#34;&#34;&#34;
+
+    _REQUIRED_HEADERS = [&#34;Authorization&#34;, &#34;Content-Type&#34;, &#34;X-Amz-Date&#34;, &#34;X-Api-Key&#34;, &#34;X-Amz-Security-Token&#34;]
+
+    def __init__(
+        self,
+        allow_origin: str = &#34;*&#34;,
+        allow_headers: Optional[List[str]] = None,
+        expose_headers: Optional[List[str]] = None,
+        max_age: Optional[int] = None,
+        allow_credentials: bool = False,
+    ):
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        allow_origin: str
+            The value of the `Access-Control-Allow-Origin` to send in the response. Defaults to &#34;*&#34;, but should
+            only be used during development.
+        allow_headers: Optional[List[str]]
+            The list of additional allowed headers. This list is added to list of
+            built in allowed headers: `Authorization`, `Content-Type`, `X-Amz-Date`,
+            `X-Api-Key`, `X-Amz-Security-Token`.
+        expose_headers: Optional[List[str]]
+            A list of values to return for the Access-Control-Expose-Headers
+        max_age: Optional[int]
+            The value for the `Access-Control-Max-Age`
+        allow_credentials: bool
+            A boolean value that sets the value of `Access-Control-Allow-Credentials`
+        &#34;&#34;&#34;
+        self.allow_origin = allow_origin
+        self.allow_headers = set(self._REQUIRED_HEADERS + (allow_headers or []))
+        self.expose_headers = expose_headers or []
+        self.max_age = max_age
+        self.allow_credentials = allow_credentials
+
+    def to_dict(self) -&gt; Dict[str, str]:
+        &#34;&#34;&#34;Builds the configured Access-Control http headers&#34;&#34;&#34;
+        headers = {
+            &#34;Access-Control-Allow-Origin&#34;: self.allow_origin,
+            &#34;Access-Control-Allow-Headers&#34;: &#34;,&#34;.join(sorted(self.allow_headers)),
+        }
+        if self.expose_headers:
+            headers[&#34;Access-Control-Expose-Headers&#34;] = &#34;,&#34;.join(self.expose_headers)
+        if self.max_age is not None:
+            headers[&#34;Access-Control-Max-Age&#34;] = str(self.max_age)
+        if self.allow_credentials is True:
+            headers[&#34;Access-Control-Allow-Credentials&#34;] = &#34;true&#34;
+        return headers
+
+
+class Response:
+    &#34;&#34;&#34;Response data class that provides greater control over what is returned from the proxy event&#34;&#34;&#34;
+
+    def __init__(
+        self, status_code: int, content_type: Optional[str], body: Union[str, bytes, None], headers: Dict = None
+    ):
+        &#34;&#34;&#34;
+
+        Parameters
+        ----------
+        status_code: int
+            Http status code, example 200
+        content_type: str
+            Optionally set the Content-Type header, example &#34;application/json&#34;. Note this will be merged into any
+            provided http headers
+        body: Union[str, bytes, None]
+            Optionally set the response body. Note: bytes body will be automatically base64 encoded
+        headers: dict
+            Optionally set specific http headers. Setting &#34;Content-Type&#34; hear would override the `content_type` value.
+        &#34;&#34;&#34;
+        self.status_code = status_code
+        self.body = body
+        self.base64_encoded = False
+        self.headers: Dict = headers or {}
+        if content_type:
+            self.headers.setdefault(&#34;Content-Type&#34;, content_type)
+
+
+class Route:
+    &#34;&#34;&#34;Internally used Route Configuration&#34;&#34;&#34;
+
+    def __init__(
+        self, method: str, rule: Any, func: Callable, cors: bool, compress: bool, cache_control: Optional[str]
+    ):
+        self.method = method.upper()
+        self.rule = rule
+        self.func = func
+        self.cors = cors
+        self.compress = compress
+        self.cache_control = cache_control
+
+
+class ResponseBuilder:
+    &#34;&#34;&#34;Internally used Response builder&#34;&#34;&#34;
+
+    def __init__(self, response: Response, route: Route = None):
+        self.response = response
+        self.route = route
+
+    def _add_cors(self, cors: CORSConfig):
+        &#34;&#34;&#34;Update headers to include the configured Access-Control headers&#34;&#34;&#34;
+        self.response.headers.update(cors.to_dict())
+
+    def _add_cache_control(self, cache_control: str):
+        &#34;&#34;&#34;Set the specified cache control headers for 200 http responses. For non-200 `no-cache` is used.&#34;&#34;&#34;
+        self.response.headers[&#34;Cache-Control&#34;] = cache_control if self.response.status_code == 200 else &#34;no-cache&#34;
+
+    def _compress(self):
+        &#34;&#34;&#34;Compress the response body, but only if `Accept-Encoding` headers includes gzip.&#34;&#34;&#34;
+        self.response.headers[&#34;Content-Encoding&#34;] = &#34;gzip&#34;
+        if isinstance(self.response.body, str):
+            logger.debug(&#34;Converting string response to bytes before compressing it&#34;)
+            self.response.body = bytes(self.response.body, &#34;utf-8&#34;)
+        gzip = zlib.compressobj(9, zlib.DEFLATED, zlib.MAX_WBITS | 16)
+        self.response.body = gzip.compress(self.response.body) + gzip.flush()
+
+    def _route(self, event: BaseProxyEvent, cors: Optional[CORSConfig]):
+        &#34;&#34;&#34;Optionally handle any of the route&#39;s configure response handling&#34;&#34;&#34;
+        if self.route is None:
+            return
+        if self.route.cors:
+            self._add_cors(cors or CORSConfig())
+        if self.route.cache_control:
+            self._add_cache_control(self.route.cache_control)
+        if self.route.compress and &#34;gzip&#34; in (event.get_header_value(&#34;accept-encoding&#34;, &#34;&#34;) or &#34;&#34;):
+            self._compress()
+
+    def build(self, event: BaseProxyEvent, cors: CORSConfig = None) -&gt; Dict[str, Any]:
+        &#34;&#34;&#34;Build the full response dict to be returned by the lambda&#34;&#34;&#34;
+        self._route(event, cors)
+
+        if isinstance(self.response.body, bytes):
+            logger.debug(&#34;Encoding bytes response with base64&#34;)
+            self.response.base64_encoded = True
+            self.response.body = base64.b64encode(self.response.body).decode()
+        return {
+            &#34;statusCode&#34;: self.response.status_code,
+            &#34;headers&#34;: self.response.headers,
+            &#34;body&#34;: self.response.body,
+            &#34;isBase64Encoded&#34;: self.response.base64_encoded,
+        }
+
+
+class ApiGatewayResolver:
+    &#34;&#34;&#34;API Gateway and ALB proxy resolver
+
+    Examples
+    --------
+    Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator
+
+    ```python
+    from aws_lambda_powertools import Tracer
+    from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+    tracer = Tracer()
+    app = ApiGatewayResolver()
+
+    @app.get(&#34;/get-call&#34;)
+    def simple_get():
+        return {&#34;message&#34;: &#34;Foo&#34;}
+
+    @app.post(&#34;/post-call&#34;)
+    def simple_post():
+        post_data: dict = app.current_event.json_body
+        return {&#34;message&#34;: post_data[&#34;value&#34;]}
+
+    @tracer.capture_lambda_handler
+    def lambda_handler(event, context):
+        return app.resolve(event, context)
+    ```
+    &#34;&#34;&#34;
+
+    current_event: BaseProxyEvent
+    lambda_context: LambdaContext
+
+    def __init__(self, proxy_type: Enum = ProxyEventType.APIGatewayProxyEvent, cors: CORSConfig = None):
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        proxy_type: ProxyEventType
+            Proxy request type, defaults to API Gateway V1
+        cors: CORSConfig
+            Optionally configure and enabled CORS. Not each route will need to have to cors=True
+        &#34;&#34;&#34;
+        self._proxy_type = proxy_type
+        self._routes: List[Route] = []
+        self._cors = cors
+        self._cors_enabled: bool = cors is not None
+        self._cors_methods: Set[str] = {&#34;OPTIONS&#34;}
+
+    def get(self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None):
+        &#34;&#34;&#34;Get route decorator with GET `method`
+
+        Examples
+        --------
+        Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator
+
+        ```python
+        from aws_lambda_powertools import Tracer
+        from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+        tracer = Tracer()
+        app = ApiGatewayResolver()
+
+        @app.get(&#34;/get-call&#34;)
+        def simple_get():
+            return {&#34;message&#34;: &#34;Foo&#34;}
+
+        @tracer.capture_lambda_handler
+        def lambda_handler(event, context):
+            return app.resolve(event, context)
+        ```
+        &#34;&#34;&#34;
+        return self.route(rule, &#34;GET&#34;, cors, compress, cache_control)
+
+    def post(self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None):
+        &#34;&#34;&#34;Post route decorator with POST `method`
+
+        Examples
+        --------
+        Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator
+
+        ```python
+        from aws_lambda_powertools import Tracer
+        from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+        tracer = Tracer()
+        app = ApiGatewayResolver()
+
+        @app.post(&#34;/post-call&#34;)
+        def simple_post():
+            post_data: dict = app.current_event.json_body
+            return {&#34;message&#34;: post_data[&#34;value&#34;]}
+
+        @tracer.capture_lambda_handler
+        def lambda_handler(event, context):
+            return app.resolve(event, context)
+        ```
+        &#34;&#34;&#34;
+        return self.route(rule, &#34;POST&#34;, cors, compress, cache_control)
+
+    def put(self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None):
+        &#34;&#34;&#34;Put route decorator with PUT `method`
+
+        Examples
+        --------
+        Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator
+
+        ```python
+        from aws_lambda_powertools import Tracer
+        from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+        tracer = Tracer()
+        app = ApiGatewayResolver()
+
+        @app.put(&#34;/put-call&#34;)
+        def simple_put():
+            put_data: dict = app.current_event.json_body
+            return {&#34;message&#34;: put_data[&#34;value&#34;]}
+
+        @tracer.capture_lambda_handler
+        def lambda_handler(event, context):
+            return app.resolve(event, context)
+        ```
+        &#34;&#34;&#34;
+        return self.route(rule, &#34;PUT&#34;, cors, compress, cache_control)
+
+    def delete(self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None):
+        &#34;&#34;&#34;Delete route decorator with DELETE `method`
+
+        Examples
+        --------
+        Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator
+
+        ```python
+        from aws_lambda_powertools import Tracer
+        from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+        tracer = Tracer()
+        app = ApiGatewayResolver()
+
+        @app.delete(&#34;/delete-call&#34;)
+        def simple_delete():
+            return {&#34;message&#34;: &#34;deleted&#34;}
+
+        @tracer.capture_lambda_handler
+        def lambda_handler(event, context):
+            return app.resolve(event, context)
+        ```
+        &#34;&#34;&#34;
+        return self.route(rule, &#34;DELETE&#34;, cors, compress, cache_control)
+
+    def patch(self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None):
+        &#34;&#34;&#34;Patch route decorator with PATCH `method`
+
+        Examples
+        --------
+        Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator
+
+        ```python
+        from aws_lambda_powertools import Tracer
+        from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+        tracer = Tracer()
+        app = ApiGatewayResolver()
+
+        @app.patch(&#34;/patch-call&#34;)
+        def simple_patch():
+            patch_data: dict = app.current_event.json_body
+            patch_data[&#34;value&#34;] = patched
+
+            return {&#34;message&#34;: patch_data}
+
+        @tracer.capture_lambda_handler
+        def lambda_handler(event, context):
+            return app.resolve(event, context)
+        ```
+        &#34;&#34;&#34;
+        return self.route(rule, &#34;PATCH&#34;, cors, compress, cache_control)
+
+    def route(self, rule: str, method: str, cors: bool = None, compress: bool = False, cache_control: str = None):
+        &#34;&#34;&#34;Route decorator includes parameter `method`&#34;&#34;&#34;
+
+        def register_resolver(func: Callable):
+            logger.debug(f&#34;Adding route using rule {rule} and method {method.upper()}&#34;)
+            if cors is None:
+                cors_enabled = self._cors_enabled
+            else:
+                cors_enabled = cors
+            self._routes.append(Route(method, self._compile_regex(rule), func, cors_enabled, compress, cache_control))
+            if cors_enabled:
+                logger.debug(f&#34;Registering method {method.upper()} to Allow Methods in CORS&#34;)
+                self._cors_methods.add(method.upper())
+            return func
+
+        return register_resolver
+
+    def resolve(self, event, context) -&gt; Dict[str, Any]:
+        &#34;&#34;&#34;Resolves the response based on the provide event and decorator routes
+
+        Parameters
+        ----------
+        event: Dict[str, Any]
+            Event
+        context: LambdaContext
+            Lambda context
+        Returns
+        -------
+        dict
+            Returns the dict response
+        &#34;&#34;&#34;
+        self.current_event = self._to_proxy_event(event)
+        self.lambda_context = context
+        return self._resolve().build(self.current_event, self._cors)
+
+    def __call__(self, event, context) -&gt; Any:
+        return self.resolve(event, context)
+
+    @staticmethod
+    def _compile_regex(rule: str):
+        &#34;&#34;&#34;Precompile regex pattern&#34;&#34;&#34;
+        rule_regex: str = re.sub(r&#34;(&lt;\w+&gt;)&#34;, r&#34;(?P\1.+)&#34;, rule)
+        return re.compile(&#34;^{}$&#34;.format(rule_regex))
+
+    def _to_proxy_event(self, event: Dict) -&gt; BaseProxyEvent:
+        &#34;&#34;&#34;Convert the event dict to the corresponding data class&#34;&#34;&#34;
+        if self._proxy_type == ProxyEventType.APIGatewayProxyEvent:
+            logger.debug(&#34;Converting event to API Gateway REST API contract&#34;)
+            return APIGatewayProxyEvent(event)
+        if self._proxy_type == ProxyEventType.APIGatewayProxyEventV2:
+            logger.debug(&#34;Converting event to API Gateway HTTP API contract&#34;)
+            return APIGatewayProxyEventV2(event)
+        logger.debug(&#34;Converting event to ALB contract&#34;)
+        return ALBEvent(event)
+
+    def _resolve(self) -&gt; ResponseBuilder:
+        &#34;&#34;&#34;Resolves the response or return the not found response&#34;&#34;&#34;
+        method = self.current_event.http_method.upper()
+        path = self.current_event.path
+        for route in self._routes:
+            if method != route.method:
+                continue
+            match: Optional[re.Match] = route.rule.match(path)
+            if match:
+                logger.debug(&#34;Found a registered route. Calling function&#34;)
+                return self._call_route(route, match.groupdict())
+
+        logger.debug(f&#34;No match found for path {path} and method {method}&#34;)
+        return self._not_found(method)
+
+    def _not_found(self, method: str) -&gt; ResponseBuilder:
+        &#34;&#34;&#34;Called when no matching route was found and includes support for the cors preflight response&#34;&#34;&#34;
+        headers = {}
+        if self._cors:
+            logger.debug(&#34;CORS is enabled, updating headers.&#34;)
+            headers.update(self._cors.to_dict())
+
+            if method == &#34;OPTIONS&#34;:
+                logger.debug(&#34;Pre-flight request detected. Returning CORS with null response&#34;)
+                headers[&#34;Access-Control-Allow-Methods&#34;] = &#34;,&#34;.join(sorted(self._cors_methods))
+                return ResponseBuilder(Response(status_code=204, content_type=None, headers=headers, body=None))
+
+        return ResponseBuilder(
+            Response(
+                status_code=404,
+                content_type=&#34;application/json&#34;,
+                headers=headers,
+                body=json.dumps({&#34;message&#34;: &#34;Not found&#34;}),
+            )
+        )
+
+    def _call_route(self, route: Route, args: Dict[str, str]) -&gt; ResponseBuilder:
+        &#34;&#34;&#34;Actually call the matching route with any provided keyword arguments.&#34;&#34;&#34;
+        return ResponseBuilder(self._to_response(route.func(**args)), route)
+
+    @staticmethod
+    def _to_response(result: Union[Dict, Response]) -&gt; Response:
+        &#34;&#34;&#34;Convert the route&#39;s result to a Response
+
+         2 main result types are supported:
+
+        - Dict[str, Any]: Rest api response with just the Dict to json stringify and content-type is set to
+          application/json
+        - Response: returned as is, and allows for more flexibility
+        &#34;&#34;&#34;
+        if isinstance(result, Response):
+            return result
+
+        logger.debug(&#34;Simple response detected, serializing return before constructing final response&#34;)
+        return Response(
+            status_code=200,
+            content_type=&#34;application/json&#34;,
+            body=json.dumps(result, separators=(&#34;,&#34;, &#34;:&#34;), cls=Encoder),
+        )</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver"><code class="flex name class">
+<span>class <span class="ident">ApiGatewayResolver</span></span>
+<span>(</span><span>proxy_type: enum.Enum = ProxyEventType.APIGatewayProxyEvent, cors: <a title="aws_lambda_powertools.event_handler.api_gateway.CORSConfig" href="#aws_lambda_powertools.event_handler.api_gateway.CORSConfig">CORSConfig</a> = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>API Gateway and ALB proxy resolver</p>
+<h2 id="examples">Examples</h2>
+<p>Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator</p>
+<pre><code class="language-python">from aws_lambda_powertools import Tracer
+from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+tracer = Tracer()
+app = ApiGatewayResolver()
+
+@app.get(&quot;/get-call&quot;)
+def simple_get():
+    return {&quot;message&quot;: &quot;Foo&quot;}
+
+@app.post(&quot;/post-call&quot;)
+def simple_post():
+    post_data: dict = app.current_event.json_body
+    return {&quot;message&quot;: post_data[&quot;value&quot;]}
+
+@tracer.capture_lambda_handler
+def lambda_handler(event, context):
+    return app.resolve(event, context)
+</code></pre>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>proxy_type</code></strong> :&ensp;<code><a title="aws_lambda_powertools.event_handler.api_gateway.ProxyEventType" href="#aws_lambda_powertools.event_handler.api_gateway.ProxyEventType">ProxyEventType</a></code></dt>
+<dd>Proxy request type, defaults to API Gateway V1</dd>
+<dt><strong><code>cors</code></strong> :&ensp;<code><a title="aws_lambda_powertools.event_handler.api_gateway.CORSConfig" href="#aws_lambda_powertools.event_handler.api_gateway.CORSConfig">CORSConfig</a></code></dt>
+<dd>Optionally configure and enabled CORS. Not each route will need to have to cors=True</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ApiGatewayResolver:
+    &#34;&#34;&#34;API Gateway and ALB proxy resolver
+
+    Examples
+    --------
+    Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator
+
+    ```python
+    from aws_lambda_powertools import Tracer
+    from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+    tracer = Tracer()
+    app = ApiGatewayResolver()
+
+    @app.get(&#34;/get-call&#34;)
+    def simple_get():
+        return {&#34;message&#34;: &#34;Foo&#34;}
+
+    @app.post(&#34;/post-call&#34;)
+    def simple_post():
+        post_data: dict = app.current_event.json_body
+        return {&#34;message&#34;: post_data[&#34;value&#34;]}
+
+    @tracer.capture_lambda_handler
+    def lambda_handler(event, context):
+        return app.resolve(event, context)
+    ```
+    &#34;&#34;&#34;
+
+    current_event: BaseProxyEvent
+    lambda_context: LambdaContext
+
+    def __init__(self, proxy_type: Enum = ProxyEventType.APIGatewayProxyEvent, cors: CORSConfig = None):
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        proxy_type: ProxyEventType
+            Proxy request type, defaults to API Gateway V1
+        cors: CORSConfig
+            Optionally configure and enabled CORS. Not each route will need to have to cors=True
+        &#34;&#34;&#34;
+        self._proxy_type = proxy_type
+        self._routes: List[Route] = []
+        self._cors = cors
+        self._cors_enabled: bool = cors is not None
+        self._cors_methods: Set[str] = {&#34;OPTIONS&#34;}
+
+    def get(self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None):
+        &#34;&#34;&#34;Get route decorator with GET `method`
+
+        Examples
+        --------
+        Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator
+
+        ```python
+        from aws_lambda_powertools import Tracer
+        from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+        tracer = Tracer()
+        app = ApiGatewayResolver()
+
+        @app.get(&#34;/get-call&#34;)
+        def simple_get():
+            return {&#34;message&#34;: &#34;Foo&#34;}
+
+        @tracer.capture_lambda_handler
+        def lambda_handler(event, context):
+            return app.resolve(event, context)
+        ```
+        &#34;&#34;&#34;
+        return self.route(rule, &#34;GET&#34;, cors, compress, cache_control)
+
+    def post(self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None):
+        &#34;&#34;&#34;Post route decorator with POST `method`
+
+        Examples
+        --------
+        Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator
+
+        ```python
+        from aws_lambda_powertools import Tracer
+        from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+        tracer = Tracer()
+        app = ApiGatewayResolver()
+
+        @app.post(&#34;/post-call&#34;)
+        def simple_post():
+            post_data: dict = app.current_event.json_body
+            return {&#34;message&#34;: post_data[&#34;value&#34;]}
+
+        @tracer.capture_lambda_handler
+        def lambda_handler(event, context):
+            return app.resolve(event, context)
+        ```
+        &#34;&#34;&#34;
+        return self.route(rule, &#34;POST&#34;, cors, compress, cache_control)
+
+    def put(self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None):
+        &#34;&#34;&#34;Put route decorator with PUT `method`
+
+        Examples
+        --------
+        Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator
+
+        ```python
+        from aws_lambda_powertools import Tracer
+        from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+        tracer = Tracer()
+        app = ApiGatewayResolver()
+
+        @app.put(&#34;/put-call&#34;)
+        def simple_put():
+            put_data: dict = app.current_event.json_body
+            return {&#34;message&#34;: put_data[&#34;value&#34;]}
+
+        @tracer.capture_lambda_handler
+        def lambda_handler(event, context):
+            return app.resolve(event, context)
+        ```
+        &#34;&#34;&#34;
+        return self.route(rule, &#34;PUT&#34;, cors, compress, cache_control)
+
+    def delete(self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None):
+        &#34;&#34;&#34;Delete route decorator with DELETE `method`
+
+        Examples
+        --------
+        Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator
+
+        ```python
+        from aws_lambda_powertools import Tracer
+        from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+        tracer = Tracer()
+        app = ApiGatewayResolver()
+
+        @app.delete(&#34;/delete-call&#34;)
+        def simple_delete():
+            return {&#34;message&#34;: &#34;deleted&#34;}
+
+        @tracer.capture_lambda_handler
+        def lambda_handler(event, context):
+            return app.resolve(event, context)
+        ```
+        &#34;&#34;&#34;
+        return self.route(rule, &#34;DELETE&#34;, cors, compress, cache_control)
+
+    def patch(self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None):
+        &#34;&#34;&#34;Patch route decorator with PATCH `method`
+
+        Examples
+        --------
+        Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator
+
+        ```python
+        from aws_lambda_powertools import Tracer
+        from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+        tracer = Tracer()
+        app = ApiGatewayResolver()
+
+        @app.patch(&#34;/patch-call&#34;)
+        def simple_patch():
+            patch_data: dict = app.current_event.json_body
+            patch_data[&#34;value&#34;] = patched
+
+            return {&#34;message&#34;: patch_data}
+
+        @tracer.capture_lambda_handler
+        def lambda_handler(event, context):
+            return app.resolve(event, context)
+        ```
+        &#34;&#34;&#34;
+        return self.route(rule, &#34;PATCH&#34;, cors, compress, cache_control)
+
+    def route(self, rule: str, method: str, cors: bool = None, compress: bool = False, cache_control: str = None):
+        &#34;&#34;&#34;Route decorator includes parameter `method`&#34;&#34;&#34;
+
+        def register_resolver(func: Callable):
+            logger.debug(f&#34;Adding route using rule {rule} and method {method.upper()}&#34;)
+            if cors is None:
+                cors_enabled = self._cors_enabled
+            else:
+                cors_enabled = cors
+            self._routes.append(Route(method, self._compile_regex(rule), func, cors_enabled, compress, cache_control))
+            if cors_enabled:
+                logger.debug(f&#34;Registering method {method.upper()} to Allow Methods in CORS&#34;)
+                self._cors_methods.add(method.upper())
+            return func
+
+        return register_resolver
+
+    def resolve(self, event, context) -&gt; Dict[str, Any]:
+        &#34;&#34;&#34;Resolves the response based on the provide event and decorator routes
+
+        Parameters
+        ----------
+        event: Dict[str, Any]
+            Event
+        context: LambdaContext
+            Lambda context
+        Returns
+        -------
+        dict
+            Returns the dict response
+        &#34;&#34;&#34;
+        self.current_event = self._to_proxy_event(event)
+        self.lambda_context = context
+        return self._resolve().build(self.current_event, self._cors)
+
+    def __call__(self, event, context) -&gt; Any:
+        return self.resolve(event, context)
+
+    @staticmethod
+    def _compile_regex(rule: str):
+        &#34;&#34;&#34;Precompile regex pattern&#34;&#34;&#34;
+        rule_regex: str = re.sub(r&#34;(&lt;\w+&gt;)&#34;, r&#34;(?P\1.+)&#34;, rule)
+        return re.compile(&#34;^{}$&#34;.format(rule_regex))
+
+    def _to_proxy_event(self, event: Dict) -&gt; BaseProxyEvent:
+        &#34;&#34;&#34;Convert the event dict to the corresponding data class&#34;&#34;&#34;
+        if self._proxy_type == ProxyEventType.APIGatewayProxyEvent:
+            logger.debug(&#34;Converting event to API Gateway REST API contract&#34;)
+            return APIGatewayProxyEvent(event)
+        if self._proxy_type == ProxyEventType.APIGatewayProxyEventV2:
+            logger.debug(&#34;Converting event to API Gateway HTTP API contract&#34;)
+            return APIGatewayProxyEventV2(event)
+        logger.debug(&#34;Converting event to ALB contract&#34;)
+        return ALBEvent(event)
+
+    def _resolve(self) -&gt; ResponseBuilder:
+        &#34;&#34;&#34;Resolves the response or return the not found response&#34;&#34;&#34;
+        method = self.current_event.http_method.upper()
+        path = self.current_event.path
+        for route in self._routes:
+            if method != route.method:
+                continue
+            match: Optional[re.Match] = route.rule.match(path)
+            if match:
+                logger.debug(&#34;Found a registered route. Calling function&#34;)
+                return self._call_route(route, match.groupdict())
+
+        logger.debug(f&#34;No match found for path {path} and method {method}&#34;)
+        return self._not_found(method)
+
+    def _not_found(self, method: str) -&gt; ResponseBuilder:
+        &#34;&#34;&#34;Called when no matching route was found and includes support for the cors preflight response&#34;&#34;&#34;
+        headers = {}
+        if self._cors:
+            logger.debug(&#34;CORS is enabled, updating headers.&#34;)
+            headers.update(self._cors.to_dict())
+
+            if method == &#34;OPTIONS&#34;:
+                logger.debug(&#34;Pre-flight request detected. Returning CORS with null response&#34;)
+                headers[&#34;Access-Control-Allow-Methods&#34;] = &#34;,&#34;.join(sorted(self._cors_methods))
+                return ResponseBuilder(Response(status_code=204, content_type=None, headers=headers, body=None))
+
+        return ResponseBuilder(
+            Response(
+                status_code=404,
+                content_type=&#34;application/json&#34;,
+                headers=headers,
+                body=json.dumps({&#34;message&#34;: &#34;Not found&#34;}),
+            )
+        )
+
+    def _call_route(self, route: Route, args: Dict[str, str]) -&gt; ResponseBuilder:
+        &#34;&#34;&#34;Actually call the matching route with any provided keyword arguments.&#34;&#34;&#34;
+        return ResponseBuilder(self._to_response(route.func(**args)), route)
+
+    @staticmethod
+    def _to_response(result: Union[Dict, Response]) -&gt; Response:
+        &#34;&#34;&#34;Convert the route&#39;s result to a Response
+
+         2 main result types are supported:
+
+        - Dict[str, Any]: Rest api response with just the Dict to json stringify and content-type is set to
+          application/json
+        - Response: returned as is, and allows for more flexibility
+        &#34;&#34;&#34;
+        if isinstance(result, Response):
+            return result
+
+        logger.debug(&#34;Simple response detected, serializing return before constructing final response&#34;)
+        return Response(
+            status_code=200,
+            content_type=&#34;application/json&#34;,
+            body=json.dumps(result, separators=(&#34;,&#34;, &#34;:&#34;), cls=Encoder),
+        )</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.current_event"><code class="name">var <span class="ident">current_event</span> : <a title="aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent" href="../utilities/data_classes/common.html#aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent">BaseProxyEvent</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.lambda_context"><code class="name">var <span class="ident">lambda_context</span> : <a title="aws_lambda_powertools.utilities.typing.lambda_context.LambdaContext" href="../utilities/typing/lambda_context.html#aws_lambda_powertools.utilities.typing.lambda_context.LambdaContext">LambdaContext</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.delete"><code class="name flex">
+<span>def <span class="ident">delete</span></span>(<span>self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Delete route decorator with DELETE <code>method</code></p>
+<h2 id="examples">Examples</h2>
+<p>Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator</p>
+<pre><code class="language-python">from aws_lambda_powertools import Tracer
+from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+tracer = Tracer()
+app = ApiGatewayResolver()
+
+@app.delete(&quot;/delete-call&quot;)
+def simple_delete():
+    return {&quot;message&quot;: &quot;deleted&quot;}
+
+@tracer.capture_lambda_handler
+def lambda_handler(event, context):
+    return app.resolve(event, context)
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete(self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None):
+    &#34;&#34;&#34;Delete route decorator with DELETE `method`
+
+    Examples
+    --------
+    Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator
+
+    ```python
+    from aws_lambda_powertools import Tracer
+    from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+    tracer = Tracer()
+    app = ApiGatewayResolver()
+
+    @app.delete(&#34;/delete-call&#34;)
+    def simple_delete():
+        return {&#34;message&#34;: &#34;deleted&#34;}
+
+    @tracer.capture_lambda_handler
+    def lambda_handler(event, context):
+        return app.resolve(event, context)
+    ```
+    &#34;&#34;&#34;
+    return self.route(rule, &#34;DELETE&#34;, cors, compress, cache_control)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.get"><code class="name flex">
+<span>def <span class="ident">get</span></span>(<span>self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get route decorator with GET <code>method</code></p>
+<h2 id="examples">Examples</h2>
+<p>Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator</p>
+<pre><code class="language-python">from aws_lambda_powertools import Tracer
+from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+tracer = Tracer()
+app = ApiGatewayResolver()
+
+@app.get(&quot;/get-call&quot;)
+def simple_get():
+    return {&quot;message&quot;: &quot;Foo&quot;}
+
+@tracer.capture_lambda_handler
+def lambda_handler(event, context):
+    return app.resolve(event, context)
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get(self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None):
+    &#34;&#34;&#34;Get route decorator with GET `method`
+
+    Examples
+    --------
+    Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator
+
+    ```python
+    from aws_lambda_powertools import Tracer
+    from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+    tracer = Tracer()
+    app = ApiGatewayResolver()
+
+    @app.get(&#34;/get-call&#34;)
+    def simple_get():
+        return {&#34;message&#34;: &#34;Foo&#34;}
+
+    @tracer.capture_lambda_handler
+    def lambda_handler(event, context):
+        return app.resolve(event, context)
+    ```
+    &#34;&#34;&#34;
+    return self.route(rule, &#34;GET&#34;, cors, compress, cache_control)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.patch"><code class="name flex">
+<span>def <span class="ident">patch</span></span>(<span>self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Patch route decorator with PATCH <code>method</code></p>
+<h2 id="examples">Examples</h2>
+<p>Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator</p>
+<pre><code class="language-python">from aws_lambda_powertools import Tracer
+from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+tracer = Tracer()
+app = ApiGatewayResolver()
+
+@app.patch(&quot;/patch-call&quot;)
+def simple_patch():
+    patch_data: dict = app.current_event.json_body
+    patch_data[&quot;value&quot;] = patched
+
+    return {&quot;message&quot;: patch_data}
+
+@tracer.capture_lambda_handler
+def lambda_handler(event, context):
+    return app.resolve(event, context)
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def patch(self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None):
+    &#34;&#34;&#34;Patch route decorator with PATCH `method`
+
+    Examples
+    --------
+    Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator
+
+    ```python
+    from aws_lambda_powertools import Tracer
+    from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+    tracer = Tracer()
+    app = ApiGatewayResolver()
+
+    @app.patch(&#34;/patch-call&#34;)
+    def simple_patch():
+        patch_data: dict = app.current_event.json_body
+        patch_data[&#34;value&#34;] = patched
+
+        return {&#34;message&#34;: patch_data}
+
+    @tracer.capture_lambda_handler
+    def lambda_handler(event, context):
+        return app.resolve(event, context)
+    ```
+    &#34;&#34;&#34;
+    return self.route(rule, &#34;PATCH&#34;, cors, compress, cache_control)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.post"><code class="name flex">
+<span>def <span class="ident">post</span></span>(<span>self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Post route decorator with POST <code>method</code></p>
+<h2 id="examples">Examples</h2>
+<p>Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator</p>
+<pre><code class="language-python">from aws_lambda_powertools import Tracer
+from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+tracer = Tracer()
+app = ApiGatewayResolver()
+
+@app.post(&quot;/post-call&quot;)
+def simple_post():
+    post_data: dict = app.current_event.json_body
+    return {&quot;message&quot;: post_data[&quot;value&quot;]}
+
+@tracer.capture_lambda_handler
+def lambda_handler(event, context):
+    return app.resolve(event, context)
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def post(self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None):
+    &#34;&#34;&#34;Post route decorator with POST `method`
+
+    Examples
+    --------
+    Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator
+
+    ```python
+    from aws_lambda_powertools import Tracer
+    from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+    tracer = Tracer()
+    app = ApiGatewayResolver()
+
+    @app.post(&#34;/post-call&#34;)
+    def simple_post():
+        post_data: dict = app.current_event.json_body
+        return {&#34;message&#34;: post_data[&#34;value&#34;]}
+
+    @tracer.capture_lambda_handler
+    def lambda_handler(event, context):
+        return app.resolve(event, context)
+    ```
+    &#34;&#34;&#34;
+    return self.route(rule, &#34;POST&#34;, cors, compress, cache_control)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.put"><code class="name flex">
+<span>def <span class="ident">put</span></span>(<span>self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Put route decorator with PUT <code>method</code></p>
+<h2 id="examples">Examples</h2>
+<p>Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator</p>
+<pre><code class="language-python">from aws_lambda_powertools import Tracer
+from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+tracer = Tracer()
+app = ApiGatewayResolver()
+
+@app.put(&quot;/put-call&quot;)
+def simple_put():
+    put_data: dict = app.current_event.json_body
+    return {&quot;message&quot;: put_data[&quot;value&quot;]}
+
+@tracer.capture_lambda_handler
+def lambda_handler(event, context):
+    return app.resolve(event, context)
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def put(self, rule: str, cors: bool = None, compress: bool = False, cache_control: str = None):
+    &#34;&#34;&#34;Put route decorator with PUT `method`
+
+    Examples
+    --------
+    Simple example with a custom lambda handler using the Tracer capture_lambda_handler decorator
+
+    ```python
+    from aws_lambda_powertools import Tracer
+    from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+    tracer = Tracer()
+    app = ApiGatewayResolver()
+
+    @app.put(&#34;/put-call&#34;)
+    def simple_put():
+        put_data: dict = app.current_event.json_body
+        return {&#34;message&#34;: put_data[&#34;value&#34;]}
+
+    @tracer.capture_lambda_handler
+    def lambda_handler(event, context):
+        return app.resolve(event, context)
+    ```
+    &#34;&#34;&#34;
+    return self.route(rule, &#34;PUT&#34;, cors, compress, cache_control)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.resolve"><code class="name flex">
+<span>def <span class="ident">resolve</span></span>(<span>self, event, context) ‑> Dict[str, Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Resolves the response based on the provide event and decorator routes</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>event</code></strong> :&ensp;<code>Dict[str, Any]</code></dt>
+<dd>Event</dd>
+<dt><strong><code>context</code></strong> :&ensp;<code>LambdaContext</code></dt>
+<dd>Lambda context</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Returns the dict response</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def resolve(self, event, context) -&gt; Dict[str, Any]:
+    &#34;&#34;&#34;Resolves the response based on the provide event and decorator routes
+
+    Parameters
+    ----------
+    event: Dict[str, Any]
+        Event
+    context: LambdaContext
+        Lambda context
+    Returns
+    -------
+    dict
+        Returns the dict response
+    &#34;&#34;&#34;
+    self.current_event = self._to_proxy_event(event)
+    self.lambda_context = context
+    return self._resolve().build(self.current_event, self._cors)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.route"><code class="name flex">
+<span>def <span class="ident">route</span></span>(<span>self, rule: str, method: str, cors: bool = None, compress: bool = False, cache_control: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Route decorator includes parameter <code>method</code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def route(self, rule: str, method: str, cors: bool = None, compress: bool = False, cache_control: str = None):
+    &#34;&#34;&#34;Route decorator includes parameter `method`&#34;&#34;&#34;
+
+    def register_resolver(func: Callable):
+        logger.debug(f&#34;Adding route using rule {rule} and method {method.upper()}&#34;)
+        if cors is None:
+            cors_enabled = self._cors_enabled
+        else:
+            cors_enabled = cors
+        self._routes.append(Route(method, self._compile_regex(rule), func, cors_enabled, compress, cache_control))
+        if cors_enabled:
+            logger.debug(f&#34;Registering method {method.upper()} to Allow Methods in CORS&#34;)
+            self._cors_methods.add(method.upper())
+        return func
+
+    return register_resolver</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.CORSConfig"><code class="flex name class">
+<span>class <span class="ident">CORSConfig</span></span>
+<span>(</span><span>allow_origin: str = '*', allow_headers: Union[List[str], NoneType] = None, expose_headers: Union[List[str], NoneType] = None, max_age: Union[int, NoneType] = None, allow_credentials: bool = False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>CORS Config</p>
+<h2 id="examples">Examples</h2>
+<p>Simple cors example using the default permissive cors, not this should only be used during early prototyping</p>
+<pre><code>from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+app = ApiGatewayResolver()
+
+@app.get("/my/path", cors=True)
+def with_cors():
+    return {"message": "Foo"}
+</code></pre>
+<p>Using a custom CORSConfig where <code>with_cors</code> used the custom provided CORSConfig and <code>without_cors</code>
+do not include any cors headers.</p>
+<pre><code>from aws_lambda_powertools.event_handler.api_gateway import (
+    ApiGatewayResolver, CORSConfig
+)
+
+cors_config = CORSConfig(
+    allow_origin="https://wwww.example.com/",
+    expose_headers=["x-exposed-response-header"],
+    allow_headers=["x-custom-request-header"],
+    max_age=100,
+    allow_credentials=True,
+)
+app = ApiGatewayResolver(cors=cors_config)
+
+@app.get("/my/path")
+def with_cors():
+    return {"message": "Foo"}
+
+@app.get("/another-one", cors=False)
+def without_cors():
+    return {"message": "Foo"}
+</code></pre>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>allow_origin</code></strong> :&ensp;<code>str</code></dt>
+<dd>The value of the <code>Access-Control-Allow-Origin</code> to send in the response. Defaults to "*", but should
+only be used during development.</dd>
+<dt><strong><code>allow_headers</code></strong> :&ensp;<code>Optional[List[str]]</code></dt>
+<dd>The list of additional allowed headers. This list is added to list of
+built in allowed headers: <code>Authorization</code>, <code>Content-Type</code>, <code>X-Amz-Date</code>,
+<code>X-Api-Key</code>, <code>X-Amz-Security-Token</code>.</dd>
+<dt><strong><code>expose_headers</code></strong> :&ensp;<code>Optional[List[str]]</code></dt>
+<dd>A list of values to return for the Access-Control-Expose-Headers</dd>
+<dt><strong><code>max_age</code></strong> :&ensp;<code>Optional[int]</code></dt>
+<dd>The value for the <code>Access-Control-Max-Age</code></dd>
+<dt><strong><code>allow_credentials</code></strong> :&ensp;<code>bool</code></dt>
+<dd>A boolean value that sets the value of <code>Access-Control-Allow-Credentials</code></dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CORSConfig(object):
+    &#34;&#34;&#34;CORS Config
+
+
+    Examples
+    --------
+
+    Simple cors example using the default permissive cors, not this should only be used during early prototyping
+
+        from aws_lambda_powertools.event_handler.api_gateway import ApiGatewayResolver
+
+        app = ApiGatewayResolver()
+
+        @app.get(&#34;/my/path&#34;, cors=True)
+        def with_cors():
+            return {&#34;message&#34;: &#34;Foo&#34;}
+
+    Using a custom CORSConfig where `with_cors` used the custom provided CORSConfig and `without_cors`
+    do not include any cors headers.
+
+        from aws_lambda_powertools.event_handler.api_gateway import (
+            ApiGatewayResolver, CORSConfig
+        )
+
+        cors_config = CORSConfig(
+            allow_origin=&#34;https://wwww.example.com/&#34;,
+            expose_headers=[&#34;x-exposed-response-header&#34;],
+            allow_headers=[&#34;x-custom-request-header&#34;],
+            max_age=100,
+            allow_credentials=True,
+        )
+        app = ApiGatewayResolver(cors=cors_config)
+
+        @app.get(&#34;/my/path&#34;)
+        def with_cors():
+            return {&#34;message&#34;: &#34;Foo&#34;}
+
+        @app.get(&#34;/another-one&#34;, cors=False)
+        def without_cors():
+            return {&#34;message&#34;: &#34;Foo&#34;}
+    &#34;&#34;&#34;
+
+    _REQUIRED_HEADERS = [&#34;Authorization&#34;, &#34;Content-Type&#34;, &#34;X-Amz-Date&#34;, &#34;X-Api-Key&#34;, &#34;X-Amz-Security-Token&#34;]
+
+    def __init__(
+        self,
+        allow_origin: str = &#34;*&#34;,
+        allow_headers: Optional[List[str]] = None,
+        expose_headers: Optional[List[str]] = None,
+        max_age: Optional[int] = None,
+        allow_credentials: bool = False,
+    ):
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        allow_origin: str
+            The value of the `Access-Control-Allow-Origin` to send in the response. Defaults to &#34;*&#34;, but should
+            only be used during development.
+        allow_headers: Optional[List[str]]
+            The list of additional allowed headers. This list is added to list of
+            built in allowed headers: `Authorization`, `Content-Type`, `X-Amz-Date`,
+            `X-Api-Key`, `X-Amz-Security-Token`.
+        expose_headers: Optional[List[str]]
+            A list of values to return for the Access-Control-Expose-Headers
+        max_age: Optional[int]
+            The value for the `Access-Control-Max-Age`
+        allow_credentials: bool
+            A boolean value that sets the value of `Access-Control-Allow-Credentials`
+        &#34;&#34;&#34;
+        self.allow_origin = allow_origin
+        self.allow_headers = set(self._REQUIRED_HEADERS + (allow_headers or []))
+        self.expose_headers = expose_headers or []
+        self.max_age = max_age
+        self.allow_credentials = allow_credentials
+
+    def to_dict(self) -&gt; Dict[str, str]:
+        &#34;&#34;&#34;Builds the configured Access-Control http headers&#34;&#34;&#34;
+        headers = {
+            &#34;Access-Control-Allow-Origin&#34;: self.allow_origin,
+            &#34;Access-Control-Allow-Headers&#34;: &#34;,&#34;.join(sorted(self.allow_headers)),
+        }
+        if self.expose_headers:
+            headers[&#34;Access-Control-Expose-Headers&#34;] = &#34;,&#34;.join(self.expose_headers)
+        if self.max_age is not None:
+            headers[&#34;Access-Control-Max-Age&#34;] = str(self.max_age)
+        if self.allow_credentials is True:
+            headers[&#34;Access-Control-Allow-Credentials&#34;] = &#34;true&#34;
+        return headers</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.CORSConfig.to_dict"><code class="name flex">
+<span>def <span class="ident">to_dict</span></span>(<span>self) ‑> Dict[str, str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Builds the configured Access-Control http headers</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_dict(self) -&gt; Dict[str, str]:
+    &#34;&#34;&#34;Builds the configured Access-Control http headers&#34;&#34;&#34;
+    headers = {
+        &#34;Access-Control-Allow-Origin&#34;: self.allow_origin,
+        &#34;Access-Control-Allow-Headers&#34;: &#34;,&#34;.join(sorted(self.allow_headers)),
+    }
+    if self.expose_headers:
+        headers[&#34;Access-Control-Expose-Headers&#34;] = &#34;,&#34;.join(self.expose_headers)
+    if self.max_age is not None:
+        headers[&#34;Access-Control-Max-Age&#34;] = str(self.max_age)
+    if self.allow_credentials is True:
+        headers[&#34;Access-Control-Allow-Credentials&#34;] = &#34;true&#34;
+    return headers</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.ProxyEventType"><code class="flex name class">
+<span>class <span class="ident">ProxyEventType</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An enumerations of the supported proxy event types.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ProxyEventType(Enum):
+    &#34;&#34;&#34;An enumerations of the supported proxy event types.&#34;&#34;&#34;
+
+    APIGatewayProxyEvent = &#34;APIGatewayProxyEvent&#34;
+    APIGatewayProxyEventV2 = &#34;APIGatewayProxyEventV2&#34;
+    ALBEvent = &#34;ALBEvent&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.ProxyEventType.ALBEvent"><code class="name">var <span class="ident">ALBEvent</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.ProxyEventType.APIGatewayProxyEvent"><code class="name">var <span class="ident">APIGatewayProxyEvent</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.ProxyEventType.APIGatewayProxyEventV2"><code class="name">var <span class="ident">APIGatewayProxyEventV2</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.Response"><code class="flex name class">
+<span>class <span class="ident">Response</span></span>
+<span>(</span><span>status_code: int, content_type: Union[str, NoneType], body: Union[str, bytes, NoneType], headers: Dict = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Response data class that provides greater control over what is returned from the proxy event</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>status_code</code></strong> :&ensp;<code>int</code></dt>
+<dd>Http status code, example 200</dd>
+<dt><strong><code>content_type</code></strong> :&ensp;<code>str</code></dt>
+<dd>Optionally set the Content-Type header, example "application/json". Note this will be merged into any
+provided http headers</dd>
+<dt><strong><code>body</code></strong> :&ensp;<code>Union[str, bytes, None]</code></dt>
+<dd>Optionally set the response body. Note: bytes body will be automatically base64 encoded</dd>
+<dt><strong><code>headers</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Optionally set specific http headers. Setting "Content-Type" hear would override the <code>content_type</code> value.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Response:
+    &#34;&#34;&#34;Response data class that provides greater control over what is returned from the proxy event&#34;&#34;&#34;
+
+    def __init__(
+        self, status_code: int, content_type: Optional[str], body: Union[str, bytes, None], headers: Dict = None
+    ):
+        &#34;&#34;&#34;
+
+        Parameters
+        ----------
+        status_code: int
+            Http status code, example 200
+        content_type: str
+            Optionally set the Content-Type header, example &#34;application/json&#34;. Note this will be merged into any
+            provided http headers
+        body: Union[str, bytes, None]
+            Optionally set the response body. Note: bytes body will be automatically base64 encoded
+        headers: dict
+            Optionally set specific http headers. Setting &#34;Content-Type&#34; hear would override the `content_type` value.
+        &#34;&#34;&#34;
+        self.status_code = status_code
+        self.body = body
+        self.base64_encoded = False
+        self.headers: Dict = headers or {}
+        if content_type:
+            self.headers.setdefault(&#34;Content-Type&#34;, content_type)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.ResponseBuilder"><code class="flex name class">
+<span>class <span class="ident">ResponseBuilder</span></span>
+<span>(</span><span>response: <a title="aws_lambda_powertools.event_handler.api_gateway.Response" href="#aws_lambda_powertools.event_handler.api_gateway.Response">Response</a>, route: <a title="aws_lambda_powertools.event_handler.api_gateway.Route" href="#aws_lambda_powertools.event_handler.api_gateway.Route">Route</a> = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Internally used Response builder</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ResponseBuilder:
+    &#34;&#34;&#34;Internally used Response builder&#34;&#34;&#34;
+
+    def __init__(self, response: Response, route: Route = None):
+        self.response = response
+        self.route = route
+
+    def _add_cors(self, cors: CORSConfig):
+        &#34;&#34;&#34;Update headers to include the configured Access-Control headers&#34;&#34;&#34;
+        self.response.headers.update(cors.to_dict())
+
+    def _add_cache_control(self, cache_control: str):
+        &#34;&#34;&#34;Set the specified cache control headers for 200 http responses. For non-200 `no-cache` is used.&#34;&#34;&#34;
+        self.response.headers[&#34;Cache-Control&#34;] = cache_control if self.response.status_code == 200 else &#34;no-cache&#34;
+
+    def _compress(self):
+        &#34;&#34;&#34;Compress the response body, but only if `Accept-Encoding` headers includes gzip.&#34;&#34;&#34;
+        self.response.headers[&#34;Content-Encoding&#34;] = &#34;gzip&#34;
+        if isinstance(self.response.body, str):
+            logger.debug(&#34;Converting string response to bytes before compressing it&#34;)
+            self.response.body = bytes(self.response.body, &#34;utf-8&#34;)
+        gzip = zlib.compressobj(9, zlib.DEFLATED, zlib.MAX_WBITS | 16)
+        self.response.body = gzip.compress(self.response.body) + gzip.flush()
+
+    def _route(self, event: BaseProxyEvent, cors: Optional[CORSConfig]):
+        &#34;&#34;&#34;Optionally handle any of the route&#39;s configure response handling&#34;&#34;&#34;
+        if self.route is None:
+            return
+        if self.route.cors:
+            self._add_cors(cors or CORSConfig())
+        if self.route.cache_control:
+            self._add_cache_control(self.route.cache_control)
+        if self.route.compress and &#34;gzip&#34; in (event.get_header_value(&#34;accept-encoding&#34;, &#34;&#34;) or &#34;&#34;):
+            self._compress()
+
+    def build(self, event: BaseProxyEvent, cors: CORSConfig = None) -&gt; Dict[str, Any]:
+        &#34;&#34;&#34;Build the full response dict to be returned by the lambda&#34;&#34;&#34;
+        self._route(event, cors)
+
+        if isinstance(self.response.body, bytes):
+            logger.debug(&#34;Encoding bytes response with base64&#34;)
+            self.response.base64_encoded = True
+            self.response.body = base64.b64encode(self.response.body).decode()
+        return {
+            &#34;statusCode&#34;: self.response.status_code,
+            &#34;headers&#34;: self.response.headers,
+            &#34;body&#34;: self.response.body,
+            &#34;isBase64Encoded&#34;: self.response.base64_encoded,
+        }</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.ResponseBuilder.build"><code class="name flex">
+<span>def <span class="ident">build</span></span>(<span>self, event: <a title="aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent" href="../utilities/data_classes/common.html#aws_lambda_powertools.utilities.data_classes.common.BaseProxyEvent">BaseProxyEvent</a>, cors: <a title="aws_lambda_powertools.event_handler.api_gateway.CORSConfig" href="#aws_lambda_powertools.event_handler.api_gateway.CORSConfig">CORSConfig</a> = None) ‑> Dict[str, Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Build the full response dict to be returned by the lambda</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def build(self, event: BaseProxyEvent, cors: CORSConfig = None) -&gt; Dict[str, Any]:
+    &#34;&#34;&#34;Build the full response dict to be returned by the lambda&#34;&#34;&#34;
+    self._route(event, cors)
+
+    if isinstance(self.response.body, bytes):
+        logger.debug(&#34;Encoding bytes response with base64&#34;)
+        self.response.base64_encoded = True
+        self.response.body = base64.b64encode(self.response.body).decode()
+    return {
+        &#34;statusCode&#34;: self.response.status_code,
+        &#34;headers&#34;: self.response.headers,
+        &#34;body&#34;: self.response.body,
+        &#34;isBase64Encoded&#34;: self.response.base64_encoded,
+    }</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="aws_lambda_powertools.event_handler.api_gateway.Route"><code class="flex name class">
+<span>class <span class="ident">Route</span></span>
+<span>(</span><span>method: str, rule: Any, func: Callable, cors: bool, compress: bool, cache_control: Union[str, NoneType])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Internally used Route Configuration</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Route:
+    &#34;&#34;&#34;Internally used Route Configuration&#34;&#34;&#34;
+
+    def __init__(
+        self, method: str, rule: Any, func: Callable, cors: bool, compress: bool, cache_control: Optional[str]
+    ):
+        self.method = method.upper()
+        self.rule = rule
+        self.func = func
+        self.cors = cors
+        self.compress = compress
+        self.cache_control = cache_control</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="aws_lambda_powertools.event_handler" href="index.html">aws_lambda_powertools.event_handler</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver" href="#aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver">ApiGatewayResolver</a></code></h4>
+<ul class="two-column">
+<li><code><a title="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.current_event" href="#aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.current_event">current_event</a></code></li>
+<li><code><a title="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.delete" href="#aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.delete">delete</a></code></li>
+<li><code><a title="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.get" href="#aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.get">get</a></code></li>
+<li><code><a title="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.lambda_context" href="#aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.lambda_context">lambda_context</a></code></li>
+<li><code><a title="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.patch" href="#aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.patch">patch</a></code></li>
+<li><code><a title="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.post" href="#aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.post">post</a></code></li>
+<li><code><a title="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.put" href="#aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.put">put</a></code></li>
+<li><code><a title="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.resolve" href="#aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.resolve">resolve</a></code></li>
+<li><code><a title="aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.route" href="#aws_lambda_powertools.event_handler.api_gateway.ApiGatewayResolver.route">route</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.event_handler.api_gateway.CORSConfig" href="#aws_lambda_powertools.event_handler.api_gateway.CORSConfig">CORSConfig</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.event_handler.api_gateway.CORSConfig.to_dict" href="#aws_lambda_powertools.event_handler.api_gateway.CORSConfig.to_dict">to_dict</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.event_handler.api_gateway.ProxyEventType" href="#aws_lambda_powertools.event_handler.api_gateway.ProxyEventType">ProxyEventType</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.event_handler.api_gateway.ProxyEventType.ALBEvent" href="#aws_lambda_powertools.event_handler.api_gateway.ProxyEventType.ALBEvent">ALBEvent</a></code></li>
+<li><code><a title="aws_lambda_powertools.event_handler.api_gateway.ProxyEventType.APIGatewayProxyEvent" href="#aws_lambda_powertools.event_handler.api_gateway.ProxyEventType.APIGatewayProxyEvent">APIGatewayProxyEvent</a></code></li>
+<li><code><a title="aws_lambda_powertools.event_handler.api_gateway.ProxyEventType.APIGatewayProxyEventV2" href="#aws_lambda_powertools.event_handler.api_gateway.ProxyEventType.APIGatewayProxyEventV2">APIGatewayProxyEventV2</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.event_handler.api_gateway.Response" href="#aws_lambda_powertools.event_handler.api_gateway.Response">Response</a></code></h4>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.event_handler.api_gateway.ResponseBuilder" href="#aws_lambda_powertools.event_handler.api_gateway.ResponseBuilder">ResponseBuilder</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.event_handler.api_gateway.ResponseBuilder.build" href="#aws_lambda_powertools.event_handler.api_gateway.ResponseBuilder.build">build</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.event_handler.api_gateway.Route" href="#aws_lambda_powertools.event_handler.api_gateway.Route">Route</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
