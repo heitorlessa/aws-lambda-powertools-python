@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.7">
     
     
       
@@ -22,10 +22,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.e35208c4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
         
           
           
@@ -233,6 +233,21 @@
   
   
     <li class="md-nav__item">
+      <a href="https://github.com/awslabs/aws-lambda-powertools-roadmap/projects/1" target="_blank" class="md-nav__link">
+        Roadmap
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../api/" target="_blank" class="md-nav__link">
         API reference
       </a>
@@ -255,14 +270,14 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
       
-      <label class="md-nav__link" for="__nav_4">
+      <label class="md-nav__link" for="__nav_5">
         Core utilities
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Core utilities" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
+        <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           Core utilities
         </label>
@@ -400,6 +415,19 @@
   <a href="#removing-additional-keys" class="md-nav__link">
     Removing additional keys
   </a>
+  
+    <nav class="md-nav" aria-label="Removing additional keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clearing-all-state" class="md-nav__link">
+    Clearing all state
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -594,14 +622,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" data-md-state="indeterminate" type="checkbox" id="__nav_4_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" data-md-state="indeterminate" type="checkbox" id="__nav_5_4" checked>
       
-      <label class="md-nav__link" for="__nav_4_4">
+      <label class="md-nav__link" for="__nav_5_4">
         Event Handler
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Event Handler" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_4">
+        <label class="md-nav__title" for="__nav_5_4">
           <span class="md-nav__icon md-icon"></span>
           Event Handler
         </label>
@@ -656,14 +684,14 @@
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" data-md-state="indeterminate" type="checkbox" id="__nav_6" checked>
       
-      <label class="md-nav__link" for="__nav_5">
+      <label class="md-nav__link" for="__nav_6">
         Utilities
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Utilities" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
+        <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           Utilities
         </label>
@@ -881,6 +909,19 @@
   <a href="#removing-additional-keys" class="md-nav__link">
     Removing additional keys
   </a>
+  
+    <nav class="md-nav" aria-label="Removing additional keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clearing-all-state" class="md-nav__link">
+    Clearing all state
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1465,8 +1506,8 @@
 </div>
 <h3 id="appending-additional-keys">Appending additional keys<a class="headerlink" href="#appending-additional-keys" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
-<p class="admonition-title">Keys might be persisted across invocations</p>
-<p>Always set additional keys as part of your handler to ensure they have the latest value. Additional keys are kept in memory as part of a Logger instance and might be reused in non-cold start scenarios.</p>
+<p class="admonition-title">Custom keys are persisted across warm invocations</p>
+<p>Always set additional keys as part of your handler to ensure they have the latest value, or explicitly clear them with <a href="#clearing-all-state"><code>clear_state=True</code></a>.</p>
 </div>
 <p>You can append additional keys using either mechanism:</p>
 <ul>
@@ -1737,13 +1778,109 @@
 </td></tr></table>
 </div>
 </div>
+<h4 id="clearing-all-state">Clearing all state<a class="headerlink" href="#clearing-all-state" title="Permanent link">&para;</a></h4>
+<p>Logger is commonly initialized in the global scope. Due to <a href="https://docs.aws.amazon.com/lambda/latest/dg/runtimes-context.html">Lambda Execution Context reuse</a>, this means that custom keys can be persisted across invocations. If you want all custom keys to be deleted, you can use <code>clear_state=True</code> param in <code>inject_lambda_context</code> decorator.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>This is useful when you add multiple custom keys conditionally, instead of setting a default <code>None</code> value if not present. Any key with <code>None</code> value is automatically removed by Logger.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">This can have unintended side effects if you use Layers</p>
+<p>Lambda Layers code is imported before the Lambda handler.</p>
+<p>This means that <code>clear_state=True</code> will instruct Logger to remove any keys previously added before Lambda handler execution proceeds.</p>
+<p>You can either avoid running any code as part of Lambda Layers global scope, or override keys with their latest value as part of handler's execution.</p>
+</div>
+<div class="tabbed-set" data-tabs="11:3"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">collect.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;payment&quot;</span><span class="p">)</span>
+
+<span class="hll"><span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span><span class="p">(</span><span class="n">clear_state</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;special_key&quot;</span><span class="p">):</span>
+<span class="hll">        <span class="c1"># Should only be available in the first request log</span>
+</span>        <span class="c1"># as the second request doesn&#39;t contain `special_key`</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">append_keys</span><span class="p">(</span><span class="n">debugging_key</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Collecting payment&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><label for="__tabbed_11_2">#1 request</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;collect.handler:10&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Collecting payment&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-05-03 11:47:12,494+0200&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;service&quot;</span><span class="p">:</span> <span class="s2">&quot;payment&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="nt">&quot;special_key&quot;</span><span class="p">:</span> <span class="s2">&quot;debug_key&quot;</span><span class="p">,</span>
+</span>    <span class="nt">&quot;cold_start&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;lambda_function_name&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;lambda_function_memory_size&quot;</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span>
+    <span class="nt">&quot;lambda_function_arn&quot;</span><span class="p">:</span> <span class="s2">&quot;arn:aws:lambda:eu-west-1:12345678910:function:test&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;lambda_request_id&quot;</span><span class="p">:</span> <span class="s2">&quot;52fdfc07-2182-154f-163f-5f0f9a621d72&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><label for="__tabbed_11_3">#2 request</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;collect.handler:10&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Collecting payment&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-05-03 11:47:12,494+0200&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;service&quot;</span><span class="p">:</span> <span class="s2">&quot;payment&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="nt">&quot;cold_start&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span>    <span class="nt">&quot;lambda_function_name&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;lambda_function_memory_size&quot;</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span>
+    <span class="nt">&quot;lambda_function_arn&quot;</span><span class="p">:</span> <span class="s2">&quot;arn:aws:lambda:eu-west-1:12345678910:function:test&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;lambda_request_id&quot;</span><span class="p">:</span> <span class="s2">&quot;52fdfc07-2182-154f-163f-5f0f9a621d72&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
 <h3 id="logging-exceptions">Logging exceptions<a class="headerlink" href="#logging-exceptions" title="Permanent link">&para;</a></h3>
 <p>Use <code>logger.exception</code> method to log contextual information about exceptions. Logger will include <code>exception_name</code> and <code>exception</code> keys to aid troubleshooting and error enumeration.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>You can use your preferred Log Analytics tool to enumerate and visualize exceptions across all your services using <code>exception_name</code> key.</p>
 </div>
-<div class="tabbed-set" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">collect.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">collect.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1762,7 +1899,7 @@
 </span></code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><label for="__tabbed_11_2">Example CloudWatch Logs excerpt</label><div class="tabbed-content">
+<input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><label for="__tabbed_12_2">Example CloudWatch Logs excerpt</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1787,7 +1924,7 @@
 <h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h2>
 <h3 id="reusing-logger-across-your-code">Reusing Logger across your code<a class="headerlink" href="#reusing-logger-across-your-code" title="Permanent link">&para;</a></h3>
 <p>Logger supports inheritance via <code>child</code> parameter. This allows you to create multiple Loggers across your code base, and propagate changes such as new keys to all Loggers.</p>
-<div class="tabbed-set" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">collect.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">collect.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1806,7 +1943,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><label for="__tabbed_12_2">shared.py</label><div class="tabbed-content">
+<input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><label for="__tabbed_13_2">shared.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1840,7 +1977,7 @@
 <p class="admonition-title">Note</p>
 <p>If you want Logger to calculate sampling upon every invocation, please open a <a href="https://github.com/awslabs/aws-lambda-powertools-python/issues/new?assignees=&amp;labels=feature-request%2C+triage&amp;template=feature_request.md&amp;title=">feature request</a>.</p>
 </div>
-<div class="tabbed-set" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">collect.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">collect.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1859,7 +1996,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><label for="__tabbed_13_2">Example CloudWatch Logs excerpt</label><div class="tabbed-content">
+<input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><label for="__tabbed_14_2">Example CloudWatch Logs excerpt</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1964,7 +2101,7 @@
 </tr>
 </tbody>
 </table>
-<div class="tabbed-set" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">LambdaPowertoolsFormatter.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">LambdaPowertoolsFormatter.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1993,7 +2130,7 @@
 <p class="admonition-title">Danger</p>
 <p>A common issue when migrating from other Loggers is that <code>service</code> might be defined in the parent Logger (no child param), and not defined in the child Logger:</p>
 </div>
-<div class="tabbed-set" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">incorrect_logger_inheritance.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">incorrect_logger_inheritance.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2016,7 +2153,7 @@
 </span></code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><label for="__tabbed_15_2">correct_logger_inheritance.py</label><div class="tabbed-content">
+<input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><label for="__tabbed_16_2">correct_logger_inheritance.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2048,7 +2185,7 @@
 <h4 id="overriding-log-records">Overriding Log records<a class="headerlink" href="#overriding-log-records" title="Permanent link">&para;</a></h4>
 <p>You might want to continue to use the same date formatting style, or override <code>location</code> to display the <code>package.function_name:line_number</code> as you previously had.</p>
 <p>Logger allows you to either change the format or suppress the following keys altogether at the initialization: <code>location</code>, <code>timestamp</code>, <code>level</code>, <code>xray_trace_id</code>.</p>
-<div class="tabbed-set" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">lambda_handler.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><label for="__tabbed_17_1">lambda_handler.py</label><div class="tabbed-content">
 <blockquote>
 <p>We honour standard <a href="https://docs.python.org/3/howto/logging.html#displaying-the-date-time-in-messages" target="_blank">logging library string formats</a>.</p>
 </blockquote>
@@ -2078,7 +2215,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><label for="__tabbed_16_2">Example CloudWatch Logs excerpt</label><div class="tabbed-content">
+<input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><label for="__tabbed_17_2">Example CloudWatch Logs excerpt</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2098,7 +2235,7 @@
 </div>
 <h4 id="reordering-log-keys-position">Reordering log keys position<a class="headerlink" href="#reordering-log-keys-position" title="Permanent link">&para;</a></h4>
 <p>You can change the order of <a href="#standard-structured-keys">standard Logger keys</a> or any keys that will be appended later at runtime via the <code>log_record_order</code> parameter.</p>
-<div class="tabbed-set" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><label for="__tabbed_17_1">lambda_handler.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><label for="__tabbed_18_1">lambda_handler.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2121,7 +2258,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><label for="__tabbed_17_2">Example CloudWatch Logs excerpt</label><div class="tabbed-content">
+<input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><label for="__tabbed_18_2">Example CloudWatch Logs excerpt</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2143,7 +2280,7 @@
 </div>
 <h4 id="setting-timestamp-to-utc">Setting timestamp to UTC<a class="headerlink" href="#setting-timestamp-to-utc" title="Permanent link">&para;</a></h4>
 <p>By default, this Logger and standard logging library emits records using local time timestamp. You can override this behaviour via <code>utc</code> parameter:</p>
-<div class="tabbed-set" data-tabs="18:1"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><label for="__tabbed_18_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="19:1"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><label for="__tabbed_19_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2163,7 +2300,7 @@
 </div>
 <h4 id="custom-function-for-unserializable-values">Custom function for unserializable values<a class="headerlink" href="#custom-function-for-unserializable-values" title="Permanent link">&para;</a></h4>
 <p>By default, Logger uses <code>str</code> to handle values non-serializable by JSON. You can override this behaviour via <code>json_default</code> parameter by passing a Callable:</p>
-<div class="tabbed-set" data-tabs="19:2"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><label for="__tabbed_19_1">collect.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="20:2"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><label for="__tabbed_20_1">collect.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2190,7 +2327,7 @@
 </span></code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><label for="__tabbed_19_2">Example CloudWatch Logs excerpt</label><div class="tabbed-content">
+<input id="__tabbed_20_2" name="__tabbed_20" type="radio" /><label for="__tabbed_20_2">Example CloudWatch Logs excerpt</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2210,7 +2347,7 @@
 </div>
 <h4 id="bring-your-own-handler">Bring your own handler<a class="headerlink" href="#bring-your-own-handler" title="Permanent link">&para;</a></h4>
 <p>By default, Logger uses StreamHandler and logs to standard output. You can override this behaviour via <code>logger_handler</code> parameter:</p>
-<div class="tabbed-set" data-tabs="20:1"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><label for="__tabbed_20_1">collect.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="21:1"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><label for="__tabbed_21_1">collect.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2237,7 +2374,7 @@
 <h4 id="bring-your-own-formatter">Bring your own formatter<a class="headerlink" href="#bring-your-own-formatter" title="Permanent link">&para;</a></h4>
 <p>By default, Logger uses <a href="#lambdapowertoolsformatter">LambdaPowertoolsFormatter</a> that persists its custom structure between non-cold start invocations. There could be scenarios where the existing feature set isn't sufficient to your formatting needs.</p>
 <p>For <strong>minor changes like remapping keys</strong> after all log record processing has completed, you can override <code>serialize</code> method from <a href="#lambdapowertoolsformatter">LambdaPowertoolsFormatter</a>:</p>
-<div class="tabbed-set" data-tabs="21:1"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><label for="__tabbed_21_1">custom_formatter.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="22:1"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><label for="__tabbed_22_1">custom_formatter.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2274,7 +2411,7 @@
 <p class="admonition-title">Info</p>
 <p>You might need to implement <code>remove_keys</code> method if you make use of the feature too.</p>
 </div>
-<div class="tabbed-set" data-tabs="22:2"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><label for="__tabbed_22_1">collect.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="23:2"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><label for="__tabbed_23_1">collect.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2339,7 +2476,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_22_2" name="__tabbed_22" type="radio" /><label for="__tabbed_22_2">Example CloudWatch Logs excerpt</label><div class="tabbed-content">
+<input id="__tabbed_23_2" name="__tabbed_23" type="radio" /><label for="__tabbed_23_2">Example CloudWatch Logs excerpt</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2366,7 +2503,7 @@
 <h4 id="bring-your-own-json-serializer">Bring your own JSON serializer<a class="headerlink" href="#bring-your-own-json-serializer" title="Permanent link">&para;</a></h4>
 <p>By default, Logger uses <code>json.dumps</code> and <code>json.loads</code> as serializer and deserializer respectively. There could be scenarios where you are making use of alternative JSON libraries like <a href="https://github.com/ijl/orjson" target="_blank">orjson</a>.</p>
 <p>As parameters don't always translate well between them, you can pass any callable that receives a <code>Dict</code> and return a <code>str</code>:</p>
-<div class="tabbed-set" data-tabs="23:1"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><label for="__tabbed_23_1">collect.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="24:1"><input checked="checked" id="__tabbed_24_1" name="__tabbed_24" type="radio" /><label for="__tabbed_24_1">collect.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2444,7 +2581,7 @@
 <h3 id="inject-lambda-context">Inject Lambda Context<a class="headerlink" href="#inject-lambda-context" title="Permanent link">&para;</a></h3>
 <p>When unit testing your code that makes use of <code>inject_lambda_context</code> decorator, you need to pass a dummy Lambda Context, or else Logger will fail.</p>
 <p>This is a Pytest sample that provides the minimum information necessary for Logger to succeed:</p>
-<div class="tabbed-set" data-tabs="24:2"><input checked="checked" id="__tabbed_24_1" name="__tabbed_24" type="radio" /><label for="__tabbed_24_1">fake_lambda_context_for_logger.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="25:2"><input checked="checked" id="__tabbed_25_1" name="__tabbed_25" type="radio" /><label for="__tabbed_25_1">fake_lambda_context_for_logger.py</label><div class="tabbed-content">
 <p>Note that dataclasses are available in Python 3.7+ only.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2484,7 +2621,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_24_2" name="__tabbed_24" type="radio" /><label for="__tabbed_24_2">fake_lambda_context_for_logger_py36.py</label><div class="tabbed-content">
+<input id="__tabbed_25_2" name="__tabbed_25" type="radio" /><label for="__tabbed_25_2">fake_lambda_context_for_logger_py36.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2545,7 +2682,7 @@
 <p><strong>How can I enable boto3 and botocore library logging?</strong></p>
 <p>You can enable the <code>botocore</code> and <code>boto3</code> logs by using the <code>set_stream_logger</code> method, this method will add a stream handler
 for the given name and level to the logging module. By default, this logs all boto3 messages to stdout.</p>
-<div class="tabbed-set" data-tabs="25:1"><input checked="checked" id="__tabbed_25_1" name="__tabbed_25" type="radio" /><label for="__tabbed_25_1">log_botocore_and_boto3.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="26:1"><input checked="checked" id="__tabbed_26_1" name="__tabbed_26" type="radio" /><label for="__tabbed_26_1">log_botocore_and_boto3.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2584,7 +2721,7 @@ for the given name and level to the logging module. By default, this logs all bo
 <p><strong>What's the difference between <code>append_keys</code> and <code>extra</code>?</strong></p>
 <p>Keys added with <code>append_keys</code> will persist across multiple log messages while keys added via <code>extra</code> will only be available in a given log message operation.</p>
 <p>Here's an example where we persist <code>payment_id</code> not <code>request_id</code>. Note that <code>payment_id</code> remains in both log messages while <code>booking_id</code> is only available in the first message.</p>
-<div class="tabbed-set" data-tabs="26:2"><input checked="checked" id="__tabbed_26_1" name="__tabbed_26" type="radio" /><label for="__tabbed_26_1">lambda_handler.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="27:2"><input checked="checked" id="__tabbed_27_1" name="__tabbed_27" type="radio" /><label for="__tabbed_27_1">lambda_handler.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2615,7 +2752,7 @@ for the given name and level to the logging module. By default, this logs all bo
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_26_2" name="__tabbed_26" type="radio" /><label for="__tabbed_26_2">Example CloudWatch Logs excerpt</label><div class="tabbed-content">
+<input id="__tabbed_27_2" name="__tabbed_27" type="radio" /><label for="__tabbed_27_2">Example CloudWatch Logs excerpt</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2665,7 +2802,7 @@ for the given name and level to the logging module. By default, this logs all bo
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-05-05
+      Last update: 2021-06-08
     
   </small>
 </div>
@@ -2681,7 +2818,7 @@ for the given name and level to the logging module. By default, this logs all bo
           </div>
         </div>
         
-          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+          <a href="#" class="md-top md-icon" title="Back to top" data-md-component="top" data-md-state="hidden">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
           </a>
         
@@ -2692,7 +2829,8 @@ for the given name and level to the logging module. By default, this logs all bo
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../tracer/" class="md-footer__link md-footer__link--prev" rel="prev">
+        
+        <a href="../tracer/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Tracer" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -2707,7 +2845,8 @@ for the given name and level to the logging module. By default, this logs all bo
         </a>
       
       
-        <a href="../metrics/" class="md-footer__link md-footer__link--next" rel="next">
+        
+        <a href="../metrics/" class="md-footer__link md-footer__link--next" aria-label="Next: Metrics" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
@@ -2746,10 +2885,10 @@ for the given name and level to the logging module. By default, this logs all bo
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      <script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
       
         <script src="../../javascript/aws-amplify.min.js"></script>
       

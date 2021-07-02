@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.3">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.7">
     
     
       
@@ -22,10 +22,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.e35208c4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ca7ac06f.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f1a3b89f.min.css">
         
           
           
@@ -233,6 +233,21 @@
   
   
     <li class="md-nav__item">
+      <a href="https://github.com/awslabs/aws-lambda-powertools-roadmap/projects/1" target="_blank" class="md-nav__link">
+        Roadmap
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../api/" target="_blank" class="md-nav__link">
         API reference
       </a>
@@ -253,14 +268,14 @@
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
       
-      <label class="md-nav__link" for="__nav_4">
+      <label class="md-nav__link" for="__nav_5">
         Core utilities
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Core utilities" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
+        <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           Core utilities
         </label>
@@ -310,14 +325,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" data-md-state="indeterminate" type="checkbox" id="__nav_4_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" data-md-state="indeterminate" type="checkbox" id="__nav_5_4" checked>
       
-      <label class="md-nav__link" for="__nav_4_4">
+      <label class="md-nav__link" for="__nav_5_4">
         Event Handler
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Event Handler" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_4">
+        <label class="md-nav__title" for="__nav_5_4">
           <span class="md-nav__icon md-icon"></span>
           Event Handler
         </label>
@@ -374,14 +389,14 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
       
-      <label class="md-nav__link" for="__nav_5">
+      <label class="md-nav__link" for="__nav_6">
         Utilities
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Utilities" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
+        <label class="md-nav__title" for="__nav_6">
           <span class="md-nav__icon md-icon"></span>
           Utilities
         </label>
@@ -524,7 +539,14 @@
         
           <li class="md-nav__item">
   <a href="#api-gateway-proxy-v2" class="md-nav__link">
-    API Gateway Proxy v2
+    API Gateway Proxy V2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-load-balancer" class="md-nav__link">
+    Application Load Balancer
   </a>
   
 </li>
@@ -539,6 +561,13 @@
           <li class="md-nav__item">
   <a href="#cloudwatch-logs" class="md-nav__link">
     CloudWatch Logs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codepipeline-job" class="md-nav__link">
+    CodePipeline Job
   </a>
   
 </li>
@@ -757,7 +786,14 @@
         
           <li class="md-nav__item">
   <a href="#api-gateway-proxy-v2" class="md-nav__link">
-    API Gateway Proxy v2
+    API Gateway Proxy V2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-load-balancer" class="md-nav__link">
+    Application Load Balancer
   </a>
   
 </li>
@@ -772,6 +808,13 @@
           <li class="md-nav__item">
   <a href="#cloudwatch-logs" class="md-nav__link">
     CloudWatch Logs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codepipeline-job" class="md-nav__link">
+    CodePipeline Job
   </a>
   
 </li>
@@ -917,27 +960,41 @@ handler. There are several common event types which follow a specific schema, de
 Lambda function.</p>
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <h3 id="utilizing-the-data-classes">Utilizing the data classes<a class="headerlink" href="#utilizing-the-data-classes" title="Permanent link">&para;</a></h3>
-<p>The classes are initialized by passing in the Lambda event object into the constructor of the appropriate data class.</p>
+<p>The classes are initialized by passing in the Lambda event object into the constructor of the appropriate data class or
+by using the <code>event_source</code> decorator.</p>
 <p>For example, if your Lambda function is being triggered by an API Gateway proxy integration, you can use the
 <code>APIGatewayProxyEvent</code> class.</p>
-<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">app.py</label><div class="tabbed-content"></div>
+</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">APIGatewayProxyEvent</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">APIGatewayProxyEvent</span>
 </span>
-<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-<span class="hll">    <span class="n">event</span><span class="p">:</span> <span class="n">APIGatewayProxyEvent</span> <span class="o">=</span> <span class="n">APIGatewayProxyEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="hll">    <span class="n">event</span> <span class="o">=</span> <span class="n">APIGatewayProxyEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</span>    <span class="k">if</span> <span class="s1">&#39;helloworld&#39;</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">path</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">http_method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
+        <span class="n">do_something_with</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>Same example as above, but using the <code>event_source</code> decorator</p>
+<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">app.py</label><div class="tabbed-content"></div>
+</div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">event_source</span><span class="p">,</span> <span class="n">APIGatewayProxyEvent</span>
 </span>
+<span class="hll"><span class="nd">@event_source</span><span class="p">(</span><span class="n">data_class</span><span class="o">=</span><span class="n">APIGatewayProxyEvent</span><span class="p">)</span>
+</span><span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">APIGatewayProxyEvent</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
     <span class="k">if</span> <span class="s1">&#39;helloworld&#39;</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">path</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">http_method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
         <span class="n">do_something_with</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <p><strong>Autocomplete with self-documented properties and methods</strong></p>
 <p><img alt="Utilities Data Classes" src="../../media/utilities_data_classes.png" /></p>
 <h2 id="supported-event-sources">Supported event sources<a class="headerlink" href="#supported-event-sources" title="Permanent link">&para;</a></h2>
@@ -954,8 +1011,12 @@ Lambda function.</p>
 <td><code>APIGatewayProxyEvent</code></td>
 </tr>
 <tr>
-<td><a href="#api-gateway-proxy-v2">API Gateway Proxy event v2</a></td>
+<td><a href="#api-gateway-proxy-v2">API Gateway Proxy V2</a></td>
 <td><code>APIGatewayProxyEventV2</code></td>
+</tr>
+<tr>
+<td><a href="#application-load-balancer">Application Load Balancer</a></td>
+<td><code>ALBEvent</code></td>
 </tr>
 <tr>
 <td><a href="#appsync-resolver">AppSync Resolver</a></td>
@@ -964,6 +1025,10 @@ Lambda function.</p>
 <tr>
 <td><a href="#cloudwatch-logs">CloudWatch Logs</a></td>
 <td><code>CloudWatchLogsEvent</code></td>
+</tr>
+<tr>
+<td><a href="#codepipeline-job">CodePipeline Job Event</a></td>
+<td><code>CodePipelineJobEvent</code></td>
 </tr>
 <tr>
 <td><a href="#cognito-user-pool">Cognito User Pool</a></td>
@@ -1014,32 +1079,8 @@ documentation inherently (via autocompletion, types and docstrings).</p>
 </div>
 <h3 id="api-gateway-proxy">API Gateway Proxy<a class="headerlink" href="#api-gateway-proxy" title="Permanent link">&para;</a></h3>
 <p>It is used for either API Gateway REST API or HTTP API using v1 proxy event.</p>
-<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">app.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">APIGatewayProxyEvent</span>
-
-<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="n">event</span><span class="p">:</span> <span class="n">APIGatewayProxyEvent</span> <span class="o">=</span> <span class="n">APIGatewayProxyEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
-    <span class="n">request_context</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">request_context</span>
-    <span class="n">identity</span> <span class="o">=</span> <span class="n">request_context</span><span class="o">.</span><span class="n">identity</span>
-
-    <span class="k">if</span> <span class="s1">&#39;helloworld&#39;</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">path</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">http_method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
-        <span class="n">user</span> <span class="o">=</span> <span class="n">identity</span><span class="o">.</span><span class="n">user</span>
-        <span class="n">do_something_with</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">app.py</label><div class="tabbed-content"></div>
 </div>
-</div>
-<h3 id="api-gateway-proxy-v2">API Gateway Proxy v2<a class="headerlink" href="#api-gateway-proxy-v2" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1048,19 +1089,51 @@ documentation inherently (via autocompletion, types and docstrings).</p>
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">APIGatewayProxyEventV2</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">event_source</span><span class="p">,</span> <span class="n">APIGatewayProxyEvent</span>
 
-<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="n">event</span><span class="p">:</span> <span class="n">APIGatewayProxyEventV2</span> <span class="o">=</span> <span class="n">APIGatewayProxyEventV2</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
-    <span class="n">request_context</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">request_context</span>
-    <span class="n">query_string_parameters</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">query_string_parameters</span>
-
-    <span class="k">if</span> <span class="s1">&#39;helloworld&#39;</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">raw_path</span> <span class="ow">and</span> <span class="n">request_context</span><span class="o">.</span><span class="n">http</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
-        <span class="n">do_something_with</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">query_string_parameters</span><span class="p">)</span>
+<span class="nd">@event_source</span><span class="p">(</span><span class="n">data_class</span><span class="o">=</span><span class="n">APIGatewayProxyEvent</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">APIGatewayProxyEvent</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s2">&quot;helloworld&quot;</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">path</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">http_method</span> <span class="o">==</span> <span class="s2">&quot;GET&quot;</span><span class="p">:</span>
+        <span class="n">request_context</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">request_context</span>
+        <span class="n">identity</span> <span class="o">=</span> <span class="n">request_context</span><span class="o">.</span><span class="n">identity</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">identity</span><span class="o">.</span><span class="n">user</span>
+        <span class="n">do_something_with</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">json_body</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
+<h3 id="api-gateway-proxy-v2">API Gateway Proxy V2<a class="headerlink" href="#api-gateway-proxy-v2" title="Permanent link">&para;</a></h3>
+<p>It is used for HTTP API using v2 proxy event.</p>
+<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">app.py</label><div class="tabbed-content"></div>
 </div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">event_source</span><span class="p">,</span> <span class="n">APIGatewayProxyEventV2</span>
+
+<span class="nd">@event_source</span><span class="p">(</span><span class="n">data_class</span><span class="o">=</span><span class="n">APIGatewayProxyEventV2</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">APIGatewayProxyEventV2</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s2">&quot;helloworld&quot;</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">path</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">http_method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">do_something_with</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">json_body</span><span class="p">,</span> <span class="n">event</span><span class="o">.</span><span class="n">query_string_parameters</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="application-load-balancer">Application Load Balancer<a class="headerlink" href="#application-load-balancer" title="Permanent link">&para;</a></h3>
+<p>Is it used for Application load balancer event.</p>
+<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">app.py</label><div class="tabbed-content"></div>
 </div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">event_source</span><span class="p">,</span> <span class="n">ALBEvent</span>
+
+<span class="nd">@event_source</span><span class="p">(</span><span class="n">data_class</span><span class="o">=</span><span class="n">ALBEvent</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ALBEvent</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s2">&quot;helloworld&quot;</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">path</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">http_method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+        <span class="n">do_something_with</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">json_body</span><span class="p">,</span> <span class="n">event</span><span class="o">.</span><span class="n">query_string_parameters</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
 <h3 id="appsync-resolver">AppSync Resolver<a class="headerlink" href="#appsync-resolver" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>New in 1.12.0</p>
@@ -1068,7 +1141,7 @@ documentation inherently (via autocompletion, types and docstrings).</p>
 <p>Used when building Lambda GraphQL Resolvers with <a href="https://docs.amplify.aws/cli/graphql-transformer/function" target="_blank">Amplify GraphQL Transform Library</a> (<code>@function</code>),
 and <a href="https://aws.amazon.com/blogs/mobile/appsync-direct-lambda/" target="_blank">AppSync Direct Lambda Resolvers</a>.</p>
 <p>In this example, we also use the new Logger <code>correlation_id</code> and built-in <code>correlation_paths</code> to extract, if available, X-Ray Trace ID in AppSync request headers:</p>
-<div class="tabbed-set" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1135,7 +1208,7 @@ and <a href="https://aws.amazon.com/blogs/mobile/appsync-direct-lambda/" target=
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Example AppSync Event</label><div class="tabbed-content">
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Example AppSync Event</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1188,7 +1261,7 @@ and <a href="https://aws.amazon.com/blogs/mobile/appsync-direct-lambda/" target=
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><label for="__tabbed_4_3">Example CloudWatch Log</label><div class="tabbed-content">
+<input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><label for="__tabbed_6_3">Example CloudWatch Log</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1229,7 +1302,31 @@ and <a href="https://aws.amazon.com/blogs/mobile/appsync-direct-lambda/" target=
 <h3 id="cloudwatch-logs">CloudWatch Logs<a class="headerlink" href="#cloudwatch-logs" title="Permanent link">&para;</a></h3>
 <p>CloudWatch Logs events by default are compressed and base64 encoded. You can use the helper function provided to decode,
 decompress and parse json data from the event.</p>
-<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">app.py</label><div class="tabbed-content"></div>
+</div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">event_source</span><span class="p">,</span> <span class="n">CloudWatchLogsEvent</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes.cloud_watch_logs_event</span> <span class="kn">import</span> <span class="n">CloudWatchLogsDecodedData</span>
+
+<span class="nd">@event_source</span><span class="p">(</span><span class="n">data_class</span><span class="o">=</span><span class="n">CloudWatchLogsEvent</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">CloudWatchLogsEvent</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">decompressed_log</span><span class="p">:</span> <span class="n">CloudWatchLogsDecodedData</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">parse_logs_data</span>
+    <span class="n">log_events</span> <span class="o">=</span> <span class="n">decompressed_log</span><span class="o">.</span><span class="n">log_events</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">log_events</span><span class="p">:</span>
+        <span class="n">do_something_with</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">event</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="codepipeline-job">CodePipeline Job<a class="headerlink" href="#codepipeline-job" title="Permanent link">&para;</a></h3>
+<p>Data classes and utility functions to help create continuous delivery pipelines tasks with AWS Lambda</p>
+<div class="tabbed-set" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">app.py</label><div class="tabbed-content"></div>
+</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1239,20 +1336,82 @@ decompress and parse json data from the event.</p>
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">CloudWatchLogsEvent</span>
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes.cloud_watch_logs_event</span> <span class="kn">import</span> <span class="n">CloudWatchLogsDecodedData</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">event_source</span><span class="p">,</span> <span class="n">CodePipelineJobEvent</span>
 
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+
+<span class="nd">@event_source</span><span class="p">(</span><span class="n">data_class</span><span class="o">=</span><span class="n">CodePipelineJobEvent</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="n">event</span><span class="p">:</span> <span class="n">CloudWatchLogsEvent</span> <span class="o">=</span> <span class="n">CloudWatchLogsEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;The Lambda function handler</span>
 
-    <span class="n">decompressed_log</span><span class="p">:</span> <span class="n">CloudWatchLogsDecodedData</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">parse_logs_data</span>
-    <span class="n">log_events</span> <span class="o">=</span> <span class="n">decompressed_log</span><span class="o">.</span><span class="n">log_events</span>
-    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">log_events</span><span class="p">:</span>
-        <span class="n">do_something_with</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">event</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+<span class="sd">    If a continuing job then checks the CloudFormation stack status</span>
+<span class="sd">    and updates the job accordingly.</span>
+
+<span class="sd">    If a new job then kick of an update or creation of the target</span>
+<span class="sd">    CloudFormation stack.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Extract the Job ID</span>
+    <span class="n">job_id</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get_id</span>
+
+    <span class="c1"># Extract the params</span>
+    <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">decoded_user_parameters</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;stack&quot;</span><span class="p">]</span>
+    <span class="n">artifact_name</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;artifact&quot;</span><span class="p">]</span>
+    <span class="n">template_file</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;file&quot;</span><span class="p">]</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">continuation_token</span><span class="p">:</span>
+            <span class="c1"># If we&#39;re continuing then the create/update has already been triggered</span>
+            <span class="c1"># we just need to check if it has finished.</span>
+            <span class="n">check_stack_update_status</span><span class="p">(</span><span class="n">job_id</span><span class="p">,</span> <span class="n">stack</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">template</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get_artifact</span><span class="p">(</span><span class="n">artifact_name</span><span class="p">,</span> <span class="n">template_file</span><span class="p">)</span>
+            <span class="c1"># Kick off a stack update or create</span>
+            <span class="n">start_update_or_create</span><span class="p">(</span><span class="n">job_id</span><span class="p">,</span> <span class="n">stack</span><span class="p">,</span> <span class="n">template</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="c1"># If any other exceptions which we didn&#39;t expect are raised</span>
+        <span class="c1"># then fail the job and log the exception message.</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Function failed due to exception.&quot;</span><span class="p">)</span>
+        <span class="n">put_job_failure</span><span class="p">(</span><span class="n">job_id</span><span class="p">,</span> <span class="s2">&quot;Function exception: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Function complete.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;Complete.&quot;</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="cognito-user-pool">Cognito User Pool<a class="headerlink" href="#cognito-user-pool" title="Permanent link">&para;</a></h3>
 <p>Cognito User Pools have several <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html#cognito-user-identity-pools-working-with-aws-lambda-trigger-sources">different Lambda trigger sources</a>, all of which map to a different data class, which
 can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_event</code>:</p>
@@ -1307,7 +1466,8 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </tbody>
 </table>
 <h4 id="post-confirmation-example">Post Confirmation Example<a class="headerlink" href="#post-confirmation-example" title="Permanent link">&para;</a></h4>
-<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">app.py</label><div class="tabbed-content"></div>
+</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1323,15 +1483,13 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
     <span class="n">do_something_with</span><span class="p">(</span><span class="n">user_attributes</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h4 id="define-auth-challenge-example">Define Auth Challenge Example<a class="headerlink" href="#define-auth-challenge-example" title="Permanent link">&para;</a></h4>
 <div class="admonition warning">
 <p class="admonition-title">NOTE</p>
 <p>In this example we are modifying the wrapped dict response fields, so we need to return the json serializable wrapped event in <code>event.raw_event</code></p>
 </div>
 <p>This example is based on the AWS Cognito docs for <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-define-auth-challenge.html" target="_blank">Define Auth Challenge Lambda Trigger</a>.</p>
-<div class="tabbed-set" data-tabs="7:4"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="10:4"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1396,7 +1554,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">SPR_A response</label><div class="tabbed-content">
+<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">SPR_A response</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1459,7 +1617,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><label for="__tabbed_7_3">PASSWORD_VERIFIER success response</label><div class="tabbed-content">
+<input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><label for="__tabbed_10_3">PASSWORD_VERIFIER success response</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1530,7 +1688,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_7_4" name="__tabbed_7" type="radio" /><label for="__tabbed_7_4">CUSTOM_CHALLENGE success response</label><div class="tabbed-content">
+<input id="__tabbed_10_4" name="__tabbed_10" type="radio" /><label for="__tabbed_10_4">CUSTOM_CHALLENGE success response</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1610,7 +1768,33 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </div>
 <h4 id="create-auth-challenge-example">Create Auth Challenge Example<a class="headerlink" href="#create-auth-challenge-example" title="Permanent link">&para;</a></h4>
 <p>This example is based on the AWS Cognito docs for <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-create-auth-challenge.html" target="_blank">Create Auth Challenge Lambda Trigger</a>.</p>
-<div class="tabbed-set" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">app.py</label><div class="tabbed-content"></div>
+</div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">event_source</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes.cognito_user_pool_event</span> <span class="kn">import</span> <span class="n">CreateAuthChallengeTriggerEvent</span>
+
+<span class="nd">@event_source</span><span class="p">(</span><span class="n">data_class</span><span class="o">=</span><span class="n">CreateAuthChallengeTriggerEvent</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">CreateAuthChallengeTriggerEvent</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">challenge_name</span> <span class="o">==</span> <span class="s2">&quot;CUSTOM_CHALLENGE&quot;</span><span class="p">:</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">public_challenge_parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;captchaUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;url/123.jpg&quot;</span><span class="p">}</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">private_challenge_parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;5&quot;</span><span class="p">}</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">challenge_metadata</span> <span class="o">=</span> <span class="s2">&quot;CAPTCHA_CHALLENGE&quot;</span>
+    <span class="k">return</span> <span class="n">event</span><span class="o">.</span><span class="n">raw_event</span>
+</code></pre></div>
+</td></tr></table>
+<h4 id="verify-auth-challenge-response-example">Verify Auth Challenge Response Example<a class="headerlink" href="#verify-auth-challenge-response-example" title="Permanent link">&para;</a></h4>
+<p>This example is based on the AWS Cognito docs for <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-verify-auth-challenge-response.html" target="_blank">Verify Auth Challenge Response Lambda Trigger</a>.</p>
+<div class="tabbed-set" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">app.py</label><div class="tabbed-content"></div>
+</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1619,46 +1803,23 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes.cognito_user_pool_event</span> <span class="kn">import</span> <span class="n">CreateAuthChallengeTriggerEvent</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">event_source</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes.cognito_user_pool_event</span> <span class="kn">import</span> <span class="n">VerifyAuthChallengeResponseTriggerEvent</span>
 
-<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-    <span class="n">event</span><span class="p">:</span> <span class="n">CreateAuthChallengeTriggerEvent</span> <span class="o">=</span> <span class="n">CreateAuthChallengeTriggerEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">challenge_name</span> <span class="o">==</span> <span class="s2">&quot;CUSTOM_CHALLENGE&quot;</span><span class="p">:</span>
-        <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">public_challenge_parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;captchaUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;url/123.jpg&quot;</span><span class="p">}</span>
-        <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">private_challenge_parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;5&quot;</span><span class="p">}</span>
-        <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">challenge_metadata</span> <span class="o">=</span> <span class="s2">&quot;CAPTCHA_CHALLENGE&quot;</span>
-    <span class="k">return</span> <span class="n">event</span><span class="o">.</span><span class="n">raw_event</span>
-</code></pre></div>
-</td></tr></table>
-</div>
-</div>
-<h4 id="verify-auth-challenge-response-example">Verify Auth Challenge Response Example<a class="headerlink" href="#verify-auth-challenge-response-example" title="Permanent link">&para;</a></h4>
-<p>This example is based on the AWS Cognito docs for <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-verify-auth-challenge-response.html" target="_blank">Verify Auth Challenge Response Lambda Trigger</a>.</p>
-<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">app.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes.cognito_user_pool_event</span> <span class="kn">import</span> <span class="n">VerifyAuthChallengeResponseTriggerEvent</span>
-
-<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-    <span class="n">event</span><span class="p">:</span> <span class="n">VerifyAuthChallengeResponseTriggerEvent</span> <span class="o">=</span> <span class="n">VerifyAuthChallengeResponseTriggerEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+<span class="nd">@event_source</span><span class="p">(</span><span class="n">data_class</span><span class="o">=</span><span class="n">VerifyAuthChallengeResponseTriggerEvent</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">VerifyAuthChallengeResponseTriggerEvent</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
     <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">answer_correct</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">event</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">private_challenge_parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;answer&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">event</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">challenge_answer</span>
     <span class="p">)</span>
     <span class="k">return</span> <span class="n">event</span><span class="o">.</span><span class="n">raw_event</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="connect-contact-flow">Connect Contact Flow<a class="headerlink" href="#connect-contact-flow" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>New in 1.11.0</p>
 </blockquote>
-<div class="tabbed-set" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">app.py</label><div class="tabbed-content"></div>
+</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1686,13 +1847,11 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
     <span class="k">assert</span> <span class="n">event</span><span class="o">.</span><span class="n">contact_data</span><span class="o">.</span><span class="n">initiation_method</span> <span class="o">==</span> <span class="n">ConnectContactFlowInitiationMethod</span><span class="o">.</span><span class="n">API</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="dynamodb-streams">DynamoDB Streams<a class="headerlink" href="#dynamodb-streams" title="Permanent link">&para;</a></h3>
 <p>The DynamoDB data class utility provides the base class for <code>DynamoDBStreamEvent</code>, a typed class for
 attributes values (<code>AttributeValue</code>), as well as enums for stream view type (<code>StreamViewType</code>) and event type
 (<code>DynamoDBRecordEventName</code>).</p>
-<div class="tabbed-set" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1721,26 +1880,7 @@ attributes values (<code>AttributeValue</code>), as well as enums for stream vie
 </code></pre></div>
 </td></tr></table>
 </div>
-</div>
-<h3 id="eventbridge">EventBridge<a class="headerlink" href="#eventbridge" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">app.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">EventBridgeEvent</span>
-
-<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="n">event</span><span class="p">:</span> <span class="n">EventBridgeEvent</span> <span class="o">=</span> <span class="n">EventBridgeEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
-    <span class="n">do_something_with</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">detail</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
-</div>
-</div>
-<h3 id="kinesis-streams">Kinesis streams<a class="headerlink" href="#kinesis-streams" title="Permanent link">&para;</a></h3>
-<p>Kinesis events by default contain base64 encoded data. You can use the helper function to access the data either as json
-or plain text, depending on the original payload.</p>
-<div class="tabbed-set" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">app.py</label><div class="tabbed-content">
+<input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><label for="__tabbed_14_2">multiple_records_types.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1753,10 +1893,64 @@ or plain text, depending on the original payload.</p>
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">KinesisStreamEvent</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">event_source</span><span class="p">,</span> <span class="n">DynamoDBStreamEvent</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes.dynamo_db_stream_event</span> <span class="kn">import</span> <span class="n">AttributeValueType</span><span class="p">,</span> <span class="n">AttributeValue</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.typing</span> <span class="kn">import</span> <span class="n">LambdaContext</span>
 
-<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="n">event</span><span class="p">:</span> <span class="n">KinesisStreamEvent</span> <span class="o">=</span> <span class="n">KinesisStreamEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+<span class="nd">@event_source</span><span class="p">(</span><span class="n">data_class</span><span class="o">=</span><span class="n">DynamoDBStreamEvent</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">DynamoDBStreamEvent</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
+        <span class="n">key</span><span class="p">:</span> <span class="n">AttributeValue</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">dynamodb</span><span class="o">.</span><span class="n">keys</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">AttributeValueType</span><span class="o">.</span><span class="n">Number</span><span class="p">:</span>
+            <span class="c1"># {&quot;N&quot;: &quot;123.45&quot;} =&gt; &quot;123.45&quot;</span>
+            <span class="k">assert</span> <span class="n">key</span><span class="o">.</span><span class="n">get_value</span> <span class="o">==</span> <span class="n">key</span><span class="o">.</span><span class="n">n_value</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">get_value</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="n">AttributeValueType</span><span class="o">.</span><span class="n">Map</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">key</span><span class="o">.</span><span class="n">get_value</span> <span class="o">==</span> <span class="n">key</span><span class="o">.</span><span class="n">map_value</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">get_value</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h3 id="eventbridge">EventBridge<a class="headerlink" href="#eventbridge" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">app.py</label><div class="tabbed-content"></div>
+</div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">event_source</span><span class="p">,</span> <span class="n">EventBridgeEvent</span>
+
+<span class="nd">@event_source</span><span class="p">(</span><span class="n">data_class</span><span class="o">=</span><span class="n">EventBridgeEvent</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">EventBridgeEvent</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">do_something_with</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">detail</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="kinesis-streams">Kinesis streams<a class="headerlink" href="#kinesis-streams" title="Permanent link">&para;</a></h3>
+<p>Kinesis events by default contain base64 encoded data. You can use the helper function to access the data either as json
+or plain text, depending on the original payload.</p>
+<div class="tabbed-set" data-tabs="16:1"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">app.py</label><div class="tabbed-content"></div>
+</div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">event_source</span><span class="p">,</span> <span class="n">KinesisStreamEvent</span>
+
+<span class="nd">@event_source</span><span class="p">(</span><span class="n">data_class</span><span class="o">=</span><span class="n">KinesisStreamEvent</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">KinesisStreamEvent</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
     <span class="n">kinesis_record</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">)</span><span class="o">.</span><span class="n">kinesis</span>
 
     <span class="c1"># if data was delivered as text</span>
@@ -1768,10 +1962,9 @@ or plain text, depending on the original payload.</p>
     <span class="n">do_something_with</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="s3">S3<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="17:1"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><label for="__tabbed_17_1">app.py</label><div class="tabbed-content"></div>
+</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1784,24 +1977,23 @@ or plain text, depending on the original payload.</p>
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">unquote_plus</span>
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">S3Event</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">event_source</span><span class="p">,</span> <span class="n">S3Event</span>
 
-<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="n">event</span><span class="p">:</span> <span class="n">S3Event</span> <span class="o">=</span> <span class="n">S3Event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+<span class="nd">@event_source</span><span class="p">(</span><span class="n">data_class</span><span class="o">=</span><span class="n">S3Event</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">S3Event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
     <span class="n">bucket_name</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">bucket_name</span>
 
     <span class="c1"># Multiple records can be delivered in a single event</span>
     <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
         <span class="n">object_key</span> <span class="o">=</span> <span class="n">unquote_plus</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">s3</span><span class="o">.</span><span class="n">get_object</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
 
-        <span class="n">do_something_with</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">bucket_name</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">object_key</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">do_something_with</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bucket_name</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">object_key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="s3-object-lambda">S3 Object Lambda<a class="headerlink" href="#s3-object-lambda" title="Permanent link">&para;</a></h3>
 <p>This example is based on the AWS Blog post <a href="https://aws.amazon.com/blogs/aws/introducing-amazon-s3-object-lambda-use-your-code-to-process-data-as-it-is-being-retrieved-from-s3/" target="_blank">Introducing Amazon S3 Object Lambda – Use Your Code to Process Data as It Is Being Retrieved from S3</a>.</p>
-<div class="tabbed-set" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="18:1"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><label for="__tabbed_18_1">app.py</label><div class="tabbed-content"></div>
+</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1859,10 +2051,9 @@ or plain text, depending on the original payload.</p>
     <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status_code&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="ses">SES<a class="headerlink" href="#ses" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set" data-tabs="16:1"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="19:1"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><label for="__tabbed_19_1">app.py</label><div class="tabbed-content"></div>
+</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1872,12 +2063,10 @@ or plain text, depending on the original payload.</p>
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">SESEvent</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">event_source</span><span class="p">,</span> <span class="n">SESEvent</span>
 
-<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="n">event</span><span class="p">:</span> <span class="n">SESEvent</span> <span class="o">=</span> <span class="n">SESEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
-
+<span class="nd">@event_source</span><span class="p">(</span><span class="n">data_class</span><span class="o">=</span><span class="n">SESEvent</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">SESEvent</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
     <span class="c1"># Multiple records can be delivered in a single event</span>
     <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
         <span class="n">mail</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">ses</span><span class="o">.</span><span class="n">mail</span>
@@ -1886,10 +2075,9 @@ or plain text, depending on the original payload.</p>
         <span class="n">do_something_with</span><span class="p">(</span><span class="n">common_headers</span><span class="o">.</span><span class="n">to</span><span class="p">,</span> <span class="n">common_headers</span><span class="o">.</span><span class="n">subject</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="sns">SNS<a class="headerlink" href="#sns" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set" data-tabs="17:1"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><label for="__tabbed_17_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="20:1"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><label for="__tabbed_20_1">app.py</label><div class="tabbed-content"></div>
+</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1899,12 +2087,10 @@ or plain text, depending on the original payload.</p>
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">SNSEvent</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">event_source</span><span class="p">,</span> <span class="n">SNSEvent</span>
 
-<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="n">event</span><span class="p">:</span> <span class="n">SNSEvent</span> <span class="o">=</span> <span class="n">SNSEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
-
+<span class="nd">@event_source</span><span class="p">(</span><span class="n">data_class</span><span class="o">=</span><span class="n">SNSEvent</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">SNSEvent</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
     <span class="c1"># Multiple records can be delivered in a single event</span>
     <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
         <span class="n">message</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">sns</span><span class="o">.</span><span class="n">message</span>
@@ -1913,29 +2099,24 @@ or plain text, depending on the original payload.</p>
         <span class="n">do_something_with</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="sqs">SQS<a class="headerlink" href="#sqs" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set" data-tabs="18:1"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><label for="__tabbed_18_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="21:1"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><label for="__tabbed_21_1">app.py</label><div class="tabbed-content"></div>
+</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">SQSEvent</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">event_source</span><span class="p">,</span> <span class="n">SQSEvent</span>
 
-<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="n">event</span><span class="p">:</span> <span class="n">SQSEvent</span> <span class="o">=</span> <span class="n">SQSEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
-
+<span class="nd">@event_source</span><span class="p">(</span><span class="n">data_class</span><span class="o">=</span><span class="n">SQSEvent</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">SQSEvent</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
     <span class="c1"># Multiple records can be delivered in a single event</span>
     <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
         <span class="n">do_something_with</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
                 
                   
                     
@@ -1944,7 +2125,7 @@ or plain text, depending on the original payload.</p>
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-03-31
+      Last update: 2021-06-08
     
   </small>
 </div>
@@ -1960,7 +2141,7 @@ or plain text, depending on the original payload.</p>
           </div>
         </div>
         
-          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+          <a href="#" class="md-top md-icon" title="Back to top" data-md-component="top" data-md-state="hidden">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
           </a>
         
@@ -1971,7 +2152,8 @@ or plain text, depending on the original payload.</p>
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../validation/" class="md-footer__link md-footer__link--prev" rel="prev">
+        
+        <a href="../validation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Validation" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1986,7 +2168,8 @@ or plain text, depending on the original payload.</p>
         </a>
       
       
-        <a href="../parser/" class="md-footer__link md-footer__link--next" rel="next">
+        
+        <a href="../parser/" class="md-footer__link md-footer__link--next" aria-label="Next: Parser" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
@@ -2025,10 +2208,10 @@ or plain text, depending on the original payload.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.4ea5477f.min.js"></script>
+      <script src="../../assets/javascripts/bundle.76f349be.min.js"></script>
       
         <script src="../../javascript/aws-amplify.min.js"></script>
       
