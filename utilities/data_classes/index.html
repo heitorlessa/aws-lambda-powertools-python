@@ -1,0 +1,1911 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Utility">
+      
+      
+      
+        <meta name="author" content="Amazon Web Services">
+      
+      
+      <link rel="shortcut icon" href="../../media/aws-logo-light.svg">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.8">
+    
+    
+      
+        <title>Event Source Data Classes - Lambda Powertools Python</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#7e56c2">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="deep-purple" data-md-color-accent="">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#key-features" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="Lambda Powertools Python" class="md-header-nav__button md-logo" aria-label="Lambda Powertools Python">
+      
+  <img src="../../media/aws-logo-light.svg" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Lambda Powertools Python
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Event Source Data Classes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/awslabs/aws-lambda-powertools-python/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Lambda Powertools Python" class="md-nav__button md-logo" aria-label="Lambda Powertools Python">
+      
+  <img src="../../media/aws-logo-light.svg" alt="logo">
+
+    </a>
+    Lambda Powertools Python
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/awslabs/aws-lambda-powertools-python/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Homepage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://awslabs.github.io/aws-lambda-powertools-python/api/" target="_blank" class="md-nav__link">
+        API reference
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" data-md-state="indeterminate" type="checkbox" id="nav-4" checked>
+      
+      <label class="md-nav__link" for="nav-4">
+        Core utilities
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Core utilities" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Core utilities
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../core/tracer/" class="md-nav__link">
+        Tracer
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../core/logger/" class="md-nav__link">
+        Logger
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../core/metrics/" class="md-nav__link">
+        Metrics
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+      
+      <label class="md-nav__link" for="nav-5">
+        Utilities
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Utilities" data-md-level="1">
+        <label class="md-nav__title" for="nav-5">
+          <span class="md-nav__icon md-icon"></span>
+          Utilities
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../middleware_factory/" class="md-nav__link">
+        Middleware factory
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parameters/" class="md-nav__link">
+        Parameters
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../batch/" class="md-nav__link">
+        SQS Batch Processing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typing/" class="md-nav__link">
+        Typing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validation
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Event Source Data Classes
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Event Source Data Classes
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    Key Features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting started
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utilizing-the-data-classes" class="md-nav__link">
+    Utilizing the data classes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-event-sources" class="md-nav__link">
+    Supported event sources
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported event sources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-gateway-proxy" class="md-nav__link">
+    API Gateway Proxy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-gateway-proxy-v2" class="md-nav__link">
+    API Gateway Proxy v2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appsync-resolver" class="md-nav__link">
+    AppSync Resolver
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch-logs" class="md-nav__link">
+    CloudWatch Logs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognito-user-pool" class="md-nav__link">
+    Cognito User Pool
+  </a>
+  
+    <nav class="md-nav" aria-label="Cognito User Pool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#post-confirmation-example" class="md-nav__link">
+    Post Confirmation Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-auth-challenge-example" class="md-nav__link">
+    Define Auth Challenge Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-auth-challenge-example" class="md-nav__link">
+    Create Auth Challenge Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-auth-challenge-response-example" class="md-nav__link">
+    Verify Auth Challenge Response Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connect-contact-flow" class="md-nav__link">
+    Connect Contact Flow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamodb-streams" class="md-nav__link">
+    DynamoDB Streams
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eventbridge" class="md-nav__link">
+    EventBridge
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kinesis-streams" class="md-nav__link">
+    Kinesis streams
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s3" class="md-nav__link">
+    S3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ses" class="md-nav__link">
+    SES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sns" class="md-nav__link">
+    SNS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqs" class="md-nav__link">
+    SQS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parser/" class="md-nav__link">
+        Parser
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../idempotency/" class="md-nav__link">
+        Idempotency
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    Key Features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting started
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utilizing-the-data-classes" class="md-nav__link">
+    Utilizing the data classes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-event-sources" class="md-nav__link">
+    Supported event sources
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported event sources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-gateway-proxy" class="md-nav__link">
+    API Gateway Proxy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-gateway-proxy-v2" class="md-nav__link">
+    API Gateway Proxy v2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appsync-resolver" class="md-nav__link">
+    AppSync Resolver
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloudwatch-logs" class="md-nav__link">
+    CloudWatch Logs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cognito-user-pool" class="md-nav__link">
+    Cognito User Pool
+  </a>
+  
+    <nav class="md-nav" aria-label="Cognito User Pool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#post-confirmation-example" class="md-nav__link">
+    Post Confirmation Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-auth-challenge-example" class="md-nav__link">
+    Define Auth Challenge Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-auth-challenge-example" class="md-nav__link">
+    Create Auth Challenge Example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-auth-challenge-response-example" class="md-nav__link">
+    Verify Auth Challenge Response Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connect-contact-flow" class="md-nav__link">
+    Connect Contact Flow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamodb-streams" class="md-nav__link">
+    DynamoDB Streams
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eventbridge" class="md-nav__link">
+    EventBridge
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kinesis-streams" class="md-nav__link">
+    Kinesis streams
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s3" class="md-nav__link">
+    S3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ses" class="md-nav__link">
+    SES
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sns" class="md-nav__link">
+    SNS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqs" class="md-nav__link">
+    SQS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/awslabs/aws-lambda-powertools-python/edit/develop/docs/utilities/data_classes.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>Event Source Data Classes</h1>
+                
+                <p>Event Source Data Classes utility provides classes self-describing Lambda event sources, including API decorators when
+applicable.</p>
+<h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Type hinting and code completion for common event types</li>
+<li>Helper functions for decoding/deserializing nested fields</li>
+<li>Docstrings for fields contained in event schemas</li>
+</ul>
+<p><strong>Background</strong></p>
+<p>When authoring Lambda functions, you often need to understand the schema of the event dictionary which is passed to the
+handler. There are several common event types which follow a specific schema, depending on the service triggering the
+Lambda function.</p>
+<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<h3 id="utilizing-the-data-classes">Utilizing the data classes<a class="headerlink" href="#utilizing-the-data-classes" title="Permanent link">&para;</a></h3>
+<p>The classes are initialized by passing in the Lambda event object into the constructor of the appropriate data class.</p>
+<p>For example, if your Lambda function is being triggered by an API Gateway proxy integration, you can use the
+<code>APIGatewayProxyEvent</code> class.</p>
+<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">APIGatewayProxyEvent</span>
+</span>
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="hll">    <span class="n">event</span><span class="p">:</span> <span class="n">APIGatewayProxyEvent</span> <span class="o">=</span> <span class="n">APIGatewayProxyEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</span>
+    <span class="k">if</span> <span class="s1">&#39;helloworld&#39;</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">path</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">http_method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
+        <span class="n">do_something_with</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<p><strong>Autocomplete with self-documented properties and methods</strong></p>
+<p><img alt="Utilities Data Classes" src="../../media/utilities_data_classes.png" /></p>
+<h2 id="supported-event-sources">Supported event sources<a class="headerlink" href="#supported-event-sources" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Event Source</th>
+<th>Data_class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#api-gateway-proxy">API Gateway Proxy</a></td>
+<td><code>APIGatewayProxyEvent</code></td>
+</tr>
+<tr>
+<td><a href="#api-gateway-proxy-v2">API Gateway Proxy event v2</a></td>
+<td><code>APIGatewayProxyEventV2</code></td>
+</tr>
+<tr>
+<td><a href="#appsync-resolver">AppSync Resolver</a></td>
+<td><code>AppSyncResolverEvent</code></td>
+</tr>
+<tr>
+<td><a href="#cloudwatch-logs">CloudWatch Logs</a></td>
+<td><code>CloudWatchLogsEvent</code></td>
+</tr>
+<tr>
+<td><a href="#cognito-user-pool">Cognito User Pool</a></td>
+<td>Multiple available under <code>cognito_user_pool_event</code></td>
+</tr>
+<tr>
+<td><a href="#connect-contact-flow">Connect Contact Flow</a></td>
+<td><code>ConnectContactFlowEvent</code></td>
+</tr>
+<tr>
+<td><a href="#dynamodb-streams">DynamoDB streams</a></td>
+<td><code>DynamoDBStreamEvent</code>, <code>DynamoDBRecordEventName</code></td>
+</tr>
+<tr>
+<td><a href="#eventbridge">EventBridge</a></td>
+<td><code>EventBridgeEvent</code></td>
+</tr>
+<tr>
+<td><a href="#kinesis-streams">Kinesis Data Stream</a></td>
+<td><code>KinesisStreamEvent</code></td>
+</tr>
+<tr>
+<td><a href="#s3">S3</a></td>
+<td><code>S3Event</code></td>
+</tr>
+<tr>
+<td><a href="#ses">SES</a></td>
+<td><code>SESEvent</code></td>
+</tr>
+<tr>
+<td><a href="#sns">SNS</a></td>
+<td><code>SNSEvent</code></td>
+</tr>
+<tr>
+<td><a href="#sqs">SQS</a></td>
+<td><code>SQSEvent</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The examples provided below are far from exhaustive - the data classes themselves are designed to provide a form of
+documentation inherently (via autocompletion, types and docstrings).</p>
+</div>
+<h3 id="api-gateway-proxy">API Gateway Proxy<a class="headerlink" href="#api-gateway-proxy" title="Permanent link">&para;</a></h3>
+<p>It is used for either API Gateway REST API or HTTP API using v1 proxy event.</p>
+<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">APIGatewayProxyEvent</span>
+
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">event</span><span class="p">:</span> <span class="n">APIGatewayProxyEvent</span> <span class="o">=</span> <span class="n">APIGatewayProxyEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+    <span class="n">request_context</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">request_context</span>
+    <span class="n">identity</span> <span class="o">=</span> <span class="n">request_context</span><span class="o">.</span><span class="n">identity</span>
+
+    <span class="k">if</span> <span class="s1">&#39;helloworld&#39;</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">path</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">http_method</span> <span class="o">==</span> <span class="s1">&#39;GET&#39;</span><span class="p">:</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">identity</span><span class="o">.</span><span class="n">user</span>
+        <span class="n">do_something_with</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h3 id="api-gateway-proxy-v2">API Gateway Proxy v2<a class="headerlink" href="#api-gateway-proxy-v2" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">APIGatewayProxyEventV2</span>
+
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">event</span><span class="p">:</span> <span class="n">APIGatewayProxyEventV2</span> <span class="o">=</span> <span class="n">APIGatewayProxyEventV2</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+    <span class="n">request_context</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">request_context</span>
+    <span class="n">query_string_parameters</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">query_string_parameters</span>
+
+    <span class="k">if</span> <span class="s1">&#39;helloworld&#39;</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">raw_path</span> <span class="ow">and</span> <span class="n">request_context</span><span class="o">.</span><span class="n">http</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;POST&#39;</span><span class="p">:</span>
+        <span class="n">do_something_with</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">query_string_parameters</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h3 id="appsync-resolver">AppSync Resolver<a class="headerlink" href="#appsync-resolver" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>New in 1.12.0</p>
+</blockquote>
+<p>Used when building Lambda GraphQL Resolvers with <a href="https://docs.amplify.aws/cli/graphql-transformer/function" target="_blank">Amplify GraphQL Transform Library</a> (<code>@function</code>),
+and <a href="https://aws.amazon.com/blogs/mobile/appsync-direct-lambda/" target="_blank">AppSync Direct Lambda Resolvers</a>.</p>
+<p>In this example, we also use the new Logger <code>correlation_id</code> and built-in <code>correlation_paths</code> to extract, if available, X-Ray Trace ID in AppSync request headers:</p>
+<div class="tabbed-set" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">correlation_paths</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes.appsync_resolver_event</span> <span class="kn">import</span> <span class="p">(</span>
+</span><span class="hll">    <span class="n">AppSyncResolverEvent</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">AppSyncIdentityCognito</span>
+</span><span class="hll"><span class="p">)</span>
+</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">get_locations</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Your resolver logic here&quot;&quot;&quot;</span>
+
+<span class="hll"><span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span><span class="p">(</span><span class="n">correlation_id_path</span><span class="o">=</span><span class="n">correlation_paths</span><span class="o">.</span><span class="n">APPSYNC_RESOLVER</span><span class="p">)</span>
+</span><span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="hll">    <span class="n">event</span><span class="p">:</span> <span class="n">AppSyncResolverEvent</span> <span class="o">=</span> <span class="n">AppSyncResolverEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</span>
+    <span class="c1"># Case insensitive look up of request headers</span>
+    <span class="n">x_forwarded_for</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get_header_value</span><span class="p">(</span><span class="s2">&quot;x-forwarded-for&quot;</span><span class="p">)</span>
+
+<span class="hll">    <span class="c1"># Support for AppSyncIdentityCognito or AppSyncIdentityIAM identity types</span>
+</span>    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">identity</span><span class="p">,</span> <span class="n">AppSyncIdentityCognito</span><span class="p">)</span>
+<span class="hll">    <span class="n">identity</span><span class="p">:</span> <span class="n">AppSyncIdentityCognito</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">identity</span>
+</span>
+    <span class="c1"># Logging with correlation_id</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">({</span>
+        <span class="s2">&quot;x-forwarded-for&quot;</span><span class="p">:</span> <span class="n">x_forwarded_for</span><span class="p">,</span>
+        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="n">identity</span><span class="o">.</span><span class="n">username</span>
+    <span class="p">})</span>
+
+<span class="hll">    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type_name</span> <span class="o">==</span> <span class="s2">&quot;Merchant&quot;</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">field_name</span> <span class="o">==</span> <span class="s2">&quot;locations&quot;</span><span class="p">:</span>
+</span><span class="hll">        <span class="k">return</span> <span class="n">get_locations</span><span class="p">(</span><span class="o">**</span><span class="n">event</span><span class="o">.</span><span class="n">arguments</span><span class="p">)</span>
+</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported field resolver: </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">field_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Example AppSync Event</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="hll">  <span class="nt">&quot;typeName&quot;</span><span class="p">:</span> <span class="s2">&quot;Merchant&quot;</span><span class="p">,</span>
+</span><span class="hll">  <span class="nt">&quot;fieldName&quot;</span><span class="p">:</span> <span class="s2">&quot;locations&quot;</span><span class="p">,</span>
+</span><span class="hll">  <span class="nt">&quot;arguments&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">    <span class="nt">&quot;page&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span><span class="hll">    <span class="nt">&quot;size&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span><span class="hll">    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span>
+</span><span class="hll">  <span class="p">},</span>
+</span>  <span class="nt">&quot;identity&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;claims&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1615366261</span>
+      <span class="err">...</span>
+    <span class="p">},</span>
+<span class="hll">    <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;mike&quot;</span><span class="p">,</span>
+</span>    <span class="err">...</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="hll">      <span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span> <span class="s2">&quot;Root=1-60488877-0b0c4e6727ab2a1c545babd0&quot;</span><span class="p">,</span>
+</span><span class="hll">      <span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1&quot;</span>
+</span>      <span class="err">...</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="err">...</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><label for="__tabbed_4_3">Example CloudWatch Log</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;level&quot;</span><span class="p">:</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="s2">&quot;lambda_handler:22&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:{</span>
+<span class="hll">        <span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+</span><span class="hll">        <span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="s2">&quot;mike&quot;</span>
+</span>    <span class="p">},</span>
+    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="s2">&quot;2021-03-10 12:38:40,062&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="s2">&quot;service_undefined&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;sampling_rate&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="nt">&quot;cold_start&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;function_name&quot;</span><span class="p">:</span><span class="s2">&quot;func_name&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;function_memory_size&quot;</span><span class="p">:</span><span class="mi">512</span><span class="p">,</span>
+    <span class="nt">&quot;function_arn&quot;</span><span class="p">:</span><span class="s2">&quot;func_arn&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;function_request_id&quot;</span><span class="p">:</span><span class="s2">&quot;6735a29c-c000-4ae3-94e6-1f1c934f7f94&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="nt">&quot;correlation_id&quot;</span><span class="p">:</span><span class="s2">&quot;Root=1-60488877-0b0c4e6727ab2a1c545babd0&quot;</span>
+</span><span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h3 id="cloudwatch-logs">CloudWatch Logs<a class="headerlink" href="#cloudwatch-logs" title="Permanent link">&para;</a></h3>
+<p>CloudWatch Logs events by default are compressed and base64 encoded. You can use the helper function provided to decode,
+decompress and parse json data from the event.</p>
+<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">CloudWatchLogsEvent</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes.cloud_watch_logs_event</span> <span class="kn">import</span> <span class="n">CloudWatchLogsDecodedData</span>
+
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">event</span><span class="p">:</span> <span class="n">CloudWatchLogsEvent</span> <span class="o">=</span> <span class="n">CloudWatchLogsEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+    <span class="n">decompressed_log</span><span class="p">:</span> <span class="n">CloudWatchLogsDecodedData</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">parse_logs_data</span>
+    <span class="n">log_events</span> <span class="o">=</span> <span class="n">decompressed_log</span><span class="o">.</span><span class="n">log_events</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">log_events</span><span class="p">:</span>
+        <span class="n">do_something_with</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">event</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h3 id="cognito-user-pool">Cognito User Pool<a class="headerlink" href="#cognito-user-pool" title="Permanent link">&para;</a></h3>
+<p>Cognito User Pools have several <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html#cognito-user-identity-pools-working-with-aws-lambda-trigger-sources">different Lambda trigger sources</a>, all of which map to a different data class, which
+can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_event</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Trigger/Event Source</th>
+<th>Data Class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Custom message event</td>
+<td><code>data_classes.cognito_user_pool_event.CustomMessageTriggerEvent</code></td>
+</tr>
+<tr>
+<td>Post authentication</td>
+<td><code>data_classes.cognito_user_pool_event.PostAuthenticationTriggerEvent</code></td>
+</tr>
+<tr>
+<td>Post confirmation</td>
+<td><code>data_classes.cognito_user_pool_event.PostConfirmationTriggerEvent</code></td>
+</tr>
+<tr>
+<td>Pre authentication</td>
+<td><code>data_classes.cognito_user_pool_event.PreAuthenticationTriggerEvent</code></td>
+</tr>
+<tr>
+<td>Pre sign-up</td>
+<td><code>data_classes.cognito_user_pool_event.PreSignUpTriggerEvent</code></td>
+</tr>
+<tr>
+<td>Pre token generation</td>
+<td><code>data_classes.cognito_user_pool_event.PreTokenGenerationTriggerEvent</code></td>
+</tr>
+<tr>
+<td>User migration</td>
+<td><code>data_classes.cognito_user_pool_event.UserMigrationTriggerEvent</code></td>
+</tr>
+<tr>
+<td>Define Auth Challenge</td>
+<td><code>data_classes.cognito_user_pool_event.DefineAuthChallengeTriggerEvent</code></td>
+</tr>
+<tr>
+<td>Create Auth Challenge</td>
+<td><code>data_classes.cognito_user_pool_event.CreateAuthChallengeTriggerEvent</code></td>
+</tr>
+<tr>
+<td>Verify Auth Challenge</td>
+<td><code>data_classes.cognito_user_pool_event.VerifyAuthChallengeResponseTriggerEvent</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="post-confirmation-example">Post Confirmation Example<a class="headerlink" href="#post-confirmation-example" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes.cognito_user_pool_event</span> <span class="kn">import</span> <span class="n">PostConfirmationTriggerEvent</span>
+
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">event</span><span class="p">:</span> <span class="n">PostConfirmationTriggerEvent</span> <span class="o">=</span> <span class="n">PostConfirmationTriggerEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+    <span class="n">user_attributes</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">user_attributes</span>
+    <span class="n">do_something_with</span><span class="p">(</span><span class="n">user_attributes</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h4 id="define-auth-challenge-example">Define Auth Challenge Example<a class="headerlink" href="#define-auth-challenge-example" title="Permanent link">&para;</a></h4>
+<div class="admonition warning">
+<p class="admonition-title">NOTE</p>
+<p>In this example we are modifying the wrapped dict response fields, so we need to return the json serializable wrapped event in <code>event.raw_event</code></p>
+</div>
+<p>This example is based on the AWS Cognito docs for <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-define-auth-challenge.html" target="_blank">Define Auth Challenge Lambda Trigger</a>.</p>
+<div class="tabbed-set" data-tabs="7:4"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes.cognito_user_pool_event</span> <span class="kn">import</span> <span class="n">DefineAuthChallengeTriggerEvent</span>
+
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="n">event</span><span class="p">:</span> <span class="n">DefineAuthChallengeTriggerEvent</span> <span class="o">=</span> <span class="n">DefineAuthChallengeTriggerEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span>
+        <span class="nb">len</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+        <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">challenge_name</span> <span class="o">==</span> <span class="s2">&quot;SRP_A&quot;</span>
+    <span class="p">):</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">issue_tokens</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">fail_authentication</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">challenge_name</span> <span class="o">=</span> <span class="s2">&quot;PASSWORD_VERIFIER&quot;</span>
+    <span class="k">elif</span> <span class="p">(</span>
+        <span class="nb">len</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+        <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">challenge_name</span> <span class="o">==</span> <span class="s2">&quot;PASSWORD_VERIFIER&quot;</span>
+        <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">challenge_result</span>
+    <span class="p">):</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">issue_tokens</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">fail_authentication</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">challenge_name</span> <span class="o">=</span> <span class="s2">&quot;CUSTOM_CHALLENGE&quot;</span>
+    <span class="k">elif</span> <span class="p">(</span>
+        <span class="nb">len</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+        <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">challenge_name</span> <span class="o">==</span> <span class="s2">&quot;CUSTOM_CHALLENGE&quot;</span>
+        <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">challenge_result</span>
+    <span class="p">):</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">issue_tokens</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">fail_authentication</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">issue_tokens</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">fail_authentication</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="n">event</span><span class="o">.</span><span class="n">raw_event</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">SPR_A response</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;us-east-1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;userPoolId&quot;</span><span class="p">:</span> <span class="s2">&quot;us-east-1_example&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;userName&quot;</span><span class="p">:</span> <span class="s2">&quot;UserName&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;callerContext&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;awsSdkVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;awsSdkVersion&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;clientId&quot;</span><span class="p">:</span> <span class="s2">&quot;clientId&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;triggerSource&quot;</span><span class="p">:</span> <span class="s2">&quot;DefineAuthChallenge_Authentication&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;userAttributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;4A709A36-7D63-4785-829D-4198EF10EBDA&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;email_verified&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;First Last&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;define-auth@mail.com&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;session&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;challengeName&quot;</span><span class="p">:</span> <span class="s2">&quot;SRP_A&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;challengeResult&quot;</span><span class="p">:</span> <span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+<span class="hll">    <span class="nt">&quot;response&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">        <span class="nt">&quot;issueTokens&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span><span class="hll">        <span class="nt">&quot;failAuthentication&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span>        <span class="nt">&quot;challengeName&quot;</span><span class="p">:</span> <span class="s2">&quot;PASSWORD_VERIFIER&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><label for="__tabbed_7_3">PASSWORD_VERIFIER success response</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;us-east-1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;userPoolId&quot;</span><span class="p">:</span> <span class="s2">&quot;us-east-1_example&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;userName&quot;</span><span class="p">:</span> <span class="s2">&quot;UserName&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;callerContext&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;awsSdkVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;awsSdkVersion&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;clientId&quot;</span><span class="p">:</span> <span class="s2">&quot;clientId&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;triggerSource&quot;</span><span class="p">:</span> <span class="s2">&quot;DefineAuthChallenge_Authentication&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;userAttributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;4A709A36-7D63-4785-829D-4198EF10EBDA&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;email_verified&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;First Last&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;define-auth@mail.com&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;session&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;challengeName&quot;</span><span class="p">:</span> <span class="s2">&quot;SRP_A&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;challengeResult&quot;</span><span class="p">:</span> <span class="kc">true</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;challengeName&quot;</span><span class="p">:</span> <span class="s2">&quot;PASSWORD_VERIFIER&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;challengeResult&quot;</span><span class="p">:</span> <span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;response&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="hll">        <span class="nt">&quot;issueTokens&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span><span class="hll">        <span class="nt">&quot;failAuthentication&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span><span class="hll">        <span class="nt">&quot;challengeName&quot;</span><span class="p">:</span> <span class="s2">&quot;CUSTOM_CHALLENGE&quot;</span>
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_7_4" name="__tabbed_7" type="radio" /><label for="__tabbed_7_4">CUSTOM_CHALLENGE success response</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;us-east-1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;userPoolId&quot;</span><span class="p">:</span> <span class="s2">&quot;us-east-1_example&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;userName&quot;</span><span class="p">:</span> <span class="s2">&quot;UserName&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;callerContext&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;awsSdkVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;awsSdkVersion&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;clientId&quot;</span><span class="p">:</span> <span class="s2">&quot;clientId&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;triggerSource&quot;</span><span class="p">:</span> <span class="s2">&quot;DefineAuthChallenge_Authentication&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;userAttributes&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;4A709A36-7D63-4785-829D-4198EF10EBDA&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;email_verified&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;First Last&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;define-auth@mail.com&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;session&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;challengeName&quot;</span><span class="p">:</span> <span class="s2">&quot;SRP_A&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;challengeResult&quot;</span><span class="p">:</span> <span class="kc">true</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;challengeName&quot;</span><span class="p">:</span> <span class="s2">&quot;PASSWORD_VERIFIER&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;challengeResult&quot;</span><span class="p">:</span> <span class="kc">true</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nt">&quot;challengeName&quot;</span><span class="p">:</span> <span class="s2">&quot;CUSTOM_CHALLENGE&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;challengeResult&quot;</span><span class="p">:</span> <span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;response&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="hll">        <span class="nt">&quot;issueTokens&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class="hll">        <span class="nt">&quot;failAuthentication&quot;</span><span class="p">:</span> <span class="kc">false</span>
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h4 id="create-auth-challenge-example">Create Auth Challenge Example<a class="headerlink" href="#create-auth-challenge-example" title="Permanent link">&para;</a></h4>
+<p>This example is based on the AWS Cognito docs for <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-create-auth-challenge.html" target="_blank">Create Auth Challenge Lambda Trigger</a>.</p>
+<div class="tabbed-set" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes.cognito_user_pool_event</span> <span class="kn">import</span> <span class="n">CreateAuthChallengeTriggerEvent</span>
+
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="n">event</span><span class="p">:</span> <span class="n">CreateAuthChallengeTriggerEvent</span> <span class="o">=</span> <span class="n">CreateAuthChallengeTriggerEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">challenge_name</span> <span class="o">==</span> <span class="s2">&quot;CUSTOM_CHALLENGE&quot;</span><span class="p">:</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">public_challenge_parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;captchaUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;url/123.jpg&quot;</span><span class="p">}</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">private_challenge_parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;5&quot;</span><span class="p">}</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">challenge_metadata</span> <span class="o">=</span> <span class="s2">&quot;CAPTCHA_CHALLENGE&quot;</span>
+    <span class="k">return</span> <span class="n">event</span><span class="o">.</span><span class="n">raw_event</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h4 id="verify-auth-challenge-response-example">Verify Auth Challenge Response Example<a class="headerlink" href="#verify-auth-challenge-response-example" title="Permanent link">&para;</a></h4>
+<p>This example is based on the AWS Cognito docs for <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-verify-auth-challenge-response.html" target="_blank">Verify Auth Challenge Response Lambda Trigger</a>.</p>
+<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes.cognito_user_pool_event</span> <span class="kn">import</span> <span class="n">VerifyAuthChallengeResponseTriggerEvent</span>
+
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="n">event</span><span class="p">:</span> <span class="n">VerifyAuthChallengeResponseTriggerEvent</span> <span class="o">=</span> <span class="n">VerifyAuthChallengeResponseTriggerEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+    <span class="n">event</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">answer_correct</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">private_challenge_parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;answer&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">event</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">challenge_answer</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">event</span><span class="o">.</span><span class="n">raw_event</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h3 id="connect-contact-flow">Connect Contact Flow<a class="headerlink" href="#connect-contact-flow" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>New in 1.11.0</p>
+</blockquote>
+<div class="tabbed-set" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes.connect_contact_flow_event</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ConnectContactFlowChannel</span><span class="p">,</span>
+    <span class="n">ConnectContactFlowEndpointType</span><span class="p">,</span>
+    <span class="n">ConnectContactFlowEvent</span><span class="p">,</span>
+    <span class="n">ConnectContactFlowInitiationMethod</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">event</span><span class="p">:</span> <span class="n">ConnectContactFlowEvent</span> <span class="o">=</span> <span class="n">ConnectContactFlowEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">event</span><span class="o">.</span><span class="n">contact_data</span><span class="o">.</span><span class="n">attributes</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;Language&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US&quot;</span><span class="p">}</span>
+    <span class="k">assert</span> <span class="n">event</span><span class="o">.</span><span class="n">contact_data</span><span class="o">.</span><span class="n">channel</span> <span class="o">==</span> <span class="n">ConnectContactFlowChannel</span><span class="o">.</span><span class="n">VOICE</span>
+    <span class="k">assert</span> <span class="n">event</span><span class="o">.</span><span class="n">contact_data</span><span class="o">.</span><span class="n">customer_endpoint</span><span class="o">.</span><span class="n">endpoint_type</span> <span class="o">==</span> <span class="n">ConnectContactFlowEndpointType</span><span class="o">.</span><span class="n">TELEPHONE_NUMBER</span>
+    <span class="k">assert</span> <span class="n">event</span><span class="o">.</span><span class="n">contact_data</span><span class="o">.</span><span class="n">initiation_method</span> <span class="o">==</span> <span class="n">ConnectContactFlowInitiationMethod</span><span class="o">.</span><span class="n">API</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h3 id="dynamodb-streams">DynamoDB Streams<a class="headerlink" href="#dynamodb-streams" title="Permanent link">&para;</a></h3>
+<p>The DynamoDB data class utility provides the base class for <code>DynamoDBStreamEvent</code>, a typed class for
+attributes values (<code>AttributeValue</code>), as well as enums for stream view type (<code>StreamViewType</code>) and event type
+(<code>DynamoDBRecordEventName</code>).</p>
+<div class="tabbed-set" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes.dynamo_db_stream_event</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DynamoDBStreamEvent</span><span class="p">,</span>
+    <span class="n">DynamoDBRecordEventName</span>
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">event</span><span class="p">:</span> <span class="n">DynamoDBStreamEvent</span> <span class="o">=</span> <span class="n">DynamoDBStreamEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+    <span class="c1"># Multiple records can be delivered in a single event</span>
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">record</span><span class="o">.</span><span class="n">event_name</span> <span class="o">==</span> <span class="n">DynamoDBRecordEventName</span><span class="o">.</span><span class="n">MODIFY</span><span class="p">:</span>
+            <span class="n">do_something_with</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">dynamodb</span><span class="o">.</span><span class="n">new_image</span><span class="p">)</span>
+            <span class="n">do_something_with</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">dynamodb</span><span class="o">.</span><span class="n">old_image</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h3 id="eventbridge">EventBridge<a class="headerlink" href="#eventbridge" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">EventBridgeEvent</span>
+
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">event</span><span class="p">:</span> <span class="n">EventBridgeEvent</span> <span class="o">=</span> <span class="n">EventBridgeEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+    <span class="n">do_something_with</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">detail</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h3 id="kinesis-streams">Kinesis streams<a class="headerlink" href="#kinesis-streams" title="Permanent link">&para;</a></h3>
+<p>Kinesis events by default contain base64 encoded data. You can use the helper function to access the data either as json
+or plain text, depending on the original payload.</p>
+<div class="tabbed-set" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">KinesisStreamEvent</span>
+
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">event</span><span class="p">:</span> <span class="n">KinesisStreamEvent</span> <span class="o">=</span> <span class="n">KinesisStreamEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+    <span class="n">kinesis_record</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">)</span><span class="o">.</span><span class="n">kinesis</span>
+
+    <span class="c1"># if data was delivered as text</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">kinesis_record</span><span class="o">.</span><span class="n">data_as_text</span><span class="p">()</span>
+
+    <span class="c1"># if data was delivered as json</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">kinesis_record</span><span class="o">.</span><span class="n">data_as_json</span><span class="p">()</span>
+
+    <span class="n">do_something_with</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h3 id="s3">S3<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">unquote_plus</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">S3Event</span>
+
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">event</span><span class="p">:</span> <span class="n">S3Event</span> <span class="o">=</span> <span class="n">S3Event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+    <span class="n">bucket_name</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">bucket_name</span>
+
+    <span class="c1"># Multiple records can be delivered in a single event</span>
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
+        <span class="n">object_key</span> <span class="o">=</span> <span class="n">unquote_plus</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">s3</span><span class="o">.</span><span class="n">get_object</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+
+        <span class="n">do_something_with</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">bucket_name</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">object_key</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h3 id="ses">SES<a class="headerlink" href="#ses" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">SESEvent</span>
+
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">event</span><span class="p">:</span> <span class="n">SESEvent</span> <span class="o">=</span> <span class="n">SESEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+    <span class="c1"># Multiple records can be delivered in a single event</span>
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
+        <span class="n">mail</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">ses</span><span class="o">.</span><span class="n">mail</span>
+        <span class="n">common_headers</span> <span class="o">=</span> <span class="n">mail</span><span class="o">.</span><span class="n">common_headers</span>
+
+        <span class="n">do_something_with</span><span class="p">(</span><span class="n">common_headers</span><span class="o">.</span><span class="n">to</span><span class="p">,</span> <span class="n">common_headers</span><span class="o">.</span><span class="n">subject</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h3 id="sns">SNS<a class="headerlink" href="#sns" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set" data-tabs="16:1"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">SNSEvent</span>
+
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">event</span><span class="p">:</span> <span class="n">SNSEvent</span> <span class="o">=</span> <span class="n">SNSEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+    <span class="c1"># Multiple records can be delivered in a single event</span>
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">sns</span><span class="o">.</span><span class="n">message</span>
+        <span class="n">subject</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">sns</span><span class="o">.</span><span class="n">subject</span>
+
+        <span class="n">do_something_with</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h3 id="sqs">SQS<a class="headerlink" href="#sqs" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set" data-tabs="17:1"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><label for="__tabbed_17_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">SQSEvent</span>
+
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">event</span><span class="p">:</span> <span class="n">SQSEvent</span> <span class="o">=</span> <span class="n">SQSEvent</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+
+    <span class="c1"># Multiple records can be delivered in a single event</span>
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
+        <span class="n">do_something_with</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2021-03-17
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../validation/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Validation
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../parser/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Parser
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2021 Amazon Web Services
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.sections', 'navigation.expand'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../../javascript/aws-amplify.min.js"></script>
+      
+        <script src="../../javascript/extra.js"></script>
+      
+    
+  </body>
+</html>
