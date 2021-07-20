@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.10">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.11">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.1fe995fd.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3754935a.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.f1a3b89f.min.css">
@@ -494,6 +494,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#raising-http-errors" class="md-nav__link">
+    Raising HTTP errors
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -551,6 +558,13 @@
           <li class="md-nav__item">
   <a href="#binary-responses" class="md-nav__link">
     Binary responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-mode" class="md-nav__link">
+    Debug mode
   </a>
   
 </li>
@@ -828,6 +842,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#raising-http-errors" class="md-nav__link">
+    Raising HTTP errors
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -885,6 +906,13 @@
           <li class="md-nav__item">
   <a href="#binary-responses" class="md-nav__link">
     Binary responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-mode" class="md-nav__link">
+    Debug mode
   </a>
   
 </li>
@@ -1489,7 +1517,7 @@
 </div>
 </div>
 <h4 id="headers">Headers<a class="headerlink" href="#headers" title="Permanent link">&para;</a></h4>
-<p>Similarly to <a href="#query-strings">Query strings</a>, you can access headers as dictionary via <code>app.current_event.headers</code>, or by name via <code>get_header_value</code>.</p>
+<p>Similarly to <a href="#query-strings-and-payload">Query strings</a>, you can access headers as dictionary via <code>app.current_event.headers</code>, or by name via <code>get_header_value</code>.</p>
 <div class="tabbed-set" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1520,11 +1548,111 @@
 </td></tr></table>
 </div>
 </div>
+<h3 id="raising-http-errors">Raising HTTP errors<a class="headerlink" href="#raising-http-errors" title="Permanent link">&para;</a></h3>
+<p>You can easily raise any HTTP Error back to the client using <code>ServiceError</code> exception.</p>
+<div class="admonition info">
+<p class="admonition-title">If you need to send custom headers, use <a href="#fine-grained-responses">Response</a> class instead.</p>
+</div>
+<p>Additionally, we provide pre-defined errors for the most popular ones such as HTTP 400, 401, 404, 500.</p>
+<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.exceptions</span> <span class="kn">import</span> <span class="p">(</span>
+</span><span class="hll">    <span class="n">BadRequestError</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">InternalServerError</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">NotFoundError</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">ServiceError</span><span class="p">,</span>
+</span><span class="hll">    <span class="n">UnauthorizedError</span><span class="p">,</span>
+</span><span class="hll"><span class="p">)</span>
+</span>
+<span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;/bad-request-error&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">bad_request_error</span><span class="p">():</span>
+    <span class="c1"># HTTP  400</span>
+<span class="hll">    <span class="k">raise</span> <span class="n">BadRequestError</span><span class="p">(</span><span class="s2">&quot;Missing required parameter&quot;</span><span class="p">)</span>
+</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;/unauthorized-error&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">unauthorized_error</span><span class="p">():</span>
+    <span class="c1"># HTTP 401</span>
+<span class="hll">    <span class="k">raise</span> <span class="n">UnauthorizedError</span><span class="p">(</span><span class="s2">&quot;Unauthorized&quot;</span><span class="p">)</span>
+</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;/not-found-error&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">not_found_error</span><span class="p">():</span>
+    <span class="c1"># HTTP 404</span>
+<span class="hll">    <span class="k">raise</span> <span class="n">NotFoundError</span>
+</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;/internal-server-error&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">internal_server_error</span><span class="p">():</span>
+    <span class="c1"># HTTP 500</span>
+<span class="hll">    <span class="k">raise</span> <span class="n">InternalServerError</span><span class="p">(</span><span class="s2">&quot;Internal server error&quot;</span><span class="p">)</span>
+</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;/service-error&quot;</span><span class="p">,</span> <span class="n">cors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">service_error</span><span class="p">():</span>
+<span class="hll">    <span class="k">raise</span> <span class="n">ServiceError</span><span class="p">(</span><span class="mi">502</span><span class="p">,</span> <span class="s2">&quot;Something went wrong!&quot;</span><span class="p">)</span>
+</span>    <span class="c1"># alternatively</span>
+    <span class="c1"># from http import HTTPStatus</span>
+    <span class="c1"># raise ServiceError(HTTPStatus.BAD_GATEWAY.value, &quot;Something went wrong)</span>
+
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
 <h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h2>
 <h3 id="cors">CORS<a class="headerlink" href="#cors" title="Permanent link">&para;</a></h3>
 <p>You can configure CORS at the <code>ApiGatewayResolver</code> constructor via <code>cors</code> parameter using the <code>CORSConfig</code> class.</p>
 <p>This will ensure that CORS headers are always returned as part of the response when your functions match the path invoked.</p>
-<div class="tabbed-set" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="10:3"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1562,7 +1690,7 @@
 <span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello/&lt;name&gt;&quot;</span><span class="p">)</span>
 </span><span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
 <span class="k">def</span> <span class="nf">get_hello_you</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;hello </span><span class="si">{</span><span class="n">name</span><span class="si">}}</span><span class="s2">&quot;</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello&quot;</span><span class="p">,</span> <span class="n">cors</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># optionally exclude CORS from response, if needed</span>
 <span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
@@ -1577,7 +1705,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">response.json</label><div class="tabbed-content">
+<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">response.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1600,7 +1728,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><label for="__tabbed_9_3">response_no_cors.json</label><div class="tabbed-content">
+<input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><label for="__tabbed_10_3">response_no_cors.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1669,7 +1797,7 @@
 </table>
 <h3 id="fine-grained-responses">Fine grained responses<a class="headerlink" href="#fine-grained-responses" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>Response</code> class to have full control over the response, for example you might want to add additional headers or set a custom Content-type.</p>
-<div class="tabbed-set" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1706,7 +1834,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">response.json</label><div class="tabbed-content">
+<input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><label for="__tabbed_11_2">response.json</label><div class="tabbed-content">
 <p>```json
 {
     "body": "{\"message\":\"I\'m a teapot\"}",
@@ -1724,7 +1852,7 @@
 <div class="admonition warning">
 <p class="admonition-title">The client must send the <code>Accept-Encoding</code> header, otherwise a normal response will be sent</p>
 </div>
-<div class="tabbed-set" data-tabs="11:3"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="12:3"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1747,7 +1875,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><label for="__tabbed_11_2">sample_request.json</label><div class="tabbed-content">
+<input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><label for="__tabbed_12_2">sample_request.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1766,7 +1894,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><label for="__tabbed_11_3">response.json</label><div class="tabbed-content">
+<input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><label for="__tabbed_12_3">response.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1794,7 +1922,7 @@
 <div class="admonition warning">
 <p class="admonition-title">This feature requires API Gateway to configure binary media types, see <a href="#required-resources">our sample infrastructure</a> for reference</p>
 </div>
-<div class="tabbed-set" data-tabs="12:4"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="13:4"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1825,7 +1953,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><label for="__tabbed_12_2">logo.svg</label><div class="tabbed-content">
+<input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><label for="__tabbed_13_2">logo.svg</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1904,7 +2032,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><label for="__tabbed_12_3">sample_request.json</label><div class="tabbed-content">
+<input id="__tabbed_13_3" name="__tabbed_13" type="radio" /><label for="__tabbed_13_3">sample_request.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1923,7 +2051,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_12_4" name="__tabbed_12" type="radio" /><label for="__tabbed_12_4">response.json</label><div class="tabbed-content">
+<input id="__tabbed_13_4" name="__tabbed_13" type="radio" /><label for="__tabbed_13_4">response.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1943,9 +2071,39 @@
 </td></tr></table>
 </div>
 </div>
+<h3 id="debug-mode">Debug mode<a class="headerlink" href="#debug-mode" title="Permanent link">&para;</a></h3>
+<p>You can enable debug mode via <code>debug</code> param, or via <code>POWERTOOLS_EVENT_HANDLER_DEBUG</code> <a href="../../..#environment-variables">environment variable</a>.</p>
+<p>This will enable full tracebacks errors in the response, print request and responses, and set CORS in development mode.</p>
+<div class="admonition warning">
+<p class="admonition-title">This might reveal sensitive information in your logs and relax CORS restrictions, use it sparingly.</p>
+</div>
+<div class="tabbed-set" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">debug.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+
+<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_hello_universe</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;hello universe&quot;</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
 <h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
 <p>You can test your routes by passing a proxy event request where <code>path</code> and <code>httpMethod</code>.</p>
-<div class="tabbed-set" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">test_app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">test_app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2000,7 +2158,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><label for="__tabbed_13_2">app.py</label><div class="tabbed-content">
+<input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><label for="__tabbed_15_2">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2046,7 +2204,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-05-07
+      Last update: 2021-07-20
     
   </small>
 </div>
