@@ -18,7 +18,7 @@
     
     
       
-        <title>Typing - Lambda Powertools Python</title>
+        <title>Feature flags - Lambda Powertools Python</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lambdacontext" class="md-skip">
+        <a href="#terminology" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Typing
+              Feature flags
             
           </span>
         </div>
@@ -469,47 +469,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Typing
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../typing/" class="md-nav__link">
         Typing
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#lambdacontext" class="md-nav__link">
-    LambdaContext
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -565,11 +529,149 @@
             
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../feature_flags/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Feature flags
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Feature flags
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#terminology" class="md-nav__link">
+    Terminology
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    Key features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting started
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iam-permissions" class="md-nav__link">
+    IAM Permissions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-feature-flags" class="md-nav__link">
+    Creating feature flags
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating feature flags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rules" class="md-nav__link">
+    Rules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetching-a-single-feature-flag" class="md-nav__link">
+    Fetching a single feature flag
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetching-all-feature-flags" class="md-nav__link">
+    Fetching all feature flags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced" class="md-nav__link">
+    Advanced
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-cache-ttl" class="md-nav__link">
+    Adjusting cache TTL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partially-enabling-features" class="md-nav__link">
+    Partially enabling features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bring-your-own-store-provider" class="md-nav__link">
+    Bring your own store provider
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-your-code" class="md-nav__link">
+    Testing your code
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -604,8 +706,110 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lambdacontext" class="md-nav__link">
-    LambdaContext
+  <a href="#terminology" class="md-nav__link">
+    Terminology
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    Key features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting started
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iam-permissions" class="md-nav__link">
+    IAM Permissions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-feature-flags" class="md-nav__link">
+    Creating feature flags
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating feature flags">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rules" class="md-nav__link">
+    Rules
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetching-a-single-feature-flag" class="md-nav__link">
+    Fetching a single feature flag
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetching-all-feature-flags" class="md-nav__link">
+    Fetching all feature flags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced" class="md-nav__link">
+    Advanced
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-cache-ttl" class="md-nav__link">
+    Adjusting cache TTL
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partially-enabling-features" class="md-nav__link">
+    Partially enabling features
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bring-your-own-store-provider" class="md-nav__link">
+    Bring your own store provider
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-your-code" class="md-nav__link">
+    Testing your code
   </a>
   
 </li>
@@ -622,33 +826,52 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/awslabs/aws-lambda-powertools-python/edit/develop/docs/utilities/typing.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/awslabs/aws-lambda-powertools-python/edit/develop/docs/utilities/feature_flags.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                  <h1>Typing</h1>
+                  <h1>Feature flags</h1>
                 
-                <p>This typing utility provides static typing classes that can be used to ease the development by providing the IDE type hints.</p>
-<p><img alt="Utilities Typing" src="../../media/utilities_typing.png" /></p>
-<h2 id="lambdacontext">LambdaContext<a class="headerlink" href="#lambdacontext" title="Permanent link">&para;</a></h2>
-<p>The <code>LambdaContext</code> typing is typically used in the handler method for the Lambda function.</p>
-<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">index.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span>
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.typing</span> <span class="kn">import</span> <span class="n">LambdaContext</span>
-
-<span class="hll"><span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-</span>    <span class="c1"># Insert business logic</span>
-    <span class="k">return</span> <span class="n">event</span>
-</code></pre></div>
-</td></tr></table>
+                <p>The feature flags utility provides a simple rule engine to define when one or multiple features should be enabled depending on the input.</p>
+<div class="admonition tip">
+<p class="admonition-title">For simpler use cases where a feature is simply on or off for all users, use <a href="../parameters/">Parameters</a> utility instead.</p>
 </div>
+<h2 id="terminology">Terminology<a class="headerlink" href="#terminology" title="Permanent link">&para;</a></h2>
+<p>Feature flags are used to modify a system behaviour without having to change their code. These flags can be static or dynamic.</p>
+<p><strong>Static feature flags</strong> are commonly used for long-lived behaviours that will rarely change, for example <code>TRACER_ENABLED=True</code>. These are better suited for <a href="../parameters/">Parameters utility</a>.</p>
+<p><strong>Dynamic feature flags</strong> are typically used for experiments where you'd want to enable a feature for a limited set of customers, for example A/B testing and Canary releases. These are better suited for this utility, as you can create multiple conditions on whether a feature flag should be <code>True</code> or <code>False</code>.</p>
+<p>That being said, be mindful that feature flags can increase your application complexity over time if you're not careful; use them sparingly.</p>
+<div class="admonition tip">
+<p class="admonition-title">Read <a href="https://martinfowler.com/articles/feature-toggles.html" target="_blank">this article</a> for more details on different types of feature flags and trade-offs</p>
 </div>
+<h2 id="key-features">Key features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>TODO: Revisit once getting started and advanced sections are complete</p>
+</blockquote>
+<ul>
+<li>Define simple feature flags to dynamically decide when to enable a feature</li>
+<li>Fetch one or all feature flags enabled for a given application context</li>
+<li>Bring your own configuration store</li>
+</ul>
+<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<h3 id="iam-permissions">IAM Permissions<a class="headerlink" href="#iam-permissions" title="Permanent link">&para;</a></h3>
+<p>By default, this utility provides AWS AppConfig as a configuration store. As such, you IAM Role needs permission - <code>appconfig:GetConfiguration</code> - to fetch feature flags from AppConfig.</p>
+<h3 id="creating-feature-flags">Creating feature flags<a class="headerlink" href="#creating-feature-flags" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>NOTE: Explain schema, provide sample boto3 script and CFN to create one</p>
+</blockquote>
+<h4 id="rules">Rules<a class="headerlink" href="#rules" title="Permanent link">&para;</a></h4>
+<h3 id="fetching-a-single-feature-flag">Fetching a single feature flag<a class="headerlink" href="#fetching-a-single-feature-flag" title="Permanent link">&para;</a></h3>
+<h3 id="fetching-all-feature-flags">Fetching all feature flags<a class="headerlink" href="#fetching-all-feature-flags" title="Permanent link">&para;</a></h3>
+<h3 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h3>
+<h4 id="adjusting-cache-ttl">Adjusting cache TTL<a class="headerlink" href="#adjusting-cache-ttl" title="Permanent link">&para;</a></h4>
+<h3 id="partially-enabling-features">Partially enabling features<a class="headerlink" href="#partially-enabling-features" title="Permanent link">&para;</a></h3>
+<h3 id="bring-your-own-store-provider">Bring your own store provider<a class="headerlink" href="#bring-your-own-store-provider" title="Permanent link">&para;</a></h3>
+<h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>NOTE: Share example on how customers can unit test their feature flags</p>
+</blockquote>
                 
                   
                     
@@ -657,7 +880,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-02-12
+      Last update: 2021-08-04
     
   </small>
 </div>
@@ -686,7 +909,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../batch/" class="md-footer__link md-footer__link--prev" aria-label="Previous: SQS Batch Processing" rel="prev">
+        <a href="../idempotency/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Idempotency" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -695,26 +918,11 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              SQS Batch Processing
+              Idempotency
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../validation/" class="md-footer__link md-footer__link--next" aria-label="Next: Validation" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Validation
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
