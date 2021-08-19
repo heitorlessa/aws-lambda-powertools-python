@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.2.3">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
     
     
       
@@ -1316,24 +1316,24 @@
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="hll">  <span class="nt">&quot;premium_features&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span>    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nt">&quot;rules&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;customer tier equals premium&quot;</span><span class="p">:</span> <span class="p">{</span>
-<span class="hll">        <span class="nt">&quot;when_match&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span>        <span class="nt">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-<span class="hll">            <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;EQUALS&quot;</span><span class="p">,</span>
-</span><span class="hll">            <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;tier&quot;</span><span class="p">,</span>
-</span><span class="hll">            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;premium&quot;</span>
-</span>          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">}</span>
+<span class="hll">    <span class="nt">&quot;premium_features&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span>        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;rules&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;customer tier equals premium&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="hll">                <span class="nt">&quot;when_match&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span>                <span class="nt">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+<span class="hll">                        <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;EQUALS&quot;</span><span class="p">,</span>
+</span><span class="hll">                        <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;tier&quot;</span><span class="p">,</span>
+</span><span class="hll">                        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;premium&quot;</span>
+</span>                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;ten_percent_off_campaign&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">false</span>
     <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;ten_percent_off_campaign&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">false</span>
-  <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
@@ -1371,7 +1371,7 @@
 
 <span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
 <span class="hll">    <span class="n">apply_discount</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">feature_flags</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ten_percent_off_campaign&quot;</span><span class="p">,</span>
-</span><span class="hll">                                                         <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span class="hll">                                                            <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </span>
     <span class="k">if</span> <span class="n">apply_discount</span><span class="p">:</span>
         <span class="c1"># apply 10% discount to product</span>
@@ -1385,9 +1385,9 @@
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="hll">  <span class="nt">&quot;ten_percent_off_campaign&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class="hll">    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">false</span>
-</span>  <span class="p">}</span>
+<span class="hll">    <span class="nt">&quot;ten_percent_off_campaign&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">false</span>
+</span>    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
@@ -1429,8 +1429,7 @@
 <span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.feature_flags</span> <span class="kn">import</span> <span class="n">FeatureFlags</span><span class="p">,</span> <span class="n">AppConfigStore</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
@@ -1443,18 +1442,17 @@
 
 <span class="n">feature_flags</span> <span class="o">=</span> <span class="n">FeatureFlags</span><span class="p">(</span><span class="n">store</span><span class="o">=</span><span class="n">app_config</span><span class="p">)</span>
 
-
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/products&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">list_products</span><span class="p">():</span>
-<span class="hll">    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class="hll">        <span class="o">**</span><span class="n">app</span><span class="o">.</span><span class="n">current_event</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span>
+    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span>
+<span class="hll">        <span class="o">**</span><span class="n">app</span><span class="o">.</span><span class="n">current_event</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span>
 </span><span class="hll">        <span class="o">**</span><span class="n">app</span><span class="o">.</span><span class="n">current_event</span><span class="o">.</span><span class="n">json_body</span>
 </span><span class="hll">    <span class="p">}</span>
-</span>
-    <span class="c1"># all_features is evaluated to [&quot;geo_customer_campaign&quot;, &quot;ten_percent_off_campaign&quot;]</span>
-<span class="hll">    <span class="n">all_features</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">feature_flags</span><span class="o">.</span><span class="n">get_enabled_features</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="n">ctx</span><span class="p">)</span>
-</span>
-    <span class="k">if</span> <span class="s2">&quot;geo_customer_campaign&quot;</span> <span class="ow">in</span> <span class="n">all_features</span><span class="p">:</span>
+</span><span class="hll">
+</span>    <span class="c1"># all_features is evaluated to [&quot;geo_customer_campaign&quot;, &quot;ten_percent_off_campaign&quot;]</span>
+    <span class="n">all_features</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">feature_flags</span><span class="o">.</span><span class="n">get_enabled_features</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="n">ctx</span><span class="p">)</span>
+<span class="hll">
+</span>    <span class="k">if</span> <span class="s2">&quot;geo_customer_campaign&quot;</span> <span class="ow">in</span> <span class="n">all_features</span><span class="p">:</span>
         <span class="c1"># apply discounts based on geo</span>
         <span class="o">...</span>
 
@@ -1478,14 +1476,14 @@
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="hll">  <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;username\&quot;: \&quot;lessa\&quot;, \&quot;tier\&quot;: \&quot;premium\&quot;, \&quot;basked_id\&quot;: \&quot;random_id\&quot;}&quot;</span><span class="p">,</span>
-</span>  <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="s2">&quot;/products&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/products&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;isBase64Encoded&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-<span class="hll">    <span class="nt">&quot;CloudFront-Viewer-Country&quot;</span><span class="p">:</span> <span class="s2">&quot;NL&quot;</span><span class="p">,</span>
-</span>  <span class="p">}</span>
+<span class="hll">    <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;username\&quot;: \&quot;lessa\&quot;, \&quot;tier\&quot;: \&quot;premium\&quot;, \&quot;basked_id\&quot;: \&quot;random_id\&quot;}&quot;</span><span class="p">,</span>
+</span>    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="s2">&quot;/products&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/products&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;isBase64Encoded&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="hll">        <span class="nt">&quot;CloudFront-Viewer-Country&quot;</span><span class="p">:</span> <span class="s2">&quot;NL&quot;</span>
+</span>    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
@@ -1526,39 +1524,39 @@
 <span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;premium_features&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nt">&quot;rules&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;customer tier equals premium&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;when_match&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;EQUALS&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;tier&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;premium&quot;</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">}</span>
+    <span class="nt">&quot;premium_features&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;rules&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;customer tier equals premium&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;when_match&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nt">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;EQUALS&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;tier&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;premium&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+<span class="hll">    <span class="nt">&quot;ten_percent_off_campaign&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">true</span>
+</span>    <span class="p">},</span>
+<span class="hll">    <span class="nt">&quot;geo_customer_campaign&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span>        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;rules&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;customer in temporary discount geo&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;when_match&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="nt">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+<span class="hll">                        <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;IN&quot;</span><span class="p">,</span>
+</span><span class="hll">                        <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;CloudFront-Viewer-Country&quot;</span><span class="p">,</span>
+</span><span class="hll">                        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;NL&quot;</span><span class="p">,</span> <span class="s2">&quot;IE&quot;</span><span class="p">,</span> <span class="s2">&quot;UK&quot;</span><span class="p">,</span> <span class="s2">&quot;PL&quot;</span><span class="p">,</span> <span class="s2">&quot;PT&quot;</span><span class="p">]</span>
+</span>                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
     <span class="p">}</span>
-  <span class="p">},</span>
-<span class="hll">  <span class="nt">&quot;ten_percent_off_campaign&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class="hll">    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">true</span>
-</span>  <span class="p">},</span>
-<span class="hll">  <span class="nt">&quot;geo_customer_campaign&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span>    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nt">&quot;rules&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;customer in temporary discount geo&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;when_match&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-<span class="hll">            <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;IN&quot;</span><span class="p">,</span>
-</span><span class="hll">            <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;CloudFront-Viewer-Country&quot;</span><span class="p">,</span>
-</span><span class="hll">            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;NL&quot;</span><span class="p">,</span> <span class="s2">&quot;IE&quot;</span><span class="p">,</span> <span class="s2">&quot;UK&quot;</span><span class="p">,</span> <span class="s2">&quot;PL&quot;</span><span class="p">,</span> <span class="s2">&quot;PT&quot;</span><span class="p">],</span>
-</span>          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
@@ -1575,9 +1573,9 @@
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="hll">  <span class="nt">&quot;global_feature&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class="hll">    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">true</span>
-</span>  <span class="p">}</span>
+<span class="hll">    <span class="nt">&quot;global_feature&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">true</span>
+</span>    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
@@ -1609,21 +1607,21 @@
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;premium_feature&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-<span class="hll">    <span class="nt">&quot;rules&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class="hll">      <span class="nt">&quot;customer tier equals premium&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class="hll">        <span class="nt">&quot;when_match&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span><span class="hll">        <span class="nt">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
-</span><span class="hll">          <span class="p">{</span>
-</span><span class="hll">            <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;EQUALS&quot;</span><span class="p">,</span>
-</span><span class="hll">            <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;tier&quot;</span><span class="p">,</span>
-</span><span class="hll">            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;premium&quot;</span>
-</span>          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">}</span>
+    <span class="nt">&quot;premium_feature&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+<span class="hll">        <span class="nt">&quot;rules&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">            <span class="nt">&quot;customer tier equals premium&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">                <span class="nt">&quot;when_match&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class="hll">                <span class="nt">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span class="hll">                    <span class="p">{</span>
+</span><span class="hll">                        <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;EQUALS&quot;</span><span class="p">,</span>
+</span><span class="hll">                        <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;tier&quot;</span><span class="p">,</span>
+</span><span class="hll">                        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;premium&quot;</span>
+</span>                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
     <span class="p">}</span>
-  <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
@@ -1645,14 +1643,14 @@
 <span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="err">...</span>
     <span class="nt">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;EQUALS&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;tier&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;premium&quot;</span>
-<span class="hll">      <span class="p">}</span>
-</span><span class="hll">    <span class="p">]</span>
-</span><span class="hll"><span class="p">}</span>
-</span></code></pre></div>
+        <span class="p">{</span>
+<span class="hll">            <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;EQUALS&quot;</span><span class="p">,</span>
+</span><span class="hll">            <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;tier&quot;</span><span class="p">,</span>
+</span><span class="hll">            <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;premium&quot;</span>
+</span>        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
 </td></tr></table>
 </div>
 </div>
@@ -1665,21 +1663,25 @@
 <h3 id="adjusting-in-memory-cache">Adjusting in-memory cache<a class="headerlink" href="#adjusting-in-memory-cache" title="Permanent link">&para;</a></h3>
 <p>By default, we cache configuration retrieved from the Store for 5 seconds for performance and reliability reasons.</p>
 <p>You can override <code>max_age</code> parameter when instantiating the store.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.feature_flags</span> <span class="kn">import</span> <span class="n">FeatureFlags</span><span class="p">,</span> <span class="n">AppConfigStore</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>```python hl_lines=&quot;7&quot;
+from aws_lambda_powertools.utilities.feature_flags import FeatureFlags, AppConfigStore
 
-<span class="n">app_config</span> <span class="o">=</span> <span class="n">AppConfigStore</span><span class="p">(</span>
-    <span class="n">environment</span><span class="o">=</span><span class="s2">&quot;dev&quot;</span><span class="p">,</span>
-    <span class="n">application</span><span class="o">=</span><span class="s2">&quot;product-catalogue&quot;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">,</span>
-<span class="hll">    <span class="n">max_age</span><span class="o">=</span><span class="mi">300</span>
-</span><span class="p">)</span>
+app_config = AppConfigStore(
+    environment=&quot;dev&quot;,
+    application=&quot;product-catalogue&quot;,
+    name=&quot;features&quot;,
+    max_age=300
+)
+```
 </code></pre></div>
 </td></tr></table>
 <h3 id="envelope">Envelope<a class="headerlink" href="#envelope" title="Permanent link">&para;</a></h3>
@@ -1813,8 +1815,7 @@
 </tr>
 </tbody>
 </table>
-<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">appconfig_store_example.py</label><div class="tabbed-content"></div>
-</div>
+<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">appconfig_store_example.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1868,6 +1869,8 @@
 </span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
+</div>
+</div>
 <h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
 <p>You can unit test your feature flags locally and independently without setting up AWS AppConfig.</p>
 <p><code>AppConfigStore</code> only fetches a JSON document with a specific schema. This allows you to mock the response and use it to verify the rule evaluation.</p>
@@ -2017,7 +2020,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-08-12
+      Last update: 2021-08-15
     
   </small>
 </div>
@@ -2089,7 +2092,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.29db7785.min.js"></script>
+      <script src="../../assets/javascripts/bundle.febc23d1.min.js"></script>
       
         <script src="../../javascript/aws-amplify.min.js"></script>
       

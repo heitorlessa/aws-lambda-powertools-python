@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.2.3">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
     
     
       
@@ -860,20 +860,20 @@ are returned to the queue.</p>
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">Resources</span><span class="p">:</span>
-<span class="hll">  <span class="nt">MyQueue</span><span class="p">:</span>
+<span class="hll">    <span class="nt">MyQueue</span><span class="p">:</span>
 </span><span class="hll">    <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::SQS::Queue</span>
 </span>
-  <span class="nt">HelloWorldFunction</span><span class="p">:</span>
+    <span class="nt">HelloWorldFunction</span><span class="p">:</span>
     <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
     <span class="nt">Properties</span><span class="p">:</span>
-      <span class="nt">Runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python3.8</span>
-      <span class="nt">Environment</span><span class="p">:</span>
+        <span class="nt">Runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python3.8</span>
+        <span class="nt">Environment</span><span class="p">:</span>
         <span class="nt">Variables</span><span class="p">:</span>
-          <span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">example</span>
-<span class="hll">      <span class="nt">Policies</span><span class="p">:</span>
+            <span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">example</span>
+<span class="hll">        <span class="nt">Policies</span><span class="p">:</span>
 </span><span class="hll">        <span class="p p-Indicator">-</span> <span class="nt">SQSPollerPolicy</span><span class="p">:</span>
 </span><span class="hll">            <span class="nt">QueueName</span><span class="p">:</span>
-</span><span class="hll">              <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">MyQueue.QueueName</span>
+</span><span class="hll">                <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">MyQueue.QueueName</span>
 </span></code></pre></div>
 </td></tr></table>
 </div>
@@ -953,11 +953,9 @@ are returned to the queue.</p>
 <p>They have nearly the same behaviour when it comes to processing messages from the batch:</p>
 <ul>
 <li><strong>Entire batch has been successfully processed</strong>, where your Lambda handler returned successfully, we will let SQS delete the batch to optimize your cost</li>
-<li><strong>Entire Batch has been partially processed successfully</strong>, where exceptions were raised within your <code>record handler</code>, we will:<ul>
+<li><strong>Entire Batch has been partially processed successfully</strong>, where exceptions were raised within your <code>record handler</code>, we will:</li>
 <li><strong>1)</strong> Delete successfully processed messages from the queue by directly calling <code>sqs:DeleteMessageBatch</code></li>
 <li><strong>2)</strong> Raise <code>SQSBatchProcessingError</code> to ensure failed messages return to your SQS queue</li>
-</ul>
-</li>
 </ul>
 <p>The only difference is that <strong>PartialSQSProcessor</strong> will give you access to processed messages if you need.</p>
 <h3 id="accessing-processed-messages">Accessing processed messages<a class="headerlink" href="#accessing-processed-messages" title="Permanent link">&para;</a></h3>
@@ -1272,7 +1270,7 @@ the <code>sqs_batch_processor</code> decorator:</p>
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-04-05
+      Last update: 2021-08-15
     
   </small>
 </div>
@@ -1359,7 +1357,7 @@ the <code>sqs_batch_processor</code> decorator:</p>
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.29db7785.min.js"></script>
+      <script src="../../assets/javascripts/bundle.febc23d1.min.js"></script>
       
         <script src="../../javascript/aws-amplify.min.js"></script>
       

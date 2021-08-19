@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.2.3">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
     
     
       
@@ -1297,12 +1297,12 @@
 </span><span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Collecting payment&quot;</span><span class="p">)</span>
 
- <span class="c1"># You can log entire objects too</span>
- <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">({</span>
+    <span class="c1"># You can log entire objects too</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">({</span>
     <span class="s2">&quot;operation&quot;</span><span class="p">:</span> <span class="s2">&quot;collect_payment&quot;</span><span class="p">,</span>
     <span class="s2">&quot;charge_id&quot;</span><span class="p">:</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;charge_id&#39;</span><span class="p">]</span>
- <span class="p">})</span>
- <span class="o">...</span>
+    <span class="p">})</span>
+    <span class="o">...</span>
 </code></pre></div>
 </td></tr></table>
 </div>
@@ -1449,9 +1449,9 @@
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
 <span class="hll">    <span class="nt">&quot;my_request_id_header&quot;</span><span class="p">:</span> <span class="s2">&quot;correlation_id_value&quot;</span>
-</span>  <span class="p">}</span>
+</span>    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
@@ -1514,9 +1514,9 @@
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;requestContext&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;requestContext&quot;</span><span class="p">:</span> <span class="p">{</span>
 <span class="hll">    <span class="nt">&quot;requestId&quot;</span><span class="p">:</span> <span class="s2">&quot;correlation_id_value&quot;</span>
-</span>  <span class="p">}</span>
+</span>    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
@@ -1582,12 +1582,12 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;payment&quot;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
- <span class="n">order_id</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;order_id&quot;</span><span class="p">)</span>
+    <span class="n">order_id</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;order_id&quot;</span><span class="p">)</span>
 
- <span class="c1"># this will ensure order_id key always has the latest value before logging</span>
-<span class="hll"> <span class="n">logger</span><span class="o">.</span><span class="n">append_keys</span><span class="p">(</span><span class="n">order_id</span><span class="o">=</span><span class="n">order_id</span><span class="p">)</span>
+    <span class="c1"># this will ensure order_id key always has the latest value before logging</span>
+<span class="hll">    <span class="n">logger</span><span class="o">.</span><span class="n">append_keys</span><span class="p">(</span><span class="n">order_id</span><span class="o">=</span><span class="n">order_id</span><span class="p">)</span>
 </span>
- <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Collecting payment&quot;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Collecting payment&quot;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 </div>
@@ -1682,9 +1682,9 @@
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;requestContext&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;requestContext&quot;</span><span class="p">:</span> <span class="p">{</span>
 <span class="hll">    <span class="nt">&quot;requestId&quot;</span><span class="p">:</span> <span class="s2">&quot;correlation_id_value&quot;</span>
-</span>  <span class="p">}</span>
+</span>    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
@@ -1737,9 +1737,9 @@
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;requestContext&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;requestContext&quot;</span><span class="p">:</span> <span class="p">{</span>
 <span class="hll">    <span class="nt">&quot;requestId&quot;</span><span class="p">:</span> <span class="s2">&quot;correlation_id_value&quot;</span>
-</span>  <span class="p">}</span>
+</span>    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
@@ -1754,13 +1754,13 @@
 <span class="normal">7</span>
 <span class="normal">8</span>
 <span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-05-24 18:17:33,774&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;collect.handler:9&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;service&quot;</span><span class="p">:</span> <span class="s2">&quot;payment&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;sampling_rate&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-<span class="hll">  <span class="nt">&quot;correlation_id&quot;</span><span class="p">:</span> <span class="s2">&quot;correlation_id_value&quot;</span><span class="p">,</span>
-</span>  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Collecting payment&quot;</span>
+    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-05-24 18:17:33,774&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;collect.handler:9&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;service&quot;</span><span class="p">:</span> <span class="s2">&quot;payment&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;sampling_rate&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+<span class="hll">    <span class="nt">&quot;correlation_id&quot;</span><span class="p">:</span> <span class="s2">&quot;correlation_id_value&quot;</span><span class="p">,</span>
+</span>    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Collecting payment&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
@@ -1940,9 +1940,9 @@
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;payment&quot;</span><span class="p">)</span>
 
 <span class="k">try</span><span class="p">:</span>
-     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;something went wrong&quot;</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;something went wrong&quot;</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-<span class="hll">     <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Received an exception&quot;</span><span class="p">)</span>
+<span class="hll">    <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Received an exception&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </td></tr></table>
 </div>
@@ -2718,9 +2718,12 @@
 </div>
 <h3 id="pytest-live-log-feature">Pytest live log feature<a class="headerlink" href="#pytest-live-log-feature" title="Permanent link">&para;</a></h3>
 <p>Pytest Live Log feature duplicates emitted log messages in order to style log statements according to their levels, for this to work use <code>POWERTOOLS_LOG_DEDUPLICATION_DISABLED</code> env var.</p>
+<div class="tabbed-set" data-tabs="26:1"><input checked="checked" id="__tabbed_26_1" name="__tabbed_26" type="radio" /><label for="__tabbed_26_1">shell</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nv">POWERTOOLS_LOG_DEDUPLICATION_DISABLED</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> pytest -o <span class="nv">log_cli</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div>
 </td></tr></table>
+</div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This feature should be used with care, as it explicitly disables our ability to filter propagated messages to the root logger (if configured).</p>
@@ -2729,7 +2732,7 @@
 <p><strong>How can I enable boto3 and botocore library logging?</strong></p>
 <p>You can enable the <code>botocore</code> and <code>boto3</code> logs by using the <code>set_stream_logger</code> method, this method will add a stream handler
 for the given name and level to the logging module. By default, this logs all boto3 messages to stdout.</p>
-<div class="tabbed-set" data-tabs="26:1"><input checked="checked" id="__tabbed_26_1" name="__tabbed_26" type="radio" /><label for="__tabbed_26_1">log_botocore_and_boto3.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="27:1"><input checked="checked" id="__tabbed_27_1" name="__tabbed_27" type="radio" /><label for="__tabbed_27_1">log_botocore_and_boto3.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2768,7 +2771,7 @@ for the given name and level to the logging module. By default, this logs all bo
 <p><strong>What's the difference between <code>append_keys</code> and <code>extra</code>?</strong></p>
 <p>Keys added with <code>append_keys</code> will persist across multiple log messages while keys added via <code>extra</code> will only be available in a given log message operation.</p>
 <p>Here's an example where we persist <code>payment_id</code> not <code>request_id</code>. Note that <code>payment_id</code> remains in both log messages while <code>booking_id</code> is only available in the first message.</p>
-<div class="tabbed-set" data-tabs="27:2"><input checked="checked" id="__tabbed_27_1" name="__tabbed_27" type="radio" /><label for="__tabbed_27_1">lambda_handler.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="28:2"><input checked="checked" id="__tabbed_28_1" name="__tabbed_28" type="radio" /><label for="__tabbed_28_1">lambda_handler.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2799,7 +2802,7 @@ for the given name and level to the logging module. By default, this logs all bo
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_27_2" name="__tabbed_27" type="radio" /><label for="__tabbed_27_2">Example CloudWatch Logs excerpt</label><div class="tabbed-content">
+<input id="__tabbed_28_2" name="__tabbed_28" type="radio" /><label for="__tabbed_28_2">Example CloudWatch Logs excerpt</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2852,7 +2855,7 @@ for the given name and level to the logging module. By default, this logs all bo
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-07-20
+      Last update: 2021-08-15
     
   </small>
 </div>
@@ -2939,7 +2942,7 @@ for the given name and level to the logging module. By default, this logs all bo
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.29db7785.min.js"></script>
+      <script src="../../assets/javascripts/bundle.febc23d1.min.js"></script>
       
         <script src="../../javascript/aws-amplify.min.js"></script>
       

@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.2.3">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
     
     
       
@@ -731,9 +731,12 @@
 <li><a href="https://pip.pypa.io/en/latest/index.html">pip</a>: <code>pip install aws-lambda-powertools</code></li>
 </ul>
 <p><strong>Quick hello world example using SAM CLI</strong></p>
+<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">shell</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sam init --location https://github.com/aws-samples/cookiecutter-aws-sam-python
 </code></pre></div>
 </td></tr></table>
+</div>
+</div>
 <h3 id="lambda-layer">Lambda Layer<a class="headerlink" href="#lambda-layer" title="Permanent link">&para;</a></h3>
 <p>Powertools is also available as a Lambda Layer, and it is distributed via the <a href="https://docs.aws.amazon.com/serverlessrepo/latest/devguide/what-is-serverlessrepo.html">AWS Serverless Application Repository (SAR)</a> to support semantic versioning.</p>
 <table>
@@ -762,7 +765,7 @@
 <p><strong>Layer-extras</strong> does not support Python 3.6 runtime. This layer also includes all extra dependencies: <code>22.4MB zipped</code>, <code>~155MB unzipped</code>.</p>
 </div>
 <p>If using SAM, you can include this SAR App as part of your shared Layers stack, and lock to a specific semantic version. Once deployed, it'll be available across the account this is deployed to.</p>
-<div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">SAM</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">SAM</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -776,22 +779,22 @@
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AwsLambdaPowertoolsPythonLayer</span><span class="p">:</span>
-  <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Application</span>
-  <span class="nt">Properties</span><span class="p">:</span>
+    <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Application</span>
+    <span class="nt">Properties</span><span class="p">:</span>
     <span class="nt">Location</span><span class="p">:</span>
-<span class="hll">      <span class="nt">ApplicationId</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer</span>
-</span><span class="hll">      <span class="nt">SemanticVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.17.0</span> <span class="c1"># change to latest semantic version available in SAR</span>
+<span class="hll">        <span class="nt">ApplicationId</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer</span>
+</span><span class="hll">        <span class="nt">SemanticVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.17.0</span> <span class="c1"># change to latest semantic version available in SAR</span>
 </span>
 <span class="nt">MyLambdaFunction</span><span class="p">:</span>
-  <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
-  <span class="nt">Properties</span><span class="p">:</span>
+    <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
+    <span class="nt">Properties</span><span class="p">:</span>
     <span class="nt">Layers</span><span class="p">:</span>
-<span class="hll">      <span class="c1"># fetch Layer ARN from SAR App stack output</span>
-</span><span class="hll">      <span class="p p-Indicator">-</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">AwsLambdaPowertoolsPythonLayer.Outputs.LayerVersionArn</span>
+<span class="hll">        <span class="c1"># fetch Layer ARN from SAR App stack output</span>
+</span><span class="hll">        <span class="p p-Indicator">-</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">AwsLambdaPowertoolsPythonLayer.Outputs.LayerVersionArn</span>
 </span></code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Serverless framework</label><div class="tabbed-content">
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Serverless framework</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -808,25 +811,25 @@
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">functions</span><span class="p">:</span>
-  <span class="nt">main</span><span class="p">:</span>
+    <span class="nt">main</span><span class="p">:</span>
     <span class="nt">handler</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">lambda_function.lambda_handler</span>
     <span class="nt">layers</span><span class="p">:</span>
-<span class="hll">      <span class="p p-Indicator">-</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">AwsLambdaPowertoolsPythonLayer.Outputs.LayerVersionArn</span>
+<span class="hll">        <span class="p p-Indicator">-</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">AwsLambdaPowertoolsPythonLayer.Outputs.LayerVersionArn</span>
 </span>
 <span class="nt">resources</span><span class="p">:</span>
-<span class="hll">  <span class="nt">Transform</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span>
-</span>  <span class="nt">Resources</span><span class="p">:</span>
+<span class="hll">    <span class="nt">Transform</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span>
+</span>    <span class="nt">Resources</span><span class="p">:</span>
 <span class="hll">    <span class="nt">AwsLambdaPowertoolsPythonLayer</span><span class="p">:</span>
-</span><span class="hll">      <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Application</span>
-</span>      <span class="nt">Properties</span><span class="p">:</span>
+</span><span class="hll">        <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Application</span>
+</span>        <span class="nt">Properties</span><span class="p">:</span>
         <span class="nt">Location</span><span class="p">:</span>
-          <span class="nt">ApplicationId</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer</span>
-          <span class="c1"># Find latest from github.com/awslabs/aws-lambda-powertools-python/releases</span>
-          <span class="nt">SemanticVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.17.0</span>
+            <span class="nt">ApplicationId</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer</span>
+            <span class="c1"># Find latest from github.com/awslabs/aws-lambda-powertools-python/releases</span>
+            <span class="nt">SemanticVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.17.0</span>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><label for="__tabbed_1_3">CDK</label><div class="tabbed-content">
+<input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><label for="__tabbed_2_3">CDK</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -898,7 +901,7 @@
 <p>Credits to <a href="https://github.com/mwarkentin">mwarkentin</a> for providing the scoped down IAM permissions.</p>
 </blockquote>
 <p>The region and the account id for <code>CloudFormationTransform</code> and <code>GetCfnTemplate</code> are fixed.</p>
-<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">template.yml</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">template.yml</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -954,57 +957,57 @@
 <span class="normal">53</span>
 <span class="normal">54</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span> <span class="s">&quot;2010-09-09&quot;</span>
 <span class="nt">Resources</span><span class="p">:</span>
-  <span class="nt">PowertoolsLayerIamRole</span><span class="p">:</span>
+    <span class="nt">PowertoolsLayerIamRole</span><span class="p">:</span>
     <span class="nt">Type</span><span class="p">:</span> <span class="s">&quot;AWS::IAM::Role&quot;</span>
     <span class="nt">Properties</span><span class="p">:</span>
-      <span class="nt">AssumeRolePolicyDocument</span><span class="p">:</span>
+        <span class="nt">AssumeRolePolicyDocument</span><span class="p">:</span>
         <span class="nt">Version</span><span class="p">:</span> <span class="s">&quot;2012-10-17&quot;</span>
         <span class="nt">Statement</span><span class="p">:</span>
-          <span class="p p-Indicator">-</span> <span class="nt">Effect</span><span class="p">:</span> <span class="s">&quot;Allow&quot;</span>
+            <span class="p p-Indicator">-</span> <span class="nt">Effect</span><span class="p">:</span> <span class="s">&quot;Allow&quot;</span>
             <span class="nt">Principal</span><span class="p">:</span>
-              <span class="nt">Service</span><span class="p">:</span>
+                <span class="nt">Service</span><span class="p">:</span>
                 <span class="p p-Indicator">-</span> <span class="s">&quot;cloudformation.amazonaws.com&quot;</span>
             <span class="nt">Action</span><span class="p">:</span>
-              <span class="p p-Indicator">-</span> <span class="s">&quot;sts:AssumeRole&quot;</span>
-      <span class="nt">Path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
-  <span class="nt">PowertoolsLayerIamPolicy</span><span class="p">:</span>
+                <span class="p p-Indicator">-</span> <span class="s">&quot;sts:AssumeRole&quot;</span>
+        <span class="nt">Path</span><span class="p">:</span> <span class="s">&quot;/&quot;</span>
+    <span class="nt">PowertoolsLayerIamPolicy</span><span class="p">:</span>
     <span class="nt">Type</span><span class="p">:</span> <span class="s">&quot;AWS::IAM::Policy&quot;</span>
     <span class="nt">Properties</span><span class="p">:</span>
-      <span class="nt">PolicyName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PowertoolsLambdaLayerPolicy</span>
-      <span class="nt">PolicyDocument</span><span class="p">:</span>
+        <span class="nt">PolicyName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">PowertoolsLambdaLayerPolicy</span>
+        <span class="nt">PolicyDocument</span><span class="p">:</span>
 <span class="hll">        <span class="nt">Version</span><span class="p">:</span> <span class="s">&quot;2012-10-17&quot;</span>
 </span><span class="hll">        <span class="nt">Statement</span><span class="p">:</span>
-</span><span class="hll">          <span class="p p-Indicator">-</span> <span class="nt">Sid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CloudFormationTransform</span>
+</span><span class="hll">            <span class="p p-Indicator">-</span> <span class="nt">Sid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CloudFormationTransform</span>
 </span><span class="hll">            <span class="nt">Effect</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Allow</span>
 </span><span class="hll">            <span class="nt">Action</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cloudformation:CreateChangeSet</span>
 </span><span class="hll">            <span class="nt">Resource</span><span class="p">:</span>
-</span><span class="hll">              <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:cloudformation:us-east-1:aws:transform/Serverless-2016-10-31</span>
-</span><span class="hll">          <span class="p p-Indicator">-</span> <span class="nt">Sid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">GetCfnTemplate</span>
+</span><span class="hll">                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:cloudformation:us-east-1:aws:transform/Serverless-2016-10-31</span>
+</span><span class="hll">            <span class="p p-Indicator">-</span> <span class="nt">Sid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">GetCfnTemplate</span>
 </span><span class="hll">            <span class="nt">Effect</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Allow</span>
 </span><span class="hll">            <span class="nt">Action</span><span class="p">:</span>
-</span><span class="hll">              <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">serverlessrepo:CreateCloudFormationTemplate</span>
-</span><span class="hll">              <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">serverlessrepo:GetCloudFormationTemplate</span>
+</span><span class="hll">                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">serverlessrepo:CreateCloudFormationTemplate</span>
+</span><span class="hll">                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">serverlessrepo:GetCloudFormationTemplate</span>
 </span><span class="hll">            <span class="nt">Resource</span><span class="p">:</span>
-</span><span class="hll">              <span class="c1"># this is arn of the powertools SAR app</span>
-</span><span class="hll">              <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer</span>
-</span><span class="hll">          <span class="p p-Indicator">-</span> <span class="nt">Sid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">S3AccessLayer</span>
+</span><span class="hll">                <span class="c1"># this is arn of the powertools SAR app</span>
+</span><span class="hll">                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer</span>
+</span><span class="hll">            <span class="p p-Indicator">-</span> <span class="nt">Sid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">S3AccessLayer</span>
 </span><span class="hll">            <span class="nt">Effect</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Allow</span>
 </span><span class="hll">            <span class="nt">Action</span><span class="p">:</span>
-</span><span class="hll">              <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">s3:GetObject</span>
+</span><span class="hll">                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">s3:GetObject</span>
 </span><span class="hll">            <span class="nt">Resource</span><span class="p">:</span>
-</span><span class="hll">              <span class="c1"># AWS publishes to an external S3 bucket locked down to your account ID</span>
-</span><span class="hll">              <span class="c1"># The below example is us publishing lambda powertools</span>
-</span><span class="hll">              <span class="c1"># Bucket: awsserverlessrepo-changesets-plntc6bfnfj</span>
-</span><span class="hll">              <span class="c1"># Key: *****/arn:aws:serverlessrepo:eu-west-1:057560766410:applications-aws-lambda-powertools-python-layer-versions-1.10.2/aeeccf50-****-****-****-*********</span>
-</span><span class="hll">              <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:s3:::awsserverlessrepo-changesets-*/*</span>
-</span><span class="hll">          <span class="p p-Indicator">-</span> <span class="nt">Sid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">GetLayerVersion</span>
+</span><span class="hll">                <span class="c1"># AWS publishes to an external S3 bucket locked down to your account ID</span>
+</span><span class="hll">                <span class="c1"># The below example is us publishing lambda powertools</span>
+</span><span class="hll">                <span class="c1"># Bucket: awsserverlessrepo-changesets-plntc6bfnfj</span>
+</span><span class="hll">                <span class="c1"># Key: *****/arn:aws:serverlessrepo:eu-west-1:057560766410:applications-aws-lambda-powertools-python-layer-versions-1.10.2/aeeccf50-****-****-****-*********</span>
+</span><span class="hll">                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:s3:::awsserverlessrepo-changesets-*/*</span>
+</span><span class="hll">            <span class="p p-Indicator">-</span> <span class="nt">Sid</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">GetLayerVersion</span>
 </span><span class="hll">            <span class="nt">Effect</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Allow</span>
 </span><span class="hll">            <span class="nt">Action</span><span class="p">:</span>
-</span><span class="hll">              <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lambda:PublishLayerVersion</span>
-</span><span class="hll">              <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lambda:GetLayerVersion</span>
+</span><span class="hll">                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lambda:PublishLayerVersion</span>
+</span><span class="hll">                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">lambda:GetLayerVersion</span>
 </span><span class="hll">            <span class="nt">Resource</span><span class="p">:</span>
-</span><span class="hll">              <span class="p p-Indicator">-</span> <span class="kt">!Sub</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:aws-lambda-powertools-python-layer*</span>
-</span>      <span class="nt">Roles</span><span class="p">:</span>
+</span><span class="hll">                <span class="p p-Indicator">-</span> <span class="kt">!Sub</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:aws-lambda-powertools-python-layer*</span>
+</span>        <span class="nt">Roles</span><span class="p">:</span>
         <span class="p p-Indicator">-</span> <span class="nt">Ref</span><span class="p">:</span> <span class="s">&quot;PowertoolsLayerIamRole&quot;</span>
 </code></pre></div>
 </td></tr></table>
@@ -1012,11 +1015,14 @@
 </div>
 </details>
 <p>You can fetch available versions via SAR API with:</p>
+<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">shell</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>aws serverlessrepo list-application-versions <span class="se">\</span>
     --application-id arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer
 </code></pre></div>
 </td></tr></table>
+</div>
+</div>
 <h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1169,7 +1175,7 @@
 </table>
 <h2 id="debug-mode">Debug mode<a class="headerlink" href="#debug-mode" title="Permanent link">&para;</a></h2>
 <p>As a best practice, AWS Lambda Powertools logging statements are suppressed. If necessary, you can enable debugging using <code>set_package_logger</code>:</p>
-<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging.logger</span> <span class="kn">import</span> <span class="n">set_package_logger</span>
@@ -1187,7 +1193,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-08-10
+      Last update: 2021-08-15
     
   </small>
 </div>
@@ -1259,7 +1265,7 @@
     <script id="__config" type="application/json">{"base": ".", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.709b4209.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.29db7785.min.js"></script>
+      <script src="assets/javascripts/bundle.febc23d1.min.js"></script>
       
         <script src="javascript/aws-amplify.min.js"></script>
       

@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.2.3">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
     
     
       
@@ -611,6 +611,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#bringing-your-own-envelope" class="md-nav__link">
+    Bringing your own envelope
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -790,6 +797,13 @@
           <li class="md-nav__item">
   <a href="#built-in-envelopes" class="md-nav__link">
     Built-in envelopes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bringing-your-own-envelope" class="md-nav__link">
+    Bringing your own envelope
   </a>
   
 </li>
@@ -1390,13 +1404,9 @@
 <td>1. Parses data using <code>APIGatewayProxyEventV2Model</code>. <br/> 2. Parses <code>body</code> key using your model and returns it.</td>
 <td><code>Model</code></td>
 </tr>
-<tr>
-<td>### Bringing your own envelope</td>
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
+<h3 id="bringing-your-own-envelope">Bringing your own envelope<a class="headerlink" href="#bringing-your-own-envelope" title="Permanent link">&para;</a></h3>
 <p>You can create your own Envelope model and logic by inheriting from <code>BaseEnvelope</code>, and implementing the <code>parse</code> method.</p>
 <p>Here's a snippet of how the EventBridge envelope we demonstrated previously is implemented.</p>
 <p><strong>EventBridge Model</strong></p>
@@ -1747,19 +1757,19 @@
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Summary report @ 14:36:07(+0200) 2020-10-23
-  Scenarios launched:  10
-  Scenarios completed: 10
-  Requests completed:  2000
-  Mean response/sec: 114.81
-  Response time (msec):
+Scenarios launched:  10
+Scenarios completed: 10
+Requests completed:  2000
+Mean response/sec: 114.81
+Response time (msec):
     min: 54.9
     max: 1684.9
     median: 68
     p95: 109.1
     p99: 180.3
-  Scenario counts:
+Scenario counts:
     0: 10 (100%)
-  Codes:
+Codes:
     200: 2000
 </code></pre></div>
 </td></tr></table>
@@ -1782,19 +1792,19 @@
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Summary report @ 14:29:23(+0200) 2020-10-23
-  Scenarios launched:  10
-  Scenarios completed: 10
-  Requests completed:  2000
-  Mean response/sec: 111.67
-  Response time (msec):
+Scenarios launched:  10
+Scenarios completed: 10
+Requests completed:  2000
+Mean response/sec: 111.67
+Response time (msec):
     min: 54.3
     max: 1887.2
     median: 66.1
     p95: 113.3
     p99: 193.1
-  Scenario counts:
+Scenario counts:
     0: 10 (100%)
-  Codes:
+Codes:
     200: 2000
 </code></pre></div>
 </td></tr></table>
@@ -1806,7 +1816,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-05-28
+      Last update: 2021-08-15
     
   </small>
 </div>
@@ -1893,7 +1903,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.29db7785.min.js"></script>
+      <script src="../../assets/javascripts/bundle.febc23d1.min.js"></script>
       
         <script src="../../javascript/aws-amplify.min.js"></script>
       

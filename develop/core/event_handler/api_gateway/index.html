@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.2.3">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
     
     
       
@@ -1060,52 +1060,52 @@
 <span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Hello world event handler API Gateway</span>
 
 <span class="nt">Globals</span><span class="p">:</span>
-  <span class="nt">Api</span><span class="p">:</span>
+    <span class="nt">Api</span><span class="p">:</span>
     <span class="nt">TracingEnabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">Cors</span><span class="p">:</span>                               <span class="c1"># see CORS section</span>
-      <span class="nt">AllowOrigin</span><span class="p">:</span> <span class="s">&quot;&#39;https://example.com&#39;&quot;</span>
-      <span class="nt">AllowHeaders</span><span class="p">:</span> <span class="s">&quot;&#39;Content-Type,Authorization,X-Amz-Date&#39;&quot;</span>
-      <span class="nt">MaxAge</span><span class="p">:</span> <span class="s">&quot;&#39;300&#39;&quot;</span>
-    <span class="nt">BinaryMediaTypes</span><span class="p">:</span>                   <span class="c1"># see Binary responses section</span>
-      <span class="p p-Indicator">-</span> <span class="s">&#39;*~1*&#39;</span>  <span class="c1"># converts to */* for any binary type</span>
-  <span class="nt">Function</span><span class="p">:</span>
+    <span class="nt">Cors</span><span class="p">:</span>                           <span class="c1"># see CORS section</span>
+        <span class="nt">AllowOrigin</span><span class="p">:</span> <span class="s">&quot;&#39;https://example.com&#39;&quot;</span>
+        <span class="nt">AllowHeaders</span><span class="p">:</span> <span class="s">&quot;&#39;Content-Type,Authorization,X-Amz-Date&#39;&quot;</span>
+        <span class="nt">MaxAge</span><span class="p">:</span> <span class="s">&quot;&#39;300&#39;&quot;</span>
+    <span class="nt">BinaryMediaTypes</span><span class="p">:</span>               <span class="c1"># see Binary responses section</span>
+        <span class="p p-Indicator">-</span> <span class="s">&#39;*~1*&#39;</span>  <span class="c1"># converts to */* for any binary type</span>
+    <span class="nt">Function</span><span class="p">:</span>
     <span class="nt">Timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
     <span class="nt">Runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python3.8</span>
     <span class="nt">Tracing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Active</span>
-      <span class="l l-Scalar l-Scalar-Plain">Environment</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">Environment</span><span class="p p-Indicator">:</span>
         <span class="nt">Variables</span><span class="p">:</span>
-          <span class="nt">LOG_LEVEL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">INFO</span>
-          <span class="nt">POWERTOOLS_LOGGER_SAMPLE_RATE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
-          <span class="nt">POWERTOOLS_LOGGER_LOG_EVENT</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-          <span class="nt">POWERTOOLS_METRICS_NAMESPACE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MyServerlessApplication</span>
-          <span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hello</span>
+            <span class="nt">LOG_LEVEL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">INFO</span>
+            <span class="nt">POWERTOOLS_LOGGER_SAMPLE_RATE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
+            <span class="nt">POWERTOOLS_LOGGER_LOG_EVENT</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+            <span class="nt">POWERTOOLS_METRICS_NAMESPACE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MyServerlessApplication</span>
+            <span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hello</span>
 
 <span class="nt">Resources</span><span class="p">:</span>
-  <span class="nt">HelloWorldFunction</span><span class="p">:</span>
+    <span class="nt">HelloWorldFunction</span><span class="p">:</span>
     <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
     <span class="nt">Properties</span><span class="p">:</span>
-      <span class="nt">Handler</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span>
-      <span class="nt">CodeUri</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hello_world</span>
-      <span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Hello World function</span>
-      <span class="nt">Events</span><span class="p">:</span>
+        <span class="nt">Handler</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span>
+        <span class="nt">CodeUri</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hello_world</span>
+        <span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Hello World function</span>
+        <span class="nt">Events</span><span class="p">:</span>
         <span class="nt">HelloUniverse</span><span class="p">:</span>
-          <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
-          <span class="nt">Properties</span><span class="p">:</span>
+            <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
+            <span class="nt">Properties</span><span class="p">:</span>
             <span class="nt">Path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/hello</span>
             <span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">GET</span>
         <span class="nt">HelloYou</span><span class="p">:</span>
-          <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
-          <span class="nt">Properties</span><span class="p">:</span>
+            <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
+            <span class="nt">Properties</span><span class="p">:</span>
             <span class="nt">Path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/hello/{name}</span>      <span class="c1"># see Dynamic routes section</span>
             <span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">GET</span>
         <span class="nt">CustomMessage</span><span class="p">:</span>
-          <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
-          <span class="nt">Properties</span><span class="p">:</span>
+            <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
+            <span class="nt">Properties</span><span class="p">:</span>
             <span class="nt">Path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/{message}/{name}</span>  <span class="c1"># see Dynamic routes section</span>
             <span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">GET</span>
 
 <span class="nt">Outputs</span><span class="p">:</span>
-  <span class="nt">HelloWorldApigwURL</span><span class="p">:</span>
+    <span class="nt">HelloWorldApigwURL</span><span class="p">:</span>
     <span class="nt">Description</span><span class="p">:</span> <span class="s">&quot;API</span><span class="nv"> </span><span class="s">Gateway</span><span class="nv"> </span><span class="s">endpoint</span><span class="nv"> </span><span class="s">URL</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Prod</span><span class="nv"> </span><span class="s">environment</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">Function&quot;</span>
     <span class="nt">Value</span><span class="p">:</span> <span class="kt">!Sub</span> <span class="s">&quot;https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello&quot;</span>
 
@@ -1225,20 +1225,20 @@
 <span class="normal">60</span>
 <span class="normal">61</span>
 <span class="normal">62</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="s2">&quot;/hello&quot;</span><span class="p">,</span>
-<span class="hll">  <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/hello&quot;</span><span class="p">,</span>
-</span><span class="hll">  <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
-</span>  <span class="nt">&quot;isBase64Encoded&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="nt">&quot;queryStringParameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="s2">&quot;/hello&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/hello&quot;</span><span class="p">,</span>
+</span><span class="hll">    <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+</span>    <span class="nt">&quot;isBase64Encoded&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;queryStringParameters&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;foo&quot;</span><span class="p">:</span> <span class="s2">&quot;bar&quot;</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;multiValueQueryStringParameters&quot;</span><span class="p">:</span> <span class="p">{},</span>
-  <span class="nt">&quot;pathParameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;multiValueQueryStringParameters&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;pathParameters&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;hello&quot;</span><span class="p">:</span> <span class="s2">&quot;/hello&quot;</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;stageVariables&quot;</span><span class="p">:</span> <span class="p">{},</span>
-  <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;stageVariables&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Accept-Encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;gzip, deflate, sdch&quot;</span><span class="p">,</span>
     <span class="nt">&quot;Accept-Language&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US,en;q=0.8&quot;</span><span class="p">,</span>
@@ -1257,9 +1257,9 @@
     <span class="nt">&quot;X-Forwarded-For&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1, 127.0.0.2&quot;</span><span class="p">,</span>
     <span class="nt">&quot;X-Forwarded-Port&quot;</span><span class="p">:</span> <span class="s2">&quot;443&quot;</span><span class="p">,</span>
     <span class="nt">&quot;X-Forwarded-Proto&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;multiValueHeaders&quot;</span><span class="p">:</span> <span class="p">{},</span>
-  <span class="nt">&quot;requestContext&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;multiValueHeaders&quot;</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nt">&quot;requestContext&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;accountId&quot;</span><span class="p">:</span> <span class="s2">&quot;123456789012&quot;</span><span class="p">,</span>
     <span class="nt">&quot;resourceId&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span><span class="p">,</span>
     <span class="nt">&quot;stage&quot;</span><span class="p">:</span> <span class="s2">&quot;Prod&quot;</span><span class="p">,</span>
@@ -1267,24 +1267,24 @@
     <span class="nt">&quot;requestTime&quot;</span><span class="p">:</span> <span class="s2">&quot;25/Jul/2020:12:34:56 +0000&quot;</span><span class="p">,</span>
     <span class="nt">&quot;requestTimeEpoch&quot;</span><span class="p">:</span> <span class="mi">1428582896000</span><span class="p">,</span>
     <span class="nt">&quot;identity&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;cognitoIdentityPoolId&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-      <span class="nt">&quot;accountId&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-      <span class="nt">&quot;cognitoIdentityId&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-      <span class="nt">&quot;caller&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-      <span class="nt">&quot;accessKey&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-      <span class="nt">&quot;sourceIp&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;cognitoAuthenticationType&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-      <span class="nt">&quot;cognitoAuthenticationProvider&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-      <span class="nt">&quot;userArn&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-      <span class="nt">&quot;userAgent&quot;</span><span class="p">:</span> <span class="s2">&quot;Custom User Agent String&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="kc">null</span>
+        <span class="nt">&quot;cognitoIdentityPoolId&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;accountId&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;cognitoIdentityId&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;caller&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;accessKey&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;sourceIp&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;cognitoAuthenticationType&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;cognitoAuthenticationProvider&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;userArn&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;userAgent&quot;</span><span class="p">:</span> <span class="s2">&quot;Custom User Agent String&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="kc">null</span>
     <span class="p">},</span>
     <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Prod/hello&quot;</span><span class="p">,</span>
     <span class="nt">&quot;resourcePath&quot;</span><span class="p">:</span> <span class="s2">&quot;/hello&quot;</span><span class="p">,</span>
     <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
     <span class="nt">&quot;apiId&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">,</span>
     <span class="nt">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;HTTP/1.1&quot;</span>
-  <span class="p">}</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
@@ -2024,7 +2024,7 @@
 <span class="normal">38</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
 <span class="c">&lt;!-- Generator: Adobe Illustrator 19.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;</span>
 <span class="nt">&lt;svg</span> <span class="na">version=</span><span class="s">&quot;1.1&quot;</span> <span class="na">id=</span><span class="s">&quot;Layer_1&quot;</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span> <span class="na">x=</span><span class="s">&quot;0px&quot;</span> <span class="na">y=</span><span class="s">&quot;0px&quot;</span>
-     <span class="na">viewBox=</span><span class="s">&quot;0 0 304 182&quot;</span> <span class="na">style=</span><span class="s">&quot;enable-background:new 0 0 304 182;&quot;</span> <span class="na">xml:space=</span><span class="s">&quot;preserve&quot;</span><span class="nt">&gt;</span>
+        <span class="na">viewBox=</span><span class="s">&quot;0 0 304 182&quot;</span> <span class="na">style=</span><span class="s">&quot;enable-background:new 0 0 304 182;&quot;</span> <span class="na">xml:space=</span><span class="s">&quot;preserve&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;style</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span>
     .st0{fill:#FFFFFF;}
     .st1{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
@@ -2312,7 +2312,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-08-10
+      Last update: 2021-08-15
     
   </small>
 </div>
@@ -2399,7 +2399,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.709b4209.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.29db7785.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.febc23d1.min.js"></script>
       
         <script src="../../../javascript/aws-amplify.min.js"></script>
       

@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.2.3">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
     
     
       
@@ -995,7 +995,6 @@
 <p>The serialization is performed by the aws-xray-sdk which uses the <code>jsonpickle</code> module. This can cause
 unintended consequences if there are side effects to recursively reading the returned value, for example if the
 decorated function response contains a file-like object or a <a href="https://botocore.amazonaws.com/v1/documentation/api/latest/reference/response.html#botocore.response.StreamingBody"><code>StreamingBody</code></a> for S3 objects.</p>
-</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1007,6 +1006,7 @@ decorated function response contains a file-like object or a <a href="https://bo
     <span class="k">return</span> <span class="n">ret</span>
 </code></pre></div>
 </td></tr></table>
+</div>
 <h3 id="asynchronous-and-generator-functions">Asynchronous and generator functions<a class="headerlink" href="#asynchronous-and-generator-functions" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1084,6 +1084,7 @@ decorated function response contains a file-like object or a <a href="https://bo
 </div>
 </div>
 <p>The decorator will detect whether your function is asynchronous, a generator, or a  context manager and adapt its behaviour accordingly.</p>
+<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1101,10 +1102,13 @@ decorated function response contains a file-like object or a <a href="https://bo
     <span class="n">another_result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">collect_payment_gen</span><span class="p">())</span>
 </code></pre></div>
 </td></tr></table>
+</div>
+</div>
 <h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h2>
 <h3 id="patching-modules">Patching modules<a class="headerlink" href="#patching-modules" title="Permanent link">&para;</a></h3>
 <p>Tracer automatically patches all <a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-python-patching.html">supported libraries by X-Ray</a> during initialization, by default. Underneath, AWS X-Ray SDK checks whether a supported library has been imported before patching.</p>
 <p>If you're looking to shave a few microseconds, or milliseconds depending on your function memory configuration, you can patch specific modules using <code>patch_modules</code> param:</p>
+<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1120,6 +1124,8 @@ decorated function response contains a file-like object or a <a href="https://bo
 <span class="hll"><span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">(</span><span class="n">patch_modules</span><span class="o">=</span><span class="n">modules_to_be_patched</span><span class="p">)</span>
 </span></code></pre></div>
 </td></tr></table>
+</div>
+</div>
 <h3 id="disabling-response-auto-capture">Disabling response auto-capture<a class="headerlink" href="#disabling-response-auto-capture" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>New in 1.9.0</p>
@@ -1133,7 +1139,7 @@ decorated function response contains a file-like object or a <a href="https://bo
 <li>You might return <strong>more than 64K</strong> of data <em>e.g., <code>message too long</code> error</em></li>
 </ol>
 </div>
-<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">sensitive_data_scenario.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">sensitive_data_scenario.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1154,7 +1160,7 @@ decorated function response contains a file-like object or a <a href="https://bo
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">streaming_object_scenario.py</label><div class="tabbed-content">
+<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">streaming_object_scenario.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1183,7 +1189,7 @@ decorated function response contains a file-like object or a <a href="https://bo
 <li>You might <strong>return sensitive</strong> information from exceptions, stack traces you might not control</li>
 </ol>
 </div>
-<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">sensitive_data_exception.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">sensitive_data_exception.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1203,7 +1209,7 @@ decorated function response contains a file-like object or a <a href="https://bo
 <p>This snippet assumes you have <strong>aiohttp</strong> as a dependency</p>
 </div>
 <p>You can use <code>aiohttp_trace_config</code> function to create a valid <a href="https://docs.aiohttp.org/en/stable/tracing_reference.html">aiohttp trace_config object</a>. This is necessary since X-Ray utilizes aiohttp trace hooks to capture requests end-to-end.</p>
-<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">aiohttp_example.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">aiohttp_example.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1236,7 +1242,7 @@ decorated function response contains a file-like object or a <a href="https://bo
 <h3 id="escape-hatch-mechanism">Escape hatch mechanism<a class="headerlink" href="#escape-hatch-mechanism" title="Permanent link">&para;</a></h3>
 <p>You can use <code>tracer.provider</code> attribute to access all methods provided by AWS X-Ray <code>xray_recorder</code> object.</p>
 <p>This is useful when you need a feature available in X-Ray that is not available in the Tracer utility, for example <a href="https://github.com/aws/aws-xray-sdk-python/#user-content-trace-threadpoolexecutor">thread-safe</a>, or <a href="https://github.com/aws/aws-xray-sdk-python/#user-content-start-a-custom-segmentsubsegment">context managers</a>.</p>
-<div class="tabbed-set" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">escape_hatch_context_manager_example.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">escape_hatch_context_manager_example.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1264,7 +1270,7 @@ decorated function response contains a file-like object or a <a href="https://bo
 <p><a href="https://github.com/aws/aws-xray-sdk-python/issues/164">As of now, X-Ray SDK will raise an exception when async functions are run and traced concurrently</a></p>
 </div>
 <p>A safe workaround mechanism is to use <code>in_subsegment_async</code> available via Tracer escape hatch (<code>tracer.provider</code>).</p>
-<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">concurrent_async_workaround.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">concurrent_async_workaround.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1311,7 +1317,7 @@ decorated function response contains a file-like object or a <a href="https://bo
 <p>When reusing Tracer in Lambda Layers, or in multiple modules, <strong>do not set <code>auto_patch=False</code></strong>, because import order matters.</p>
 <p>This can result in the first Tracer config being inherited by new instances, and their modules not being patched.</p>
 </div>
-<div class="tabbed-set" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">handler.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">handler.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1332,7 +1338,7 @@ decorated function response contains a file-like object or a <a href="https://bo
 </span></code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">payment.py</label><div class="tabbed-content">
+<input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><label for="__tabbed_12_2">payment.py</label><div class="tabbed-content">
 <p>A new instance of Tracer will be created but will reuse the previous Tracer instance configuration, similar to a Singleton.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1367,7 +1373,7 @@ decorated function response contains a file-like object or a <a href="https://bo
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-08-10
+      Last update: 2021-08-15
     
   </small>
 </div>
@@ -1454,7 +1460,7 @@ decorated function response contains a file-like object or a <a href="https://bo
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.29db7785.min.js"></script>
+      <script src="../../assets/javascripts/bundle.febc23d1.min.js"></script>
       
         <script src="../../javascript/aws-amplify.min.js"></script>
       
