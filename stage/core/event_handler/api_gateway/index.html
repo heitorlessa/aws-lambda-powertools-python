@@ -505,6 +505,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#custom-domain-api-mappings" class="md-nav__link">
+    Custom Domain API Mappings
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -868,6 +875,13 @@
           <li class="md-nav__item">
   <a href="#raising-http-errors" class="md-nav__link">
     Raising HTTP errors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-domain-api-mappings" class="md-nav__link">
+    Custom Domain API Mappings
   </a>
   
 </li>
@@ -1678,11 +1692,68 @@
 </td></tr></table>
 </div>
 </div>
+<h3 id="custom-domain-api-mappings">Custom Domain API Mappings<a class="headerlink" href="#custom-domain-api-mappings" title="Permanent link">&para;</a></h3>
+<p>When using Custom Domain API Mappings feature, you must use <strong><code>strip_prefixes</code></strong> param in the <code>ApiGatewayResolver</code> constructor.</p>
+<p>Scenario: You have a custom domain <code>api.mydomain.dev</code> and set an API Mapping <code>payment</code> to forward requests to your Payments API, the path argument will be <code>/payment/&lt;your_actual_path&gt;</code>.</p>
+<p>This will lead to a HTTP 404 despite having your Lambda configured correctly. See the example below on how to account for this change.</p>
+<div class="tabbed-set" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+
+<span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">(</span><span class="n">strip_prefixes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;/payment&quot;</span><span class="p">])</span>
+</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/subscriptions/&lt;subscription&gt;&quot;</span><span class="p">)</span>
+<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
+<span class="k">def</span> <span class="nf">get_subscription</span><span class="p">(</span><span class="n">subscription</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;subscription_id&quot;</span><span class="p">:</span> <span class="n">subscription</span><span class="p">}</span>
+
+<span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span><span class="p">(</span><span class="n">correlation_id_path</span><span class="o">=</span><span class="n">correlation_paths</span><span class="o">.</span><span class="n">API_GATEWAY_REST</span><span class="p">)</span>
+<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">sample_request.json</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="s2">&quot;/subscriptions/{subscription}&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/payment/subscriptions/123&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+    <span class="err">...</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
 <h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h2>
 <h3 id="cors">CORS<a class="headerlink" href="#cors" title="Permanent link">&para;</a></h3>
 <p>You can configure CORS at the <code>ApiGatewayResolver</code> constructor via <code>cors</code> parameter using the <code>CORSConfig</code> class.</p>
 <p>This will ensure that CORS headers are always returned as part of the response when your functions match the path invoked.</p>
-<div class="tabbed-set" data-tabs="10:3"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="11:3"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1735,7 +1806,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">response.json</label><div class="tabbed-content">
+<input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><label for="__tabbed_11_2">response.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1758,7 +1829,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><label for="__tabbed_10_3">response_no_cors.json</label><div class="tabbed-content">
+<input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><label for="__tabbed_11_3">response_no_cors.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1827,7 +1898,7 @@
 </table>
 <h3 id="fine-grained-responses">Fine grained responses<a class="headerlink" href="#fine-grained-responses" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>Response</code> class to have full control over the response, for example you might want to add additional headers or set a custom Content-type.</p>
-<div class="tabbed-set" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1864,7 +1935,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><label for="__tabbed_11_2">response.json</label><div class="tabbed-content">
+<input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><label for="__tabbed_12_2">response.json</label><div class="tabbed-content">
 <p>```json
 {
     "body": "{\"message\":\"I\'m a teapot\"}",
@@ -1882,7 +1953,7 @@
 <div class="admonition warning">
 <p class="admonition-title">The client must send the <code>Accept-Encoding</code> header, otherwise a normal response will be sent</p>
 </div>
-<div class="tabbed-set" data-tabs="12:3"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="13:3"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1905,7 +1976,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><label for="__tabbed_12_2">sample_request.json</label><div class="tabbed-content">
+<input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><label for="__tabbed_13_2">sample_request.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1924,7 +1995,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><label for="__tabbed_12_3">response.json</label><div class="tabbed-content">
+<input id="__tabbed_13_3" name="__tabbed_13" type="radio" /><label for="__tabbed_13_3">response.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1952,7 +2023,7 @@
 <div class="admonition warning">
 <p class="admonition-title">This feature requires API Gateway to configure binary media types, see <a href="#required-resources">our sample infrastructure</a> for reference</p>
 </div>
-<div class="tabbed-set" data-tabs="13:4"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="14:4"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1983,7 +2054,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><label for="__tabbed_13_2">logo.svg</label><div class="tabbed-content">
+<input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><label for="__tabbed_14_2">logo.svg</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2062,7 +2133,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_13_3" name="__tabbed_13" type="radio" /><label for="__tabbed_13_3">sample_request.json</label><div class="tabbed-content">
+<input id="__tabbed_14_3" name="__tabbed_14" type="radio" /><label for="__tabbed_14_3">sample_request.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2081,7 +2152,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_13_4" name="__tabbed_13" type="radio" /><label for="__tabbed_13_4">response.json</label><div class="tabbed-content">
+<input id="__tabbed_14_4" name="__tabbed_14" type="radio" /><label for="__tabbed_14_4">response.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2107,7 +2178,7 @@
 <div class="admonition warning">
 <p class="admonition-title">This might reveal sensitive information in your logs and relax CORS restrictions, use it sparingly.</p>
 </div>
-<div class="tabbed-set" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">debug.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">debug.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2133,7 +2204,7 @@
 </div>
 <h3 id="custom-serializer">Custom serializer<a class="headerlink" href="#custom-serializer" title="Permanent link">&para;</a></h3>
 <p>You can instruct API Gateway handler to use a custom serializer to best suit your needs, for example take into account Enums when serializing.</p>
-<div class="tabbed-set" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">custom_serializer.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="16:1"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">custom_serializer.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2211,7 +2282,7 @@
 </div>
 <h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
 <p>You can test your routes by passing a proxy event request where <code>path</code> and <code>httpMethod</code>.</p>
-<div class="tabbed-set" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">test_app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><label for="__tabbed_17_1">test_app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2266,7 +2337,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><label for="__tabbed_16_2">app.py</label><div class="tabbed-content">
+<input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><label for="__tabbed_17_2">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2312,7 +2383,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-08-15
+      Last update: 2021-08-21
     
   </small>
 </div>
