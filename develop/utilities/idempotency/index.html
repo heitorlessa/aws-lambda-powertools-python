@@ -799,6 +799,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jmespath_functions/" class="md-nav__link">
+        JMESPath Functions
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1327,6 +1341,11 @@ estimate the cost.</p>
 </blockquote>
 <p>In this example, we have a Lambda handler that creates a payment for a user subscribing to a product. We want to ensure that we don't accidentally charge our customer by subscribing them more than once.</p>
 <p>Imagine the function executes successfully, but the client never receives the response due to a connection issue. It is safe to retry in this instance, as the idempotent decorator will return a previously saved response.</p>
+<div class="admonition warning">
+<p class="admonition-title">Idempotency for JSON payloads</p>
+<p>The payload extracted by the <code>event_key_jmespath</code> is treated as a string by default, so will be sensitive to differences in whitespace even when the JSON payload itself is identical.</p>
+<p>To alter this behaviour, we can use the <a href="/utilities/jmespath_functions">JMESPath built-in function</a> <em>powertools_json()</em> to treat the payload as a JSON object rather than a string.</p>
+</div>
 <div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">payment.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1360,7 +1379,7 @@ estimate the cost.</p>
 
 <span class="c1"># Treat everything under the &quot;body&quot; key</span>
 <span class="c1"># in the event json object as our payload</span>
-<span class="hll"><span class="n">config</span> <span class="o">=</span> <span class="n">IdempotencyConfig</span><span class="p">(</span><span class="n">event_key_jmespath</span><span class="o">=</span><span class="s2">&quot;body&quot;</span><span class="p">)</span>
+<span class="hll"><span class="n">config</span> <span class="o">=</span> <span class="n">IdempotencyConfig</span><span class="p">(</span><span class="n">event_key_jmespath</span><span class="o">=</span><span class="s2">&quot;powertools_json(body)&quot;</span><span class="p">)</span>
 </span>
 <span class="hll"><span class="nd">@idempotent</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">persistence_store</span><span class="o">=</span><span class="n">persistence_layer</span><span class="p">)</span>
 </span><span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
@@ -1550,7 +1569,7 @@ estimate the cost.</p>
 <tr>
 <td><strong>event_key_jmespath</strong></td>
 <td><code>""</code></td>
-<td>JMESPath expression to extract the idempotency key from the event record</td>
+<td>JMESPath expression to extract the idempotency key from the event record using <a href="/utilities/jmespath_functions">built-in functions</a></td>
 </tr>
 <tr>
 <td><strong>payload_validation_jmespath</strong></td>
@@ -2244,7 +2263,7 @@ event - not the "raw" event Lambda was invoked with. You will need to account fo
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-08-21
+      Last update: 2021-09-28
     
   </small>
 </div>
