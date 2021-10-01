@@ -737,6 +737,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#getting-fetched-configuration" class="md-nav__link">
+    Getting fetched configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#built-in-store-provider" class="md-nav__link">
     Built-in store provider
   </a>
@@ -771,6 +778,13 @@
         <li class="md-nav__item">
   <a href="#feature-flags-vs-parameters-vs-env-vars" class="md-nav__link">
     Feature flags vs Parameters vs env vars
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deprecation-list-when-ga" class="md-nav__link">
+    Deprecation list when GA
   </a>
   
 </li>
@@ -959,6 +973,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#getting-fetched-configuration" class="md-nav__link">
+    Getting fetched configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#built-in-store-provider" class="md-nav__link">
     Built-in store provider
   </a>
@@ -993,6 +1014,13 @@
         <li class="md-nav__item">
   <a href="#feature-flags-vs-parameters-vs-env-vars" class="md-nav__link">
     Feature flags vs Parameters vs env vars
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deprecation-list-when-ga" class="md-nav__link">
+    Deprecation list when GA
   </a>
   
 </li>
@@ -1610,7 +1638,7 @@
                 <span class="nt">&quot;when_match&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
                 <span class="nt">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
                     <span class="p">{</span>
-<span class="hll">                        <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;IN&quot;</span><span class="p">,</span>
+<span class="hll">                        <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;KEY_IN_VALUE&quot;</span><span class="p">,</span>
 </span><span class="hll">                        <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;CloudFront-Viewer-Country&quot;</span><span class="p">,</span>
 </span><span class="hll">                        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;NL&quot;</span><span class="p">,</span> <span class="s2">&quot;IE&quot;</span><span class="p">,</span> <span class="s2">&quot;UK&quot;</span><span class="p">,</span> <span class="s2">&quot;PL&quot;</span><span class="p">,</span> <span class="s2">&quot;PT&quot;</span><span class="p">]</span>
 </span>                    <span class="p">}</span>
@@ -1715,8 +1743,48 @@
 </td></tr></table>
 </div>
 </div>
-<p>The <code>action</code> configuration can have 5 different values: <code>EQUALS</code>, <code>STARTSWITH</code>, <code>ENDSWITH</code>, <code>IN</code>, <code>NOT_IN</code>.</p>
-<p>The <code>key</code> and <code>value</code> will be compared to the input from the context parameter.</p>
+<p>The <code>action</code> configuration can have the following values, where the expressions <strong><code>a</code></strong> is the <code>key</code> and <strong><code>b</code></strong> is the <code>value</code> above:</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Equivalent expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EQUALS</strong></td>
+<td><code>lambda a, b: a == b</code></td>
+</tr>
+<tr>
+<td><strong>STARTSWITH</strong></td>
+<td><code>lambda a, b: a.startswith(b)</code></td>
+</tr>
+<tr>
+<td><strong>ENDSWITH</strong></td>
+<td><code>lambda a, b: a.endswith(b)</code></td>
+</tr>
+<tr>
+<td><strong>KEY_IN_VALUE</strong></td>
+<td><code>lambda a, b: a in b</code></td>
+</tr>
+<tr>
+<td><strong>KEY_NOT_IN_VALUE</strong></td>
+<td><code>lambda a, b: a not in b</code></td>
+</tr>
+<tr>
+<td><strong>VALUE_IN_KEY</strong></td>
+<td><code>lambda a, b: b in a</code></td>
+</tr>
+<tr>
+<td><strong>VALUE_NOT_IN_KEY</strong></td>
+<td><code>lambda a, b: b not in a</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">The <code>**key**</code> and <code>**value**</code> will be compared to the input from the <code>**context**</code> parameter.</p>
+</div>
 <p><strong>For multiple conditions</strong>, we will evaluate the list of conditions as a logical <code>AND</code>, so all conditions needs to match to return <code>when_match</code> value.</p>
 <h4 id="rule-engine-flowchart">Rule engine flowchart<a class="headerlink" href="#rule-engine-flowchart" title="Permanent link">&para;</a></h4>
 <p>Now that you've seen all properties of a feature flag schema, this flowchart describes how the rule engines makes a decision on when to return <code>True</code> or <code>False</code>.</p>
@@ -1823,6 +1891,36 @@ app_config = AppConfigStore(
 </td></tr></table>
 </div>
 </div>
+<h3 id="getting-fetched-configuration">Getting fetched configuration<a class="headerlink" href="#getting-fetched-configuration" title="Permanent link">&para;</a></h3>
+<p>You can access the configuration fetched from the store via <code>get_raw_configuration</code> property within the store instance.</p>
+<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.feature_flags</span> <span class="kn">import</span> <span class="n">FeatureFlags</span><span class="p">,</span> <span class="n">AppConfigStore</span>
+
+<span class="n">app_config</span> <span class="o">=</span> <span class="n">AppConfigStore</span><span class="p">(</span>
+    <span class="n">environment</span><span class="o">=</span><span class="s2">&quot;dev&quot;</span><span class="p">,</span>
+    <span class="n">application</span><span class="o">=</span><span class="s2">&quot;product-catalogue&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;configuration&quot;</span><span class="p">,</span>
+    <span class="n">envelope</span> <span class="o">=</span> <span class="s2">&quot;feature_flags&quot;</span>
+<span class="p">)</span>
+
+<span class="n">feature_flags</span> <span class="o">=</span> <span class="n">FeatureFlags</span><span class="p">(</span><span class="n">store</span><span class="o">=</span><span class="n">app_config</span><span class="p">)</span>
+
+<span class="hll"><span class="n">config</span> <span class="o">=</span> <span class="n">app_config</span><span class="o">.</span><span class="n">get_raw_configuration</span>
+</span></code></pre></div>
+</td></tr></table>
+</div>
+</div>
 <h3 id="built-in-store-provider">Built-in store provider<a class="headerlink" href="#built-in-store-provider" title="Permanent link">&para;</a></h3>
 <div class="admonition info">
 <p class="admonition-title">For GA, you'll be able to bring your own store.</p>
@@ -1876,7 +1974,7 @@ app_config = AppConfigStore(
 </tr>
 </tbody>
 </table>
-<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">appconfig_store_example.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">appconfig_store_example.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1938,7 +2036,7 @@ app_config = AppConfigStore(
 <div class="admonition warning">
 <p class="admonition-title">This excerpt relies on <code>pytest</code> and <code>pytest-mock</code> dependencies</p>
 </div>
-<div class="tabbed-set" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">test_feature_flags_independently.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">test_feature_flags_independently.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2073,6 +2171,25 @@ app_config = AppConfigStore(
 </tr>
 </tbody>
 </table>
+<h2 id="deprecation-list-when-ga">Deprecation list when GA<a class="headerlink" href="#deprecation-list-when-ga" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Breaking change</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IN</code> RuleAction</td>
+<td>Use <code>KEY_IN_VALUE</code> instead</td>
+</tr>
+<tr>
+<td><code>NOT_IN</code> RuleAction</td>
+<td>Use <code>KEY_NOT_IN_VALUE</code> instead</td>
+</tr>
+</tbody>
+</table>
                 
                   
                     
@@ -2081,7 +2198,7 @@ app_config = AppConfigStore(
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-08-15
+      Last update: 2021-10-01
     
   </small>
 </div>

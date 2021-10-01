@@ -770,6 +770,40 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#testing-your-code" class="md-nav__link">
+    Testing your code
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing your code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#disabling-the-idempotency-utility" class="md-nav__link">
+    Disabling the idempotency utility
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-with-dynamodb-local" class="md-nav__link">
+    Testing with DynamoDB Local
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-mock-all-dynamodb-io-operations" class="md-nav__link">
+    How do I mock all DynamoDB I/O operations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#extra-resources" class="md-nav__link">
     Extra resources
   </a>
@@ -1011,6 +1045,40 @@
           <li class="md-nav__item">
   <a href="#validation-utility" class="md-nav__link">
     Validation utility
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-your-code" class="md-nav__link">
+    Testing your code
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing your code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#disabling-the-idempotency-utility" class="md-nav__link">
+    Disabling the idempotency utility
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-with-dynamodb-local" class="md-nav__link">
+    Testing with DynamoDB Local
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-mock-all-dynamodb-io-operations" class="md-nav__link">
+    How do I mock all DynamoDB I/O operations
   </a>
   
 </li>
@@ -2251,6 +2319,177 @@ event - not the "raw" event Lambda was invoked with. You will need to account fo
 <div class="admonition tip">
 <p class="admonition-title">JMESPath Powertools functions are also available</p>
 <p>Built-in functions known in the validation utility like <code>powertools_json</code>, <code>powertools_base64</code>, <code>powertools_base64_gzip</code> are also available to use in this utility.</p>
+</div>
+<h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
+<p>The idempotency utility provides several routes to test your code.</p>
+<h3 id="disabling-the-idempotency-utility">Disabling the idempotency utility<a class="headerlink" href="#disabling-the-idempotency-utility" title="Permanent link">&para;</a></h3>
+<p>When testing your code, you may wish to disable the idempotency logic altogether and focus on testing your business logic. To do this, you can set the environment variable <code>POWERTOOLS_IDEMPOTENCY_DISABLED</code>
+with a truthy value. If you prefer setting this for specific tests, and are using Pytest, you can use <a href="https://docs.pytest.org/en/latest/monkeypatch.html">monkeypatch</a> fixture:</p>
+<div class="tabbed-set" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">tests.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">test_idempotent_lambda_handler</span><span class="p">(</span><span class="n">monkeypatch</span><span class="p">):</span>
+<span class="hll">    <span class="c1"># Set POWERTOOLS_IDEMPOTENCY_DISABLED before calling decorated functions</span>
+</span><span class="hll">    <span class="n">monkeypatch</span><span class="o">.</span><span class="n">setenv</span><span class="p">(</span><span class="s2">&quot;POWERTOOLS_IDEMPOTENCY_DISABLED&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">handler</span><span class="p">()</span>
+    <span class="o">...</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><label for="__tabbed_13_2">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.idempotency</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="n">DynamoDBPersistenceLayer</span><span class="p">,</span> <span class="n">idempotent</span>
+<span class="p">)</span>
+
+<span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">DynamoDBPersistenceLayer</span><span class="p">(</span><span class="n">table_name</span><span class="o">=</span><span class="s2">&quot;idempotency&quot;</span><span class="p">)</span>
+
+<span class="nd">@idempotent</span><span class="p">(</span><span class="n">persistence_store</span><span class="o">=</span><span class="n">persistence_layer</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;expensive operation&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;payment_id&quot;</span><span class="p">:</span> <span class="mi">12345</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h3 id="testing-with-dynamodb-local">Testing with DynamoDB Local<a class="headerlink" href="#testing-with-dynamodb-local" title="Permanent link">&para;</a></h3>
+<p>To test with <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html">DynamoDB Local</a>, you can replace the <code>Table</code> resource used by the persistence layer with one you create inside your tests. This allows you to set the endpoint_url.</p>
+<div class="tabbed-set" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">tests.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
+
+<span class="kn">import</span> <span class="nn">app</span>
+
+<span class="k">def</span> <span class="nf">test_idempotent_lambda</span><span class="p">():</span>
+<span class="hll">    <span class="c1"># Create our own Table resource using the endpoint for our DynamoDB Local instance</span>
+</span><span class="hll">    <span class="n">resource</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s2">&quot;dynamodb&quot;</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="o">=</span><span class="s1">&#39;http://localhost:8000&#39;</span><span class="p">)</span>
+</span><span class="hll">    <span class="n">table</span> <span class="o">=</span> <span class="n">resource</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">persistence_layer</span><span class="o">.</span><span class="n">table_name</span><span class="p">)</span>
+</span>    <span class="n">app</span><span class="o">.</span><span class="n">persistence_layer</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">handler</span><span class="p">({</span><span class="s1">&#39;testkey&#39;</span><span class="p">:</span> <span class="s1">&#39;testvalue&#39;</span><span class="p">},</span> <span class="p">{})</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;payment_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">12345</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><label for="__tabbed_14_2">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.idempotency</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="n">DynamoDBPersistenceLayer</span><span class="p">,</span> <span class="n">idempotent</span>
+<span class="p">)</span>
+
+<span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">DynamoDBPersistenceLayer</span><span class="p">(</span><span class="n">table_name</span><span class="o">=</span><span class="s2">&quot;idempotency&quot;</span><span class="p">)</span>
+
+<span class="nd">@idempotent</span><span class="p">(</span><span class="n">persistence_store</span><span class="o">=</span><span class="n">persistence_layer</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;expensive operation&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;payment_id&quot;</span><span class="p">:</span> <span class="mi">12345</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h3 id="how-do-i-mock-all-dynamodb-io-operations">How do I mock all DynamoDB I/O operations<a class="headerlink" href="#how-do-i-mock-all-dynamodb-io-operations" title="Permanent link">&para;</a></h3>
+<p>The idempotency utility lazily creates the dynamodb <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#table">Table</a> which it uses to access DynamoDB.
+This means it is possible to pass a mocked Table resource, or stub various methods.</p>
+<div class="tabbed-set" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">tests.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">MagicMock</span>
+
+<span class="kn">import</span> <span class="nn">app</span>
+
+<span class="k">def</span> <span class="nf">test_idempotent_lambda</span><span class="p">():</span>
+<span class="hll">    <span class="n">table</span> <span class="o">=</span> <span class="n">MagicMock</span><span class="p">()</span>
+</span><span class="hll">    <span class="n">app</span><span class="o">.</span><span class="n">persistence_layer</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span>
+</span><span class="hll">    <span class="n">result</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">handler</span><span class="p">({</span><span class="s1">&#39;testkey&#39;</span><span class="p">:</span> <span class="s1">&#39;testvalue&#39;</span><span class="p">},</span> <span class="p">{})</span>
+</span><span class="hll">    <span class="n">table</span><span class="o">.</span><span class="n">put_item</span><span class="o">.</span><span class="n">assert_called</span><span class="p">()</span>
+</span>    <span class="o">...</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><label for="__tabbed_15_2">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.idempotency</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="n">DynamoDBPersistenceLayer</span><span class="p">,</span> <span class="n">idempotent</span>
+<span class="p">)</span>
+
+<span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">DynamoDBPersistenceLayer</span><span class="p">(</span><span class="n">table_name</span><span class="o">=</span><span class="s2">&quot;idempotency&quot;</span><span class="p">)</span>
+
+<span class="nd">@idempotent</span><span class="p">(</span><span class="n">persistence_store</span><span class="o">=</span><span class="n">persistence_layer</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;expensive operation&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;payment_id&quot;</span><span class="p">:</span> <span class="mi">12345</span><span class="p">,</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
 </div>
 <h2 id="extra-resources">Extra resources<a class="headerlink" href="#extra-resources" title="Permanent link">&para;</a></h2>
 <p>If you're interested in a deep dive on how Amazon uses idempotency when building our APIs, check out
