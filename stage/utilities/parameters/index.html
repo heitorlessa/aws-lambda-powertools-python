@@ -659,6 +659,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#customizing-boto-configuration" class="md-nav__link">
+    Customizing boto configuration
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -962,6 +969,13 @@
           <li class="md-nav__item">
   <a href="#passing-additional-sdk-arguments" class="md-nav__link">
     Passing additional SDK arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customizing-boto-configuration" class="md-nav__link">
+    Customizing boto configuration
   </a>
   
 </li>
@@ -1803,6 +1817,58 @@
 </tr>
 </tbody>
 </table>
+<h3 id="customizing-boto-configuration">Customizing boto configuration<a class="headerlink" href="#customizing-boto-configuration" title="Permanent link">&para;</a></h3>
+<p>The <strong><code>config</code></strong> and <strong><code>boto3_session</code></strong> parameters enable you to pass in a custom <a href="https://botocore.amazonaws.com/v1/documentation/api/latest/reference/config.html">botocore config object</a> or a custom <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html">boto3 session</a> when constructing any of the built-in provider classes.</p>
+<blockquote>
+<p><strong>Example</strong></p>
+</blockquote>
+<div class="tabbed-set" data-tabs="19:2"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><label for="__tabbed_19_1">Custom session</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities</span> <span class="kn">import</span> <span class="n">parameters</span>
+<span class="hll"><span class="kn">import</span> <span class="nn">boto3</span>
+</span>
+<span class="hll"><span class="n">boto3_session</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+</span><span class="hll"><span class="n">ssm_provider</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">SSMProvider</span><span class="p">(</span><span class="n">boto3_session</span><span class="o">=</span><span class="n">boto3_session</span><span class="p">)</span>
+</span>
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="c1"># Retrieve a single parameter</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">ssm_provider</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/my/parameter&quot;</span><span class="p">)</span>
+    <span class="o">...</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><label for="__tabbed_19_2">Custom config</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities</span> <span class="kn">import</span> <span class="n">parameters</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">botocore.config</span> <span class="kn">import</span> <span class="n">Config</span>
+</span>
+<span class="hll"><span class="n">boto_config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">()</span>
+</span><span class="hll"><span class="n">ssm_provider</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">SSMProvider</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">boto_config</span><span class="p">)</span>
+</span>
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="c1"># Retrieve a single parameter</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">ssm_provider</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/my/parameter&quot;</span><span class="p">)</span>
+    <span class="o">...</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
                 
                   
                     
@@ -1811,7 +1877,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-08-15
+      Last update: 2021-10-01
     
   </small>
 </div>

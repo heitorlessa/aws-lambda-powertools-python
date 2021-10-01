@@ -1874,7 +1874,7 @@ estimate the cost.</p>
 </div>
 </div>
 <h3 id="customizing-boto-configuration">Customizing boto configuration<a class="headerlink" href="#customizing-boto-configuration" title="Permanent link">&para;</a></h3>
-<p>You can provide a custom boto configuration via <strong><code>boto_config</code></strong>, or an existing boto session via <strong><code>boto3_session</code></strong> parameters, when constructing the persistence store.</p>
+<p>The <strong><code>boto_config</code></strong> and <strong><code>boto3_session</code></strong> parameters enable you to pass in a custom <a href="https://botocore.amazonaws.com/v1/documentation/api/latest/reference/config.html">botocore config object</a> or a custom <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html">boto3 session</a> when constructing the persistence store.</p>
 <div class="tabbed-set" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">Custom session</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2263,7 +2263,7 @@ event - not the "raw" event Lambda was invoked with. You will need to account fo
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-09-28
+      Last update: 2021-10-01
     
   </small>
 </div>

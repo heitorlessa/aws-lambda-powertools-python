@@ -592,8 +592,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#passing-custom-boto3-config" class="md-nav__link">
-    Passing custom boto3 config
+  <a href="#customizing-boto-configuration" class="md-nav__link">
+    Customizing boto configuration
   </a>
   
 </li>
@@ -831,8 +831,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#passing-custom-boto3-config" class="md-nav__link">
-    Passing custom boto3 config
+  <a href="#customizing-boto-configuration" class="md-nav__link">
+    Customizing boto configuration
   </a>
   
 </li>
@@ -1053,9 +1053,13 @@ are returned to the queue.</p>
 </td></tr></table>
 </div>
 </div>
-<h3 id="passing-custom-boto3-config">Passing custom boto3 config<a class="headerlink" href="#passing-custom-boto3-config" title="Permanent link">&para;</a></h3>
-<p>If you need to pass custom configuration such as region to the SDK, you can pass your own <a href="https://botocore.amazonaws.com/v1/documentation/api/latest/reference/config.html">botocore config object</a> to
-the <code>sqs_batch_processor</code> decorator:</p>
+<h3 id="customizing-boto-configuration">Customizing boto configuration<a class="headerlink" href="#customizing-boto-configuration" title="Permanent link">&para;</a></h3>
+<p>The <strong><code>config</code></strong> and <strong><code>boto3_session</code></strong> parameters enable you to pass in a custom <a href="https://botocore.amazonaws.com/v1/documentation/api/latest/reference/config.html">botocore config object</a>
+or a custom <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html">boto3 session</a> when using the <code>sqs_batch_processor</code>
+decorator or <code>PartialSQSProcessor</code> class.</p>
+<blockquote>
+<p>Custom config example</p>
+</blockquote>
 <div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Decorator</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1133,9 +1137,89 @@ the <code>sqs_batch_processor</code> decorator:</p>
 </td></tr></table>
 </div>
 </div>
+<blockquote>
+<p>Custom boto3 session example</p>
+</blockquote>
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Decorator</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.batch</span> <span class="kn">import</span> <span class="n">sqs_batch_processor</span>
+<span class="kn">from</span> <span class="nn">botocore.config</span> <span class="kn">import</span> <span class="n">Config</span>
+
+<span class="hll"><span class="n">session</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+</span>
+<span class="k">def</span> <span class="nf">record_handler</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+    <span class="c1"># This will be called for each individual message from a batch</span>
+    <span class="c1"># It should raise an exception if the message was not processed successfully</span>
+    <span class="n">return_value</span> <span class="o">=</span> <span class="n">do_something_with</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">&quot;body&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">return_value</span>
+
+<span class="hll"><span class="nd">@sqs_batch_processor</span><span class="p">(</span><span class="n">record_handler</span><span class="o">=</span><span class="n">record_handler</span><span class="p">,</span> <span class="n">boto3_session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
+</span><span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Context manager</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.batch</span> <span class="kn">import</span> <span class="n">PartialSQSProcessor</span>
+<span class="kn">import</span> <span class="nn">boto3</span>
+
+<span class="hll"><span class="n">session</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+</span>
+<span class="k">def</span> <span class="nf">record_handler</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+    <span class="c1"># This will be called for each individual message from a batch</span>
+    <span class="c1"># It should raise an exception if the message was not processed successfully</span>
+    <span class="n">return_value</span> <span class="o">=</span> <span class="n">do_something_with</span><span class="p">(</span><span class="n">record</span><span class="p">[</span><span class="s2">&quot;body&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">return_value</span>
+
+
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;Records&quot;</span><span class="p">]</span>
+
+<span class="hll">    <span class="n">processor</span> <span class="o">=</span> <span class="n">PartialSQSProcessor</span><span class="p">(</span><span class="n">boto3_session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
+</span>
+    <span class="k">with</span> <span class="n">processor</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">record_handler</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">processor</span><span class="o">.</span><span class="n">process</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
 <h3 id="suppressing-exceptions">Suppressing exceptions<a class="headerlink" href="#suppressing-exceptions" title="Permanent link">&para;</a></h3>
 <p>If you want to disable the default behavior where <code>SQSBatchProcessingError</code> is raised if there are any errors, you can pass the <code>suppress_exception</code> boolean argument.</p>
-<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Decorator</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">Decorator</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1148,7 +1232,7 @@ the <code>sqs_batch_processor</code> decorator:</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Context manager</label><div class="tabbed-content">
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Context manager</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1172,7 +1256,7 @@ the <code>sqs_batch_processor</code> decorator:</p>
 <li><strong><code>clean()</code></strong> - Teardown logic called once after <code>_process_record</code> completes</li>
 </ul>
 <p>You can then use this class as a context manager, or pass it to <code>batch_processor</code> to use as a decorator on your Lambda handler function.</p>
-<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">custom_processor.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">custom_processor.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1299,7 +1383,7 @@ the <code>sqs_batch_processor</code> decorator:</p>
 <blockquote>
 <p>Credits to <a href="https://github.com/awslabs/aws-lambda-powertools-python/issues/293#issuecomment-781961732">Charles-Axel Dein</a></p>
 </blockquote>
-<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">sentry_integration.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">sentry_integration.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1331,7 +1415,7 @@ the <code>sqs_batch_processor</code> decorator:</p>
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-08-15
+      Last update: 2021-10-01
     
   </small>
 </div>
