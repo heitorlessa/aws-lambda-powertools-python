@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.1">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.8b42a75e.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1c75ef36.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -1757,6 +1757,26 @@
 <td><code>lambda a, b: a == b</code></td>
 </tr>
 <tr>
+<td><strong>NOT_EQUALS</strong></td>
+<td><code>lambda a, b: a != b</code></td>
+</tr>
+<tr>
+<td><strong>KEY_GREATER_THAN_VALUE</strong></td>
+<td><code>lambda a, b: a &gt; b</code></td>
+</tr>
+<tr>
+<td><strong>KEY_GREATER_THAN_OR_EQUAL_VALUE</strong></td>
+<td><code>lambda a, b: a &gt;= b</code></td>
+</tr>
+<tr>
+<td><strong>KEY_LESS_THAN_VALUE</strong></td>
+<td><code>lambda a, b: a &lt; b</code></td>
+</tr>
+<tr>
+<td><strong>KEY_LESS_THAN_OR_EQUAL_VALUE</strong></td>
+<td><code>lambda a, b: a &lt;= b</code></td>
+</tr>
+<tr>
 <td><strong>STARTSWITH</strong></td>
 <td><code>lambda a, b: a.startswith(b)</code></td>
 </tr>
@@ -1971,6 +1991,11 @@ app_config = AppConfigStore(
 <td><strong>jmespath_options</strong></td>
 <td><code>None</code></td>
 <td>For advanced use cases when you want to bring your own <a href="https://github.com/jmespath/jmespath.py#custom-functions" target="_blank">JMESPath functions</a></td>
+</tr>
+<tr>
+<td><strong>logger</strong></td>
+<td><code>logging.Logger</code></td>
+<td>Logger to use for debug.  You can optionally supply an instance of Powertools Logger.</td>
 </tr>
 </tbody>
 </table>
@@ -2198,7 +2223,7 @@ app_config = AppConfigStore(
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-10-01
+      Last update: 2021-10-03
     
   </small>
 </div>
@@ -2284,10 +2309,10 @@ app_config = AppConfigStore(
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.f8263e09.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.e99e714c.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c7d1b464.min.js"></script>
       
         <script src="../../javascript/aws-amplify.min.js"></script>
       
