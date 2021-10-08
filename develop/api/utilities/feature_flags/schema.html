@@ -1,0 +1,1026 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>aws_lambda_powertools.utilities.feature_flags.schema API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>aws_lambda_powertools.utilities.feature_flags.schema</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import logging
+from enum import Enum
+from typing import Any, Dict, List, Optional, Union
+
+from ... import Logger
+from .base import BaseValidator
+from .exceptions import SchemaValidationError
+
+RULES_KEY = &#34;rules&#34;
+FEATURE_DEFAULT_VAL_KEY = &#34;default&#34;
+CONDITIONS_KEY = &#34;conditions&#34;
+RULE_MATCH_VALUE = &#34;when_match&#34;
+CONDITION_KEY = &#34;key&#34;
+CONDITION_VALUE = &#34;value&#34;
+CONDITION_ACTION = &#34;action&#34;
+
+
+class RuleAction(str, Enum):
+    EQUALS = &#34;EQUALS&#34;
+    NOT_EQUALS = &#34;NOT_EQUALS&#34;
+    KEY_GREATER_THAN_VALUE = &#34;KEY_GREATER_THAN_VALUE&#34;
+    KEY_GREATER_THAN_OR_EQUAL_VALUE = &#34;KEY_GREATER_THAN_OR_EQUAL_VALUE&#34;
+    KEY_LESS_THAN_VALUE = &#34;KEY_LESS_THAN_VALUE&#34;
+    KEY_LESS_THAN_OR_EQUAL_VALUE = &#34;KEY_LESS_THAN_OR_EQUAL_VALUE&#34;
+    STARTSWITH = &#34;STARTSWITH&#34;
+    ENDSWITH = &#34;ENDSWITH&#34;
+    IN = &#34;IN&#34;
+    NOT_IN = &#34;NOT_IN&#34;
+    KEY_IN_VALUE = &#34;KEY_IN_VALUE&#34;
+    KEY_NOT_IN_VALUE = &#34;KEY_NOT_IN_VALUE&#34;
+    VALUE_IN_KEY = &#34;VALUE_IN_KEY&#34;
+    VALUE_NOT_IN_KEY = &#34;VALUE_NOT_IN_KEY&#34;
+
+
+class SchemaValidator(BaseValidator):
+    &#34;&#34;&#34;Validates feature flag schema configuration
+
+    Raises
+    ------
+    SchemaValidationError
+        When schema doesn&#39;t conform with feature flag schema
+
+    Schema
+    ------
+
+    **Feature object**
+
+    A dictionary containing default value and rules for matching.
+    The value MUST be an object and MIGHT contain the following members:
+
+    * **default**: `bool`. Defines default feature value. This MUST be present
+    * **rules**: `Dict[str, Dict]`. Rules object. This MIGHT be present
+
+    ```python
+    {
+        &#34;my_feature&#34;: {
+            &#34;default&#34;: True,
+            &#34;rules&#34;: {}
+        }
+    }
+    ```
+
+    **Rules object**
+
+    A dictionary with each rule and their conditions that a feature might have.
+    The value MIGHT be present, and when defined it MUST contain the following members:
+
+    * **when_match**: `bool`. Defines value to return when context matches conditions
+    * **conditions**: `List[Dict]`. Conditions object. This MUST be present
+
+    ```python
+    {
+        &#34;my_feature&#34;: {
+            &#34;default&#34;: True,
+            &#34;rules&#34;: {
+                &#34;tenant id equals 345345435&#34;: {
+                    &#34;when_match&#34;: False,
+                    &#34;conditions&#34;: []
+                }
+            }
+        }
+    }
+    ```
+
+    **Conditions object**
+
+    A list of dictionaries containing conditions for a given rule.
+    The value MUST contain the following members:
+
+    * **action**: `str`. Operation to perform to match a key and value.
+    The value MUST be either EQUALS, STARTSWITH, ENDSWITH,
+    KEY_IN_VALUE KEY_NOT_IN_VALUE VALUE_IN_KEY VALUE_NOT_IN_KEY
+
+    * **key**: `str`. Key in given context to perform operation
+    * **value**: `Any`. Value in given context that should match action operation.
+
+    ```python
+    {
+        &#34;my_feature&#34;: {
+            &#34;default&#34;: True,
+            &#34;rules&#34;: {
+                &#34;tenant id equals 345345435&#34;: {
+                    &#34;when_match&#34;: False,
+                    &#34;conditions&#34;: [
+                        {
+                            &#34;action&#34;: &#34;EQUALS&#34;,
+                            &#34;key&#34;: &#34;tenant_id&#34;,
+                            &#34;value&#34;: &#34;345345435&#34;,
+                        }
+                    ]
+                }
+            }
+        }
+    }
+    ```
+    &#34;&#34;&#34;
+
+    def __init__(self, schema: Dict[str, Any], logger: Optional[Union[logging.Logger, Logger]] = None):
+        self.schema = schema
+        self.logger = logger or logging.getLogger(__name__)
+
+    def validate(self) -&gt; None:
+        self.logger.debug(&#34;Validating schema&#34;)
+        if not isinstance(self.schema, dict):
+            raise SchemaValidationError(f&#34;Features must be a dictionary, schema={str(self.schema)}&#34;)
+
+        features = FeaturesValidator(schema=self.schema)
+        features.validate()
+
+
+class FeaturesValidator(BaseValidator):
+    &#34;&#34;&#34;Validates each feature and calls RulesValidator to validate its rules&#34;&#34;&#34;
+
+    def __init__(self, schema: Dict, logger: Optional[Union[logging.Logger, Logger]] = None):
+        self.schema = schema
+        self.logger = logger or logging.getLogger(__name__)
+
+    def validate(self):
+        for name, feature in self.schema.items():
+            self.logger.debug(f&#34;Attempting to validate feature &#39;{name}&#39;&#34;)
+            self.validate_feature(name, feature)
+            rules = RulesValidator(feature=feature)
+            rules.validate()
+
+    @staticmethod
+    def validate_feature(name, feature):
+        if not feature or not isinstance(feature, dict):
+            raise SchemaValidationError(f&#34;Feature must be a non-empty dictionary, feature={name}&#34;)
+
+        default_value = feature.get(FEATURE_DEFAULT_VAL_KEY)
+        if default_value is None or not isinstance(default_value, bool):
+            raise SchemaValidationError(f&#34;feature &#39;default&#39; boolean key must be present, feature={name}&#34;)
+
+
+class RulesValidator(BaseValidator):
+    &#34;&#34;&#34;Validates each rule and calls ConditionsValidator to validate each rule&#39;s conditions&#34;&#34;&#34;
+
+    def __init__(self, feature: Dict[str, Any], logger: Optional[Union[logging.Logger, Logger]] = None):
+        self.feature = feature
+        self.feature_name = next(iter(self.feature))
+        self.rules: Optional[Dict] = self.feature.get(RULES_KEY)
+        self.logger = logger or logging.getLogger(__name__)
+
+    def validate(self):
+        if not self.rules:
+            self.logger.debug(&#34;Rules are empty, ignoring validation&#34;)
+            return
+
+        if not isinstance(self.rules, dict):
+            raise SchemaValidationError(f&#34;Feature rules must be a dictionary, feature={self.feature_name}&#34;)
+
+        for rule_name, rule in self.rules.items():
+            self.logger.debug(f&#34;Attempting to validate rule &#39;{rule_name}&#39;&#34;)
+            self.validate_rule(rule=rule, rule_name=rule_name, feature_name=self.feature_name)
+            conditions = ConditionsValidator(rule=rule, rule_name=rule_name)
+            conditions.validate()
+
+    @staticmethod
+    def validate_rule(rule, rule_name, feature_name):
+        if not rule or not isinstance(rule, dict):
+            raise SchemaValidationError(f&#34;Feature rule must be a dictionary, feature={feature_name}&#34;)
+
+        RulesValidator.validate_rule_name(rule_name=rule_name, feature_name=feature_name)
+        RulesValidator.validate_rule_default_value(rule=rule, rule_name=rule_name)
+
+    @staticmethod
+    def validate_rule_name(rule_name: str, feature_name: str):
+        if not rule_name or not isinstance(rule_name, str):
+            raise SchemaValidationError(f&#34;Rule name key must have a non-empty string, feature={feature_name}&#34;)
+
+    @staticmethod
+    def validate_rule_default_value(rule: Dict, rule_name: str):
+        rule_default_value = rule.get(RULE_MATCH_VALUE)
+        if not isinstance(rule_default_value, bool):
+            raise SchemaValidationError(f&#34;&#39;rule_default_value&#39; key must have be bool, rule={rule_name}&#34;)
+
+
+class ConditionsValidator(BaseValidator):
+    def __init__(self, rule: Dict[str, Any], rule_name: str, logger: Optional[Union[logging.Logger, Logger]] = None):
+        self.conditions: List[Dict[str, Any]] = rule.get(CONDITIONS_KEY, {})
+        self.rule_name = rule_name
+        self.logger = logger or logging.getLogger(__name__)
+
+    def validate(self):
+        if not self.conditions or not isinstance(self.conditions, list):
+            raise SchemaValidationError(f&#34;Invalid condition, rule={self.rule_name}&#34;)
+
+        for condition in self.conditions:
+            # Condition can contain PII data; do not log condition value
+            self.logger.debug(f&#34;Attempting to validate condition for &#39;{self.rule_name}&#39;&#34;)
+            self.validate_condition(rule_name=self.rule_name, condition=condition)
+
+    @staticmethod
+    def validate_condition(rule_name: str, condition: Dict[str, str]) -&gt; None:
+        if not condition or not isinstance(condition, dict):
+            raise SchemaValidationError(f&#34;Feature rule condition must be a dictionary, rule={rule_name}&#34;)
+
+        ConditionsValidator.validate_condition_action(condition=condition, rule_name=rule_name)
+        ConditionsValidator.validate_condition_key(condition=condition, rule_name=rule_name)
+        ConditionsValidator.validate_condition_value(condition=condition, rule_name=rule_name)
+
+    @staticmethod
+    def validate_condition_action(condition: Dict[str, Any], rule_name: str):
+        action = condition.get(CONDITION_ACTION, &#34;&#34;)
+        if action not in RuleAction.__members__:
+            allowed_values = [_action.value for _action in RuleAction]
+            raise SchemaValidationError(
+                f&#34;&#39;action&#39; value must be either {allowed_values}, rule_name={rule_name}, action={action}&#34;
+            )
+
+    @staticmethod
+    def validate_condition_key(condition: Dict[str, Any], rule_name: str):
+        key = condition.get(CONDITION_KEY, &#34;&#34;)
+        if not key or not isinstance(key, str):
+            raise SchemaValidationError(f&#34;&#39;key&#39; value must be a non empty string, rule={rule_name}&#34;)
+
+    @staticmethod
+    def validate_condition_value(condition: Dict[str, Any], rule_name: str):
+        value = condition.get(CONDITION_VALUE, &#34;&#34;)
+        if not value:
+            raise SchemaValidationError(f&#34;&#39;value&#39; key must not be empty, rule={rule_name}&#34;)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.ConditionsValidator"><code class="flex name class">
+<span>class <span class="ident">ConditionsValidator</span></span>
+<span>(</span><span>rule: Dict[str, Any], rule_name: str, logger: Union[logging.Logger, <a title="aws_lambda_powertools.logging.logger.Logger" href="../../logging/logger.html#aws_lambda_powertools.logging.logger.Logger">Logger</a>, None] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Helper class that provides a standard way to create an ABC using
+inheritance.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ConditionsValidator(BaseValidator):
+    def __init__(self, rule: Dict[str, Any], rule_name: str, logger: Optional[Union[logging.Logger, Logger]] = None):
+        self.conditions: List[Dict[str, Any]] = rule.get(CONDITIONS_KEY, {})
+        self.rule_name = rule_name
+        self.logger = logger or logging.getLogger(__name__)
+
+    def validate(self):
+        if not self.conditions or not isinstance(self.conditions, list):
+            raise SchemaValidationError(f&#34;Invalid condition, rule={self.rule_name}&#34;)
+
+        for condition in self.conditions:
+            # Condition can contain PII data; do not log condition value
+            self.logger.debug(f&#34;Attempting to validate condition for &#39;{self.rule_name}&#39;&#34;)
+            self.validate_condition(rule_name=self.rule_name, condition=condition)
+
+    @staticmethod
+    def validate_condition(rule_name: str, condition: Dict[str, str]) -&gt; None:
+        if not condition or not isinstance(condition, dict):
+            raise SchemaValidationError(f&#34;Feature rule condition must be a dictionary, rule={rule_name}&#34;)
+
+        ConditionsValidator.validate_condition_action(condition=condition, rule_name=rule_name)
+        ConditionsValidator.validate_condition_key(condition=condition, rule_name=rule_name)
+        ConditionsValidator.validate_condition_value(condition=condition, rule_name=rule_name)
+
+    @staticmethod
+    def validate_condition_action(condition: Dict[str, Any], rule_name: str):
+        action = condition.get(CONDITION_ACTION, &#34;&#34;)
+        if action not in RuleAction.__members__:
+            allowed_values = [_action.value for _action in RuleAction]
+            raise SchemaValidationError(
+                f&#34;&#39;action&#39; value must be either {allowed_values}, rule_name={rule_name}, action={action}&#34;
+            )
+
+    @staticmethod
+    def validate_condition_key(condition: Dict[str, Any], rule_name: str):
+        key = condition.get(CONDITION_KEY, &#34;&#34;)
+        if not key or not isinstance(key, str):
+            raise SchemaValidationError(f&#34;&#39;key&#39; value must be a non empty string, rule={rule_name}&#34;)
+
+    @staticmethod
+    def validate_condition_value(condition: Dict[str, Any], rule_name: str):
+        value = condition.get(CONDITION_VALUE, &#34;&#34;)
+        if not value:
+            raise SchemaValidationError(f&#34;&#39;value&#39; key must not be empty, rule={rule_name}&#34;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.feature_flags.base.BaseValidator" href="base.html#aws_lambda_powertools.utilities.feature_flags.base.BaseValidator">BaseValidator</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.ConditionsValidator.validate_condition"><code class="name flex">
+<span>def <span class="ident">validate_condition</span></span>(<span>rule_name: str, condition: Dict[str, str]) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def validate_condition(rule_name: str, condition: Dict[str, str]) -&gt; None:
+    if not condition or not isinstance(condition, dict):
+        raise SchemaValidationError(f&#34;Feature rule condition must be a dictionary, rule={rule_name}&#34;)
+
+    ConditionsValidator.validate_condition_action(condition=condition, rule_name=rule_name)
+    ConditionsValidator.validate_condition_key(condition=condition, rule_name=rule_name)
+    ConditionsValidator.validate_condition_value(condition=condition, rule_name=rule_name)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.ConditionsValidator.validate_condition_action"><code class="name flex">
+<span>def <span class="ident">validate_condition_action</span></span>(<span>condition: Dict[str, Any], rule_name: str)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def validate_condition_action(condition: Dict[str, Any], rule_name: str):
+    action = condition.get(CONDITION_ACTION, &#34;&#34;)
+    if action not in RuleAction.__members__:
+        allowed_values = [_action.value for _action in RuleAction]
+        raise SchemaValidationError(
+            f&#34;&#39;action&#39; value must be either {allowed_values}, rule_name={rule_name}, action={action}&#34;
+        )</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.ConditionsValidator.validate_condition_key"><code class="name flex">
+<span>def <span class="ident">validate_condition_key</span></span>(<span>condition: Dict[str, Any], rule_name: str)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def validate_condition_key(condition: Dict[str, Any], rule_name: str):
+    key = condition.get(CONDITION_KEY, &#34;&#34;)
+    if not key or not isinstance(key, str):
+        raise SchemaValidationError(f&#34;&#39;key&#39; value must be a non empty string, rule={rule_name}&#34;)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.ConditionsValidator.validate_condition_value"><code class="name flex">
+<span>def <span class="ident">validate_condition_value</span></span>(<span>condition: Dict[str, Any], rule_name: str)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def validate_condition_value(condition: Dict[str, Any], rule_name: str):
+    value = condition.get(CONDITION_VALUE, &#34;&#34;)
+    if not value:
+        raise SchemaValidationError(f&#34;&#39;value&#39; key must not be empty, rule={rule_name}&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.ConditionsValidator.validate"><code class="name flex">
+<span>def <span class="ident">validate</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate(self):
+    if not self.conditions or not isinstance(self.conditions, list):
+        raise SchemaValidationError(f&#34;Invalid condition, rule={self.rule_name}&#34;)
+
+    for condition in self.conditions:
+        # Condition can contain PII data; do not log condition value
+        self.logger.debug(f&#34;Attempting to validate condition for &#39;{self.rule_name}&#39;&#34;)
+        self.validate_condition(rule_name=self.rule_name, condition=condition)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.FeaturesValidator"><code class="flex name class">
+<span>class <span class="ident">FeaturesValidator</span></span>
+<span>(</span><span>schema: Dict[~KT, ~VT], logger: Union[logging.Logger, <a title="aws_lambda_powertools.logging.logger.Logger" href="../../logging/logger.html#aws_lambda_powertools.logging.logger.Logger">Logger</a>, None] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Validates each feature and calls RulesValidator to validate its rules</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class FeaturesValidator(BaseValidator):
+    &#34;&#34;&#34;Validates each feature and calls RulesValidator to validate its rules&#34;&#34;&#34;
+
+    def __init__(self, schema: Dict, logger: Optional[Union[logging.Logger, Logger]] = None):
+        self.schema = schema
+        self.logger = logger or logging.getLogger(__name__)
+
+    def validate(self):
+        for name, feature in self.schema.items():
+            self.logger.debug(f&#34;Attempting to validate feature &#39;{name}&#39;&#34;)
+            self.validate_feature(name, feature)
+            rules = RulesValidator(feature=feature)
+            rules.validate()
+
+    @staticmethod
+    def validate_feature(name, feature):
+        if not feature or not isinstance(feature, dict):
+            raise SchemaValidationError(f&#34;Feature must be a non-empty dictionary, feature={name}&#34;)
+
+        default_value = feature.get(FEATURE_DEFAULT_VAL_KEY)
+        if default_value is None or not isinstance(default_value, bool):
+            raise SchemaValidationError(f&#34;feature &#39;default&#39; boolean key must be present, feature={name}&#34;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.feature_flags.base.BaseValidator" href="base.html#aws_lambda_powertools.utilities.feature_flags.base.BaseValidator">BaseValidator</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.FeaturesValidator.validate_feature"><code class="name flex">
+<span>def <span class="ident">validate_feature</span></span>(<span>name, feature)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def validate_feature(name, feature):
+    if not feature or not isinstance(feature, dict):
+        raise SchemaValidationError(f&#34;Feature must be a non-empty dictionary, feature={name}&#34;)
+
+    default_value = feature.get(FEATURE_DEFAULT_VAL_KEY)
+    if default_value is None or not isinstance(default_value, bool):
+        raise SchemaValidationError(f&#34;feature &#39;default&#39; boolean key must be present, feature={name}&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.FeaturesValidator.validate"><code class="name flex">
+<span>def <span class="ident">validate</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate(self):
+    for name, feature in self.schema.items():
+        self.logger.debug(f&#34;Attempting to validate feature &#39;{name}&#39;&#34;)
+        self.validate_feature(name, feature)
+        rules = RulesValidator(feature=feature)
+        rules.validate()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction"><code class="flex name class">
+<span>class <span class="ident">RuleAction</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An enumeration.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RuleAction(str, Enum):
+    EQUALS = &#34;EQUALS&#34;
+    NOT_EQUALS = &#34;NOT_EQUALS&#34;
+    KEY_GREATER_THAN_VALUE = &#34;KEY_GREATER_THAN_VALUE&#34;
+    KEY_GREATER_THAN_OR_EQUAL_VALUE = &#34;KEY_GREATER_THAN_OR_EQUAL_VALUE&#34;
+    KEY_LESS_THAN_VALUE = &#34;KEY_LESS_THAN_VALUE&#34;
+    KEY_LESS_THAN_OR_EQUAL_VALUE = &#34;KEY_LESS_THAN_OR_EQUAL_VALUE&#34;
+    STARTSWITH = &#34;STARTSWITH&#34;
+    ENDSWITH = &#34;ENDSWITH&#34;
+    IN = &#34;IN&#34;
+    NOT_IN = &#34;NOT_IN&#34;
+    KEY_IN_VALUE = &#34;KEY_IN_VALUE&#34;
+    KEY_NOT_IN_VALUE = &#34;KEY_NOT_IN_VALUE&#34;
+    VALUE_IN_KEY = &#34;VALUE_IN_KEY&#34;
+    VALUE_NOT_IN_KEY = &#34;VALUE_NOT_IN_KEY&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.str</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.ENDSWITH"><code class="name">var <span class="ident">ENDSWITH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.EQUALS"><code class="name">var <span class="ident">EQUALS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.IN"><code class="name">var <span class="ident">IN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.KEY_GREATER_THAN_OR_EQUAL_VALUE"><code class="name">var <span class="ident">KEY_GREATER_THAN_OR_EQUAL_VALUE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.KEY_GREATER_THAN_VALUE"><code class="name">var <span class="ident">KEY_GREATER_THAN_VALUE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.KEY_IN_VALUE"><code class="name">var <span class="ident">KEY_IN_VALUE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.KEY_LESS_THAN_OR_EQUAL_VALUE"><code class="name">var <span class="ident">KEY_LESS_THAN_OR_EQUAL_VALUE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.KEY_LESS_THAN_VALUE"><code class="name">var <span class="ident">KEY_LESS_THAN_VALUE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.KEY_NOT_IN_VALUE"><code class="name">var <span class="ident">KEY_NOT_IN_VALUE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.NOT_EQUALS"><code class="name">var <span class="ident">NOT_EQUALS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.NOT_IN"><code class="name">var <span class="ident">NOT_IN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.STARTSWITH"><code class="name">var <span class="ident">STARTSWITH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.VALUE_IN_KEY"><code class="name">var <span class="ident">VALUE_IN_KEY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.VALUE_NOT_IN_KEY"><code class="name">var <span class="ident">VALUE_NOT_IN_KEY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RulesValidator"><code class="flex name class">
+<span>class <span class="ident">RulesValidator</span></span>
+<span>(</span><span>feature: Dict[str, Any], logger: Union[logging.Logger, <a title="aws_lambda_powertools.logging.logger.Logger" href="../../logging/logger.html#aws_lambda_powertools.logging.logger.Logger">Logger</a>, None] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Validates each rule and calls ConditionsValidator to validate each rule's conditions</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RulesValidator(BaseValidator):
+    &#34;&#34;&#34;Validates each rule and calls ConditionsValidator to validate each rule&#39;s conditions&#34;&#34;&#34;
+
+    def __init__(self, feature: Dict[str, Any], logger: Optional[Union[logging.Logger, Logger]] = None):
+        self.feature = feature
+        self.feature_name = next(iter(self.feature))
+        self.rules: Optional[Dict] = self.feature.get(RULES_KEY)
+        self.logger = logger or logging.getLogger(__name__)
+
+    def validate(self):
+        if not self.rules:
+            self.logger.debug(&#34;Rules are empty, ignoring validation&#34;)
+            return
+
+        if not isinstance(self.rules, dict):
+            raise SchemaValidationError(f&#34;Feature rules must be a dictionary, feature={self.feature_name}&#34;)
+
+        for rule_name, rule in self.rules.items():
+            self.logger.debug(f&#34;Attempting to validate rule &#39;{rule_name}&#39;&#34;)
+            self.validate_rule(rule=rule, rule_name=rule_name, feature_name=self.feature_name)
+            conditions = ConditionsValidator(rule=rule, rule_name=rule_name)
+            conditions.validate()
+
+    @staticmethod
+    def validate_rule(rule, rule_name, feature_name):
+        if not rule or not isinstance(rule, dict):
+            raise SchemaValidationError(f&#34;Feature rule must be a dictionary, feature={feature_name}&#34;)
+
+        RulesValidator.validate_rule_name(rule_name=rule_name, feature_name=feature_name)
+        RulesValidator.validate_rule_default_value(rule=rule, rule_name=rule_name)
+
+    @staticmethod
+    def validate_rule_name(rule_name: str, feature_name: str):
+        if not rule_name or not isinstance(rule_name, str):
+            raise SchemaValidationError(f&#34;Rule name key must have a non-empty string, feature={feature_name}&#34;)
+
+    @staticmethod
+    def validate_rule_default_value(rule: Dict, rule_name: str):
+        rule_default_value = rule.get(RULE_MATCH_VALUE)
+        if not isinstance(rule_default_value, bool):
+            raise SchemaValidationError(f&#34;&#39;rule_default_value&#39; key must have be bool, rule={rule_name}&#34;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.feature_flags.base.BaseValidator" href="base.html#aws_lambda_powertools.utilities.feature_flags.base.BaseValidator">BaseValidator</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RulesValidator.validate_rule"><code class="name flex">
+<span>def <span class="ident">validate_rule</span></span>(<span>rule, rule_name, feature_name)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def validate_rule(rule, rule_name, feature_name):
+    if not rule or not isinstance(rule, dict):
+        raise SchemaValidationError(f&#34;Feature rule must be a dictionary, feature={feature_name}&#34;)
+
+    RulesValidator.validate_rule_name(rule_name=rule_name, feature_name=feature_name)
+    RulesValidator.validate_rule_default_value(rule=rule, rule_name=rule_name)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RulesValidator.validate_rule_default_value"><code class="name flex">
+<span>def <span class="ident">validate_rule_default_value</span></span>(<span>rule: Dict[~KT, ~VT], rule_name: str)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def validate_rule_default_value(rule: Dict, rule_name: str):
+    rule_default_value = rule.get(RULE_MATCH_VALUE)
+    if not isinstance(rule_default_value, bool):
+        raise SchemaValidationError(f&#34;&#39;rule_default_value&#39; key must have be bool, rule={rule_name}&#34;)</code></pre>
+</details>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RulesValidator.validate_rule_name"><code class="name flex">
+<span>def <span class="ident">validate_rule_name</span></span>(<span>rule_name: str, feature_name: str)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def validate_rule_name(rule_name: str, feature_name: str):
+    if not rule_name or not isinstance(rule_name, str):
+        raise SchemaValidationError(f&#34;Rule name key must have a non-empty string, feature={feature_name}&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.RulesValidator.validate"><code class="name flex">
+<span>def <span class="ident">validate</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate(self):
+    if not self.rules:
+        self.logger.debug(&#34;Rules are empty, ignoring validation&#34;)
+        return
+
+    if not isinstance(self.rules, dict):
+        raise SchemaValidationError(f&#34;Feature rules must be a dictionary, feature={self.feature_name}&#34;)
+
+    for rule_name, rule in self.rules.items():
+        self.logger.debug(f&#34;Attempting to validate rule &#39;{rule_name}&#39;&#34;)
+        self.validate_rule(rule=rule, rule_name=rule_name, feature_name=self.feature_name)
+        conditions = ConditionsValidator(rule=rule, rule_name=rule_name)
+        conditions.validate()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.SchemaValidator"><code class="flex name class">
+<span>class <span class="ident">SchemaValidator</span></span>
+<span>(</span><span>schema: Dict[str, Any], logger: Union[logging.Logger, <a title="aws_lambda_powertools.logging.logger.Logger" href="../../logging/logger.html#aws_lambda_powertools.logging.logger.Logger">Logger</a>, None] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Validates feature flag schema configuration</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>SchemaValidationError</code></dt>
+<dd>When schema doesn't conform with feature flag schema</dd>
+</dl>
+<h2 id="schema">Schema</h2>
+<p><strong>Feature object</strong></p>
+<p>A dictionary containing default value and rules for matching.
+The value MUST be an object and MIGHT contain the following members:</p>
+<ul>
+<li><strong>default</strong>: <code>bool</code>. Defines default feature value. This MUST be present</li>
+<li><strong>rules</strong>: <code>Dict[str, Dict]</code>. Rules object. This MIGHT be present</li>
+</ul>
+<pre><code class="language-python">{
+    &quot;my_feature&quot;: {
+        &quot;default&quot;: True,
+        &quot;rules&quot;: {}
+    }
+}
+</code></pre>
+<p><strong>Rules object</strong></p>
+<p>A dictionary with each rule and their conditions that a feature might have.
+The value MIGHT be present, and when defined it MUST contain the following members:</p>
+<ul>
+<li><strong>when_match</strong>: <code>bool</code>. Defines value to return when context matches conditions</li>
+<li><strong>conditions</strong>: <code>List[Dict]</code>. Conditions object. This MUST be present</li>
+</ul>
+<pre><code class="language-python">{
+    &quot;my_feature&quot;: {
+        &quot;default&quot;: True,
+        &quot;rules&quot;: {
+            &quot;tenant id equals 345345435&quot;: {
+                &quot;when_match&quot;: False,
+                &quot;conditions&quot;: []
+            }
+        }
+    }
+}
+</code></pre>
+<p><strong>Conditions object</strong></p>
+<p>A list of dictionaries containing conditions for a given rule.
+The value MUST contain the following members:</p>
+<ul>
+<li>
+<p><strong>action</strong>: <code>str</code>. Operation to perform to match a key and value.
+The value MUST be either EQUALS, STARTSWITH, ENDSWITH,
+KEY_IN_VALUE KEY_NOT_IN_VALUE VALUE_IN_KEY VALUE_NOT_IN_KEY</p>
+</li>
+<li>
+<p><strong>key</strong>: <code>str</code>. Key in given context to perform operation</p>
+</li>
+<li><strong>value</strong>: <code>Any</code>. Value in given context that should match action operation.</li>
+</ul>
+<pre><code class="language-python">{
+    &quot;my_feature&quot;: {
+        &quot;default&quot;: True,
+        &quot;rules&quot;: {
+            &quot;tenant id equals 345345435&quot;: {
+                &quot;when_match&quot;: False,
+                &quot;conditions&quot;: [
+                    {
+                        &quot;action&quot;: &quot;EQUALS&quot;,
+                        &quot;key&quot;: &quot;tenant_id&quot;,
+                        &quot;value&quot;: &quot;345345435&quot;,
+                    }
+                ]
+            }
+        }
+    }
+}
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SchemaValidator(BaseValidator):
+    &#34;&#34;&#34;Validates feature flag schema configuration
+
+    Raises
+    ------
+    SchemaValidationError
+        When schema doesn&#39;t conform with feature flag schema
+
+    Schema
+    ------
+
+    **Feature object**
+
+    A dictionary containing default value and rules for matching.
+    The value MUST be an object and MIGHT contain the following members:
+
+    * **default**: `bool`. Defines default feature value. This MUST be present
+    * **rules**: `Dict[str, Dict]`. Rules object. This MIGHT be present
+
+    ```python
+    {
+        &#34;my_feature&#34;: {
+            &#34;default&#34;: True,
+            &#34;rules&#34;: {}
+        }
+    }
+    ```
+
+    **Rules object**
+
+    A dictionary with each rule and their conditions that a feature might have.
+    The value MIGHT be present, and when defined it MUST contain the following members:
+
+    * **when_match**: `bool`. Defines value to return when context matches conditions
+    * **conditions**: `List[Dict]`. Conditions object. This MUST be present
+
+    ```python
+    {
+        &#34;my_feature&#34;: {
+            &#34;default&#34;: True,
+            &#34;rules&#34;: {
+                &#34;tenant id equals 345345435&#34;: {
+                    &#34;when_match&#34;: False,
+                    &#34;conditions&#34;: []
+                }
+            }
+        }
+    }
+    ```
+
+    **Conditions object**
+
+    A list of dictionaries containing conditions for a given rule.
+    The value MUST contain the following members:
+
+    * **action**: `str`. Operation to perform to match a key and value.
+    The value MUST be either EQUALS, STARTSWITH, ENDSWITH,
+    KEY_IN_VALUE KEY_NOT_IN_VALUE VALUE_IN_KEY VALUE_NOT_IN_KEY
+
+    * **key**: `str`. Key in given context to perform operation
+    * **value**: `Any`. Value in given context that should match action operation.
+
+    ```python
+    {
+        &#34;my_feature&#34;: {
+            &#34;default&#34;: True,
+            &#34;rules&#34;: {
+                &#34;tenant id equals 345345435&#34;: {
+                    &#34;when_match&#34;: False,
+                    &#34;conditions&#34;: [
+                        {
+                            &#34;action&#34;: &#34;EQUALS&#34;,
+                            &#34;key&#34;: &#34;tenant_id&#34;,
+                            &#34;value&#34;: &#34;345345435&#34;,
+                        }
+                    ]
+                }
+            }
+        }
+    }
+    ```
+    &#34;&#34;&#34;
+
+    def __init__(self, schema: Dict[str, Any], logger: Optional[Union[logging.Logger, Logger]] = None):
+        self.schema = schema
+        self.logger = logger or logging.getLogger(__name__)
+
+    def validate(self) -&gt; None:
+        self.logger.debug(&#34;Validating schema&#34;)
+        if not isinstance(self.schema, dict):
+            raise SchemaValidationError(f&#34;Features must be a dictionary, schema={str(self.schema)}&#34;)
+
+        features = FeaturesValidator(schema=self.schema)
+        features.validate()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="aws_lambda_powertools.utilities.feature_flags.base.BaseValidator" href="base.html#aws_lambda_powertools.utilities.feature_flags.base.BaseValidator">BaseValidator</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="aws_lambda_powertools.utilities.feature_flags.schema.SchemaValidator.validate"><code class="name flex">
+<span>def <span class="ident">validate</span></span>(<span>self) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate(self) -&gt; None:
+    self.logger.debug(&#34;Validating schema&#34;)
+    if not isinstance(self.schema, dict):
+        raise SchemaValidationError(f&#34;Features must be a dictionary, schema={str(self.schema)}&#34;)
+
+    features = FeaturesValidator(schema=self.schema)
+    features.validate()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags" href="index.html">aws_lambda_powertools.utilities.feature_flags</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.ConditionsValidator" href="#aws_lambda_powertools.utilities.feature_flags.schema.ConditionsValidator">ConditionsValidator</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.ConditionsValidator.validate" href="#aws_lambda_powertools.utilities.feature_flags.schema.ConditionsValidator.validate">validate</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.ConditionsValidator.validate_condition" href="#aws_lambda_powertools.utilities.feature_flags.schema.ConditionsValidator.validate_condition">validate_condition</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.ConditionsValidator.validate_condition_action" href="#aws_lambda_powertools.utilities.feature_flags.schema.ConditionsValidator.validate_condition_action">validate_condition_action</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.ConditionsValidator.validate_condition_key" href="#aws_lambda_powertools.utilities.feature_flags.schema.ConditionsValidator.validate_condition_key">validate_condition_key</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.ConditionsValidator.validate_condition_value" href="#aws_lambda_powertools.utilities.feature_flags.schema.ConditionsValidator.validate_condition_value">validate_condition_value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.FeaturesValidator" href="#aws_lambda_powertools.utilities.feature_flags.schema.FeaturesValidator">FeaturesValidator</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.FeaturesValidator.validate" href="#aws_lambda_powertools.utilities.feature_flags.schema.FeaturesValidator.validate">validate</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.FeaturesValidator.validate_feature" href="#aws_lambda_powertools.utilities.feature_flags.schema.FeaturesValidator.validate_feature">validate_feature</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction" href="#aws_lambda_powertools.utilities.feature_flags.schema.RuleAction">RuleAction</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.ENDSWITH" href="#aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.ENDSWITH">ENDSWITH</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.EQUALS" href="#aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.EQUALS">EQUALS</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.IN" href="#aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.IN">IN</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.KEY_GREATER_THAN_OR_EQUAL_VALUE" href="#aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.KEY_GREATER_THAN_OR_EQUAL_VALUE">KEY_GREATER_THAN_OR_EQUAL_VALUE</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.KEY_GREATER_THAN_VALUE" href="#aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.KEY_GREATER_THAN_VALUE">KEY_GREATER_THAN_VALUE</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.KEY_IN_VALUE" href="#aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.KEY_IN_VALUE">KEY_IN_VALUE</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.KEY_LESS_THAN_OR_EQUAL_VALUE" href="#aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.KEY_LESS_THAN_OR_EQUAL_VALUE">KEY_LESS_THAN_OR_EQUAL_VALUE</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.KEY_LESS_THAN_VALUE" href="#aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.KEY_LESS_THAN_VALUE">KEY_LESS_THAN_VALUE</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.KEY_NOT_IN_VALUE" href="#aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.KEY_NOT_IN_VALUE">KEY_NOT_IN_VALUE</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.NOT_EQUALS" href="#aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.NOT_EQUALS">NOT_EQUALS</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.NOT_IN" href="#aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.NOT_IN">NOT_IN</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.STARTSWITH" href="#aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.STARTSWITH">STARTSWITH</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.VALUE_IN_KEY" href="#aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.VALUE_IN_KEY">VALUE_IN_KEY</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.VALUE_NOT_IN_KEY" href="#aws_lambda_powertools.utilities.feature_flags.schema.RuleAction.VALUE_NOT_IN_KEY">VALUE_NOT_IN_KEY</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RulesValidator" href="#aws_lambda_powertools.utilities.feature_flags.schema.RulesValidator">RulesValidator</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RulesValidator.validate" href="#aws_lambda_powertools.utilities.feature_flags.schema.RulesValidator.validate">validate</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RulesValidator.validate_rule" href="#aws_lambda_powertools.utilities.feature_flags.schema.RulesValidator.validate_rule">validate_rule</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RulesValidator.validate_rule_default_value" href="#aws_lambda_powertools.utilities.feature_flags.schema.RulesValidator.validate_rule_default_value">validate_rule_default_value</a></code></li>
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.RulesValidator.validate_rule_name" href="#aws_lambda_powertools.utilities.feature_flags.schema.RulesValidator.validate_rule_name">validate_rule_name</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.SchemaValidator" href="#aws_lambda_powertools.utilities.feature_flags.schema.SchemaValidator">SchemaValidator</a></code></h4>
+<ul class="">
+<li><code><a title="aws_lambda_powertools.utilities.feature_flags.schema.SchemaValidator.validate" href="#aws_lambda_powertools.utilities.feature_flags.schema.SchemaValidator.validate">validate</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
