@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.2">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.3">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.24c991ad.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.5143246d.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
@@ -842,7 +842,7 @@
 <p>Powertools is also available as a Lambda Layer with public ARNs in each region or distributed via the <a href="https://docs.aws.amazon.com/serverlessrepo/latest/devguide/what-is-serverlessrepo.html">AWS Serverless Application Repository (SAR)</a> to support semantic versioning.</p>
 <h4 id="public-arns">Public ARNs<a class="headerlink" href="#public-arns" title="Permanent link">&para;</a></h4>
 <p>We build, release and distribute packaged Lambda Powertools layers for each region. This means you can copy a specific ARN and use it in your Lambda deployment. The layer region must be equal to the region of your lambda function. The public layers do not contain the <code>pydantic</code> library that is required for the <code>parser</code> utility.</p>
-<div class="tabbed-set" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">SAM</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">SAM</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -986,8 +986,53 @@
 </code></pre></div>
 </td></tr></table>
 </div>
+<input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><label for="__tabbed_2_5">Amplify</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Create a new one with the layer</span>
+❯ amplify add <span class="k">function</span>
+? Select which capability you want to add: Lambda <span class="k">function</span> <span class="o">(</span>serverless <span class="k">function</span><span class="o">)</span>
+? Provide an AWS Lambda <span class="k">function</span> name: &lt;NAME-OF-FUNCTION&gt;
+? Choose the runtime that you want to use: Python
+? Do you want to configure advanced settings? Yes
+...
+? Do you want to <span class="nb">enable</span> Lambda layers <span class="k">for</span> this <span class="k">function</span>? Yes
+? Enter up to <span class="m">5</span> existing Lambda layer ARNs <span class="o">(</span>comma-separated<span class="o">)</span>: arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPython:3
+❯ amplify push -y
+
+
+<span class="c1"># Updating an existing function and add the layer</span>
+❯ amplify update <span class="k">function</span>
+? Select the Lambda <span class="k">function</span> you want to update test2
+General information
+- Name: &lt;NAME-OF-FUNCTION&gt;
+? Which setting <span class="k">do</span> you want to update? Lambda layers configuration
+? Do you want to <span class="nb">enable</span> Lambda layers <span class="k">for</span> this <span class="k">function</span>? Yes
+? Enter up to <span class="m">5</span> existing Lambda layer ARNs <span class="o">(</span>comma-separated<span class="o">)</span>: arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPython:3
+? Do you want to edit the <span class="nb">local</span> lambda <span class="k">function</span> now? No
+</code></pre></div>
+</td></tr></table>
 </div>
-<details class="note"><summary>Latest Lambda Layers ARN per region</summary><div class="admonition tip">
+</div>
+<details class="note"><summary>Layer ARN per region</summary><div class="admonition tip">
 <p class="admonition-title">Click to copy to clipboard</p>
 </div>
 <table>
@@ -1149,7 +1194,7 @@
 </span>
 <span class="nt">resources</span><span class="p">:</span>
 <span class="hll">    <span class="nt">Transform</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span>
-</span>    <span class="nt">Resources</span><span class="p">:</span>
+</span>    <span class="l l-Scalar l-Scalar-Plain">Resources:****</span>
 <span class="hll">    <span class="nt">AwsLambdaPowertoolsPythonLayer</span><span class="p">:</span>
 </span><span class="hll">        <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Application</span>
 </span>        <span class="nt">Properties</span><span class="p">:</span>
@@ -1612,7 +1657,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-10-07
+      Last update: 2021-10-12
     
   </small>
 </div>
@@ -1683,10 +1728,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.e99e714c.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.8397ff9e.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.bc35569b.min.js"></script>
+      <script src="assets/javascripts/bundle.f89c2efe.min.js"></script>
       
         <script src="javascript/aws-amplify.min.js"></script>
       
