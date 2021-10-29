@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.5">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.5143246d.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.cdeb8541.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
@@ -253,6 +253,8 @@
       </a>
       
         
+
+
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -712,6 +714,8 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
+
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -827,19 +831,93 @@
 </ul>
 <h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
 <p>Powertools is available in the following formats:</p>
-<details class="info"><summary>Lambda Layer is a .zip file archive with Lambda Powertools pre-packaged in every AWS region. See what's inside!</summary><p>Change {region} to your AWS region, e.g. <code>eu-west-1</code></p>
-<p><strong><code>aws lambda get-layer-version-by-arn --arn arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPython:3 --region {region}</code></strong></p>
-</details>
 <ul>
 <li><strong>Lambda Layer</strong>: <a class="copyMe" href="#"><strong>arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPython:3</strong></a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></li>
 <li><strong>PyPi</strong>: <strong><code>pip install aws-lambda-powertools</code></strong></li>
 </ul>
 <h3 id="lambda-layer">Lambda Layer<a class="headerlink" href="#lambda-layer" title="Permanent link">&para;</a></h3>
-<p>Include Lambda Powertools in your function using the <a href="https://console.aws.amazon.com/lambda" target="_blank">AWS Lambda Console</a> or your preferred deployment framework.</p>
-<div class="admonition note">
-<p class="admonition-title">The public layers do not contain the <code>pydantic</code> library that is required for the <code>parser</code> utility; See <a href="#sar">SAR</a> option instead.</p>
-</div>
-<div class="tabbed-set" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">SAM</label><div class="tabbed-content">
+<p><a href="https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html" target="_blank">Lambda Layer</a> is a .zip file archive that can contain additional code, pre-packaged dependencies, data,  or configuration files. Layers promote code sharing and separation of responsibilities so that you can iterate faster on writing business logic.</p>
+<p>You can include Lambda Powertools Lambda Layer using <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-layers.html#invocation-layers-using" target="_blank">AWS Lambda Console</a>, or your preferred deployment framework.</p>
+<details class="note"><summary>Expand to copy any regional Lambda Layer ARN</summary><table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Layer ARN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>us-east-1</code></td>
+<td><a class="copyMe" href="#">arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
+</tr>
+<tr>
+<td><code>us-east-2</code></td>
+<td><a class="copyMe" href="#">arn:aws:lambda:us-east-2:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
+</tr>
+<tr>
+<td><code>us-west-1</code></td>
+<td><a class="copyMe" href="#">arn:aws:lambda:us-west-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
+</tr>
+<tr>
+<td><code>us-west-2</code></td>
+<td><a class="copyMe" href="#">arn:aws:lambda:us-west-2:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
+</tr>
+<tr>
+<td><code>ap-south-1</code></td>
+<td><a class="copyMe" href="#">arn:aws:lambda:ap-south-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
+</tr>
+<tr>
+<td><code>ap-northeast-1</code></td>
+<td><a class="copyMe" href="#">arn:aws:lambda:ap-northeast-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
+</tr>
+<tr>
+<td><code>ap-northeast-2</code></td>
+<td><a class="copyMe" href="#">arn:aws:lambda:ap-northeast-2:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
+</tr>
+<tr>
+<td><code>ap-northeast-3</code></td>
+<td><a class="copyMe" href="#">arn:aws:lambda:ap-northeast-3:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
+</tr>
+<tr>
+<td><code>ap-southeast-1</code></td>
+<td><a class="copyMe" href="#">arn:aws:lambda:ap-southeast-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
+</tr>
+<tr>
+<td><code>ap-southeast-2</code></td>
+<td><a class="copyMe" href="#">arn:aws:lambda:ap-southeast-2:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
+</tr>
+<tr>
+<td><code>eu-central-1</code></td>
+<td><a class="copyMe" href="#">arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
+</tr>
+<tr>
+<td><code>eu-west-1</code></td>
+<td><a class="copyMe" href="#">arn:aws:lambda:eu-west-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
+</tr>
+<tr>
+<td><code>eu-west-2</code></td>
+<td><a class="copyMe" href="#">arn:aws:lambda:eu-west-2:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
+</tr>
+<tr>
+<td><code>eu-west-3</code></td>
+<td><a class="copyMe" href="#">arn:aws:lambda:eu-west-3:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
+</tr>
+<tr>
+<td><code>eu-north-1</code></td>
+<td><a class="copyMe" href="#">arn:aws:lambda:eu-north-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
+</tr>
+<tr>
+<td><code>ca-central-1</code></td>
+<td><a class="copyMe" href="#">arn:aws:lambda:ca-central-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
+</tr>
+<tr>
+<td><code>sa-east-1</code></td>
+<td><a class="copyMe" href="#">arn:aws:lambda:sa-east-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
+</tr>
+</tbody>
+</table>
+</details>
+<div class="tabbed-set" data-tabs="1:6"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">SAM</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -858,9 +936,9 @@
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">functions</span><span class="p">:</span>
-    <span class="nt">main</span><span class="p">:</span>
-    <span class="nt">handler</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">lambda_function.lambda_handler</span>
-    <span class="nt">layers</span><span class="p">:</span>
+    <span class="nt">hello</span><span class="p">:</span>
+      <span class="nt">handler</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">lambda_function.lambda_handler</span>
+      <span class="nt">layers</span><span class="p">:</span>
 <span class="hll">        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:lambda:${aws:region}:017000801446:layer:AWSLambdaPowertoolsPython:3</span>
 </span></code></pre></div>
 </td></tr></table>
@@ -1026,86 +1104,16 @@ General information
 </code></pre></div>
 </td></tr></table>
 </div>
+<input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><label for="__tabbed_1_6">Get the Layer .zip contents</label><div class="tabbed-content">
+<p>Change {region} to your AWS region, e.g. <code>eu-west-1</code></p>
+<p><strong><code>aws lambda get-layer-version-by-arn --arn arn:aws:lambda:{region}:017000801446:layer:AWSLambdaPowertoolsPython:3 --region {region}</code></strong></p>
 </div>
-<details class="note"><summary>Expand to copy any regional Lambda Layer ARN</summary><table>
-<thead>
-<tr>
-<th>Region</th>
-<th>Layer ARN</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>us-east-1</code></td>
-<td><a class="copyMe" href="#">arn:aws:lambda:us-east-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
-</tr>
-<tr>
-<td><code>us-east-2</code></td>
-<td><a class="copyMe" href="#">arn:aws:lambda:us-east-2:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
-</tr>
-<tr>
-<td><code>us-west-1</code></td>
-<td><a class="copyMe" href="#">arn:aws:lambda:us-west-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
-</tr>
-<tr>
-<td><code>us-west-2</code></td>
-<td><a class="copyMe" href="#">arn:aws:lambda:us-west-2:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
-</tr>
-<tr>
-<td><code>ap-south-1</code></td>
-<td><a class="copyMe" href="#">arn:aws:lambda:ap-south-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
-</tr>
-<tr>
-<td><code>ap-northeast-1</code></td>
-<td><a class="copyMe" href="#">arn:aws:lambda:ap-northeast-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
-</tr>
-<tr>
-<td><code>ap-northeast-2</code></td>
-<td><a class="copyMe" href="#">arn:aws:lambda:ap-northeast-2:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
-</tr>
-<tr>
-<td><code>ap-northeast-3</code></td>
-<td><a class="copyMe" href="#">arn:aws:lambda:ap-northeast-3:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
-</tr>
-<tr>
-<td><code>ap-southeast-1</code></td>
-<td><a class="copyMe" href="#">arn:aws:lambda:ap-southeast-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
-</tr>
-<tr>
-<td><code>ap-southeast-2</code></td>
-<td><a class="copyMe" href="#">arn:aws:lambda:ap-southeast-2:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
-</tr>
-<tr>
-<td><code>eu-central-1</code></td>
-<td><a class="copyMe" href="#">arn:aws:lambda:eu-central-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
-</tr>
-<tr>
-<td><code>eu-west-1</code></td>
-<td><a class="copyMe" href="#">arn:aws:lambda:eu-west-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
-</tr>
-<tr>
-<td><code>eu-west-2</code></td>
-<td><a class="copyMe" href="#">arn:aws:lambda:eu-west-2:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
-</tr>
-<tr>
-<td><code>eu-west-3</code></td>
-<td><a class="copyMe" href="#">arn:aws:lambda:eu-west-3:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
-</tr>
-<tr>
-<td><code>eu-north-1</code></td>
-<td><a class="copyMe" href="#">arn:aws:lambda:eu-north-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
-</tr>
-<tr>
-<td><code>ca-central-1</code></td>
-<td><a class="copyMe" href="#">arn:aws:lambda:ca-central-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
-</tr>
-<tr>
-<td><code>sa-east-1</code></td>
-<td><a class="copyMe" href="#">arn:aws:lambda:sa-east-1:017000801446:layer:AWSLambdaPowertoolsPython:3</a> <img alt="📋" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f4cb.png" title=":clipboard:" /></td>
-</tr>
-</tbody>
-</table>
-</details>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Limitations</p>
+<p>Container Image deployment (OCI) or inline Lambda functions do not support Lambda Layers.</p>
+<p>Lambda Powertools Lambda Layer do not include <code>pydantic</code> library - required dependency for the <code>parser</code> utility. See <a href="#sar">SAR</a> option instead.</p>
+</div>
 <h4 id="sar">SAR<a class="headerlink" href="#sar" title="Permanent link">&para;</a></h4>
 <p>Serverless Application Repository (SAR) App deploys a CloudFormation stack with a copy of our Lambda Layer in your AWS account and region.</p>
 <p>Despite having more steps compared to the <a href="#lambda-layer">public Layer ARN</a> option, the benefit is that you can specify a semantic version you want to use.</p>
@@ -1662,7 +1670,7 @@ General information
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-10-24
+      Last update: 2021-10-29
     
   </small>
 </div>
@@ -1736,7 +1744,7 @@ General information
     <script id="__config" type="application/json">{"base": ".", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.8397ff9e.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.f89c2efe.min.js"></script>
+      <script src="assets/javascripts/bundle.1e84347e.min.js"></script>
       
         <script src="javascript/aws-amplify.min.js"></script>
       

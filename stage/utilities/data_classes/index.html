@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.5">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.5143246d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cdeb8541.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -552,6 +552,8 @@
       </a>
       
         
+
+
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -597,6 +599,13 @@
   
     <nav class="md-nav" aria-label="Supported event sources">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#active-mq" class="md-nav__link">
+    Active MQ
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#api-gateway-authorizer" class="md-nav__link">
@@ -726,6 +735,13 @@
           <li class="md-nav__item">
   <a href="#kinesis-streams" class="md-nav__link">
     Kinesis streams
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rabbit-mq" class="md-nav__link">
+    Rabbit MQ
   </a>
   
 </li>
@@ -853,6 +869,8 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
+
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -898,6 +916,13 @@
   
     <nav class="md-nav" aria-label="Supported event sources">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#active-mq" class="md-nav__link">
+    Active MQ
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#api-gateway-authorizer" class="md-nav__link">
@@ -1032,6 +1057,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#rabbit-mq" class="md-nav__link">
+    Rabbit MQ
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#s3" class="md-nav__link">
     S3
   </a>
@@ -1152,6 +1184,10 @@ by using the <code>event_source</code> decorator.</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="#active-mq">Active MQ</a></td>
+<td><code>ActiveMQEvent</code></td>
+</tr>
+<tr>
 <td><a href="#api-gateway-authorizer">API Gateway Authorizer</a></td>
 <td><code>APIGatewayAuthorizerRequestEvent</code></td>
 </tr>
@@ -1208,6 +1244,10 @@ by using the <code>event_source</code> decorator.</p>
 <td><code>KinesisStreamEvent</code></td>
 </tr>
 <tr>
+<td><a href="#rabbit-mq">Rabbit MQ</a></td>
+<td><code>RabbitMQEvent</code></td>
+</tr>
+<tr>
 <td><a href="#s3">S3</a></td>
 <td><code>S3Event</code></td>
 </tr>
@@ -1234,13 +1274,49 @@ by using the <code>event_source</code> decorator.</p>
 <p>The examples provided below are far from exhaustive - the data classes themselves are designed to provide a form of
 documentation inherently (via autocompletion, types and docstrings).</p>
 </div>
+<h3 id="active-mq">Active MQ<a class="headerlink" href="#active-mq" title="Permanent link">&para;</a></h3>
+<p>It is used for <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-mq.html" target="_blank">Active MQ payloads</a>, also see
+the <a href="https://aws.amazon.com/blogs/compute/using-amazon-mq-as-an-event-source-for-aws-lambda/" target="_blank">AWS blog post</a>
+for more details.</p>
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">event_source</span>
+</span><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes.active_mq_event</span> <span class="kn">import</span> <span class="n">ActiveMQEvent</span>
+</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+
+<span class="hll"><span class="nd">@event_source</span><span class="p">(</span><span class="n">data_class</span><span class="o">=</span><span class="n">ActiveMQEvent</span><span class="p">)</span>
+</span><span class="hll"><span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">ActiveMQEvent</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+</span>    <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">messages</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MessageID: </span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">message_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">json_data</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Process json in base64 encoded data str&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
 <h3 id="api-gateway-authorizer">API Gateway Authorizer<a class="headerlink" href="#api-gateway-authorizer" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>New in 1.20.0</p>
 </blockquote>
 <p>It is used for <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html" target="_blank">API Gateway Rest API Lambda Authorizer payload</a>.</p>
 <p>Use <strong><code>APIGatewayAuthorizerRequestEvent</code></strong> for type <code>REQUEST</code> and <strong><code>APIGatewayAuthorizerTokenEvent</code></strong> for type <code>TOKEN</code>.</p>
-<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">app_type_request.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">app_type_request.py</label><div class="tabbed-content">
 <p>This example uses the <code>APIGatewayAuthorizerResponse</code> to decline a given request if the user is not found.</p>
 <p>When the user is found, it includes the user details in the request context that will be available to the back-end, and returns a full access policy for admin users.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1347,7 +1423,7 @@ documentation inherently (via autocompletion, types and docstrings).</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">app_type_token.py</label><div class="tabbed-content">
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">app_type_token.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1405,7 +1481,7 @@ documentation inherently (via autocompletion, types and docstrings).</p>
 </blockquote>
 <p>It is used for <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-lambda-authorizer.html" target="_blank">API Gateway HTTP API Lambda Authorizer payload version 2</a>.
 See also <a href="https://aws.amazon.com/blogs/compute/introducing-iam-and-lambda-authorizers-for-amazon-api-gateway-http-apis/" target="_blank">this blog post</a> for more details.</p>
-<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">app.py</label><div class="tabbed-content">
 <p>This example looks up user details via <code>x-token</code> header. It uses <code>APIGatewayAuthorizerResponseV2</code> to return a deny policy when user is not found or authorized.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1460,7 +1536,7 @@ See also <a href="https://aws.amazon.com/blogs/compute/introducing-iam-and-lambd
 </div>
 <h3 id="api-gateway-proxy">API Gateway Proxy<a class="headerlink" href="#api-gateway-proxy" title="Permanent link">&para;</a></h3>
 <p>It is used for either API Gateway REST API or HTTP API using v1 proxy event.</p>
-<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1484,7 +1560,7 @@ See also <a href="https://aws.amazon.com/blogs/compute/introducing-iam-and-lambd
 </div>
 <h3 id="api-gateway-proxy-v2">API Gateway Proxy V2<a class="headerlink" href="#api-gateway-proxy-v2" title="Permanent link">&para;</a></h3>
 <p>It is used for HTTP API using v2 proxy event.</p>
-<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1502,7 +1578,7 @@ See also <a href="https://aws.amazon.com/blogs/compute/introducing-iam-and-lambd
 </div>
 <h3 id="application-load-balancer">Application Load Balancer<a class="headerlink" href="#application-load-balancer" title="Permanent link">&para;</a></h3>
 <p>Is it used for Application load balancer event.</p>
-<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1526,7 +1602,7 @@ See also <a href="https://aws.amazon.com/blogs/compute/introducing-iam-and-lambd
 See blog post <a href="https://aws.amazon.com/blogs/mobile/appsync-lambda-auth/" target="_blank">Introducing Lambda authorization for AWS AppSync GraphQL APIs</a>
 or read the Amplify documentation on using <a href="https://docs.amplify.aws/lib/graphqlapi/authz/q/platform/js#aws-lambda" target="_blank">AWS Lambda for authorization</a> with AppSync.</p>
 <p>In this example extract the <code>requestId</code> as the <code>correlation_id</code> for logging, used <code>@event_source</code> decorator and builds the AppSync authorizer using the <code>AppSyncAuthorizerResponse</code> helper.</p>
-<div class="tabbed-set" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1603,7 +1679,7 @@ or read the Amplify documentation on using <a href="https://docs.amplify.aws/lib
 <p>Used when building Lambda GraphQL Resolvers with <a href="https://docs.amplify.aws/cli/graphql-transformer/function" target="_blank">Amplify GraphQL Transform Library</a> (<code>@function</code>),
 and <a href="https://aws.amazon.com/blogs/mobile/appsync-direct-lambda/" target="_blank">AppSync Direct Lambda Resolvers</a>.</p>
 <p>In this example, we also use the new Logger <code>correlation_id</code> and built-in <code>correlation_paths</code> to extract, if available, X-Ray Trace ID in AppSync request headers:</p>
-<div class="tabbed-set" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="10:3"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1670,7 +1746,7 @@ and <a href="https://aws.amazon.com/blogs/mobile/appsync-direct-lambda/" target=
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">Example AppSync Event</label><div class="tabbed-content">
+<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">Example AppSync Event</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1723,7 +1799,7 @@ and <a href="https://aws.amazon.com/blogs/mobile/appsync-direct-lambda/" target=
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><label for="__tabbed_9_3">Example CloudWatch Log</label><div class="tabbed-content">
+<input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><label for="__tabbed_10_3">Example CloudWatch Log</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1764,7 +1840,7 @@ and <a href="https://aws.amazon.com/blogs/mobile/appsync-direct-lambda/" target=
 <h3 id="cloudwatch-logs">CloudWatch Logs<a class="headerlink" href="#cloudwatch-logs" title="Permanent link">&para;</a></h3>
 <p>CloudWatch Logs events by default are compressed and base64 encoded. You can use the helper function provided to decode,
 decompress and parse json data from the event.</p>
-<div class="tabbed-set" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1788,7 +1864,7 @@ decompress and parse json data from the event.</p>
 </div>
 <h3 id="codepipeline-job">CodePipeline Job<a class="headerlink" href="#codepipeline-job" title="Permanent link">&para;</a></h3>
 <p>Data classes and utility functions to help create continuous delivery pipelines tasks with AWS Lambda</p>
-<div class="tabbed-set" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1930,7 +2006,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </tbody>
 </table>
 <h4 id="post-confirmation-example">Post Confirmation Example<a class="headerlink" href="#post-confirmation-example" title="Permanent link">&para;</a></h4>
-<div class="tabbed-set" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1954,7 +2030,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 <p>In this example we are modifying the wrapped dict response fields, so we need to return the json serializable wrapped event in <code>event.raw_event</code></p>
 </div>
 <p>This example is based on the AWS Cognito docs for <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-define-auth-challenge.html" target="_blank">Define Auth Challenge Lambda Trigger</a>.</p>
-<div class="tabbed-set" data-tabs="13:4"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="14:4"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2019,7 +2095,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><label for="__tabbed_13_2">SPR_A response</label><div class="tabbed-content">
+<input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><label for="__tabbed_14_2">SPR_A response</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2082,7 +2158,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_13_3" name="__tabbed_13" type="radio" /><label for="__tabbed_13_3">PASSWORD_VERIFIER success response</label><div class="tabbed-content">
+<input id="__tabbed_14_3" name="__tabbed_14" type="radio" /><label for="__tabbed_14_3">PASSWORD_VERIFIER success response</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2153,7 +2229,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_13_4" name="__tabbed_13" type="radio" /><label for="__tabbed_13_4">CUSTOM_CHALLENGE success response</label><div class="tabbed-content">
+<input id="__tabbed_14_4" name="__tabbed_14" type="radio" /><label for="__tabbed_14_4">CUSTOM_CHALLENGE success response</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2233,7 +2309,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </div>
 <h4 id="create-auth-challenge-example">Create Auth Challenge Example<a class="headerlink" href="#create-auth-challenge-example" title="Permanent link">&para;</a></h4>
 <p>This example is based on the AWS Cognito docs for <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-create-auth-challenge.html" target="_blank">Create Auth Challenge Lambda Trigger</a>.</p>
-<div class="tabbed-set" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2259,7 +2335,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </div>
 <h4 id="verify-auth-challenge-response-example">Verify Auth Challenge Response Example<a class="headerlink" href="#verify-auth-challenge-response-example" title="Permanent link">&para;</a></h4>
 <p>This example is based on the AWS Cognito docs for <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-verify-auth-challenge-response.html" target="_blank">Verify Auth Challenge Response Lambda Trigger</a>.</p>
-<div class="tabbed-set" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="16:1"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2285,7 +2361,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 <blockquote>
 <p>New in 1.11.0</p>
 </blockquote>
-<div class="tabbed-set" data-tabs="16:1"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="17:1"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><label for="__tabbed_17_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2319,7 +2395,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 <p>The DynamoDB data class utility provides the base class for <code>DynamoDBStreamEvent</code>, a typed class for
 attributes values (<code>AttributeValue</code>), as well as enums for stream view type (<code>StreamViewType</code>) and event type
 (<code>DynamoDBRecordEventName</code>).</p>
-<div class="tabbed-set" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><label for="__tabbed_17_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><label for="__tabbed_18_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2348,7 +2424,7 @@ attributes values (<code>AttributeValue</code>), as well as enums for stream vie
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><label for="__tabbed_17_2">multiple_records_types.py</label><div class="tabbed-content">
+<input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><label for="__tabbed_18_2">multiple_records_types.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2385,7 +2461,7 @@ attributes values (<code>AttributeValue</code>), as well as enums for stream vie
 </div>
 </div>
 <h3 id="eventbridge">EventBridge<a class="headerlink" href="#eventbridge" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set" data-tabs="18:1"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><label for="__tabbed_18_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="19:1"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><label for="__tabbed_19_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2402,7 +2478,7 @@ attributes values (<code>AttributeValue</code>), as well as enums for stream vie
 <h3 id="kinesis-streams">Kinesis streams<a class="headerlink" href="#kinesis-streams" title="Permanent link">&para;</a></h3>
 <p>Kinesis events by default contain base64 encoded data. You can use the helper function to access the data either as json
 or plain text, depending on the original payload.</p>
-<div class="tabbed-set" data-tabs="19:1"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><label for="__tabbed_19_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="20:1"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><label for="__tabbed_20_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2432,8 +2508,48 @@ or plain text, depending on the original payload.</p>
 </td></tr></table>
 </div>
 </div>
+<h3 id="rabbit-mq">Rabbit MQ<a class="headerlink" href="#rabbit-mq" title="Permanent link">&para;</a></h3>
+<p>It is used for <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-mq.html" target="_blank">Rabbit MQ payloads</a>, also see
+the <a href="https://aws.amazon.com/blogs/compute/using-amazon-mq-for-rabbitmq-as-an-event-source-for-lambda/" target="_blank">blog post</a>
+for more details.</p>
+<div class="tabbed-set" data-tabs="21:1"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><label for="__tabbed_21_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes</span> <span class="kn">import</span> <span class="n">event_source</span>
+</span><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.data_classes.rabbit_mq_event</span> <span class="kn">import</span> <span class="n">RabbitMQEvent</span>
+</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+
+<span class="hll"><span class="nd">@event_source</span><span class="p">(</span><span class="n">data_class</span><span class="o">=</span><span class="n">RabbitMQEvent</span><span class="p">)</span>
+</span><span class="hll"><span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">RabbitMQEvent</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+</span>    <span class="k">for</span> <span class="n">queue_name</span><span class="p">,</span> <span class="n">messages</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">rmq_messages_by_queue</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Messages for queue: </span><span class="si">{</span><span class="n">queue_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MessageID: </span><span class="si">{</span><span class="n">message</span><span class="o">.</span><span class="n">basic_properties</span><span class="o">.</span><span class="n">message_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">data</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">json_data</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Process json in base64 encoded data str&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
 <h3 id="s3">S3<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set" data-tabs="20:1"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><label for="__tabbed_20_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="22:1"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><label for="__tabbed_22_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2463,7 +2579,7 @@ or plain text, depending on the original payload.</p>
 </div>
 <h3 id="s3-object-lambda">S3 Object Lambda<a class="headerlink" href="#s3-object-lambda" title="Permanent link">&para;</a></h3>
 <p>This example is based on the AWS Blog post <a href="https://aws.amazon.com/blogs/aws/introducing-amazon-s3-object-lambda-use-your-code-to-process-data-as-it-is-being-retrieved-from-s3/" target="_blank">Introducing Amazon S3 Object Lambda – Use Your Code to Process Data as It Is Being Retrieved from S3</a>.</p>
-<div class="tabbed-set" data-tabs="21:1"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><label for="__tabbed_21_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="23:1"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><label for="__tabbed_23_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2524,7 +2640,7 @@ or plain text, depending on the original payload.</p>
 </div>
 </div>
 <h3 id="ses">SES<a class="headerlink" href="#ses" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set" data-tabs="22:1"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><label for="__tabbed_22_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="24:1"><input checked="checked" id="__tabbed_24_1" name="__tabbed_24" type="radio" /><label for="__tabbed_24_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2549,7 +2665,7 @@ or plain text, depending on the original payload.</p>
 </div>
 </div>
 <h3 id="sns">SNS<a class="headerlink" href="#sns" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set" data-tabs="23:1"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><label for="__tabbed_23_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="25:1"><input checked="checked" id="__tabbed_25_1" name="__tabbed_25" type="radio" /><label for="__tabbed_25_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2574,7 +2690,7 @@ or plain text, depending on the original payload.</p>
 </div>
 </div>
 <h3 id="sqs">SQS<a class="headerlink" href="#sqs" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set" data-tabs="24:1"><input checked="checked" id="__tabbed_24_1" name="__tabbed_24" type="radio" /><label for="__tabbed_24_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="26:1"><input checked="checked" id="__tabbed_26_1" name="__tabbed_26" type="radio" /><label for="__tabbed_26_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2600,7 +2716,7 @@ or plain text, depending on the original payload.</p>
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-09-09
+      Last update: 2021-10-29
     
   </small>
 </div>
@@ -2689,7 +2805,7 @@ or plain text, depending on the original payload.</p>
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.8397ff9e.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.f89c2efe.min.js"></script>
+      <script src="../../assets/javascripts/bundle.1e84347e.min.js"></script>
       
         <script src="../../javascript/aws-amplify.min.js"></script>
       
