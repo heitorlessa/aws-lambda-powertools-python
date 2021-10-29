@@ -816,21 +816,19 @@
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@lambda_handler_decorator</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@lambda_handler_decorator</span>
 <span class="hll"><span class="k">def</span> <span class="nf">obfuscate_sensitive_data</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">fields</span><span class="p">:</span> <span class="n">List</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 </span>    <span class="c1"># Obfuscate email before calling Lambda handler</span>
     <span class="k">if</span> <span class="n">fields</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
-            <span class="n">field</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">event</span><span class="p">:</span>
-                <span class="n">event</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">obfuscate</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+                <span class="n">event</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">obfuscate</span><span class="p">(</span><span class="n">event</span><span class="p">[</span><span class="n">field</span><span class="p">])</span>
 
     <span class="k">return</span> <span class="n">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
 
-<span class="hll"><span class="nd">@obfuscate_sensitive_data</span><span class="p">(</span><span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">])</span>
-</span><span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="o">...</span>
+<span class="nd">@obfuscate_sensitive_data</span><span class="p">(</span><span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;email&quot;</span><span class="p">])</span>
+<span class="hll"><span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+</span>    <span class="o">...</span>
 </code></pre></div>
 </td></tr></table>
 </div>
@@ -907,7 +905,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-08-15
+      Last update: 2021-10-23
     
   </small>
 </div>

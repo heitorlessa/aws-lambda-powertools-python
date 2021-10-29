@@ -1028,8 +1028,10 @@
 <span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
-<span class="normal">40</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.parser</span> <span class="kn">import</span> <span class="n">event_parser</span><span class="p">,</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
+<span class="normal">40</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.parser</span> <span class="kn">import</span> <span class="n">event_parser</span><span class="p">,</span> <span class="n">BaseModel</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.typing</span> <span class="kn">import</span> <span class="n">LambdaContext</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">import</span> <span class="nn">json</span>
 
@@ -1044,14 +1046,14 @@
     <span class="n">items</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">OrderItem</span><span class="p">]</span> <span class="c1"># nesting models are supported</span>
     <span class="n">optional_field</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="c1"># this field may or may not be available when parsing</span>
 
-
-<span class="hll"><span class="nd">@event_parser</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">Order</span><span class="p">)</span>
-</span><span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">Order</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+<span class="hll">
+</span><span class="nd">@event_parser</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">Order</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">Order</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">items</span><span class="p">)</span>
 
-    <span class="n">order_items</span> <span class="o">=</span> <span class="p">[</span><span class="n">items</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">items</span><span class="p">]</span>
+    <span class="n">order_items</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">event</span><span class="o">.</span><span class="n">items</span><span class="p">]</span>
     <span class="o">...</span>
 
 <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
@@ -1111,7 +1113,9 @@
 <span class="normal">34</span>
 <span class="normal">35</span>
 <span class="normal">36</span>
-<span class="normal">37</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.parser</span> <span class="kn">import</span> <span class="n">parse</span><span class="p">,</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
+<span class="normal">37</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.parser</span> <span class="kn">import</span> <span class="n">parse</span><span class="p">,</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="k">class</span> <span class="nc">OrderItem</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
@@ -1130,18 +1134,18 @@
     <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;My order&quot;</span><span class="p">,</span>
     <span class="s2">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="c1"># this will cause a validation error</span>
-<span class="hll">            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1015938732</span><span class="p">],</span>
-</span>            <span class="s2">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="hll">            <span class="c1"># this will cause a validation error</span>
+</span>            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1015938732</span><span class="p">],</span>
+            <span class="s2">&quot;quantity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
             <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;item xpto&quot;</span>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">my_function</span><span class="p">():</span>
-    <span class="k">try</span><span class="p">:</span>
-<span class="hll">        <span class="n">parsed_payload</span><span class="p">:</span> <span class="n">Order</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">Order</span><span class="p">)</span>
-</span>        <span class="c1"># payload dict is now parsed into our model</span>
+<span class="hll">    <span class="k">try</span><span class="p">:</span>
+</span>        <span class="n">parsed_payload</span><span class="p">:</span> <span class="n">Order</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">Order</span><span class="p">)</span>
+        <span class="c1"># payload dict is now parsed into our model</span>
         <span class="k">return</span> <span class="n">parsed_payload</span><span class="o">.</span><span class="n">items</span>
     <span class="k">except</span> <span class="n">ValidationError</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">{</span>
@@ -1877,7 +1881,7 @@ Codes:
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-10-05
+      Last update: 2021-10-23
     
   </small>
 </div>

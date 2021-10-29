@@ -847,8 +847,8 @@
 <span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">MyLambdaFunction</span><span class="p">:</span>
     <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
     <span class="nt">Properties</span><span class="p">:</span>
-    <span class="nt">Layers</span><span class="p">:</span>
-<span class="hll">        <span class="p p-Indicator">-</span> <span class="kt">!Sub</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPython:3</span>
+        <span class="nt">Layers</span><span class="p">:</span>
+<span class="hll">            <span class="p p-Indicator">-</span> <span class="kt">!Sub</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPython:3</span>
 </span></code></pre></div>
 </td></tr></table>
 </div>
@@ -1154,16 +1154,16 @@ General information
 <span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AwsLambdaPowertoolsPythonLayer</span><span class="p">:</span>
     <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Application</span>
     <span class="nt">Properties</span><span class="p">:</span>
-    <span class="nt">Location</span><span class="p">:</span>
-<span class="hll">        <span class="nt">ApplicationId</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer</span>
-</span><span class="hll">        <span class="nt">SemanticVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.21.1</span> <span class="c1"># change to latest semantic version available in SAR</span>
+        <span class="nt">Location</span><span class="p">:</span>
+<span class="hll">            <span class="nt">ApplicationId</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer</span>
+</span><span class="hll">            <span class="nt">SemanticVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.21.1</span> <span class="c1"># change to latest semantic version available in SAR</span>
 </span>
 <span class="nt">MyLambdaFunction</span><span class="p">:</span>
     <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
     <span class="nt">Properties</span><span class="p">:</span>
-    <span class="nt">Layers</span><span class="p">:</span>
-<span class="hll">        <span class="c1"># fetch Layer ARN from SAR App stack output</span>
-</span><span class="hll">        <span class="p p-Indicator">-</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">AwsLambdaPowertoolsPythonLayer.Outputs.LayerVersionArn</span>
+        <span class="nt">Layers</span><span class="p">:</span>
+<span class="hll">            <span class="c1"># fetch Layer ARN from SAR App stack output</span>
+</span><span class="hll">            <span class="p p-Indicator">-</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">AwsLambdaPowertoolsPythonLayer.Outputs.LayerVersionArn</span>
 </span></code></pre></div>
 </td></tr></table>
 </div>
@@ -1195,10 +1195,10 @@ General information
 <span class="hll">    <span class="nt">AwsLambdaPowertoolsPythonLayer</span><span class="p">:</span>
 </span><span class="hll">        <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Application</span>
 </span>        <span class="nt">Properties</span><span class="p">:</span>
-        <span class="nt">Location</span><span class="p">:</span>
-            <span class="nt">ApplicationId</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer</span>
-            <span class="c1"># Find latest from github.com/awslabs/aws-lambda-powertools-python/releases</span>
-            <span class="nt">SemanticVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.21.1</span>
+            <span class="nt">Location</span><span class="p">:</span>
+                <span class="nt">ApplicationId</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:serverlessrepo:eu-west-1:057560766410:applications/aws-lambda-powertools-python-layer</span>
+                <span class="c1"># Find latest from github.com/awslabs/aws-lambda-powertools-python/releases</span>
+                <span class="nt">SemanticVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.21.1</span>
 </code></pre></div>
 </td></tr></table>
 </div>
@@ -1662,7 +1662,7 @@ General information
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-10-12
+      Last update: 2021-10-24
     
   </small>
 </div>
