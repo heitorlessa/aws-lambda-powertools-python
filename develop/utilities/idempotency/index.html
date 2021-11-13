@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.5">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.cdeb8541.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -740,6 +740,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#using-a-dynamodb-table-with-a-composite-primary-key" class="md-nav__link">
+    Using a DynamoDB table with a composite primary key
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#bring-your-own-persistent-store" class="md-nav__link">
     Bring your own persistent store
   </a>
@@ -1022,6 +1029,13 @@
           <li class="md-nav__item">
   <a href="#customizing-boto-configuration" class="md-nav__link">
     Customizing boto configuration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-a-dynamodb-table-with-a-composite-primary-key" class="md-nav__link">
+    Using a DynamoDB table with a composite primary key
   </a>
   
 </li>
@@ -1542,18 +1556,55 @@ estimate the cost.</p>
 <p>Bear in mind that the entire Lambda handler is treated as a single idempotent operation. If your Lambda handler can cause multiple side effects, consider splitting it into separate functions.</p>
 </div>
 <h3 id="handling-exceptions">Handling exceptions<a class="headerlink" href="#handling-exceptions" title="Permanent link">&para;</a></h3>
-<p><strong>The record in the persistence layer will be deleted</strong> if your Lambda handler returns an exception. This means that new invocations will execute again despite having the same payload.</p>
-<p>If you don't want the record to be deleted, you need to catch exceptions within the handler and return a successful response.</p>
+<p>If you are using the <code>idempotent</code> decorator on your Lambda handler, any unhandled exceptions that are raised during the code execution will cause <strong>the record in the persistence layer to be deleted</strong>.
+This means that new invocations will execute your code again despite having the same payload. If you don't want the record to be deleted, you need to catch exceptions within the idempotent function and return a successful response.</p>
 <p><img alt="Idempotent sequence exception" src="../../media/idempotent_sequence_exception.png" /></p>
+<p>If you are using <code>idempotent_function</code>, any unhandled exceptions that are raised <em>inside</em> the decorated function will cause the record in the persistence layer to be deleted, and allow the function to be executed again if retried.
+If an Exception is raised <em>outside</em> the scope of the decorated function and after your function has been called, the persistent record will not be affected. In this case, idempotency will be maintained for your decorated function. Example:</p>
+<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">app.py</label><div class="tabbed-content"></div>
+</div>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="hll">    <span class="c1"># If an exception is raised here, no idempotent record will ever get created as the</span>
+</span><span class="hll">    <span class="c1"># idempotent function does not get called</span>
+</span><span class="hll">    <span class="n">do_some_stuff</span><span class="p">()</span>
+</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">call_external_service</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="s2">&quot;user1&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">})</span>
+
+<span class="hll">    <span class="c1"># This exception will not cause the idempotent record to be deleted, since it</span>
+</span><span class="hll">    <span class="c1"># happens after the decorated function has been successfully called</span>
+</span><span class="hll">    <span class="k">raise</span> <span class="ne">Exception</span>
+</span>
+
+<span class="nd">@idempotent_function</span><span class="p">(</span><span class="n">data_keyword_argument</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">persistence_store</span><span class="o">=</span><span class="n">dynamodb</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">call_external_service</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://example.com&#39;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">],</span> <span class="s2">&quot;transaction_id&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]}</span>
+    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><strong>We will raise <code>IdempotencyPersistenceLayerError</code></strong> if any of the calls to the persistence layer  fail unexpectedly.</p>
-<p>As this happens outside the scope of your Lambda handler, you are not going to be able to catch it.</p>
+<p><strong>We will raise <code>IdempotencyPersistenceLayerError</code></strong> if any of the calls to the persistence layer fail unexpectedly.</p>
+<p>As this happens outside the scope of your decorated function, you are not able to catch it if you're using the <code>idempotent</code> decorator on your Lambda handler.</p>
 </div>
 <h3 id="persistence-layers">Persistence layers<a class="headerlink" href="#persistence-layers" title="Permanent link">&para;</a></h3>
 <h4 id="dynamodbpersistencelayer">DynamoDBPersistenceLayer<a class="headerlink" href="#dynamodbpersistencelayer" title="Permanent link">&para;</a></h4>
 <p>This persistence layer is built-in, and you can either use an existing DynamoDB table or create a new one dedicated for idempotency state (recommended).</p>
-<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1577,7 +1628,7 @@ estimate the cost.</p>
 </td></tr></table>
 </div>
 </div>
-<p>These are knobs you can use when using DynamoDB as a persistence layer:</p>
+<p>When using DynamoDB as a persistence layer, you can alter the attribute names by passing these parameters when initializing the persistence layer:</p>
 <table>
 <thead>
 <tr>
@@ -1598,7 +1649,7 @@ estimate the cost.</p>
 <td><strong>key_attr</strong></td>
 <td></td>
 <td><code>id</code></td>
-<td>Primary key of the table. Hashed representation of the payload</td>
+<td>Partition key of the table. Hashed representation of the payload (unless <strong>sort_key_attr</strong> is specified)</td>
 </tr>
 <tr>
 <td><strong>expiry_attr</strong></td>
@@ -1623,6 +1674,18 @@ estimate the cost.</p>
 <td></td>
 <td><code>validation</code></td>
 <td>Hashed representation of the parts of the event used for validation</td>
+</tr>
+<tr>
+<td><strong>sort_key_attr</strong></td>
+<td></td>
+<td></td>
+<td>Sort key of the table (if table is configured with a sort key).</td>
+</tr>
+<tr>
+<td><strong>static_pk_value</strong></td>
+<td></td>
+<td><code>idempotency#{LAMBDA_FUNCTION_NAME}</code></td>
+<td>Static value to use as the partition key. Only used when <strong>sort_key_attr</strong> is set.</td>
 </tr>
 </tbody>
 </table>
@@ -1688,7 +1751,7 @@ estimate the cost.</p>
 <p>This means it will be effective in cases where your function's concurrency is low in comparison to the number of "retry" invocations with the same payload, because cache might be empty.</p>
 </div>
 <p>You can enable in-memory caching with the <strong><code>use_local_cache</code></strong> parameter:</p>
-<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1726,7 +1789,7 @@ estimate the cost.</p>
 </div>
 <p>In most cases, it is not desirable to store the idempotency records forever. Rather, you want to guarantee that the same payload won't be executed within a period of time.</p>
 <p>You can change this window with the <strong><code>expires_after_seconds</code></strong> parameter:</p>
-<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1768,7 +1831,7 @@ estimate the cost.</p>
 </div>
 <p>By default, we will return the same result as it returned before, however in this instance it may be misleading - We provide a fail fast payload validation to address this edge case.</p>
 <p>With <strong><code>payload_validation_jmespath</code></strong>, you can provide an additional JMESPath expression to specify which part of the event body should be validated against previous idempotent invocations</p>
-<div class="tabbed-set" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1823,7 +1886,7 @@ estimate the cost.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">Example Event 1</label><div class="tabbed-content">
+<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">Example Event 1</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1844,7 +1907,7 @@ estimate the cost.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><label for="__tabbed_8_3">Example Event 2</label><div class="tabbed-content">
+<input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><label for="__tabbed_9_3">Example Event 2</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1876,7 +1939,7 @@ estimate the cost.</p>
 <h3 id="making-idempotency-key-required">Making idempotency key required<a class="headerlink" href="#making-idempotency-key-required" title="Permanent link">&para;</a></h3>
 <p>If you want to enforce that an idempotency key is required, you can set <strong><code>raise_on_no_idempotency_key</code></strong> to <code>True</code>.</p>
 <p>This means that we will raise <strong><code>IdempotencyKeyError</code></strong> if the evaluation of <strong><code>event_key_jmespath</code></strong> is <code>None</code>.</p>
-<div class="tabbed-set" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="10:3"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1909,7 +1972,7 @@ estimate the cost.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">Success Event</label><div class="tabbed-content">
+<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">Success Event</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1926,7 +1989,7 @@ estimate the cost.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><label for="__tabbed_9_3">Failure Event</label><div class="tabbed-content">
+<input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><label for="__tabbed_10_3">Failure Event</label><div class="tabbed-content">
 <p>Notice that <code>order_id</code> is now accidentally within <code>user</code> key</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1947,7 +2010,7 @@ estimate the cost.</p>
 </div>
 <h3 id="customizing-boto-configuration">Customizing boto configuration<a class="headerlink" href="#customizing-boto-configuration" title="Permanent link">&para;</a></h3>
 <p>The <strong><code>boto_config</code></strong> and <strong><code>boto3_session</code></strong> parameters enable you to pass in a custom <a href="https://botocore.amazonaws.com/v1/documentation/api/latest/reference/config.html">botocore config object</a> or a custom <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html">boto3 session</a> when constructing the persistence store.</p>
-<div class="tabbed-set" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">Custom session</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">Custom session</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1982,7 +2045,7 @@ estimate the cost.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">Custom config</label><div class="tabbed-content">
+<input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><label for="__tabbed_11_2">Custom config</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2016,11 +2079,75 @@ estimate the cost.</p>
 </td></tr></table>
 </div>
 </div>
+<h3 id="using-a-dynamodb-table-with-a-composite-primary-key">Using a DynamoDB table with a composite primary key<a class="headerlink" href="#using-a-dynamodb-table-with-a-composite-primary-key" title="Permanent link">&para;</a></h3>
+<p>If you wish to use this utility with a DynamoDB table that is configured with a composite primary key (uses both partition key and sort key), you
+should set the <code>sort_key_attr</code> parameter when initializing your persistence layer. When this parameter is set, the partition key value for all idempotency entries
+will be the same, with the idempotency key being saved as the sort key instead of the partition key. You can optionally set a static value for the partition
+key using the <code>static_pk_value</code> parameter. If not specified, it will default to <code>idempotency#{LAMBDA_FUNCTION_NAME}</code>.</p>
+<div class="tabbed-set" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">MyLambdaFunction</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.idempotency</span> <span class="kn">import</span> <span class="n">DynamoDBPersistenceLayer</span><span class="p">,</span> <span class="n">idempotent</span>
+
+<span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">DynamoDBPersistenceLayer</span><span class="p">(</span>
+    <span class="n">table_name</span><span class="o">=</span><span class="s2">&quot;IdempotencyTable&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="n">sort_key_attr</span><span class="o">=</span><span class="s1">&#39;sort_key&#39;</span><span class="p">)</span>
+</span>
+
+<span class="nd">@idempotent</span><span class="p">(</span><span class="n">persistence_store</span><span class="o">=</span><span class="n">persistence_layer</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">event</span><span class="p">[</span><span class="s1">&#39;body&#39;</span><span class="p">][</span><span class="s1">&#39;id]}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<p>The example function above would cause data to be stored in DynamoDB like this:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>sort_key</th>
+<th>expiration</th>
+<th>status</th>
+<th>data</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>idempotency#MyLambdaFunction</td>
+<td>1e956ef7da78d0cb890be999aecc0c9e</td>
+<td>1636549553</td>
+<td>COMPLETED</td>
+<td>{"id": 12391, "message": "success"}</td>
+</tr>
+<tr>
+<td>idempotency#MyLambdaFunction</td>
+<td>2b2cdb5f86361e97b4383087c1ffdf27</td>
+<td>1636549571</td>
+<td>COMPLETED</td>
+<td>{"id": 527212, "message": "success"}</td>
+</tr>
+<tr>
+<td>idempotency#MyLambdaFunction</td>
+<td>f091d2527ad1c78f05d54cc3f363be80</td>
+<td>1636549585</td>
+<td>IN_PROGRESS</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h3 id="bring-your-own-persistent-store">Bring your own persistent store<a class="headerlink" href="#bring-your-own-persistent-store" title="Permanent link">&para;</a></h3>
 <p>This utility provides an abstract base class (ABC), so that you can implement your choice of persistent storage layer.</p>
 <p>You can inherit from the <code>BasePersistenceLayer</code> class and implement the abstract methods <code>_get_record</code>, <code>_put_record</code>,
 <code>_update_record</code> and <code>_delete_record</code>.</p>
-<div class="tabbed-set" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">DynamoDB persistence layer implementation excerpt</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">DynamoDB persistence layer implementation excerpt</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
 <span class="normal">  3</span>
@@ -2290,7 +2417,7 @@ estimate the cost.</p>
 event - not the "raw" event Lambda was invoked with. You will need to account for this if you set the
 <code>event_key_jmespath</code>.</p>
 </div>
-<div class="tabbed-set" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2329,7 +2456,7 @@ event - not the "raw" event Lambda was invoked with. You will need to account fo
 <h3 id="disabling-the-idempotency-utility">Disabling the idempotency utility<a class="headerlink" href="#disabling-the-idempotency-utility" title="Permanent link">&para;</a></h3>
 <p>When testing your code, you may wish to disable the idempotency logic altogether and focus on testing your business logic. To do this, you can set the environment variable <code>POWERTOOLS_IDEMPOTENCY_DISABLED</code>
 with a truthy value. If you prefer setting this for specific tests, and are using Pytest, you can use <a href="https://docs.pytest.org/en/latest/monkeypatch.html">monkeypatch</a> fixture:</p>
-<div class="tabbed-set" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">tests.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">tests.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2344,7 +2471,7 @@ with a truthy value. If you prefer setting this for specific tests, and are usin
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><label for="__tabbed_13_2">app.py</label><div class="tabbed-content">
+<input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><label for="__tabbed_15_2">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2378,7 +2505,7 @@ with a truthy value. If you prefer setting this for specific tests, and are usin
 </div>
 <h3 id="testing-with-dynamodb-local">Testing with DynamoDB Local<a class="headerlink" href="#testing-with-dynamodb-local" title="Permanent link">&para;</a></h3>
 <p>To test with <a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html">DynamoDB Local</a>, you can replace the <code>Table</code> resource used by the persistence layer with one you create inside your tests. This allows you to set the endpoint_url.</p>
-<div class="tabbed-set" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">tests.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">tests.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2405,7 +2532,7 @@ with a truthy value. If you prefer setting this for specific tests, and are usin
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><label for="__tabbed_14_2">app.py</label><div class="tabbed-content">
+<input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><label for="__tabbed_16_2">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2440,7 +2567,7 @@ with a truthy value. If you prefer setting this for specific tests, and are usin
 <h3 id="how-do-i-mock-all-dynamodb-io-operations">How do I mock all DynamoDB I/O operations<a class="headerlink" href="#how-do-i-mock-all-dynamodb-io-operations" title="Permanent link">&para;</a></h3>
 <p>The idempotency utility lazily creates the dynamodb <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html#table">Table</a> which it uses to access DynamoDB.
 This means it is possible to pass a mocked Table resource, or stub various methods.</p>
-<div class="tabbed-set" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">tests.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><label for="__tabbed_17_1">tests.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2463,7 +2590,7 @@ This means it is possible to pass a mocked Table resource, or stub various metho
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><label for="__tabbed_15_2">app.py</label><div class="tabbed-content">
+<input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><label for="__tabbed_17_2">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2506,7 +2633,7 @@ This means it is possible to pass a mocked Table resource, or stub various metho
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-10-05
+      Last update: 2021-11-12
     
   </small>
 </div>
@@ -2592,10 +2719,10 @@ This means it is possible to pass a mocked Table resource, or stub various metho
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.8397ff9e.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.1e84347e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
       
         <script src="../../javascript/aws-amplify.min.js"></script>
       
