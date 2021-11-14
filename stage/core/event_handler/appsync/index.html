@@ -503,6 +503,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#split-operations-with-router" class="md-nav__link">
+    Split operations with Router
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -825,6 +832,13 @@
           <li class="md-nav__item">
   <a href="#custom-data-models" class="md-nav__link">
     Custom data models
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#split-operations-with-router" class="md-nav__link">
+    Split operations with Router
   </a>
   
 </li>
@@ -2129,11 +2143,97 @@
 </td></tr></table>
 </div>
 </div>
+<h3 id="split-operations-with-router">Split operations with Router<a class="headerlink" href="#split-operations-with-router" title="Permanent link">&para;</a></h3>
+<p>As you grow the number of related GraphQL operations a given Lambda function should handle, it is natural to split them into separate files to ease maintenance - That's where the <code>Router</code> feature is useful.</p>
+<p>Let's assume you have <code>app.py</code> as your Lambda function entrypoint and routes in <code>users.py</code>, this is how you'd use the <code>Router</code> feature.</p>
+<div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">resolvers/location.py</label><div class="tabbed-content">
+<p>We import <strong>Router</strong> instead of <strong>AppSyncResolver</strong>; syntax wise is exactly the same.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.appsync</span> <span class="kn">import</span> <span class="n">Router</span>
+</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">child</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="hll"><span class="n">router</span> <span class="o">=</span> <span class="n">Router</span><span class="p">()</span>
+</span>
+
+<span class="hll"><span class="nd">@router</span><span class="o">.</span><span class="n">resolver</span><span class="p">(</span><span class="n">type_name</span><span class="o">=</span><span class="s2">&quot;Query&quot;</span><span class="p">,</span> <span class="n">field_name</span><span class="o">=</span><span class="s2">&quot;listLocations&quot;</span><span class="p">)</span>
+</span><span class="k">def</span> <span class="nf">list_locations</span><span class="p">(</span><span class="n">merchant_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+    <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Location name&quot;</span><span class="p">,</span> <span class="s2">&quot;merchant_id&quot;</span><span class="p">:</span> <span class="n">merchant_id</span><span class="p">}]</span>
+
+
+<span class="hll"><span class="nd">@router</span><span class="o">.</span><span class="n">resolver</span><span class="p">(</span><span class="n">type_name</span><span class="o">=</span><span class="s2">&quot;Location&quot;</span><span class="p">,</span> <span class="n">field_name</span><span class="o">=</span><span class="s2">&quot;status&quot;</span><span class="p">)</span>
+</span><span class="k">def</span> <span class="nf">resolve_status</span><span class="p">(</span><span class="n">merchant_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resolve status for merchant_id: </span><span class="si">{</span><span class="n">merchant_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;FOO&quot;</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">app.py</label><div class="tabbed-content">
+<p>We use <code>include_router</code> method and include all location operations registered in the <code>router</code> global object.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">AppSyncResolver</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging.correlation_paths</span> <span class="kn">import</span> <span class="n">APPSYNC_RESOLVER</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.typing</span> <span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="hll"><span class="kn">from</span> <span class="nn">resolvers</span> <span class="kn">import</span> <span class="n">location</span>
+</span>
+<span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">AppSyncResolver</span><span class="p">()</span>
+<span class="hll"><span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">location</span><span class="o">.</span><span class="n">router</span><span class="p">)</span>
+</span>
+
+<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
+<span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span><span class="p">(</span><span class="n">correlation_id_path</span><span class="o">=</span><span class="n">APPSYNC_RESOLVER</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
 <h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
 <p>You can test your resolvers by passing a mocked or actual AppSync Lambda event that you're expecting.</p>
 <p>You can use either <code>app.resolve(event, context)</code> or simply <code>app(event, context)</code>.</p>
 <p>Here's an example from our internal functional test.</p>
-<div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">test_direct_resolver.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">test_direct_resolver.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2168,7 +2268,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">appSyncDirectResolver.json</label><div class="tabbed-content">
+<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">appSyncDirectResolver.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2328,7 +2428,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-08-15
+      Last update: 2021-11-13
     
   </small>
 </div>
