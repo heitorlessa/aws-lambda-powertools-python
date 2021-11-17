@@ -2148,7 +2148,7 @@
 <p class="admonition-title">Read the <strong><a href="../api_gateway/#considerations" target="_blank">considerations section for trade-offs between monolithic and micro functions</a></strong>, as it's also applicable here.</p>
 </div>
 <p>As you grow the number of related GraphQL operations a given Lambda function should handle, it is natural to split them into separate files to ease maintenance - That's where the <code>Router</code> feature is useful.</p>
-<p>Let's assume you have <code>app.py</code> as your Lambda function entrypoint and routes in <code>users.py</code>, this is how you'd use the <code>Router</code> feature.</p>
+<p>Let's assume you have <code>app.py</code> as your Lambda function entrypoint and routes in <code>location.py</code>, this is how you'd use the <code>Router</code> feature.</p>
 <div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">resolvers/location.py</label><div class="tabbed-content">
 <p>We import <strong>Router</strong> instead of <strong>AppSyncResolver</strong>; syntax wise is exactly the same.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -2190,7 +2190,7 @@
 </td></tr></table>
 </div>
 <input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">app.py</label><div class="tabbed-content">
-<p>We use <code>include_router</code> method and include all location operations registered in the <code>router</code> global object.</p>
+<p>We use <code>include_router</code> method and include all <code>location</code> operations registered in the <code>router</code> global object.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
