@@ -79,14 +79,14 @@ uvloop = ["uvloop (>=0.15.2)"]
 
 [[package]]
 name = "boto3"
-version = "1.20.5"
+version = "1.20.20"
 description = "The AWS SDK for Python"
 category = "main"
 optional = false
 python-versions = ">= 3.6"
 
 [package.dependencies]
-botocore = ">=1.23.5,<1.24.0"
+botocore = ">=1.23.20,<1.24.0"
 jmespath = ">=0.7.1,<1.0.0"
 s3transfer = ">=0.5.0,<0.6.0"
 
@@ -95,7 +95,7 @@ crt = ["botocore[crt] (>=1.21.0,<2.0a0)"]
 
 [[package]]
 name = "botocore"
-version = "1.23.5"
+version = "1.23.20"
 description = "Low-level, data-driven core of boto 3."
 category = "main"
 optional = false
@@ -1089,12 +1089,12 @@ black = [
     {file = "black-21.11b1.tar.gz", hash = "sha256:a042adbb18b3262faad5aff4e834ff186bb893f95ba3a8013f09de1e5569def2"},
 ]
 boto3 = [
-    {file = "boto3-1.20.5-py3-none-any.whl", hash = "sha256:81ca80fbb3d551819c35c809cb159fd0bec6701d3d8f0e5906a22da7558d098e"},
-    {file = "boto3-1.20.5.tar.gz", hash = "sha256:cc620c289b12d7bf7c2706b517c9f8950f9be4622aacc9e7580b8b4ee0d3bc73"},
+    {file = "boto3-1.20.20-py3-none-any.whl", hash = "sha256:6c173ffaf0604e34d6865edf7a9a71e1b3e79bd441b8b465ca4b2d44f840806d"},
+    {file = "boto3-1.20.20.tar.gz", hash = "sha256:2c5377b6ab74eeccccd16f0f21537ede87b05c8322b0ccc852a68f36ea6c16c9"},
 ]
 botocore = [
-    {file = "botocore-1.23.5-py3-none-any.whl", hash = "sha256:c8eaeee0bac356396386aa9165043808fe736fb9e03ac0dedb1dfd82f41ad1a3"},
-    {file = "botocore-1.23.5.tar.gz", hash = "sha256:49d1f012dc8467577a5fe603fc87cc13af816dd926b2bc2e28a3b2999ab14d36"},
+    {file = "botocore-1.23.20-py3-none-any.whl", hash = "sha256:98275e47c941cada6507089ecfe91e420972209b1deeceaf55a89ea50d046347"},
+    {file = "botocore-1.23.20.tar.gz", hash = "sha256:22e1c7b4b2b8b11d7001ca5ef2b41bda9a8be46fb3cb994a2948462666ac5ef1"},
 ]
 certifi = [
     {file = "certifi-2020.12.5-py2.py3-none-any.whl", hash = "sha256:719a74fb9e33b9bd44cc7f3a8d94bc35e4049deebe19ba7d8e108280cfd59830"},
@@ -1411,6 +1411,7 @@ pbr = [
     {file = "pbr-5.6.0.tar.gz", hash = "sha256:42df03e7797b796625b1029c0400279c7c34fd7df24a7d7818a1abb5b38710dd"},
 ]
 pdoc3 = [
+    {file = "pdoc3-0.10.0-py3-none-any.whl", hash = "sha256:ba45d1ada1bd987427d2bf5cdec30b2631a3ff5fb01f6d0e77648a572ce6028b"},
     {file = "pdoc3-0.10.0.tar.gz", hash = "sha256:5f22e7bcb969006738e1aa4219c75a32f34c2d62d46dc9d2fb2d3e0b0287e4b7"},
 ]
 platformdirs = [
