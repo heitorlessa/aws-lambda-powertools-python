@@ -2814,11 +2814,8 @@ depending on which method is used."</p>
 </div>
 </div>
 <h4 id="sample-layout">Sample layout<a class="headerlink" href="#sample-layout" title="Permanent link">&para;</a></h4>
-<div class="admonition info">
-<p class="admonition-title">We use ALB to demonstrate that the UX remains the same</p>
-</div>
-<p>This sample project contains an Users function with two distinct set of routes, <code>/users</code> and <code>/health</code>. The layout optimizes for code sharing, no custom build tooling, and it uses <a href="../../..#lambda-layer">Lambda Layers</a> to install Lambda Powertools.</p>
-<div class="tabbed-set" data-tabs="22:6"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><label for="__tabbed_22_1">Project layout</label><div class="tabbed-content">
+<p>This sample project contains a Users function with two distinct set of routes, <code>/users</code> and <code>/health</code>. The layout optimizes for code sharing, no custom build tooling, and it uses <a href="../../..#lambda-layer">Lambda Layers</a> to install Lambda Powertools.</p>
+<div class="tabbed-set" data-tabs="22:5"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><label for="__tabbed_22_1">Project layout</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2842,30 +2839,32 @@ depending on which method is used."</p>
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="o">.</span>
-<span class="err">├──</span> <span class="n">Pipfile</span>                   <span class="c1"># project app &amp; dev dependencies; poetry, pipenv, etc.</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="o">.</span>
+</span><span class="err">├──</span> <span class="n">Pipfile</span>                    <span class="c1"># project app &amp; dev dependencies; poetry, pipenv, etc.</span>
 <span class="err">├──</span> <span class="n">Pipfile</span><span class="o">.</span><span class="n">lock</span>
-<span class="err">├──</span> <span class="n">mypy</span><span class="o">.</span><span class="n">ini</span>                  <span class="c1"># namespace_packages = True</span>
-<span class="err">├──</span> <span class="o">.</span><span class="n">env</span>                      <span class="c1"># VSCode only. PYTHONPATH=&quot;users:${PYTHONPATH}&quot;</span>
-<span class="hll"><span class="err">├──</span> <span class="n">users</span>
-</span><span class="err">│</span>   <span class="err">├──</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>      <span class="c1"># sam build detect it automatically due to CodeUri: users, e.g. pipenv lock -r &gt; users/requirements.txt</span>
-<span class="hll"><span class="err">│</span>   <span class="err">├──</span> <span class="n">lambda_function</span><span class="o">.</span><span class="n">py</span>    <span class="c1"># this will be our users Lambda fn; it could be split in folders if we want separate fns same code base</span>
-</span><span class="err">│</span>   <span class="err">├──</span> <span class="n">constants</span><span class="o">.</span><span class="n">py</span>
-<span class="hll"><span class="err">│</span>   <span class="err">└──</span> <span class="n">routers</span>               <span class="c1"># routers module</span>
-</span><span class="hll"><span class="err">│</span>       <span class="err">├──</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
-</span><span class="hll"><span class="err">│</span>       <span class="err">├──</span> <span class="n">users</span><span class="o">.</span><span class="n">py</span>          <span class="c1"># /users routes, e.g. from routers import users; users.router</span>
-</span><span class="hll"><span class="err">│</span>       <span class="err">├──</span> <span class="n">health</span><span class="o">.</span><span class="n">py</span>         <span class="c1"># /health routes, e.g. from routers import health; health.router</span>
-</span><span class="err">├──</span> <span class="n">template</span><span class="o">.</span><span class="n">yaml</span>             <span class="c1"># SAM template.yml, CodeUri: users, Handler: users.main.lambda_handler</span>
-<span class="err">└──</span> <span class="n">tests</span>
+<span class="err">├──</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="err">├──</span> <span class="n">src</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+<span class="err">│</span>       <span class="err">├──</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>   <span class="c1"># sam build detect it automatically due to CodeUri: src, e.g. pipenv lock -r &gt; src/requirements.txt</span>
+<span class="hll"><span class="err">│</span>       <span class="err">└──</span> <span class="n">users</span>
+</span><span class="err">│</span>           <span class="err">├──</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+<span class="hll"><span class="err">│</span>           <span class="err">├──</span> <span class="n">main</span><span class="o">.</span><span class="n">py</span>       <span class="c1"># this will be our users Lambda fn; it could be split in folders if we want separate fns same code base</span>
+</span><span class="err">│</span>           <span class="err">└──</span> <span class="n">routers</span>       <span class="c1"># routers module</span>
+<span class="hll"><span class="err">│</span>               <span class="err">├──</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
+</span><span class="hll"><span class="err">│</span>               <span class="err">├──</span> <span class="n">health</span><span class="o">.</span><span class="n">py</span> <span class="c1"># /users routes, e.g. from routers import users; users.router</span>
+</span><span class="hll"><span class="err">│</span>               <span class="err">└──</span> <span class="n">users</span><span class="o">.</span><span class="n">py</span>  <span class="c1"># /users routes, e.g. from .routers import users; users.router</span>
+</span><span class="hll"><span class="err">├──</span> <span class="n">template</span><span class="o">.</span><span class="n">yml</span>              <span class="c1"># SAM template.yml, CodeUri: src, Handler: users.main.lambda_handler</span>
+</span><span class="err">└──</span> <span class="n">tests</span>
     <span class="err">├──</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
     <span class="err">├──</span> <span class="n">unit</span>
     <span class="err">│</span>   <span class="err">├──</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
-    <span class="err">│</span>   <span class="err">└──</span> <span class="n">test_users</span><span class="o">.</span><span class="n">py</span>    <span class="c1"># unit tests for the users router</span>
-    <span class="err">│</span>   <span class="err">└──</span> <span class="n">test_health</span><span class="o">.</span><span class="n">py</span>   <span class="c1"># unit tests for the health router</span>
+    <span class="err">│</span>   <span class="err">└──</span> <span class="n">test_users</span><span class="o">.</span><span class="n">py</span>     <span class="c1"># unit tests for the users router</span>
+    <span class="err">│</span>   <span class="err">└──</span> <span class="n">test_health</span><span class="o">.</span><span class="n">py</span>    <span class="c1"># unit tests for the health router</span>
     <span class="err">└──</span> <span class="n">functional</span>
         <span class="err">├──</span> <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>
-        <span class="err">├──</span> <span class="n">conftest</span><span class="o">.</span><span class="n">py</span>      <span class="c1"># pytest fixtures for the functional tests</span>
-        <span class="err">└──</span> <span class="n">test_lambda_function</span><span class="o">.</span><span class="n">py</span>    <span class="c1"># functional tests for the main lambda handler</span>
+        <span class="err">├──</span> <span class="n">conftest</span><span class="o">.</span><span class="n">py</span>       <span class="c1"># pytest fixtures for the functional tests</span>
+        <span class="err">└──</span> <span class="n">test_main</span><span class="o">.</span><span class="n">py</span>      <span class="c1"># functional tests for the main lambda handler</span>
 </code></pre></div>
 </td></tr></table>
 </div>
@@ -2922,7 +2921,9 @@ depending on which method is used."</p>
 <span class="normal">50</span>
 <span class="normal">51</span>
 <span class="normal">52</span>
-<span class="normal">53</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span> <span class="s">&#39;2010-09-09&#39;</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span> <span class="s">&#39;2010-09-09&#39;</span>
 <span class="nt">Transform</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span>
 <span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Example service with multiple routes</span>
 <span class="nt">Globals</span><span class="p">:</span>
@@ -2931,6 +2932,8 @@ depending on which method is used."</p>
         <span class="nt">MemorySize</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">512</span>
         <span class="nt">Runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python3.9</span>
         <span class="nt">Tracing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Active</span>
+        <span class="nt">Architectures</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">x86_64</span>
         <span class="nt">Environment</span><span class="p">:</span>
             <span class="nt">Variables</span><span class="p">:</span>
                 <span class="nt">LOG_LEVEL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">INFO</span>
@@ -2941,11 +2944,11 @@ depending on which method is used."</p>
     <span class="nt">UsersService</span><span class="p">:</span>
         <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
         <span class="nt">Properties</span><span class="p">:</span>
-<span class="hll">            <span class="nt">Handler</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">lambda_function.lambda_handler</span>
-</span><span class="hll">            <span class="nt">CodeUri</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">users</span>
+<span class="hll">            <span class="nt">Handler</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">users.main.lambda_handler</span>
+</span><span class="hll">            <span class="nt">CodeUri</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">src</span>
 </span>            <span class="nt">Layers</span><span class="p">:</span>
                 <span class="c1"># Latest version: https://awslabs.github.io/aws-lambda-powertools-python/latest/#lambda-layer</span>
-                <span class="p p-Indicator">-</span> <span class="kt">!Sub</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPython:3</span>
+                <span class="p p-Indicator">-</span> <span class="kt">!Sub</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPython:4</span>
             <span class="nt">Events</span><span class="p">:</span>
                 <span class="nt">ByUser</span><span class="p">:</span>
                     <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
@@ -2978,7 +2981,7 @@ depending on which method is used."</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_22_3" name="__tabbed_22" type="radio" /><label for="__tabbed_22_3">users/lambda_function.py</label><div class="tabbed-content">
+<input id="__tabbed_22_3" name="__tabbed_22" type="radio" /><label for="__tabbed_22_3">src/users/main.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3008,24 +3011,24 @@ depending on which method is used."</p>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging.correlation_paths</span> <span class="kn">import</span> <span class="n">APPLICATION_LOAD_BALANCER</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.typing</span> <span class="kn">import</span> <span class="n">LambdaContext</span>
 
-<span class="hll"><span class="kn">from</span> <span class="nn">routers</span> <span class="kn">import</span> <span class="n">health</span><span class="p">,</span> <span class="n">users</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">.routers</span> <span class="kn">import</span> <span class="n">health</span><span class="p">,</span> <span class="n">users</span>
 </span>
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">(</span><span class="n">proxy_type</span><span class="o">=</span><span class="n">ProxyEventType</span><span class="o">.</span><span class="n">ALBEvent</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">(</span><span class="n">proxy_type</span><span class="o">=</span><span class="n">ProxyEventType</span><span class="o">.</span><span class="n">APIGatewayProxyEvent</span><span class="p">)</span>
 
 <span class="hll"><span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">health</span><span class="o">.</span><span class="n">router</span><span class="p">)</span>
 </span><span class="hll"><span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">users</span><span class="o">.</span><span class="n">router</span><span class="p">)</span>
 </span>
 
-<span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span><span class="p">(</span><span class="n">correlation_id_path</span><span class="o">=</span><span class="n">APPLICATION_LOAD_BALANCER</span><span class="p">)</span>
+<span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span><span class="p">(</span><span class="n">correlation_id_path</span><span class="o">=</span><span class="n">API_GATEWAY_REST</span><span class="p">)</span>
 <span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
 <span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_22_4" name="__tabbed_22" type="radio" /><label for="__tabbed_22_4">users/routers/health.py</label><div class="tabbed-content">
+<input id="__tabbed_22_4" name="__tabbed_22" type="radio" /><label for="__tabbed_22_4">src/users/routers/health.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3067,7 +3070,7 @@ depending on which method is used."</p>
 <span class="normal">10</span>
 <span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
 
-<span class="hll"><span class="kn">from</span> <span class="nn">users</span> <span class="kn">import</span> <span class="n">main</span>  <span class="c1"># follows namespace package from root</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">src.users</span> <span class="kn">import</span> <span class="n">main</span>  <span class="c1"># follows namespace package from root</span>
 </span>
 
 <span class="k">def</span> <span class="nf">test_lambda_handler</span><span class="p">(</span><span class="n">apigw_event</span><span class="p">,</span> <span class="n">lambda_context</span><span class="p">):</span>
@@ -3076,15 +3079,6 @@ depending on which method is used."</p>
 
     <span class="k">assert</span> <span class="n">ret</span><span class="p">[</span><span class="s2">&quot;statusCode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">200</span>
     <span class="k">assert</span> <span class="n">ret</span><span class="p">[</span><span class="s2">&quot;body&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">expected</span>
-</code></pre></div>
-</td></tr></table>
-</div>
-<input id="__tabbed_22_6" name="__tabbed_22" type="radio" /><label for="__tabbed_22_6">.env</label><div class="tabbed-content">
-<blockquote>
-<p>Note: It is not needed for PyCharm (select folder as source).</p>
-</blockquote>
-<p>This is necessary for Visual Studio Code, so integrated tooling works without failing import.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;users:</span><span class="si">${</span><span class="nv">PYTHONPATH</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
 </td></tr></table>
 </div>
@@ -3239,7 +3233,7 @@ your development, building, deployment tooling need to accommodate the distinct 
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-11-19
+      Last update: 2021-12-03
     
   </small>
 </div>
