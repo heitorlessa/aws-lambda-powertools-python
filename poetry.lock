@@ -205,7 +205,7 @@ python-versions = "*"
 
 [[package]]
 name = "fastjsonschema"
-version = "2.15.1"
+version = "2.15.2"
 description = "Fastest Python implementation of JSON schema"
 category = "main"
 optional = false
@@ -1168,8 +1168,8 @@ eradicate = [
     {file = "eradicate-2.0.0.tar.gz", hash = "sha256:27434596f2c5314cc9b31410c93d8f7e8885747399773cd088d3adea647a60c8"},
 ]
 fastjsonschema = [
-    {file = "fastjsonschema-2.15.1-py3-none-any.whl", hash = "sha256:fa2f4bb1e31419c5eb1150f2e0545921712c10c34165b86d33f08f5562ad4b85"},
-    {file = "fastjsonschema-2.15.1.tar.gz", hash = "sha256:671f36d225b3493629b5e789428660109528f373cf4b8a22bac6fa2f8191c2d2"},
+    {file = "fastjsonschema-2.15.2-py3-none-any.whl", hash = "sha256:5fb095151a88b166e6cda6f527ce83775bf24b3d13e1adb67c690300f3fab0a1"},
+    {file = "fastjsonschema-2.15.2.tar.gz", hash = "sha256:2a84755f22eb4c944c83c18d8f40705612376d178d2a5dfe50b0ecca3c11d610"},
 ]
 flake8 = [
     {file = "flake8-4.0.1-py2.py3-none-any.whl", hash = "sha256:479b1304f72536a55948cb40a32dce8bb0ffe3501e26eaf292c7e60eb5e0428d"},
