@@ -968,11 +968,7 @@
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <h3 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h3>
 <p>Before your use this utility, your AWS Lambda function <a href="https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html#services-xray-permissions">must have permissions</a> to send traces to AWS X-Ray.</p>
-<blockquote>
-<p>Example using AWS Serverless Application Model (SAM)</p>
-</blockquote>
-<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">template.yml</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">AWS Serverless Application Model (SAM) example</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -991,12 +987,9 @@
 <span class="hll">          <span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">example</span>
 </span></code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="lambda-handler">Lambda handler<a class="headerlink" href="#lambda-handler" title="Permanent link">&para;</a></h3>
-<p>You can quickly start by importing the <code>Tracer</code> class, initialize it outside the Lambda handler, and use <code>capture_lambda_handler</code> decorator.</p>
-<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">app.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p>You can quickly start by initializing <code>Tracer</code> and use <code>capture_lambda_handler</code> decorator for your Lambda handler.</p>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Tracing Lambda handler with capture_lambda_handler</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1017,9 +1010,7 @@
     <span class="o">...</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
-<p>When using this <code>capture_lambda_handler</code> decorator, Tracer performs these additional tasks to ease operations:</p>
+<p><code>capture_lambda_handler</code> performs these additional tasks to ease operations:</p>
 <ul>
 <li>Creates a <code>ColdStart</code> annotation to easily filter traces that have had an initialization overhead</li>
 <li>Creates a <code>Service</code> annotation if <code>service</code> parameter or <code>POWERTOOLS_SERVICE_NAME</code> is set</li>
@@ -1027,10 +1018,7 @@
 </ul>
 <h3 id="annotations-metadata">Annotations &amp; Metadata<a class="headerlink" href="#annotations-metadata" title="Permanent link">&para;</a></h3>
 <p><strong>Annotations</strong> are key-values associated with traces and indexed by AWS X-Ray. You can use them to filter traces and to create <a href="https://aws.amazon.com/about-aws/whats-new/2018/11/aws-xray-adds-the-ability-to-group-traces/">Trace Groups</a> to slice and dice your transactions.</p>
-<p><strong>Metadata</strong> are key-values also associated with traces but not indexed by AWS X-Ray. You can use them to add additional context for an operation using any native object.</p>
-<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Annotations</label><div class="tabbed-content">
-<p>You can add annotations using <code>put_annotation</code> method.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Adding annotations with put_annotation method</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -1045,10 +1033,8 @@
 <span class="hll">    <span class="n">tracer</span><span class="o">.</span><span class="n">put_annotation</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;PaymentStatus&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;SUCCESS&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </td></tr></table>
-</div>
-<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Metadata</label><div class="tabbed-content">
-<p>You can add metadata using <code>put_metadata</code> method.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><strong>Metadata</strong> are key-values also associated with traces but not indexed by AWS X-Ray. You can use them to add additional context for an operation using any native object.</p>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Adding arbitrary metadata with put_metadata method</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -1065,17 +1051,9 @@
 <span class="hll">    <span class="n">tracer</span><span class="o">.</span><span class="n">put_metadata</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;payment_response&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">ret</span><span class="p">)</span>
 </span></code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="synchronous-functions">Synchronous functions<a class="headerlink" href="#synchronous-functions" title="Permanent link">&para;</a></h3>
 <p>You can trace synchronous functions using the <code>capture_method</code> decorator.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><strong>When <code>capture_response</code> is enabled, the function response will be read and serialized as json.</strong></p>
-<p>The serialization is performed by the aws-xray-sdk which uses the <code>jsonpickle</code> module. This can cause
-unintended consequences if there are side effects to recursively reading the returned value, for example if the
-decorated function response contains a file-like object or a <a href="https://botocore.amazonaws.com/v1/documentation/api/latest/reference/response.html#botocore.response.StreamingBody"><code>StreamingBody</code></a> for S3 objects.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Tracing an arbitrary function with capture_method</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -1086,14 +1064,19 @@ decorated function response contains a file-like object or a <a href="https://bo
     <span class="k">return</span> <span class="n">ret</span>
 </code></pre></div>
 </td></tr></table>
-</div>
+<details class="note" open="open">
+<summary>Note: Function responses are auto-captured and stored as JSON, by default.</summary>
+<p>Use <a href="#disabling-response-auto-capture">capture_response</a> parameter to override this behaviour.</p>
+<p>The serialization is performed by aws-xray-sdk via <code>jsonpickle</code> module. This can cause
+side effects for file-like objects like boto S3 <a href="https://botocore.amazonaws.com/v1/documentation/api/latest/reference/response.html#botocore.response.StreamingBody"><code>StreamingBody</code></a>, where its response will be read only once during serialization.</p>
+</details>
 <h3 id="asynchronous-and-generator-functions">Asynchronous and generator functions<a class="headerlink" href="#asynchronous-and-generator-functions" title="Permanent link">&para;</a></h3>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><strong>We do not support async Lambda handler</strong> - Lambda handler itself must be synchronous</p>
-</div>
+<details class="warning" open="open">
+<summary>Warning</summary>
+<p>We do not support asynchronous Lambda handler</p>
+</details>
 <p>You can trace asynchronous functions and generator functions (including context managers) using <code>capture_method</code>.</p>
-<div class="tabbed-set" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Async</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Async</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1114,7 +1097,7 @@ decorated function response contains a file-like object or a <a href="https://bo
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Context manager</label><div class="tabbed-content">
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Context manager</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1139,7 +1122,7 @@ decorated function response contains a file-like object or a <a href="https://bo
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><label for="__tabbed_4_3">Generators</label><div class="tabbed-content">
+<input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><label for="__tabbed_1_3">Generators</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1163,33 +1146,11 @@ decorated function response contains a file-like object or a <a href="https://bo
 </td></tr></table>
 </div>
 </div>
-<p>The decorator will detect whether your function is asynchronous, a generator, or a  context manager and adapt its behaviour accordingly.</p>
-<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">app.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
-<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">evt</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
-    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">collect_payment</span><span class="p">())</span>
-
-    <span class="k">with</span> <span class="n">collect_payment_ctxman</span> <span class="k">as</span> <span class="n">result</span><span class="p">:</span>
-        <span class="n">do_something_with</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-
-    <span class="n">another_result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">collect_payment_gen</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
-</div>
-</div>
 <h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h2>
 <h3 id="patching-modules">Patching modules<a class="headerlink" href="#patching-modules" title="Permanent link">&para;</a></h3>
 <p>Tracer automatically patches all <a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-python-patching.html">supported libraries by X-Ray</a> during initialization, by default. Underneath, AWS X-Ray SDK checks whether a supported library has been imported before patching.</p>
 <p>If you're looking to shave a few microseconds, or milliseconds depending on your function memory configuration, you can patch specific modules using <code>patch_modules</code> param:</p>
-<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">app.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Example of explicitly patching boto3 and requests only</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -1204,22 +1165,17 @@ decorated function response contains a file-like object or a <a href="https://bo
 <span class="hll"><span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">(</span><span class="n">patch_modules</span><span class="o">=</span><span class="n">modules_to_be_patched</span><span class="p">)</span>
 </span></code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="disabling-response-auto-capture">Disabling response auto-capture<a class="headerlink" href="#disabling-response-auto-capture" title="Permanent link">&para;</a></h3>
-<blockquote>
-<p>New in 1.9.0</p>
-</blockquote>
 <p>Use <strong><code>capture_response=False</code></strong> parameter in both <code>capture_lambda_handler</code> and <code>capture_method</code> decorators to instruct Tracer <strong>not</strong> to serialize function responses as metadata.</p>
-<div class="admonition info">
-<p class="admonition-title">This is commonly useful in three scenarios</p>
+<details class="info" open="open">
+<summary>Info: This is useful in three common scenarios</summary>
 <ol>
 <li>You might <strong>return sensitive</strong> information you don't want it to be added to your traces</li>
 <li>You might manipulate <strong>streaming objects that can be read only once</strong>; this prevents subsequent calls from being empty</li>
 <li>You might return <strong>more than 64K</strong> of data <em>e.g., <code>message too long</code> error</em></li>
 </ol>
-</div>
-<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">sensitive_data_scenario.py</label><div class="tabbed-content">
+</details>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">sensitive_data_scenario.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1240,7 +1196,7 @@ decorated function response contains a file-like object or a <a href="https://bo
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">streaming_object_scenario.py</label><div class="tabbed-content">
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">streaming_object_scenario.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1259,18 +1215,12 @@ decorated function response contains a file-like object or a <a href="https://bo
 </div>
 </div>
 <h3 id="disabling-exception-auto-capture">Disabling exception auto-capture<a class="headerlink" href="#disabling-exception-auto-capture" title="Permanent link">&para;</a></h3>
-<blockquote>
-<p>New in 1.10.0</p>
-</blockquote>
 <p>Use <strong><code>capture_error=False</code></strong> parameter in both <code>capture_lambda_handler</code> and <code>capture_method</code> decorators to instruct Tracer <strong>not</strong> to serialize exceptions as metadata.</p>
-<div class="admonition info">
-<p class="admonition-title">Commonly useful in one scenario</p>
-<ol>
-<li>You might <strong>return sensitive</strong> information from exceptions, stack traces you might not control</li>
-</ol>
-</div>
-<div class="tabbed-set" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">sensitive_data_exception.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<details class="info" open="open">
+<summary>Info</summary>
+<p>Useful when returning sensitive information in exceptions/stack traces you don't control</p>
+</details>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Disabling exception auto-capture for tracing metadata</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -1281,16 +1231,13 @@ decorated function response contains a file-like object or a <a href="https://bo
 <span class="hll">    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;some sensitive info in the stack trace...&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="tracing-aiohttp-requests">Tracing aiohttp requests<a class="headerlink" href="#tracing-aiohttp-requests" title="Permanent link">&para;</a></h3>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>This snippet assumes you have <strong>aiohttp</strong> as a dependency</p>
-</div>
+<details class="info" open="open">
+<summary>Info</summary>
+<p>This snippet assumes you have aiohttp as a dependency</p>
+</details>
 <p>You can use <code>aiohttp_trace_config</code> function to create a valid <a href="https://docs.aiohttp.org/en/stable/tracing_reference.html">aiohttp trace_config object</a>. This is necessary since X-Ray utilizes aiohttp trace hooks to capture requests end-to-end.</p>
-<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">aiohttp_example.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Tracing aiohttp requests</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1317,13 +1264,10 @@ decorated function response contains a file-like object or a <a href="https://bo
             <span class="k">return</span> <span class="n">resp</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="escape-hatch-mechanism">Escape hatch mechanism<a class="headerlink" href="#escape-hatch-mechanism" title="Permanent link">&para;</a></h3>
 <p>You can use <code>tracer.provider</code> attribute to access all methods provided by AWS X-Ray <code>xray_recorder</code> object.</p>
 <p>This is useful when you need a feature available in X-Ray that is not available in the Tracer utility, for example <a href="https://github.com/aws/aws-xray-sdk-python/#user-content-trace-threadpoolexecutor">thread-safe</a>, or <a href="https://github.com/aws/aws-xray-sdk-python/#user-content-start-a-custom-segmentsubsegment">context managers</a>.</p>
-<div class="tabbed-set" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">escape_hatch_context_manager_example.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Tracing a code block with in_subsegment escape hatch</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -1342,16 +1286,13 @@ decorated function response contains a file-like object or a <a href="https://bo
         <span class="n">subsegment</span><span class="o">.</span><span class="n">put_metadata</span><span class="p">(</span><span class="s1">&#39;response&#39;</span><span class="p">,</span> <span class="n">ret</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="concurrent-asynchronous-functions">Concurrent asynchronous functions<a class="headerlink" href="#concurrent-asynchronous-functions" title="Permanent link">&para;</a></h3>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><a href="https://github.com/aws/aws-xray-sdk-python/issues/164">As of now, X-Ray SDK will raise an exception when async functions are run and traced concurrently</a></p>
-</div>
+<details class="warning" open="open">
+<summary>Warning</summary>
+<p><a href="https://github.com/aws/aws-xray-sdk-python/issues/164">X-Ray SDK will raise an exception</a> when async functions are run and traced concurrently</p>
+</details>
 <p>A safe workaround mechanism is to use <code>in_subsegment_async</code> available via Tracer escape hatch (<code>tracer.provider</code>).</p>
-<div class="tabbed-set" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">concurrent_async_workaround.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Workaround to safely trace async concurrent functions</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1388,16 +1329,15 @@ decorated function response contains a file-like object or a <a href="https://bo
 </span>    <span class="o">...</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="reusing-tracer-across-your-code">Reusing Tracer across your code<a class="headerlink" href="#reusing-tracer-across-your-code" title="Permanent link">&para;</a></h3>
 <p>Tracer keeps a copy of its configuration after the first initialization. This is useful for scenarios where you want to use Tracer in more than one location across your code base.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>When reusing Tracer in Lambda Layers, or in multiple modules, <strong>do not set <code>auto_patch=False</code></strong>, because import order matters.</p>
+<details class="warning" open="open">
+<summary>Warning: Import order matters when using Lambda Layers or multiple modules</summary>
+<p><strong>Do not set <code>auto_patch=False</code></strong> when reusing Tracer in Lambda Layers, or in multiple modules.</p>
 <p>This can result in the first Tracer config being inherited by new instances, and their modules not being patched.</p>
-</div>
-<div class="tabbed-set" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">handler.py</label><div class="tabbed-content">
+<p>Tracer will automatically ignore imported modules that have been patched.</p>
+</details>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">handler.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1418,7 +1358,7 @@ decorated function response contains a file-like object or a <a href="https://bo
 </span></code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><label for="__tabbed_12_2">payment.py</label><div class="tabbed-content">
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">payment.py</label><div class="tabbed-content">
 <p>A new instance of Tracer will be created but will reuse the previous Tracer instance configuration, similar to a Singleton.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1453,7 +1393,7 @@ decorated function response contains a file-like object or a <a href="https://bo
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-11-30
+      Last update: 2021-12-30
     
   </small>
 </div>

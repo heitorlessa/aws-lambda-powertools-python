@@ -1283,11 +1283,11 @@ by using the <code>event_source</code> decorator.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
+<details class="info" open="open">
+<summary>Info</summary>
 <p>The examples provided below are far from exhaustive - the data classes themselves are designed to provide a form of
 documentation inherently (via autocompletion, types and docstrings).</p>
-</div>
+</details>
 <h3 id="active-mq">Active MQ<a class="headerlink" href="#active-mq" title="Permanent link">&para;</a></h3>
 <p>It is used for <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-mq.html" target="_blank">Active MQ payloads</a>, also see
 the <a href="https://aws.amazon.com/blogs/compute/using-amazon-mq-as-an-event-source-for-aws-lambda/" target="_blank">AWS blog post</a>
@@ -2039,10 +2039,10 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </div>
 </div>
 <h4 id="define-auth-challenge-example">Define Auth Challenge Example<a class="headerlink" href="#define-auth-challenge-example" title="Permanent link">&para;</a></h4>
-<div class="admonition warning">
-<p class="admonition-title">NOTE</p>
-<p>In this example we are modifying the wrapped dict response fields, so we need to return the json serializable wrapped event in <code>event.raw_event</code></p>
-</div>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>In this example we are modifying the wrapped dict response fields, so we need to return the json serializable wrapped event in <code>event.raw_event</code>.</p>
+</details>
 <p>This example is based on the AWS Cognito docs for <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-define-auth-challenge.html" target="_blank">Define Auth Challenge Lambda Trigger</a>.</p>
 <div class="tabbed-set" data-tabs="14:4"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -2730,7 +2730,7 @@ for more details.</p>
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-10-29
+      Last update: 2021-12-30
     
   </small>
 </div>

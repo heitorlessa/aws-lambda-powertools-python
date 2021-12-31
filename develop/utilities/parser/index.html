@@ -960,15 +960,14 @@
 <li>Enforces type hints at runtime with user-friendly errors</li>
 </ul>
 <p><strong>Extra dependency</strong></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<details class="warning" open="open">
+<summary>Warning</summary>
 <p>This will increase the overall package size by approximately 75MB due to Pydantic dependency.</p>
-</div>
+</details>
 <p>Install parser's extra dependencies using <strong><code>pip install aws-lambda-powertools[pydantic]</code></strong>.</p>
 <h2 id="defining-models">Defining models<a class="headerlink" href="#defining-models" title="Permanent link">&para;</a></h2>
 <p>You can define models to parse incoming events by inheriting from <code>BaseModel</code>.</p>
-<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">hello_world_model.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Defining an Order data model</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -995,19 +994,17 @@
     <span class="n">optional_field</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="c1"># this field may or may not be available when parsing</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <p>These are simply Python classes that inherit from BaseModel. <strong>Parser</strong> enforces type hints declared in your model at runtime.</p>
 <h2 id="parsing-events">Parsing events<a class="headerlink" href="#parsing-events" title="Permanent link">&para;</a></h2>
 <p>You can parse inbound events using <strong>event_parser</strong> decorator, or the standalone <code>parse</code> function. Both are also able to parse either dictionary or JSON string as an input.</p>
 <h3 id="event_parser-decorator">event_parser decorator<a class="headerlink" href="#event_parser-decorator" title="Permanent link">&para;</a></h3>
 <p>Use the decorator for fail fast scenarios where you want your Lambda function to raise an exception in the event of a malformed payload.</p>
 <p><code>event_parser</code> decorator will throw a <code>ValidationError</code> if your event cannot be parsed according to the model.</p>
-<blockquote>
-<p>NOTE: <strong>This decorator will replace the <code>event</code> object with the parsed model if successful</strong>. This means you might be careful when nesting other decorators that expect <code>event</code> to be a <code>dict</code>.</p>
-</blockquote>
-<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">event_parser_decorator.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<details class="note" open="open">
+<summary>Note</summary>
+<p><strong>This decorator will replace the <code>event</code> object with the parsed model if successful</strong>. This means you might be careful when nesting other decorators that expect <code>event</code> to be a <code>dict</code>.</p>
+</details>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Parsing and validating upon invocation with event_parser decorator</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1090,12 +1087,9 @@
 <span class="n">handler</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">payload</span><span class="p">),</span> <span class="n">context</span><span class="o">=</span><span class="n">LambdaContext</span><span class="p">())</span> <span class="c1"># also works if event is a JSON string</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="parse-function">parse function<a class="headerlink" href="#parse-function" title="Permanent link">&para;</a></h3>
 <p>Use this standalone function when you want more control over the data validation process, for example returning a 400 error for malformed payloads.</p>
-<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">parse_standalone_example.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Using standalone parse function for more flexibility</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1172,8 +1166,6 @@
         <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h2 id="built-in-models">Built-in models<a class="headerlink" href="#built-in-models" title="Permanent link">&para;</a></h2>
 <p>Parser comes with the following built-in models:</p>
 <table>
@@ -1236,12 +1228,11 @@
 </table>
 <h3 id="extending-built-in-models">extending built-in models<a class="headerlink" href="#extending-built-in-models" title="Permanent link">&para;</a></h3>
 <p>You can extend them to include your own models, and yet have all other known fields parsed along the way.</p>
-<div class="admonition tip">
-<p class="admonition-title">For Mypy users, we only allow type override for fields where payload is injected e.g. <code>detail</code>, <code>body</code>, etc.</p>
-</div>
-<p><strong>EventBridge example</strong></p>
-<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">extending_builtin_models.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<details class="tip" open="open">
+<summary>Tip</summary>
+<p>For Mypy users, we only allow type override for fields where payload is injected e.g. <code>detail</code>, <code>body</code>, etc.</p>
+</details>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Extending EventBridge model as an example</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1338,8 +1329,6 @@
     <span class="o">...</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <p><strong>What's going on here, you might ask</strong>:</p>
 <ol>
 <li>We imported our built-in model <code>EventBridgeModel</code> from the parser utility</li>
@@ -1357,8 +1346,7 @@
 <p>This can become difficult quite quickly. Parser makes this problem easier through a feature named <code>Envelope</code>.</p>
 <p>Envelopes can be used via <code>envelope</code> parameter available in both <code>parse</code> function and <code>event_parser</code> decorator.</p>
 <p>Here's an example of parsing a model found in an event coming from EventBridge, where all you want is what's inside the <code>detail</code> key.</p>
-<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">parse_eventbridge_payload.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Parsing payload in a given key only using envelope feature</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1425,8 +1413,6 @@
     <span class="k">assert</span> <span class="n">event</span><span class="o">.</span><span class="n">password1</span> <span class="o">==</span> <span class="n">event</span><span class="o">.</span><span class="n">password2</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <p><strong>What's going on here, you might ask</strong>:</p>
 <ol>
 <li>We imported built-in <code>envelopes</code> from the parser utility</li>
@@ -1495,8 +1481,7 @@
 <h3 id="bringing-your-own-envelope">Bringing your own envelope<a class="headerlink" href="#bringing-your-own-envelope" title="Permanent link">&para;</a></h3>
 <p>You can create your own Envelope model and logic by inheriting from <code>BaseEnvelope</code>, and implementing the <code>parse</code> method.</p>
 <p>Here's a snippet of how the EventBridge envelope we demonstrated previously is implemented.</p>
-<p><strong>EventBridge Model</strong></p>
-<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">eventbridge_model.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">EventBridge Model</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1531,9 +1516,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-</div>
-<p><strong>EventBridge Envelope</strong></p>
-<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">eventbridge_envelope.py</label><div class="tabbed-content">
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">EventBridge Envelope</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1597,10 +1580,10 @@
 <li>Lastly, we call <code>_parse</code> from <code>BaseEnvelope</code> to parse the data in our envelope (.detail) using the customer model</li>
 </ol>
 <h2 id="data-model-validation">Data model validation<a class="headerlink" href="#data-model-validation" title="Permanent link">&para;</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<details class="warning" open="open">
+<summary>Warning</summary>
 <p>This is radically different from the <strong>Validator utility</strong> which validates events against JSON Schema.</p>
-</div>
+</details>
 <p>You can use parser's validator for deep inspection of object values and complex relationships.</p>
 <p>There are two types of class method decorators you can use:</p>
 <ul>
@@ -1614,8 +1597,7 @@
 </ul>
 <h3 id="validating-fields">validating fields<a class="headerlink" href="#validating-fields" title="Permanent link">&para;</a></h3>
 <p>Quick validation to verify whether the field <code>message</code> has the value of <code>hello world</code>.</p>
-<div class="tabbed-set" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">deep_data_validation.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Data field validation with validator</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1640,17 +1622,14 @@
 <span class="n">parse</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">HelloWorldModel</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;hello universe&quot;</span><span class="p">})</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <p>If you run as-is, you should expect the following error with the message we provided in our exception:</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>message
-  Message must be hello world! (type=value_error)
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Sample validation error message</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">message</span>
+  <span class="n">Message</span> <span class="n">must</span> <span class="n">be</span> <span class="n">hello</span> <span class="n">world</span><span class="err">!</span> <span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">value_error</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 <p>Alternatively, you can pass <code>'*'</code> as an argument for the decorator so that you can validate every value available.</p>
-<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">validate_all_field_values.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Validating all data fields with custom logic</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1679,12 +1658,9 @@
 <span class="n">parse</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">HelloWorldModel</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;hello universe&quot;</span><span class="p">,</span> <span class="s2">&quot;sender&quot;</span><span class="p">:</span> <span class="s2">&quot;universe&quot;</span><span class="p">})</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="validating-entire-model">validating entire model<a class="headerlink" href="#validating-entire-model" title="Permanent link">&para;</a></h3>
 <p><code>root_validator</code> can help when you have a complex validation mechanism. For example finding whether data has been omitted, comparing field values, etc.</p>
-<div class="tabbed-set" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">validate_all_field_values.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Comparing and validating multiple fields at once with root_validator</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1727,22 +1703,18 @@
 <span class="n">parse</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">UserModel</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
+<details class="info" open="open">
+<summary>Info</summary>
 <p>You can read more about validating list items, reusing validators, validating raw inputs, and a lot more in <a href="https://pydantic-docs.helpmanual.io/usage/validators/">Pydantic's documentation</a>.</p>
-</div>
+</details>
 <h2 id="advanced-use-cases">Advanced use cases<a class="headerlink" href="#advanced-use-cases" title="Permanent link">&para;</a></h2>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p><strong>Looking to auto-generate models from JSON, YAML, JSON Schemas, OpenApi, etc?</strong></p>
+<details class="tip" open="open">
+<summary>Tip: Looking to auto-generate models from JSON, YAML, JSON Schemas, OpenApi, etc?</summary>
 <p>Use Koudai Aono's <a href="https://github.com/koxudaxi/datamodel-code-generator">data model code generation tool for Pydantic</a></p>
-</div>
+</details>
 <p>There are number of advanced use cases well documented in Pydantic's doc such as creating <a href="https://pydantic-docs.helpmanual.io/usage/models/#faux-immutability">immutable models</a>, <a href="https://pydantic-docs.helpmanual.io/usage/models/#field-with-dynamic-default-value">declaring fields with dynamic values</a>) e.g. UUID, and <a href="https://pydantic-docs.helpmanual.io/usage/models/#helper-functions">helper functions to parse models from files, str</a>, etc.</p>
 <p>Two possible unknown use cases are Models and exception' serialization. Models have methods to <a href="https://pydantic-docs.helpmanual.io/usage/exporting_models/">export them</a> as <code>dict</code>, <code>JSON</code>, <code>JSON Schema</code>, and Validation exceptions can be exported as JSON.</p>
-<div class="tabbed-set" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">serializing_models_exceptions.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Converting data models in various formats</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1805,8 +1777,6 @@
 </span><span class="hll"><span class="n">user_json_schema_as_json</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">schema_json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </span></code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <p>These can be quite useful when manipulating models that later need to be serialized as inputs for services like DynamoDB, EventBridge, etc.</p>
 <h2 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h2>
 <p><strong>When should I use parser vs data_classes utility?</strong></p>
@@ -1815,19 +1785,17 @@
 <p><strong>How do I import X from Pydantic?</strong></p>
 <p>We export most common classes, exceptions, and utilities from Pydantic as part of parser e.g. <code>from aws_lambda_powertools.utilities.parser import BaseModel</code>.</p>
 <p>If what's your trying to use isn't available as part of the high level import system, use the following escape hatch mechanism:</p>
-<div class="tabbed-set" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">escape_hatch.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.parser.pydantic</span> <span class="kn">import</span> <span class="o">&lt;</span><span class="n">what</span> <span class="n">you</span><span class="s1">&#39;d like to import&#39;</span><span class="o">&gt;</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Pydantic import escape hatch</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.parser.pydantic</span> <span class="kn">import</span> <span class="o">&lt;</span><span class="n">what</span> <span class="n">you</span><span class="s1">&#39;d like to import&#39;</span><span class="o">&gt;</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <p><strong>What is the cold start impact in bringing this additional dependency?</strong></p>
 <p>No significant cold start impact. It does increase the final uncompressed package by <strong>71M</strong>, when you bring the additional dependency that parser requires.</p>
 <p>Artillery load test sample against a <a href="https://github.com/aws-samples/cookiecutter-aws-sam-python">hello world sample</a> using Tracer, Metrics, and Logger with and without parser.</p>
 <p><strong>No parser</strong></p>
-<blockquote>
+<details class="info" open="open">
+<summary>Info</summary>
 <p><strong>Uncompressed package size</strong>: 55M, <strong>p99</strong>: 180.3ms</p>
-</blockquote>
+</details>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1860,9 +1828,10 @@ Codes:
 </code></pre></div>
 </td></tr></table>
 <p><strong>With parser</strong></p>
-<blockquote>
+<details class="info" open="open">
+<summary>Info</summary>
 <p><strong>Uncompressed package size</strong>: 128M, <strong>p99</strong>: 193.1ms</p>
-</blockquote>
+</details>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1902,7 +1871,7 @@ Codes:
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-12-10
+      Last update: 2021-12-30
     
   </small>
 </div>

@@ -1062,20 +1062,23 @@
                 
                   <h1>Feature flags</h1>
                 
-                <div class="admonition note">
-<p class="admonition-title">This is currently in Beta, as we might change Store parameters in the next release.</p>
-</div>
+                <details class="note" open="open">
+<summary>Note</summary>
+<p>This is currently in Beta, as we might change Store parameters in the next release.</p>
+</details>
 <p>The feature flags utility provides a simple rule engine to define when one or multiple features should be enabled depending on the input.</p>
 <h2 id="terminology">Terminology<a class="headerlink" href="#terminology" title="Permanent link">&para;</a></h2>
 <p>Feature flags are used to modify behaviour without changing the application's code. These flags can be <strong>static</strong> or <strong>dynamic</strong>.</p>
 <p><strong>Static flags</strong>. Indicates something is simply <code>on</code> or <code>off</code>, for example <code>TRACER_ENABLED=True</code>.</p>
 <p><strong>Dynamic flags</strong>. Indicates something can have varying states, for example enable a premium feature for customer X not Y.</p>
-<div class="admonition tip">
-<p class="admonition-title">You can use <a href="../parameters/">Parameters utility</a> for static flags while this utility can do both static and dynamic feature flags.</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Be mindful that feature flags can increase the complexity of your application over time; use them sparingly.</p>
-</div>
+<details class="tip" open="open">
+<summary>Tip</summary>
+<p>You can use <a href="../parameters/">Parameters utility</a> for static flags while this utility can do both static and dynamic feature flags.</p>
+</details>
+<details class="warning" open="open">
+<summary>Warning</summary>
+<p>Be mindful that feature flags can increase the complexity of your application over time; use them sparingly.</p>
+</details>
 <p>If you want to learn more about feature flags, their variations and trade-offs, check these articles:</p>
 <ul>
 <li><a href="https://martinfowler.com/articles/feature-toggles.html">Feature Toggles (aka Feature Flags) - Pete Hodgson</a></li>
@@ -1674,8 +1677,7 @@
 <p>This utility expects a certain schema to be stored as JSON within AWS AppConfig.</p>
 <h4 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h4>
 <p>A feature can simply have its name and a <code>default</code> value. This is either on or off, also known as a <a href="#static-flags">static flag</a>.</p>
-<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">minimal_schema.json</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">minimal_schema.json</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -1686,8 +1688,6 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <p>If you need more control and want to provide context such as user group, permissions, location, etc., you need to add rules to your feature flag configuration.</p>
 <h4 id="rules">Rules<a class="headerlink" href="#rules" title="Permanent link">&para;</a></h4>
 <p>When adding <code>rules</code> to a feature, they must contain:</p>
@@ -1696,8 +1696,7 @@
 <li><code>when_match</code> boolean value that should be used when conditions match</li>
 <li>A list of <code>conditions</code> for evaluation</li>
 </ol>
-<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">feature_with_rules.json</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">feature_with_rules.json</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1732,13 +1731,10 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <p>You can have multiple rules with different names. The rule engine will return the first result <code>when_match</code> of the matching rule configuration, or <code>default</code> value when none of the rules apply.</p>
 <h4 id="conditions">Conditions<a class="headerlink" href="#conditions" title="Permanent link">&para;</a></h4>
 <p>The <code>conditions</code> block is a list of conditions that contain <code>action</code>, <code>key</code>, and <code>value</code> keys:</p>
-<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">conditions.json</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">conditions.json</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1759,8 +1755,6 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <p>The <code>action</code> configuration can have the following values, where the expressions <strong><code>a</code></strong> is the <code>key</code> and <strong><code>b</code></strong> is the <code>value</code> above:</p>
 <table>
 <thead>
@@ -1820,9 +1814,10 @@
 </tr>
 </tbody>
 </table>
-<div class="admonition info">
-<p class="admonition-title">The <code>**key**</code> and <code>**value**</code> will be compared to the input from the <code>**context**</code> parameter.</p>
-</div>
+<details class="info" open="open">
+<summary>Info</summary>
+<p>The <code>**key**</code> and <code>**value**</code> will be compared to the input from the <code>**context**</code> parameter.</p>
+</details>
 <p><strong>For multiple conditions</strong>, we will evaluate the list of conditions as a logical <code>AND</code>, so all conditions needs to match to return <code>when_match</code> value.</p>
 <h4 id="rule-engine-flowchart">Rule engine flowchart<a class="headerlink" href="#rule-engine-flowchart" title="Permanent link">&para;</a></h4>
 <p>Now that you've seen all properties of a feature flag schema, this flowchart describes how the rule engines makes a decision on when to return <code>True</code> or <code>False</code>.</p>
@@ -1830,31 +1825,27 @@
 <h3 id="adjusting-in-memory-cache">Adjusting in-memory cache<a class="headerlink" href="#adjusting-in-memory-cache" title="Permanent link">&para;</a></h3>
 <p>By default, we cache configuration retrieved from the Store for 5 seconds for performance and reliability reasons.</p>
 <p>You can override <code>max_age</code> parameter when instantiating the store.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>```python hl_lines=&quot;7&quot;
-from aws_lambda_powertools.utilities.feature_flags import FeatureFlags, AppConfigStore
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Adjusting TTL</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.feature_flags</span> <span class="kn">import</span> <span class="n">FeatureFlags</span><span class="p">,</span> <span class="n">AppConfigStore</span>
 
-app_config = AppConfigStore(
-    environment=&quot;dev&quot;,
-    application=&quot;product-catalogue&quot;,
-    name=&quot;features&quot;,
-    max_age=300
-)
-```
+<span class="n">app_config</span> <span class="o">=</span> <span class="n">AppConfigStore</span><span class="p">(</span>
+    <span class="n">environment</span><span class="o">=</span><span class="s2">&quot;dev&quot;</span><span class="p">,</span>
+    <span class="n">application</span><span class="o">=</span><span class="s2">&quot;product-catalogue&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="n">max_age</span><span class="o">=</span><span class="mi">300</span>
+</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 <h3 id="envelope">Envelope<a class="headerlink" href="#envelope" title="Permanent link">&para;</a></h3>
 <p>There are scenarios where you might want to include feature flags as part of an existing application configuration.</p>
 <p>For this to work, you need to use a JMESPath expression via the <code>envelope</code> parameter to extract that key as the feature flags configuration.</p>
-<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1873,7 +1864,7 @@ app_config = AppConfigStore(
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">configuration.json</label><div class="tabbed-content">
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">configuration.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1931,8 +1922,7 @@ app_config = AppConfigStore(
 </div>
 <h3 id="getting-fetched-configuration">Getting fetched configuration<a class="headerlink" href="#getting-fetched-configuration" title="Permanent link">&para;</a></h3>
 <p>You can access the configuration fetched from the store via <code>get_raw_configuration</code> property within the store instance.</p>
-<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">app.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Accessing entire configuration pulled from the store</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1957,12 +1947,11 @@ app_config = AppConfigStore(
 <span class="hll"><span class="n">config</span> <span class="o">=</span> <span class="n">app_config</span><span class="o">.</span><span class="n">get_raw_configuration</span>
 </span></code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="built-in-store-provider">Built-in store provider<a class="headerlink" href="#built-in-store-provider" title="Permanent link">&para;</a></h3>
-<div class="admonition info">
-<p class="admonition-title">For GA, you'll be able to bring your own store.</p>
-</div>
+<details class="info" open="open">
+<summary>Info</summary>
+<p>For GA, you'll be able to bring your own store.</p>
+</details>
 <h4 id="appconfig">AppConfig<a class="headerlink" href="#appconfig" title="Permanent link">&para;</a></h4>
 <p>AppConfig store provider fetches any JSON document from AWS AppConfig.</p>
 <p>These are the available options for further customization.</p>
@@ -2017,8 +2006,7 @@ app_config = AppConfigStore(
 </tr>
 </tbody>
 </table>
-<div class="tabbed-set" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">appconfig_store_example.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">AppConfigStore sample</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2071,16 +2059,14 @@ app_config = AppConfigStore(
 </span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
 <p>You can unit test your feature flags locally and independently without setting up AWS AppConfig.</p>
 <p><code>AppConfigStore</code> only fetches a JSON document with a specific schema. This allows you to mock the response and use it to verify the rule evaluation.</p>
-<div class="admonition warning">
-<p class="admonition-title">This excerpt relies on <code>pytest</code> and <code>pytest-mock</code> dependencies</p>
-</div>
-<div class="tabbed-set" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">test_feature_flags_independently.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<details class="warning" open="open">
+<summary>Warning</summary>
+<p>This excerpt relies on <code>pytest</code> and <code>pytest-mock</code> dependencies.</p>
+</details>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Unit testing feature flags</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2181,8 +2167,6 @@ app_config = AppConfigStore(
     <span class="k">assert</span> <span class="n">flag</span> <span class="o">==</span> <span class="n">expected_value</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h2 id="feature-flags-vs-parameters-vs-env-vars">Feature flags vs Parameters vs env vars<a class="headerlink" href="#feature-flags-vs-parameters-vs-env-vars" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2241,7 +2225,7 @@ app_config = AppConfigStore(
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-10-03
+      Last update: 2021-12-30
     
   </small>
 </div>

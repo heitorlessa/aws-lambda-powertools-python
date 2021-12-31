@@ -904,11 +904,11 @@
 <h3 id="required-resources">Required resources<a class="headerlink" href="#required-resources" title="Permanent link">&para;</a></h3>
 <p>You must have an existing AppSync GraphQL API and IAM permissions to invoke your Lambda function. That said, there is no additional permissions to use this utility.</p>
 <p>This is the sample infrastructure we are using for the initial examples with a AppSync Direct Lambda Resolver.</p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">schema.graphql</label><div class="tabbed-content">
-<div class="admonition tip">
-<p class="admonition-title">Designing GraphQL Schemas for the first time?</p>
+<details class="tip" open="open">
+<summary>Tip: Designing GraphQL Schemas for the first time?</summary>
 <p>Visit <a href="https://docs.aws.amazon.com/appsync/latest/devguide/designing-your-schema.html" target="_blank">AWS AppSync schema documentation</a> for understanding how to define types, nesting, and pagination.</p>
-</div>
+</details>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">schema.graphql</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1206,9 +1206,10 @@
 <h3 id="resolver-decorator">Resolver decorator<a class="headerlink" href="#resolver-decorator" title="Permanent link">&para;</a></h3>
 <p>You can define your functions to match GraphQL types and fields with the <code>app.resolver()</code> decorator.</p>
 <p>Here's an example where we have two separate functions to resolve <code>getTodo</code> and <code>listTodos</code> fields within the <code>Query</code> type. For completion, we use Scalar type utilities to generate the right output based on our schema definition.</p>
-<div class="admonition info">
-<p class="admonition-title">GraphQL arguments are passed as function arguments</p>
-</div>
+<details class="info" open="open">
+<summary>Info</summary>
+<p>GraphQL arguments are passed as function arguments.</p>
+</details>
 <div class="tabbed-set" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1616,8 +1617,7 @@
 </div>
 <h3 id="async-functions">Async functions<a class="headerlink" href="#async-functions" title="Permanent link">&para;</a></h3>
 <p>For Lambda Python3.8+ runtime, this utility supports async functions when you use in conjunction with <code>asyncio.run</code>.</p>
-<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">async_resolver.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Resolving GraphQL resolvers async</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1658,14 +1658,11 @@
 <span class="hll">    <span class="k">return</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </span></code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="amplify-graphql-transformer">Amplify GraphQL Transformer<a class="headerlink" href="#amplify-graphql-transformer" title="Permanent link">&para;</a></h3>
 <p>Assuming you have <a href="https://docs.amplify.aws/cli/start/install" target="_blank">Amplify CLI installed</a>, create a new API using <code>amplify add api</code> and use the following GraphQL Schema.</p>
 <!-- AppSync resolver decorator is a concise way to create lambda functions to handle AppSync resolvers for multiple `typeName` and `fieldName` declarations. -->
 
-<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">schema.graphql</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Example GraphQL Schema</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1712,16 +1709,14 @@
 </span><span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <p><a href="https://docs.amplify.aws/cli/function#set-up-a-function" target="_blank">Create two new basic Python functions</a> via <code>amplify add function</code>.</p>
-<div class="admonition note">
-<p class="admonition-title">Amplify CLI generated functions use <code>Pipenv</code> as a dependency manager</p>
-<p>Your function source code is located at <strong><code>amplify/backend/function/your-function-name</code></strong>.</p>
-</div>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>Amplify CLI generated functions use <code>Pipenv</code> as a dependency manager. Your function source code is located at <strong><code>amplify/backend/function/your-function-name</code></strong>.</p>
+</details>
 <p>Within your function's folder, add Lambda Powertools as a dependency with <code>pipenv install aws-lambda-powertools</code>.</p>
 <p>Use the following code for <code>merchantInfo</code> and <code>searchMerchant</code> functions respectively.</p>
-<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">merchantInfo/src/app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">merchantInfo/src/app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1770,7 +1765,7 @@
 </span></code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">searchMerchant/src/app.py</label><div class="tabbed-content">
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">searchMerchant/src/app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1813,7 +1808,7 @@
 </div>
 </div>
 <p><strong>Example AppSync GraphQL Transformer Function resolver events</strong></p>
-<div class="tabbed-set" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">Query.listLocations event</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Query.listLocations event</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1864,7 +1859,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">*.commonField event</label><div class="tabbed-content">
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">*.commonField event</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1911,7 +1906,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><label for="__tabbed_7_3">Query.findMerchant event</label><div class="tabbed-content">
+<input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><label for="__tabbed_5_3">Query.findMerchant event</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1963,7 +1958,7 @@
 </div>
 <h3 id="custom-data-models">Custom data models<a class="headerlink" href="#custom-data-models" title="Permanent link">&para;</a></h3>
 <p>You can subclass <code>AppSyncResolverEvent</code> to bring your own set of methods to handle incoming events, by using <code>data_model</code> param in the <code>resolve</code> method.</p>
-<div class="tabbed-set" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">custom_model.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">custom_model.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2018,7 +2013,7 @@
 </span></code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">schema.graphql</label><div class="tabbed-content">
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">schema.graphql</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2063,7 +2058,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><label for="__tabbed_8_3">listLocations_event.json</label><div class="tabbed-content">
+<input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><label for="__tabbed_6_3">listLocations_event.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2158,12 +2153,13 @@
 </div>
 </div>
 <h3 id="split-operations-with-router">Split operations with Router<a class="headerlink" href="#split-operations-with-router" title="Permanent link">&para;</a></h3>
-<div class="admonition tip">
-<p class="admonition-title">Read the <strong><a href="../api_gateway/#considerations" target="_blank">considerations section for trade-offs between monolithic and micro functions</a></strong>, as it's also applicable here.</p>
-</div>
+<details class="tip" open="open">
+<summary>Tip</summary>
+<p>Read the <strong><a href="../api_gateway/#considerations" target="_blank">considerations section for trade-offs between monolithic and micro functions</a></strong>, as it's also applicable here.</p>
+</details>
 <p>As you grow the number of related GraphQL operations a given Lambda function should handle, it is natural to split them into separate files to ease maintenance - That's where the <code>Router</code> feature is useful.</p>
 <p>Let's assume you have <code>app.py</code> as your Lambda function entrypoint and routes in <code>location.py</code>, this is how you'd use the <code>Router</code> feature.</p>
-<div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">resolvers/location.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">resolvers/location.py</label><div class="tabbed-content">
 <p>We import <strong>Router</strong> instead of <strong>AppSyncResolver</strong>; syntax wise is exactly the same.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2203,7 +2199,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">app.py</label><div class="tabbed-content">
+<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">app.py</label><div class="tabbed-content">
 <p>We use <code>include_router</code> method and include all <code>location</code> operations registered in the <code>router</code> global object.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2250,7 +2246,7 @@
 <p>You can test your resolvers by passing a mocked or actual AppSync Lambda event that you're expecting.</p>
 <p>You can use either <code>app.resolve(event, context)</code> or simply <code>app(event, context)</code>.</p>
 <p>Here's an example from our internal functional test.</p>
-<div class="tabbed-set" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">test_direct_resolver.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">test_direct_resolver.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2285,7 +2281,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">appSyncDirectResolver.json</label><div class="tabbed-content">
+<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">appSyncDirectResolver.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2445,7 +2441,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-11-17
+      Last update: 2021-12-30
     
   </small>
 </div>

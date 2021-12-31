@@ -530,13 +530,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#testing-your-code" class="md-nav__link">
-    Testing your code
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -752,13 +745,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#testing-your-code" class="md-nav__link">
-    Testing your code
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -791,8 +777,7 @@
 <li><strong>event</strong> - Lambda function invocation event</li>
 <li><strong>context</strong> - Lambda function context object</li>
 </ul>
-<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">app.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Creating your own middleware for before/after logic</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -817,12 +802,9 @@
     <span class="o">...</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h2 id="middleware-with-params">Middleware with params<a class="headerlink" href="#middleware-with-params" title="Permanent link">&para;</a></h2>
 <p>You can also have your own keyword arguments after the mandatory arguments.</p>
-<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">app.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Accepting arbitrary keyword arguments</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -849,13 +831,10 @@
 </span>    <span class="o">...</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h2 id="tracing-middleware-execution">Tracing middleware execution<a class="headerlink" href="#tracing-middleware-execution" title="Permanent link">&para;</a></h2>
 <p>If you are making use of <a href="../../core/tracer/">Tracer</a>, you can trace the execution of your middleware to ease operations.</p>
 <p>This makes use of an existing Tracer instance that you may have initialized anywhere in your code.</p>
-<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">trace_middleware_execution.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Tracing custom middlewares with Tracer</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -874,12 +853,9 @@
     <span class="o">...</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <p>When executed, your middleware name will <a href="../../core/tracer/">appear in AWS X-Ray Trace details as</a> <code>## middleware_name</code>.</p>
 <p>For advanced use cases, you can instantiate <a href="../../core/tracer/">Tracer</a> inside your middleware, and add annotations as well as metadata for additional operational insights.</p>
-<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">app.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Add custom tracing insights before/after in your middlware</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -892,14 +868,12 @@
 
 <span class="nd">@lambda_handler_decorator</span><span class="p">(</span><span class="n">trace_execution</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">middleware_name</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-<span class="hll">    <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span> <span class="c1"># Takes a copy of an existing tracer instance</span>
-</span><span class="hll">    <span class="n">tracer</span><span class="o">.</span><span class="n">add_annotation</span><span class="o">...</span>
-</span><span class="hll">    <span class="n">tracer</span><span class="o">.</span><span class="n">add_metadata</span><span class="o">...</span>
+<span class="hll">    <span class="c1"># tracer = Tracer() # Takes a copy of an existing tracer instance</span>
+</span><span class="hll">    <span class="c1"># tracer.add_annotation...</span>
+</span><span class="hll">    <span class="c1"># tracer.add_metadata...</span>
 </span>    <span class="k">return</span> <span class="n">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Use <code>trace_execution</code> to quickly understand the performance impact of your middlewares, and reduce or merge tasks when necessary</li>
@@ -907,14 +881,6 @@
 <li>Keep in mind <a href="https://realpython.com/primer-on-python-decorators/#nesting-decorators" target="_blank">Python decorators execution order</a>. Lambda handler is actually called once (top-down)</li>
 <li>Async middlewares are not supported</li>
 </ul>
-<h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
-<p>When unit testing middlewares with <code>trace_execution</code> option enabled, use <code>POWERTOOLS_TRACE_DISABLED</code> env var to safely disable Tracer.</p>
-<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">shell</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nv">POWERTOOLS_TRACE_DISABLED</span><span class="o">=</span><span class="m">1</span> python -m pytest
-</code></pre></div>
-</td></tr></table>
-</div>
-</div>
                 
                   
                     
@@ -923,7 +889,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-10-23
+      Last update: 2021-12-30
     
   </small>
 </div>

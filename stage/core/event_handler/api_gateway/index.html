@@ -1282,8 +1282,7 @@
 <h3 id="required-resources">Required resources<a class="headerlink" href="#required-resources" title="Permanent link">&para;</a></h3>
 <p>You must have an existing <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html" target="_blank">API Gateway Proxy integration</a> or <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/lambda-functions.html" target="_blank">ALB</a> configured to invoke your Lambda function. There is no additional permissions or dependencies required to use this utility.</p>
 <p>This is the sample infrastructure for API Gateway we are using for the examples in this documentation.</p>
-<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">template.yml</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">AWS Serverless Application Model (SAM) example</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1360,15 +1359,14 @@
                 <span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ANY</span>  <span class="c1"># Send requests using any http method to the lambda function</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="api-gateway-decorator">API Gateway decorator<a class="headerlink" href="#api-gateway-decorator" title="Permanent link">&para;</a></h3>
 <p>You can define your functions to match a path and HTTP method, when you use the decorator <code>ApiGatewayResolver</code>.</p>
 <p>Here's an example where we have two separate functions to resolve two paths: <code>/hello</code>.</p>
-<div class="admonition info">
-<p class="admonition-title">We automatically serialize <code>Dict</code> responses as JSON, trim whitespaces for compact responses, and set content-type to <code>application/json</code></p>
-</div>
-<div class="tabbed-set" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">app.py</label><div class="tabbed-content">
+<details class="info" open="open">
+<summary>Info</summary>
+<p>We automatically serialize <code>Dict</code> responses as JSON, trim whitespaces for compact responses, and set content-type to <code>application/json</code>.</p>
+</details>
+<div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1407,7 +1405,7 @@
 </span></code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">hello_event.json</label><div class="tabbed-content">
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">hello_event.json</label><div class="tabbed-content">
 <p>This utility uses <code>path</code> and <code>httpMethod</code> to route to the right function. This helps make unit tests and local invocation easier too.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1535,7 +1533,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><label for="__tabbed_2_3">response.json</label><div class="tabbed-content">
+<input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><label for="__tabbed_1_3">response.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1557,8 +1555,7 @@
 </div>
 <h4 id="http-api">HTTP API<a class="headerlink" href="#http-api" title="Permanent link">&para;</a></h4>
 <p>When using API Gateway HTTP API to front your Lambda functions, you can instruct <code>ApiGatewayResolver</code> to conform with their contract via <code>proxy_type</code> param:</p>
-<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">app.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Using HTTP API resolver</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1595,12 +1592,9 @@
     <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h4 id="alb">ALB<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h4>
 <p>When using ALB to front your Lambda functions, you can instruct <code>ApiGatewayResolver</code> to conform with their contract via <code>proxy_type</code> param:</p>
-<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">app.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Using ALB resolver</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1637,11 +1631,9 @@
     <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="dynamic-routes">Dynamic routes<a class="headerlink" href="#dynamic-routes" title="Permanent link">&para;</a></h3>
 <p>You can use <code>/path/{dynamic_value}</code> when configuring dynamic URL paths. This allows you to define such dynamic value as part of your function signature.</p>
-<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1680,7 +1672,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">sample_request.json</label><div class="tabbed-content">
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">sample_request.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1698,7 +1690,7 @@
 </div>
 <h4 id="nested-routes">Nested routes<a class="headerlink" href="#nested-routes" title="Permanent link">&para;</a></h4>
 <p>You can also nest paths as configured earlier in <a href="#required-resources">our sample infrastructure</a>: <code>/{message}/{name}</code>.</p>
-<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1737,7 +1729,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">sample_request.json</label><div class="tabbed-content">
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">sample_request.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1754,15 +1746,17 @@
 </div>
 </div>
 <h4 id="catch-all-routes">Catch-all routes<a class="headerlink" href="#catch-all-routes" title="Permanent link">&para;</a></h4>
-<div class="admonition note">
-<p class="admonition-title">We recommend having explicit routes whenever possible; use catch-all routes sparingly</p>
-</div>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>We recommend having explicit routes whenever possible; use catch-all routes sparingly.</p>
+</details>
 <p>You can use a regex string to handle an arbitrary number of paths within a request, for example <code>.+</code>.</p>
 <p>You can also combine nested paths with greedy regex to catch in between routes.</p>
-<div class="admonition warning">
-<p class="admonition-title">We will choose the more explicit registered route that match incoming event</p>
-</div>
-<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">app.py</label><div class="tabbed-content">
+<details class="warning" open="open">
+<summary>Warning</summary>
+<p>We will choose the more explicit registered route that match incoming event.</p>
+</details>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1785,7 +1779,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">sample_request.json</label><div class="tabbed-content">
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">sample_request.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1804,7 +1798,7 @@
 <h3 id="http-methods">HTTP Methods<a class="headerlink" href="#http-methods" title="Permanent link">&para;</a></h3>
 <p>You can use named decorators to specify the HTTP method that should be handled in your functions. As well as the
 <code>get</code> method already shown above, you can use <code>post</code>, <code>put</code>, <code>patch</code>, <code>delete</code>, and <code>patch</code>.</p>
-<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1847,7 +1841,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">sample_request.json</label><div class="tabbed-content">
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">sample_request.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1865,7 +1859,7 @@
 </div>
 <p>If you need to accept multiple HTTP methods in a single function, you can use the <code>route</code> method and pass a list of
 HTTP methods.</p>
-<div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1908,7 +1902,7 @@ HTTP methods.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">sample_request.json</label><div class="tabbed-content">
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">sample_request.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1924,16 +1918,17 @@ HTTP methods.</p>
 </td></tr></table>
 </div>
 </div>
-<p>!!! note "It is usually better to have separate functions for each HTTP method, as the functionality tends to differ
-depending on which method is used."</p>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>It is usually better to have separate functions for each HTTP method, as the functionality tends to differ depending on which method is used.</p>
+</details>
 <h3 id="accessing-request-details">Accessing request details<a class="headerlink" href="#accessing-request-details" title="Permanent link">&para;</a></h3>
 <p>By integrating with <a href="../../../utilities/data_classes/" target="_blank">Data classes utilities</a>, you have access to request details, Lambda context and also some convenient methods.</p>
 <p>These are made available in the response returned when instantiating <code>ApiGatewayResolver</code>, for example <code>app.current_event</code> and <code>app.lambda_context</code>.</p>
 <h4 id="query-strings-and-payload">Query strings and payload<a class="headerlink" href="#query-strings-and-payload" title="Permanent link">&para;</a></h4>
 <p>Within <code>app.current_event</code> property, you can access query strings as dictionary via <code>query_string_parameters</code>, or by name via <code>get_query_string_value</code> method.</p>
 <p>You can access the raw payload via <code>body</code> property, or if it's a JSON string you can quickly deserialize it via <code>json_body</code> property.</p>
-<div class="tabbed-set" data-tabs="10:1"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">app.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Accessing query strings, JSON payload, and raw payload</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1964,12 +1959,9 @@ depending on which method is used."</p>
     <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h4 id="headers">Headers<a class="headerlink" href="#headers" title="Permanent link">&para;</a></h4>
 <p>Similarly to <a href="#query-strings-and-payload">Query strings</a>, you can access headers as dictionary via <code>app.current_event.headers</code>, or by name via <code>get_header_value</code>.</p>
-<div class="tabbed-set" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">app.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Accessing HTTP Headers</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1996,12 +1988,9 @@ depending on which method is used."</p>
     <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="handling-not-found-routes">Handling not found routes<a class="headerlink" href="#handling-not-found-routes" title="Permanent link">&para;</a></h3>
 <p>By default, we return <code>404</code> for any unmatched route.</p>
 <p>You can use <strong><code>not_found</code></strong> decorator to override this behaviour, and return a custom <strong><code>Response</code></strong>.</p>
-<div class="tabbed-set" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Handling not found</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2065,11 +2054,8 @@ depending on which method is used."</p>
     <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="exception-handling">Exception handling<a class="headerlink" href="#exception-handling" title="Permanent link">&para;</a></h3>
 <p>You can use <strong><code>exception_handler</code></strong> decorator with any Python exception. This allows you to handle a common exception outside your route, for example validation errors.</p>
-<div class="tabbed-set" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Exception handling</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2137,16 +2123,14 @@ depending on which method is used."</p>
     <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="raising-http-errors">Raising HTTP errors<a class="headerlink" href="#raising-http-errors" title="Permanent link">&para;</a></h3>
 <p>You can easily raise any HTTP Error back to the client using <code>ServiceError</code> exception.</p>
-<div class="admonition info">
-<p class="admonition-title">If you need to send custom headers, use <a href="#fine-grained-responses">Response</a> class instead.</p>
-</div>
+<details class="info" open="open">
+<summary>Info</summary>
+<p>If you need to send custom headers, use <a href="#fine-grained-responses">Response</a> class instead.</p>
+</details>
 <p>Additionally, we provide pre-defined errors for the most popular ones such as HTTP 400, 401, 404, 500.</p>
-<div class="tabbed-set" data-tabs="14:1"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">app.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Raising common HTTP Status errors (4xx, 5xx)</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2237,13 +2221,11 @@ depending on which method is used."</p>
     <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="custom-domain-api-mappings">Custom Domain API Mappings<a class="headerlink" href="#custom-domain-api-mappings" title="Permanent link">&para;</a></h3>
 <p>When using Custom Domain API Mappings feature, you must use <strong><code>strip_prefixes</code></strong> param in the <code>ApiGatewayResolver</code> constructor.</p>
 <p>Scenario: You have a custom domain <code>api.mydomain.dev</code> and set an API Mapping <code>payment</code> to forward requests to your Payments API, the path argument will be <code>/payment/&lt;your_actual_path&gt;</code>.</p>
 <p>This will lead to a HTTP 404 despite having your Lambda configured correctly. See the example below on how to account for this change.</p>
-<div class="tabbed-set" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2280,7 +2262,7 @@ depending on which method is used."</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><label for="__tabbed_15_2">sample_request.json</label><div class="tabbed-content">
+<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">sample_request.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2296,12 +2278,16 @@ depending on which method is used."</p>
 </td></tr></table>
 </div>
 </div>
-<p>Note: After removing a path prefix with <code>strip_prefixes</code>, the new root path will automatically be mapped to the path argument of <code>/</code>. For example, when using <code>strip_prefixes</code> value of <code>/pay</code>, there is no difference between a request path of <code>/pay</code> and <code>/pay/</code>; and the path argument would be defined as <code>/</code>.</p>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>After removing a path prefix with <code>strip_prefixes</code>, the new root path will automatically be mapped to the path argument of <code>/</code>.</p>
+<p>For example, when using <code>strip_prefixes</code> value of <code>/pay</code>, there is no difference between a request path of <code>/pay</code> and <code>/pay/</code>; and the path argument would be defined as <code>/</code>.</p>
+</details>
 <h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h2>
 <h3 id="cors">CORS<a class="headerlink" href="#cors" title="Permanent link">&para;</a></h3>
 <p>You can configure CORS at the <code>ApiGatewayResolver</code> constructor via <code>cors</code> parameter using the <code>CORSConfig</code> class.</p>
 <p>This will ensure that CORS headers are always returned as part of the response when your functions match the path invoked.</p>
-<div class="tabbed-set" data-tabs="16:3"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2354,7 +2340,7 @@ depending on which method is used."</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><label for="__tabbed_16_2">response.json</label><div class="tabbed-content">
+<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">response.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2377,7 +2363,7 @@ depending on which method is used."</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_16_3" name="__tabbed_16" type="radio" /><label for="__tabbed_16_3">response_no_cors.json</label><div class="tabbed-content">
+<input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><label for="__tabbed_8_3">response_no_cors.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2397,17 +2383,19 @@ depending on which method is used."</p>
 </td></tr></table>
 </div>
 </div>
-<div class="admonition tip">
-<p class="admonition-title">Optionally disable class on a per path basis with <code>cors=False</code> parameter</p>
-</div>
+<details class="tip" open="open">
+<summary>Tip</summary>
+<p>Optionally disable CORS on a per path basis with <code>cors=False</code> parameter.</p>
+</details>
 <h4 id="pre-flight">Pre-flight<a class="headerlink" href="#pre-flight" title="Permanent link">&para;</a></h4>
 <p>Pre-flight (OPTIONS) calls are typically handled at the API Gateway level as per <a href="#required-resources">our sample infrastructure</a>, no Lambda integration necessary. However, ALB expects you to handle pre-flight requests.</p>
 <p>For convenience, we automatically handle that for you as long as you <a href="#cors">setup CORS in the constructor level</a>.</p>
 <h4 id="defaults">Defaults<a class="headerlink" href="#defaults" title="Permanent link">&para;</a></h4>
 <p>For convenience, these are the default values when using <code>CORSConfig</code> to enable CORS:</p>
-<div class="admonition warning">
-<p class="admonition-title">Always configure <code>allow_origin</code> when using in production</p>
-</div>
+<details class="warning" open="open">
+<summary>Warning</summary>
+<p>Always configure <code>allow_origin</code> when using in production.</p>
+</details>
 <table>
 <thead>
 <tr>
@@ -2446,7 +2434,7 @@ depending on which method is used."</p>
 </table>
 <h3 id="fine-grained-responses">Fine grained responses<a class="headerlink" href="#fine-grained-responses" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>Response</code> class to have full control over the response, for example you might want to add additional headers or set a custom Content-type.</p>
-<div class="tabbed-set" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><label for="__tabbed_17_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2483,7 +2471,7 @@ depending on which method is used."</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><label for="__tabbed_17_2">response.json</label><div class="tabbed-content">
+<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">response.json</label><div class="tabbed-content">
 <p>```json
 {
     "body": "{\"message\":\"I\'m a teapot\"}",
@@ -2498,10 +2486,11 @@ depending on which method is used."</p>
 </div>
 <h3 id="compress">Compress<a class="headerlink" href="#compress" title="Permanent link">&para;</a></h3>
 <p>You can compress with gzip and base64 encode your responses via <code>compress</code> parameter.</p>
-<div class="admonition warning">
-<p class="admonition-title">The client must send the <code>Accept-Encoding</code> header, otherwise a normal response will be sent</p>
-</div>
-<div class="tabbed-set" data-tabs="18:3"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><label for="__tabbed_18_1">app.py</label><div class="tabbed-content">
+<details class="warning" open="open">
+<summary>Warning</summary>
+<p>The client must send the <code>Accept-Encoding</code> header, otherwise a normal response will be sent.</p>
+</details>
+<div class="tabbed-set" data-tabs="10:3"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2524,7 +2513,7 @@ depending on which method is used."</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><label for="__tabbed_18_2">sample_request.json</label><div class="tabbed-content">
+<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">sample_request.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2543,7 +2532,7 @@ depending on which method is used."</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_18_3" name="__tabbed_18" type="radio" /><label for="__tabbed_18_3">response.json</label><div class="tabbed-content">
+<input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><label for="__tabbed_10_3">response.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2568,10 +2557,11 @@ depending on which method is used."</p>
 <h3 id="binary-responses">Binary responses<a class="headerlink" href="#binary-responses" title="Permanent link">&para;</a></h3>
 <p>For convenience, we automatically base64 encode binary responses. You can also use in combination with <code>compress</code> parameter if your client supports gzip.</p>
 <p>Like <code>compress</code> feature, the client must send the <code>Accept</code> header with the correct media type.</p>
-<div class="admonition warning">
-<p class="admonition-title">This feature requires API Gateway to configure binary media types, see <a href="#required-resources">our sample infrastructure</a> for reference</p>
-</div>
-<div class="tabbed-set" data-tabs="19:4"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><label for="__tabbed_19_1">app.py</label><div class="tabbed-content">
+<details class="warning" open="open">
+<summary>Warning</summary>
+<p>This feature requires API Gateway to configure binary media types, see <a href="#required-resources">our sample infrastructure</a> for reference.</p>
+</details>
+<div class="tabbed-set" data-tabs="11:4"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2602,7 +2592,7 @@ depending on which method is used."</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><label for="__tabbed_19_2">logo.svg</label><div class="tabbed-content">
+<input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><label for="__tabbed_11_2">logo.svg</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2681,7 +2671,7 @@ depending on which method is used."</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_19_3" name="__tabbed_19" type="radio" /><label for="__tabbed_19_3">sample_request.json</label><div class="tabbed-content">
+<input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><label for="__tabbed_11_3">sample_request.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2700,7 +2690,7 @@ depending on which method is used."</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_19_4" name="__tabbed_19" type="radio" /><label for="__tabbed_19_4">response.json</label><div class="tabbed-content">
+<input id="__tabbed_11_4" name="__tabbed_11" type="radio" /><label for="__tabbed_11_4">response.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2723,11 +2713,11 @@ depending on which method is used."</p>
 <h3 id="debug-mode">Debug mode<a class="headerlink" href="#debug-mode" title="Permanent link">&para;</a></h3>
 <p>You can enable debug mode via <code>debug</code> param, or via <code>POWERTOOLS_EVENT_HANDLER_DEBUG</code> <a href="../../..#environment-variables">environment variable</a>.</p>
 <p>This will enable full tracebacks errors in the response, print request and responses, and set CORS in development mode.</p>
-<div class="admonition warning">
-<p class="admonition-title">This might reveal sensitive information in your logs and relax CORS restrictions, use it sparingly.</p>
-</div>
-<div class="tabbed-set" data-tabs="20:1"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><label for="__tabbed_20_1">debug.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<details class="danger" open="open">
+<summary>Danger</summary>
+<p>This might reveal sensitive information in your logs and relax CORS restrictions, use it sparingly.</p>
+</details>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Enabling debug mode</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2748,12 +2738,9 @@ depending on which method is used."</p>
     <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="custom-serializer">Custom serializer<a class="headerlink" href="#custom-serializer" title="Permanent link">&para;</a></h3>
 <p>You can instruct API Gateway handler to use a custom serializer to best suit your needs, for example take into account Enums when serializing.</p>
-<div class="tabbed-set" data-tabs="21:1"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><label for="__tabbed_21_1">custom_serializer.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Using a custom JSON serializer for responses</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2826,12 +2813,10 @@ depending on which method is used."</p>
     <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h3 id="split-routes-with-router">Split routes with Router<a class="headerlink" href="#split-routes-with-router" title="Permanent link">&para;</a></h3>
 <p>As you grow the number of routes a given Lambda function should handle, it is natural to split routes into separate files to ease maintenance - That's where the <code>Router</code> feature is useful.</p>
 <p>Let's assume you have <code>app.py</code> as your Lambda function entrypoint and routes in <code>users.py</code>, this is how you'd use the <code>Router</code> feature.</p>
-<div class="tabbed-set" data-tabs="22:2"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><label for="__tabbed_22_1">users.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">users.py</label><div class="tabbed-content">
 <p>We import <strong>Router</strong> instead of <strong>ApiGatewayResolver</strong>; syntax wise is exactly the same.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2887,7 +2872,7 @@ depending on which method is used."</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_22_2" name="__tabbed_22" type="radio" /><label for="__tabbed_22_2">app.py</label><div class="tabbed-content">
+<input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><label for="__tabbed_12_2">app.py</label><div class="tabbed-content">
 <p>We use <code>include_router</code> method and include all user routers registered in the <code>router</code> global object.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2925,7 +2910,7 @@ depending on which method is used."</p>
 <h4 id="route-prefix">Route prefix<a class="headerlink" href="#route-prefix" title="Permanent link">&para;</a></h4>
 <p>In the previous example, <code>users.py</code> routes had a <code>/users</code> prefix. This might grow over time and become repetitive.</p>
 <p>When necessary, you can set a prefix when including a router object. This means you could remove <code>/users</code> prefix in <code>users.py</code> altogether.</p>
-<div class="tabbed-set" data-tabs="23:2"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><label for="__tabbed_23_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2954,7 +2939,7 @@ depending on which method is used."</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_23_2" name="__tabbed_23" type="radio" /><label for="__tabbed_23_2">users.py</label><div class="tabbed-content">
+<input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><label for="__tabbed_13_2">users.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2998,7 +2983,7 @@ depending on which method is used."</p>
 </div>
 <h4 id="sample-layout">Sample layout<a class="headerlink" href="#sample-layout" title="Permanent link">&para;</a></h4>
 <p>This sample project contains a Users function with two distinct set of routes, <code>/users</code> and <code>/health</code>. The layout optimizes for code sharing, no custom build tooling, and it uses <a href="../../..#lambda-layer">Lambda Layers</a> to install Lambda Powertools.</p>
-<div class="tabbed-set" data-tabs="24:5"><input checked="checked" id="__tabbed_24_1" name="__tabbed_24" type="radio" /><label for="__tabbed_24_1">Project layout</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="14:5"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">Project layout</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3051,7 +3036,7 @@ depending on which method is used."</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_24_2" name="__tabbed_24" type="radio" /><label for="__tabbed_24_2">template.yml</label><div class="tabbed-content">
+<input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><label for="__tabbed_14_2">template.yml</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3164,7 +3149,7 @@ depending on which method is used."</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_24_3" name="__tabbed_24" type="radio" /><label for="__tabbed_24_3">src/users/main.py</label><div class="tabbed-content">
+<input id="__tabbed_14_3" name="__tabbed_14" type="radio" /><label for="__tabbed_14_3">src/users/main.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3211,7 +3196,7 @@ depending on which method is used."</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_24_4" name="__tabbed_24" type="radio" /><label for="__tabbed_24_4">src/users/routers/health.py</label><div class="tabbed-content">
+<input id="__tabbed_14_4" name="__tabbed_14" type="radio" /><label for="__tabbed_14_4">src/users/routers/health.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3240,7 +3225,7 @@ depending on which method is used."</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_24_5" name="__tabbed_24" type="radio" /><label for="__tabbed_24_5">tests/functional/test_users.py</label><div class="tabbed-content">
+<input id="__tabbed_14_5" name="__tabbed_14" type="radio" /><label for="__tabbed_14_5">tests/functional/test_users.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3270,19 +3255,20 @@ depending on which method is used."</p>
 <p>This utility is optimized for fast startup, minimal feature set, and to quickly on-board customers familiar with frameworks like Flask — it's not meant to be a fully fledged framework.</p>
 <p>Event Handler naturally leads to a single Lambda function handling multiple routes for a given service, which can be eventually broken into multiple functions.</p>
 <p>Both single (monolithic) and multiple functions (micro) offer different set of trade-offs worth knowing.</p>
-<div class="admonition tip">
-<p class="admonition-title">TL;DR. Start with a monolithic function, add additional functions with new handlers, and possibly break into micro functions if necessary.</p>
-</div>
+<details class="tip" open="open">
+<summary>Tip</summary>
+<p>TL;DR. Start with a monolithic function, add additional functions with new handlers, and possibly break into micro functions if necessary.</p>
+</details>
 <h4 id="monolithic-function">Monolithic function<a class="headerlink" href="#monolithic-function" title="Permanent link">&para;</a></h4>
 <p><img alt="Monolithic function sample" src="../../../media/monolithic-function.png" /></p>
 <p>A monolithic function means that your final code artifact will be deployed to a single function. This is generally the best approach to start.</p>
-<p><strong>Benefits</strong></p>
+<p><em><strong>Benefits</strong></em></p>
 <ul>
 <li><strong>Code reuse</strong>. It's easier to reason about your service, modularize it and reuse code as it grows. Eventually, it can be turned into a standalone library.</li>
 <li><strong>No custom tooling</strong>. Monolithic functions are treated just like normal Python packages; no upfront investment in tooling.</li>
 <li><strong>Faster deployment and debugging</strong>. Whether you use all-at-once, linear, or canary deployments, a monolithic function is a single deployable unit. IDEs like PyCharm and VSCode have tooling to quickly profile, visualize, and step through debug any Python package.</li>
 </ul>
-<p><strong>Downsides</strong></p>
+<p><em><strong>Downsides</strong></em></p>
 <ul>
 <li><strong>Cold starts</strong>. Frequent deployments and/or high load can diminish the benefit of monolithic functions depending on your latency requirements, due to <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-scaling.html" target="_blank">Lambda scaling model</a>. Always load test to pragmatically balance between your customer experience and development cognitive load.</li>
 <li><strong>Granular security permissions</strong>. The micro function approach enables you to use fine-grained permissions &amp; access controls, separate external dependencies &amp; code signing at the function level. Conversely, you could have multiple functions while duplicating the final code artifact in a monolithic approach.<ul>
@@ -3294,13 +3280,13 @@ depending on which method is used."</p>
 <h4 id="micro-function">Micro function<a class="headerlink" href="#micro-function" title="Permanent link">&para;</a></h4>
 <p><img alt="Micro function sample" src="../../../media/micro-function.png" /></p>
 <p>A micro function means that your final code artifact will be different to each function deployed. This is generally the approach to start if you're looking for fine-grain control and/or high load on certain parts of your service.</p>
-<p><strong>Benefits</strong></p>
+<p><em><strong>Benefits</strong></em></p>
 <ul>
 <li><strong>Granular scaling</strong>. A micro function can benefit from the <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-scaling.html" target="_blank">Lambda scaling model</a> to scale differently depending on each part of your application. Concurrency controls and provisioned concurrency can also be used at a granular level for capacity management.</li>
 <li><strong>Discoverability</strong>. Micro functions are easier do visualize when using distributed tracing. Their high-level architectures can be self-explanatory, and complexity is highly visible — assuming each function is named to the business purpose it serves.</li>
 <li><strong>Package size</strong>. An independent function can be significant smaller (KB vs MB) depending on external dependencies it require to perform its purpose. Conversely, a monolithic approach can benefit from <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-layers.html" target="_blank">Lambda Layers</a> to optimize builds for external dependencies.</li>
 </ul>
-<p><strong>Downsides</strong></p>
+<p><em><strong>Downsides</strong></em></p>
 <ul>
 <li><strong>Upfront investment</strong>. Python ecosystem doesn't use a bundler — you need a custom build tooling to ensure each function only has what it needs and account for <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html" target="_blank">C bindings for runtime compatibility</a>. Operations become more elaborate — you need to standardize tracing labels/annotations, structured logging, and metrics to pinpoint root causes.<ul>
 <li>Engineering discipline is necessary for both approaches. Micro-function approach however requires further attention in consistency as the number of functions grow, just like any distributed system.</li>
@@ -3315,7 +3301,7 @@ your development, building, deployment tooling need to accommodate the distinct 
 </ul>
 <h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
 <p>You can test your routes by passing a proxy event request where <code>path</code> and <code>httpMethod</code>.</p>
-<div class="tabbed-set" data-tabs="25:2"><input checked="checked" id="__tabbed_25_1" name="__tabbed_25" type="radio" /><label for="__tabbed_25_1">test_app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">test_app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3370,7 +3356,7 @@ your development, building, deployment tooling need to accommodate the distinct 
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_25_2" name="__tabbed_25" type="radio" /><label for="__tabbed_25_2">app.py</label><div class="tabbed-content">
+<input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><label for="__tabbed_15_2">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3416,7 +3402,7 @@ your development, building, deployment tooling need to accommodate the distinct 
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-12-20
+      Last update: 2021-12-30
     
   </small>
 </div>

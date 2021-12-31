@@ -852,17 +852,17 @@
 <li>Built-in envelopes to unwrap popular event sources payloads</li>
 </ul>
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
-<div class="admonition tip">
-<p class="admonition-title">Using JSON Schemas for the first time?</p>
+<details class="tip" open="open">
+<summary>Tip: Using JSON Schemas for the first time?</summary>
 <p>Check this <a href="https://json-schema.org/learn/getting-started-step-by-step.html" target="_blank">step-by-step tour in the official JSON Schema website</a>.</p>
-</div>
+</details>
 <p>You can validate inbound and outbound events using <a href="#validator-decorator"><code>validator</code> decorator</a>.</p>
 <p>You can also use the standalone <code>validate</code> function, if you want more control over the validation process such as handling a validation error.</p>
 <p>We support any JSONSchema draft supported by <a href="https://horejsek.github.io/python-fastjsonschema/" target="_blank">fastjsonschema</a> library.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<details class="warning" open="open">
+<summary>Warning</summary>
 <p>Both <code>validator</code> decorator and <code>validate</code> standalone function expects your JSON Schema to be a <strong>dictionary</strong>, not a filename.</p>
-</div>
+</details>
 <h3 id="validator-decorator">Validator decorator<a class="headerlink" href="#validator-decorator" title="Permanent link">&para;</a></h3>
 <p><strong>Validator</strong> decorator is typically used to validate either inbound or functions' response.</p>
 <p>It will fail fast with <code>SchemaValidationError</code> exception if event or response doesn't conform with given JSON Schema.</p>
@@ -976,10 +976,10 @@
 </td></tr></table>
 </div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<details class="note" open="open">
+<summary>Note</summary>
 <p>It's not a requirement to validate both inbound and outbound schemas - You can either use one, or both.</p>
-</div>
+</details>
 <h3 id="validate-function">Validate function<a class="headerlink" href="#validate-function" title="Permanent link">&para;</a></h3>
 <p><strong>Validate</strong> standalone function is typically used within the Lambda handler, or any other methods that perform data validation.</p>
 <p>You can also gracefully handle schema validation errors by catching <code>SchemaValidationError</code> exception.</p>
@@ -1422,13 +1422,12 @@
 </table>
 <h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h2>
 <h3 id="validating-custom-formats">Validating custom formats<a class="headerlink" href="#validating-custom-formats" title="Permanent link">&para;</a></h3>
-<div class="admonition note">
-<p class="admonition-title">New in 1.10.0</p>
+<details class="note" open="open">
+<summary>Note</summary>
 <p>JSON Schema DRAFT 7 <a href="https://json-schema.org/understanding-json-schema/reference/string.html#format" target="_blank">has many new built-in formats</a> such as date, time, and specifically a regex format which might be a better replacement for a custom format, if you do have control over the schema.</p>
-</div>
+</details>
 <p>JSON Schemas with custom formats like <code>int64</code> will fail validation. If you have these, you can pass them using <code>formats</code> parameter:</p>
-<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">custom_json_schema_type_format.json</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">custom_json_schema_type_format.json</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -1441,10 +1440,8 @@
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <p>For each format defined in a dictionary key, you must use a regex, or a function that returns a boolean to instruct the validator on how to proceed when encountering that type.</p>
-<div class="tabbed-set" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">validate_custom_format.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">validate_custom_format.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1467,7 +1464,7 @@
 </span></code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">schemas.py</label><div class="tabbed-content">
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">schemas.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
 <span class="normal">  3</span>
@@ -1732,7 +1729,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><label for="__tabbed_6_3">event.json</label><div class="tabbed-content">
+<input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><label for="__tabbed_5_3">event.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1879,10 +1876,10 @@
 <h3 id="built-in-jmespath-functions">Built-in JMESPath functions<a class="headerlink" href="#built-in-jmespath-functions" title="Permanent link">&para;</a></h3>
 <p>You might have events or responses that contain non-encoded JSON, where you need to decode before validating them.</p>
 <p>You can use our built-in <a href="/utilities/jmespath_functions">JMESPath functions</a> within your expressions to do exactly that to decode JSON Strings, base64, and uncompress gzip data.</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
+<details class="info" open="open">
+<summary>Info</summary>
 <p>We use these for built-in envelopes to easily to decode and unwrap events from sources like Kinesis, CloudWatch Logs, etc.</p>
-</div>
+</details>
                 
                   
                     
@@ -1891,7 +1888,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-09-28
+      Last update: 2021-12-30
     
   </small>
 </div>

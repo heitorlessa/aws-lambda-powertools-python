@@ -870,9 +870,10 @@
                 
                   <h1>JMESPath Functions</h1>
                 
-                <div class="admonition tip">
-<p class="admonition-title">JMESPath is a query language for JSON used by AWS CLI, AWS Python SDK, and AWS Lambda Powertools for Python.</p>
-</div>
+                <details class="tip" open="open">
+<summary>Tip</summary>
+<p>JMESPath is a query language for JSON used by AWS CLI, AWS Python SDK, and AWS Lambda Powertools for Python.</p>
+</details>
 <p>Built-in <a href="https://jmespath.org/" target="_blank">JMESPath</a> Functions to easily deserialize common encoded JSON payloads in Lambda functions.</p>
 <h2 id="key-features">Key features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
 <ul>
@@ -882,9 +883,10 @@
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <p>You might have events that contains encoded JSON payloads as string, base64, or even in compressed format. It is a common use case to decode and extract them partially or fully as part of your Lambda function invocation.</p>
 <p>Lambda Powertools also have utilities like <a href="../validation/">validation</a>, <a href="../idempotency/">idempotency</a>, or <a href="../feature_flags/">feature flags</a> where you might need to extract a portion of your data before using them.</p>
-<div class="admonition info">
-<p class="admonition-title"><strong>Envelope</strong> is the terminology we use for the JMESPath expression to extract your JSON object from your data input</p>
-</div>
+<details class="info" open="open">
+<summary>Info</summary>
+<p><strong>Envelope</strong> is the terminology we use for the JMESPath expression to extract your JSON object from your data input.</p>
+</details>
 <h3 id="extracting-data">Extracting data<a class="headerlink" href="#extracting-data" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>extract_data_from_envelope</code> function along with any <a href="https://jmespath.org/tutorial.html" target="_blank">JMESPath expression</a>.</p>
 <div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">app.py</label><div class="tabbed-content">
@@ -1031,10 +1033,10 @@
 <h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h2>
 <h3 id="built-in-jmespath-functions">Built-in JMESPath functions<a class="headerlink" href="#built-in-jmespath-functions" title="Permanent link">&para;</a></h3>
 <p>You can use our built-in JMESPath functions within your expressions to do exactly that to decode JSON Strings, base64, and uncompress gzip data.</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
+<details class="info" open="open">
+<summary>Info</summary>
 <p>We use these for built-in envelopes to easily decode and unwrap events from sources like API Gateway, Kinesis, CloudWatch Logs, etc.</p>
-</div>
+</details>
 <h4 id="powertools_json-function">powertools_json function<a class="headerlink" href="#powertools_json-function" title="Permanent link">&para;</a></h4>
 <p>Use <code>powertools_json</code> function to decode any JSON String anywhere a JMESPath expression is allowed.</p>
 <blockquote>
@@ -1148,8 +1150,7 @@
 <p><strong>Idempotency scenario</strong></p>
 </blockquote>
 <p>This sample will decode the value within the <code>body</code> key of an API Gateway event into a valid JSON object to ensure the Idempotency utility processes a JSON object instead of a string.</p>
-<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">powertools_json_jmespath_function.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Deserializing JSON before using as idempotency key</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1175,9 +1176,9 @@
 <span class="p">)</span>
 
 <span class="n">persistence_layer</span> <span class="o">=</span> <span class="n">DynamoDBPersistenceLayer</span><span class="p">(</span><span class="n">table_name</span><span class="o">=</span><span class="s2">&quot;IdempotencyTable&quot;</span><span class="p">)</span>
-
 <span class="hll"><span class="n">config</span> <span class="o">=</span> <span class="n">IdempotencyConfig</span><span class="p">(</span><span class="n">event_key_jmespath</span><span class="o">=</span><span class="s2">&quot;powertools_json(body)&quot;</span><span class="p">)</span>
-</span><span class="nd">@idempotent</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">persistence_store</span><span class="o">=</span><span class="n">persistence_layer</span><span class="p">)</span>
+</span>
+<span class="nd">@idempotent</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">persistence_store</span><span class="o">=</span><span class="n">persistence_layer</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span><span class="n">APIGatewayProxyEvent</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
     <span class="n">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">event</span><span class="p">[</span><span class="s1">&#39;body&#39;</span><span class="p">])</span>
     <span class="n">payment</span> <span class="o">=</span> <span class="n">create_subscription_payment</span><span class="p">(</span>
@@ -1192,12 +1193,10 @@
     <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-</div>
-</div>
 <h4 id="powertools_base64-function">powertools_base64 function<a class="headerlink" href="#powertools_base64-function" title="Permanent link">&para;</a></h4>
 <p>Use <code>powertools_base64</code> function to decode any base64 data.</p>
 <p>This sample will decode the base64 value within the <code>data</code> key, and decode the JSON string into a valid JSON before we can validate it.</p>
-<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">powertools_json_jmespath_function.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">powertools_json_jmespath_function.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1222,6 +1221,120 @@
       <span class="n">event</span><span class="o">=</span><span class="n">sample_event</span><span class="p">,</span>
       <span class="n">schema</span><span class="o">=</span><span class="n">schemas</span><span class="o">.</span><span class="n">INPUT</span><span class="p">,</span>
 <span class="hll">      <span class="n">envelope</span><span class="o">=</span><span class="s2">&quot;powertools_json(powertools_base64(data))&quot;</span>
+</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">schemas.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">INPUT</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/draft-07/schema&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;http://example.com/example.json&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Sample schema&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The root schema comprises the entire JSON document.&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="s2">&quot;examples&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;hello world&quot;</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;lessa&quot;</span><span class="p">}],</span>
+</span>    <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#/properties/message&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;The message&quot;</span><span class="p">,</span>
+<span class="hll">            <span class="s2">&quot;examples&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hello world&quot;</span><span class="p">],</span>
+</span>            <span class="s2">&quot;maxLength&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+<span class="hll">        <span class="p">},</span>
+</span>        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#/properties/username&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;The username&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;examples&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;lessa&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;maxLength&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+<span class="hll">        <span class="p">},</span>
+</span>    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">OUTPUT</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/draft-07/schema&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;http://example.com/example.json&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Sample outgoing schema&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The root schema comprises the entire JSON document.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;examples&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;response&quot;</span><span class="p">}],</span>
+    <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;statusCode&quot;</span><span class="p">,</span> <span class="s2">&quot;body&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#/properties/statusCode&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;The statusCode&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#/properties/body&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;The response&quot;</span><span class="p">},</span>
+    <span class="p">},</span>
+<span class="hll"><span class="p">}</span>
+</span></code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<h4 id="powertools_base64_gzip-function">powertools_base64_gzip function<a class="headerlink" href="#powertools_base64_gzip-function" title="Permanent link">&para;</a></h4>
+<p>Use <code>powertools_base64_gzip</code> function to decompress and decode base64 data.</p>
+<p>This sample will decompress and decode base64 data, then use JMESPath pipeline expression to pass the result for decoding its JSON string.</p>
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">powertools_json_jmespath_function.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.validation</span> <span class="kn">import</span> <span class="n">validate</span>
+
+<span class="kn">import</span> <span class="nn">schemas</span>
+
+<span class="n">sample_event</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;H4sIACZAXl8C/52PzUrEMBhFX2UILpX8tPbHXWHqIOiq3Q1F0ubrWEiakqTWofTdTYYB0YWL2d5zvnuTFellBIOedoiyKH5M0iwnlKH7HZL6dDB6ngLDfLFYctUKjie9gHFaS/sAX1xNEq525QxwFXRGGMEkx4Th491rUZdV3YiIZ6Ljfd+lfSyAtZloacQgAkqSJCGhxM6t7cwwuUGPz4N0YKyvO6I9WDeMPMSo8Z4Ca/kJ6vMEYW5f1MX7W1lVxaG8vqX8hNFdjlc0iCBBSF4ERT/3Pl7RbMGMXF2KZMh/C+gDpNS7RRsp0OaRGzx0/t8e0jgmcczyLCWEePhni/23JWalzjdu0a3ZvgEaNLXeugEAAA==&quot;</span>
+<span class="p">}</span>
+
+<span class="n">validate</span><span class="p">(</span>
+    <span class="n">event</span><span class="o">=</span><span class="n">sample_event</span><span class="p">,</span>
+    <span class="n">schema</span><span class="o">=</span><span class="n">schemas</span><span class="o">.</span><span class="n">INPUT</span><span class="p">,</span>
+<span class="hll">    <span class="n">envelope</span><span class="o">=</span><span class="s2">&quot;powertools_base64_gzip(data) | powertools_json(@)&quot;</span>
 </span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
@@ -1308,128 +1421,14 @@
 </td></tr></table>
 </div>
 </div>
-<h4 id="powertools_base64_gzip-function">powertools_base64_gzip function<a class="headerlink" href="#powertools_base64_gzip-function" title="Permanent link">&para;</a></h4>
-<p>Use <code>powertools_base64_gzip</code> function to decompress and decode base64 data.</p>
-<p>This sample will decompress and decode base64 data, then use JMESPath pipeline expression to pass the result for decoding its JSON string.</p>
-<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">powertools_json_jmespath_function.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.validation</span> <span class="kn">import</span> <span class="n">validate</span>
-
-<span class="kn">import</span> <span class="nn">schemas</span>
-
-<span class="n">sample_event</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;H4sIACZAXl8C/52PzUrEMBhFX2UILpX8tPbHXWHqIOiq3Q1F0ubrWEiakqTWofTdTYYB0YWL2d5zvnuTFellBIOedoiyKH5M0iwnlKH7HZL6dDB6ngLDfLFYctUKjie9gHFaS/sAX1xNEq525QxwFXRGGMEkx4Th491rUZdV3YiIZ6Ljfd+lfSyAtZloacQgAkqSJCGhxM6t7cwwuUGPz4N0YKyvO6I9WDeMPMSo8Z4Ca/kJ6vMEYW5f1MX7W1lVxaG8vqX8hNFdjlc0iCBBSF4ERT/3Pl7RbMGMXF2KZMh/C+gDpNS7RRsp0OaRGzx0/t8e0jgmcczyLCWEePhni/23JWalzjdu0a3ZvgEaNLXeugEAAA==&quot;</span>
-<span class="p">}</span>
-
-<span class="n">validate</span><span class="p">(</span>
-    <span class="n">event</span><span class="o">=</span><span class="n">sample_event</span><span class="p">,</span>
-    <span class="n">schema</span><span class="o">=</span><span class="n">schemas</span><span class="o">.</span><span class="n">INPUT</span><span class="p">,</span>
-<span class="hll">    <span class="n">envelope</span><span class="o">=</span><span class="s2">&quot;powertools_base64_gzip(data) | powertools_json(@)&quot;</span>
-</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
-</div>
-<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">schemas.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">INPUT</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/draft-07/schema&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;http://example.com/example.json&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Sample schema&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The root schema comprises the entire JSON document.&quot;</span><span class="p">,</span>
-<span class="hll">    <span class="s2">&quot;examples&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;hello world&quot;</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;lessa&quot;</span><span class="p">}],</span>
-</span>    <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#/properties/message&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;The message&quot;</span><span class="p">,</span>
-<span class="hll">            <span class="s2">&quot;examples&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hello world&quot;</span><span class="p">],</span>
-</span>            <span class="s2">&quot;maxLength&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-<span class="hll">        <span class="p">},</span>
-</span>        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#/properties/username&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;The username&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;examples&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;lessa&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;maxLength&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-<span class="hll">        <span class="p">},</span>
-</span>    <span class="p">},</span>
-<span class="p">}</span>
-
-<span class="n">OUTPUT</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;$schema&quot;</span><span class="p">:</span> <span class="s2">&quot;http://json-schema.org/draft-07/schema&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;http://example.com/example.json&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Sample outgoing schema&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;The root schema comprises the entire JSON document.&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;examples&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;response&quot;</span><span class="p">}],</span>
-    <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;statusCode&quot;</span><span class="p">,</span> <span class="s2">&quot;body&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#/properties/statusCode&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;The statusCode&quot;</span><span class="p">},</span>
-        <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;$id&quot;</span><span class="p">:</span> <span class="s2">&quot;#/properties/body&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;The response&quot;</span><span class="p">},</span>
-    <span class="p">},</span>
-<span class="hll"><span class="p">}</span>
-</span></code></pre></div>
-</td></tr></table>
-</div>
-</div>
 <h3 id="bring-your-own-jmespath-function">Bring your own JMESPath function<a class="headerlink" href="#bring-your-own-jmespath-function" title="Permanent link">&para;</a></h3>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<details class="warning" open="open">
+<summary>Warning</summary>
 <p>This should only be used for advanced use cases where you have special formats not covered by the built-in functions.</p>
-</div>
+</details>
 <p>For special binary formats that you want to decode before applying JSON Schema validation, you can bring your own <a href="https://github.com/jmespath/jmespath.py#custom-functions" target="_blank">JMESPath function</a> and any additional option via <code>jmespath_options</code> param.</p>
 <p>In order to keep the built-in functions from Powertools, you can subclass from <code>PowertoolsFunctions</code>:</p>
-<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">custom_jmespath_function.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">custom_jmespath_function.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1468,7 +1467,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">event.json</label><div class="tabbed-content">
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">event.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="p">{</span><span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;custom_encoded_data&quot;</span><span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
@@ -1482,7 +1481,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-10-05
+      Last update: 2021-12-30
     
   </small>
 </div>
