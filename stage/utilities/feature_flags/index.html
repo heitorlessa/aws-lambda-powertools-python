@@ -670,6 +670,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#beyond-boolean-feature-flags" class="md-nav__link">
+    Beyond boolean feature flags
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -682,6 +689,20 @@
   
     <nav class="md-nav" aria-label="Advanced">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-in-memory-cache" class="md-nav__link">
+    Adjusting in-memory cache
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-fetched-configuration" class="md-nav__link">
+    Getting fetched configuration
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#schema" class="md-nav__link">
@@ -725,22 +746,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#adjusting-in-memory-cache" class="md-nav__link">
-    Adjusting in-memory cache
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#envelope" class="md-nav__link">
     Envelope
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getting-fetched-configuration" class="md-nav__link">
-    Getting fetched configuration
   </a>
   
 </li>
@@ -922,6 +929,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#beyond-boolean-feature-flags" class="md-nav__link">
+    Beyond boolean feature flags
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -934,6 +948,20 @@
   
     <nav class="md-nav" aria-label="Advanced">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-in-memory-cache" class="md-nav__link">
+    Adjusting in-memory cache
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-fetched-configuration" class="md-nav__link">
+    Getting fetched configuration
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#schema" class="md-nav__link">
@@ -977,22 +1005,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#adjusting-in-memory-cache" class="md-nav__link">
-    Adjusting in-memory cache
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#envelope" class="md-nav__link">
     Envelope
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getting-fetched-configuration" class="md-nav__link">
-    Getting fetched configuration
   </a>
   
 </li>
@@ -1070,7 +1084,7 @@
 <h2 id="terminology">Terminology<a class="headerlink" href="#terminology" title="Permanent link">&para;</a></h2>
 <p>Feature flags are used to modify behaviour without changing the application's code. These flags can be <strong>static</strong> or <strong>dynamic</strong>.</p>
 <p><strong>Static flags</strong>. Indicates something is simply <code>on</code> or <code>off</code>, for example <code>TRACER_ENABLED=True</code>.</p>
-<p><strong>Dynamic flags</strong>. Indicates something can have varying states, for example enable a premium feature for customer X not Y.</p>
+<p><strong>Dynamic flags</strong>. Indicates something can have varying states, for example enable a list of premium features for customer X not Y.</p>
 <details class="tip" open="open">
 <summary>Tip</summary>
 <p>You can use <a href="../parameters/">Parameters utility</a> for static flags while this utility can do both static and dynamic feature flags.</p>
@@ -1672,7 +1686,168 @@
 </td></tr></table>
 </div>
 </div>
+<h3 id="beyond-boolean-feature-flags">Beyond boolean feature flags<a class="headerlink" href="#beyond-boolean-feature-flags" title="Permanent link">&para;</a></h3>
+<details class="info" open="open">
+<summary>When is this useful?</summary>
+<p>You might have a list of features to unlock for premium customers, unlock a specific set of features for admin users, etc.</p>
+</details>
+<p>Feature flags can return any JSON values when <code>boolean_type</code> parameter is set to <code>false</code>. These can be dictionaries, list, string, integers, etc.</p>
+<div class="tabbed-set" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.feature_flags</span> <span class="kn">import</span> <span class="n">FeatureFlags</span><span class="p">,</span> <span class="n">AppConfigStore</span>
+
+<span class="hll"><span class="n">app_config</span> <span class="o">=</span> <span class="n">AppConfigStore</span><span class="p">(</span>
+</span>    <span class="n">environment</span><span class="o">=</span><span class="s2">&quot;dev&quot;</span><span class="p">,</span>
+    <span class="n">application</span><span class="o">=</span><span class="s2">&quot;product-catalogue&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;features&quot;</span>
+<span class="p">)</span>
+
+<span class="hll"><span class="n">feature_flags</span> <span class="o">=</span> <span class="n">FeatureFlags</span><span class="p">(</span><span class="n">store</span><span class="o">=</span><span class="n">app_config</span><span class="p">)</span>
+</span>
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="c1"># Get customer&#39;s tier from incoming request</span>
+<span class="hll">    <span class="n">ctx</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;tier&quot;</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tier&quot;</span><span class="p">,</span> <span class="s2">&quot;standard&quot;</span><span class="p">)</span> <span class="p">}</span>
+</span>
+    <span class="c1"># Evaluate `has_premium_features` base don customer&#39;s tier</span>
+<span class="hll">    <span class="n">premium_features</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">feature_flags</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;premium_features&quot;</span><span class="p">,</span>
+</span>                                                        <span class="n">context</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="hll">    <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">premium_features</span><span class="p">:</span>
+</span>        <span class="c1"># enable premium features</span>
+        <span class="o">...</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">event.json</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;lessa&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="nt">&quot;tier&quot;</span><span class="p">:</span> <span class="s2">&quot;premium&quot;</span><span class="p">,</span>
+</span>    <span class="nt">&quot;basked_id&quot;</span><span class="p">:</span> <span class="s2">&quot;random_id&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><label for="__tabbed_5_3">features.json</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;premium_features&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="hll">        <span class="nt">&quot;boolean_type&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span><span class="hll">        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="p">[],</span>
+</span>        <span class="nt">&quot;rules&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;customer tier equals premium&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="hll">                <span class="nt">&quot;when_match&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;no_ads&quot;</span><span class="p">,</span> <span class="s2">&quot;no_limits&quot;</span><span class="p">,</span> <span class="s2">&quot;chat&quot;</span><span class="p">],</span>
+</span>                <span class="nt">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;EQUALS&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;tier&quot;</span><span class="p">,</span>
+                        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;premium&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
 <h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h2>
+<h3 id="adjusting-in-memory-cache">Adjusting in-memory cache<a class="headerlink" href="#adjusting-in-memory-cache" title="Permanent link">&para;</a></h3>
+<p>By default, we cache configuration retrieved from the Store for 5 seconds for performance and reliability reasons.</p>
+<p>You can override <code>max_age</code> parameter when instantiating the store.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>```python hl_lines=&quot;7&quot;
+from aws_lambda_powertools.utilities.feature_flags import FeatureFlags, AppConfigStore
+
+app_config = AppConfigStore(
+    environment=&quot;dev&quot;,
+    application=&quot;product-catalogue&quot;,
+    name=&quot;features&quot;,
+    max_age=300
+)
+```
+</code></pre></div>
+</td></tr></table>
+<h3 id="getting-fetched-configuration">Getting fetched configuration<a class="headerlink" href="#getting-fetched-configuration" title="Permanent link">&para;</a></h3>
+<details class="info" open="open">
+<summary>When is this useful?</summary>
+<p>You might have application configuration in addition to feature flags in your store.</p>
+<p>This means you don't need to make another call only to fetch app configuration.</p>
+</details>
+<p>You can access the configuration fetched from the store via <code>get_raw_configuration</code> property within the store instance.</p>
+<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">app.py</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.feature_flags</span> <span class="kn">import</span> <span class="n">FeatureFlags</span><span class="p">,</span> <span class="n">AppConfigStore</span>
+
+<span class="n">app_config</span> <span class="o">=</span> <span class="n">AppConfigStore</span><span class="p">(</span>
+    <span class="n">environment</span><span class="o">=</span><span class="s2">&quot;dev&quot;</span><span class="p">,</span>
+    <span class="n">application</span><span class="o">=</span><span class="s2">&quot;product-catalogue&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;configuration&quot;</span><span class="p">,</span>
+    <span class="n">envelope</span> <span class="o">=</span> <span class="s2">&quot;feature_flags&quot;</span>
+<span class="p">)</span>
+
+<span class="n">feature_flags</span> <span class="o">=</span> <span class="n">FeatureFlags</span><span class="p">(</span><span class="n">store</span><span class="o">=</span><span class="n">app_config</span><span class="p">)</span>
+
+<span class="hll"><span class="n">config</span> <span class="o">=</span> <span class="n">app_config</span><span class="o">.</span><span class="n">get_raw_configuration</span>
+</span></code></pre></div>
+</td></tr></table>
+</div>
+</div>
 <h3 id="schema">Schema<a class="headerlink" href="#schema" title="Permanent link">&para;</a></h3>
 <p>This utility expects a certain schema to be stored as JSON within AWS AppConfig.</p>
 <h4 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h4>
@@ -1681,10 +1856,18 @@
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="hll">    <span class="nt">&quot;global_feature&quot;</span><span class="p">:</span> <span class="p">{</span>
 </span><span class="hll">        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">true</span>
-</span>    <span class="p">}</span>
+</span>    <span class="p">},</span>
+<span class="hll">    <span class="nt">&quot;non_boolean_global_feature&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;group&quot;</span><span class="p">:</span> <span class="s2">&quot;read-only&quot;</span><span class="p">},</span>
+</span><span class="hll">        <span class="nt">&quot;boolean_type&quot;</span><span class="p">:</span> <span class="kc">false</span>
+</span>    <span class="p">},</span>
 <span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
@@ -1693,7 +1876,7 @@
 <p>When adding <code>rules</code> to a feature, they must contain:</p>
 <ol>
 <li>A rule name as a key</li>
-<li><code>when_match</code> boolean value that should be used when conditions match</li>
+<li><code>when_match</code> boolean or JSON value that should be used when conditions match</li>
 <li>A list of <code>conditions</code> for evaluation</li>
 </ol>
 <table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">feature_with_rules.json</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1712,12 +1895,42 @@
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
     <span class="nt">&quot;premium_feature&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
 <span class="hll">        <span class="nt">&quot;rules&quot;</span><span class="p">:</span> <span class="p">{</span>
 </span><span class="hll">            <span class="nt">&quot;customer tier equals premium&quot;</span><span class="p">:</span> <span class="p">{</span>
 </span><span class="hll">                <span class="nt">&quot;when_match&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class="hll">                <span class="nt">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span class="hll">                    <span class="p">{</span>
+</span><span class="hll">                        <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;EQUALS&quot;</span><span class="p">,</span>
+</span><span class="hll">                        <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;tier&quot;</span><span class="p">,</span>
+</span><span class="hll">                        <span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;premium&quot;</span>
+</span>                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;non_boolean_premium_feature&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;default&quot;</span><span class="p">:</span> <span class="p">[],</span>
+<span class="hll">        <span class="nt">&quot;rules&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">            <span class="nt">&quot;customer tier equals premium&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class="hll">                <span class="nt">&quot;when_match&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;remove_limits&quot;</span><span class="p">,</span> <span class="s2">&quot;remove_ads&quot;</span><span class="p">],</span>
 </span><span class="hll">                <span class="nt">&quot;conditions&quot;</span><span class="p">:</span> <span class="p">[</span>
 </span><span class="hll">                    <span class="p">{</span>
 </span><span class="hll">                        <span class="nt">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;EQUALS&quot;</span><span class="p">,</span>
@@ -1820,32 +2033,12 @@
 </details>
 <p><strong>For multiple conditions</strong>, we will evaluate the list of conditions as a logical <code>AND</code>, so all conditions needs to match to return <code>when_match</code> value.</p>
 <h4 id="rule-engine-flowchart">Rule engine flowchart<a class="headerlink" href="#rule-engine-flowchart" title="Permanent link">&para;</a></h4>
-<p>Now that you've seen all properties of a feature flag schema, this flowchart describes how the rule engines makes a decision on when to return <code>True</code> or <code>False</code>.</p>
-<p><img alt="Rule engine " src="../../media/feat_flags_evaluation_workflow.png" /></p>
-<h3 id="adjusting-in-memory-cache">Adjusting in-memory cache<a class="headerlink" href="#adjusting-in-memory-cache" title="Permanent link">&para;</a></h3>
-<p>By default, we cache configuration retrieved from the Store for 5 seconds for performance and reliability reasons.</p>
-<p>You can override <code>max_age</code> parameter when instantiating the store.</p>
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Adjusting TTL</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.feature_flags</span> <span class="kn">import</span> <span class="n">FeatureFlags</span><span class="p">,</span> <span class="n">AppConfigStore</span>
-
-<span class="n">app_config</span> <span class="o">=</span> <span class="n">AppConfigStore</span><span class="p">(</span>
-    <span class="n">environment</span><span class="o">=</span><span class="s2">&quot;dev&quot;</span><span class="p">,</span>
-    <span class="n">application</span><span class="o">=</span><span class="s2">&quot;product-catalogue&quot;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">,</span>
-<span class="hll">    <span class="n">max_age</span><span class="o">=</span><span class="mi">300</span>
-</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+<p>Now that you've seen all properties of a feature flag schema, this flowchart describes how the rule engine decides what value to return.</p>
+<p><img alt="Rule engine " src="../../media/feature_flags_diagram.png" /></p>
 <h3 id="envelope">Envelope<a class="headerlink" href="#envelope" title="Permanent link">&para;</a></h3>
 <p>There are scenarios where you might want to include feature flags as part of an existing application configuration.</p>
 <p>For this to work, you need to use a JMESPath expression via the <code>envelope</code> parameter to extract that key as the feature flags configuration.</p>
-<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1864,7 +2057,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">configuration.json</label><div class="tabbed-content">
+<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">configuration.json</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1920,33 +2113,6 @@
 </td></tr></table>
 </div>
 </div>
-<h3 id="getting-fetched-configuration">Getting fetched configuration<a class="headerlink" href="#getting-fetched-configuration" title="Permanent link">&para;</a></h3>
-<p>You can access the configuration fetched from the store via <code>get_raw_configuration</code> property within the store instance.</p>
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Accessing entire configuration pulled from the store</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.feature_flags</span> <span class="kn">import</span> <span class="n">FeatureFlags</span><span class="p">,</span> <span class="n">AppConfigStore</span>
-
-<span class="n">app_config</span> <span class="o">=</span> <span class="n">AppConfigStore</span><span class="p">(</span>
-    <span class="n">environment</span><span class="o">=</span><span class="s2">&quot;dev&quot;</span><span class="p">,</span>
-    <span class="n">application</span><span class="o">=</span><span class="s2">&quot;product-catalogue&quot;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;configuration&quot;</span><span class="p">,</span>
-    <span class="n">envelope</span> <span class="o">=</span> <span class="s2">&quot;feature_flags&quot;</span>
-<span class="p">)</span>
-
-<span class="n">feature_flags</span> <span class="o">=</span> <span class="n">FeatureFlags</span><span class="p">(</span><span class="n">store</span><span class="o">=</span><span class="n">app_config</span><span class="p">)</span>
-
-<span class="hll"><span class="n">config</span> <span class="o">=</span> <span class="n">app_config</span><span class="o">.</span><span class="n">get_raw_configuration</span>
-</span></code></pre></div>
-</td></tr></table>
 <h3 id="built-in-store-provider">Built-in store provider<a class="headerlink" href="#built-in-store-provider" title="Permanent link">&para;</a></h3>
 <details class="info" open="open">
 <summary>Info</summary>
@@ -2215,6 +2381,14 @@
 <td><code>NOT_IN</code> RuleAction</td>
 <td>Use <code>KEY_NOT_IN_VALUE</code> instead</td>
 </tr>
+<tr>
+<td><code>get_enabled_features</code></td>
+<td>Return type changes from <code>List[str]</code> to <code>Dict[str, Any]</code>. New return will contain a list of features enabled and their values. List of enabled features will be in <code>enabled_features</code> key to keep ease of assertion we have in Beta.</td>
+</tr>
+<tr>
+<td><code>boolean_type</code> Schema</td>
+<td>This <strong>might</strong> not be necessary anymore before we go GA. We will return either the <code>default</code> value when there are no rules as well as <code>when_match</code> value. This will simplify on-boarding if we can keep the same set of validations already offered.</td>
+</tr>
 </tbody>
 </table>
                 
@@ -2225,7 +2399,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-12-30
+      Last update: 2022-01-01
     
   </small>
 </div>

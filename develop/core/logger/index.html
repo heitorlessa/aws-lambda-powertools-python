@@ -2254,6 +2254,11 @@
 <td><code>%Y-%m-%d %H:%M:%S,%F%z</code>, where <code>%F</code> is a custom ms directive</td>
 </tr>
 <tr>
+<td><strong><code>use_datetime_directive</code></strong></td>
+<td>format the <code>datefmt</code> timestamps using <code>datetime</code>, not <code>time</code>  (also supports the custom <code>%F</code> directive for milliseconds)</td>
+<td><code>False</code></td>
+</tr>
+<tr>
 <td><strong><code>utc</code></strong></td>
 <td>set logging timestamp to UTC</td>
 <td><code>False</code></td>
@@ -2349,12 +2354,14 @@
 <p>This can be fixed by either ensuring both has the <code>service</code> value as <code>payment</code>, or simply use the environment variable <code>POWERTOOLS_SERVICE_NAME</code> to ensure service value will be the same across all Loggers when not explicitly set.</p>
 </details>
 <h4 id="overriding-log-records">Overriding Log records<a class="headerlink" href="#overriding-log-records" title="Permanent link">&para;</a></h4>
+<details class="tip" open="open">
+<summary>Tip</summary>
+<p>Use <code>datefmt</code> for custom date formats - We honour standard <a href="https://docs.python.org/3/howto/logging.html#displaying-the-date-time-in-messages" target="_blank">logging library string formats</a>.</p>
+<p>Prefer using <a href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes" target="_blank">datetime string formats</a>? Set <code>use_datetime_directive</code> at Logger constructor or at <a href="#lambdapowertoolsformatter">Lambda Powertools Formatter</a>.</p>
+</details>
 <p>You might want to continue to use the same date formatting style, or override <code>location</code> to display the <code>package.function_name:line_number</code> as you previously had.</p>
 <p>Logger allows you to either change the format or suppress the following keys altogether at the initialization: <code>location</code>, <code>timestamp</code>, <code>level</code>, <code>xray_trace_id</code>.</p>
 <div class="tabbed-set" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">lambda_handler.py</label><div class="tabbed-content">
-<blockquote>
-<p>We honour standard <a href="https://docs.python.org/3/howto/logging.html#displaying-the-date-time-in-messages" target="_blank">logging library string formats</a>.</p>
-</blockquote>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2929,7 +2936,7 @@ for the given name and level to the logging module. By default, this logs all bo
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-12-30
+      Last update: 2022-01-01
     
   </small>
 </div>

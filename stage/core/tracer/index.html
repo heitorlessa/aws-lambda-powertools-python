@@ -441,6 +441,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ignoring-certain-http-endpoints" class="md-nav__link">
+    Ignoring certain HTTP endpoints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tracing-aiohttp-requests" class="md-nav__link">
     Tracing aiohttp requests
   </a>
@@ -891,6 +898,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ignoring-certain-http-endpoints" class="md-nav__link">
+    Ignoring certain HTTP endpoints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#tracing-aiohttp-requests" class="md-nav__link">
     Tracing aiohttp requests
   </a>
@@ -1231,6 +1245,42 @@ side effects for file-like objects like boto S3 <a href="https://botocore.amazon
 <span class="hll">    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;some sensitive info in the stack trace...&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 </td></tr></table>
+<h3 id="ignoring-certain-http-endpoints">Ignoring certain HTTP endpoints<a class="headerlink" href="#ignoring-certain-http-endpoints" title="Permanent link">&para;</a></h3>
+<p>You might have endpoints you don't want requests to be traced, perhaps due to the volume of calls or sensitive URLs.</p>
+<p>You can use <code>ignore_endpoint</code> method with the hostname and/or URLs you'd like it to be ignored - globs (<code>*</code>) are allowed.</p>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Ignoring certain HTTP endpoints from being traced</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Tracer</span>
+
+<span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
+<span class="c1"># ignore all calls to `ec2.amazon.com`</span>
+<span class="n">tracer</span><span class="o">.</span><span class="n">ignore_endpoint</span><span class="p">(</span><span class="n">hostname</span><span class="o">=</span><span class="s2">&quot;ec2.amazon.com&quot;</span><span class="p">)</span>
+<span class="c1"># ignore calls to `*.sensitive.com/password` and  `*.sensitive.com/credit-card`</span>
+<span class="n">tracer</span><span class="o">.</span><span class="n">ignore_endpoint</span><span class="p">(</span><span class="n">hostname</span><span class="o">=</span><span class="s2">&quot;*.sensitive.com&quot;</span><span class="p">,</span> <span class="n">urls</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;/password&quot;</span><span class="p">,</span> <span class="s2">&quot;/credit-card&quot;</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">ec2_api_calls</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;suppress_api_responses&quot;</span>
+
+<span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">long_list</span><span class="p">:</span>
+        <span class="n">ec2_api_calls</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
 <h3 id="tracing-aiohttp-requests">Tracing aiohttp requests<a class="headerlink" href="#tracing-aiohttp-requests" title="Permanent link">&para;</a></h3>
 <details class="info" open="open">
 <summary>Info</summary>
@@ -1393,7 +1443,7 @@ side effects for file-like objects like boto S3 <a href="https://botocore.amazon
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-12-30
+      Last update: 2021-12-31
     
   </small>
 </div>
