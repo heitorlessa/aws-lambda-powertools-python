@@ -1551,7 +1551,7 @@
 <span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
 <span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
 <span class="hll">    <span class="n">batch</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;Records&quot;</span><span class="p">]</span>
-</span><span class="hll">    <span class="k">with</span> <span class="n">processor</span><span class="p">(</span><span class="n">records</span><span class="o">=</span><span class="n">batch</span><span class="p">,</span> <span class="n">processor</span><span class="o">=</span><span class="n">processor</span><span class="p">):</span>
+</span><span class="hll">    <span class="k">with</span> <span class="n">processor</span><span class="p">(</span><span class="n">records</span><span class="o">=</span><span class="n">batch</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">record_handler</span><span class="p">):</span>
 </span><span class="hll">        <span class="n">processed_messages</span> <span class="o">=</span> <span class="n">processor</span><span class="o">.</span><span class="n">process</span><span class="p">()</span> <span class="c1"># kick off processing, return list[tuple]</span>
 </span>
 <span class="hll">    <span class="k">return</span> <span class="n">processor</span><span class="o">.</span><span class="n">response</span><span class="p">()</span>
@@ -1765,7 +1765,7 @@
 <span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
 <span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
 <span class="hll">    <span class="n">batch</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;Records&quot;</span><span class="p">]</span>
-</span><span class="hll">    <span class="k">with</span> <span class="n">processor</span><span class="p">(</span><span class="n">records</span><span class="o">=</span><span class="n">batch</span><span class="p">,</span> <span class="n">processor</span><span class="o">=</span><span class="n">processor</span><span class="p">):</span>
+</span><span class="hll">    <span class="k">with</span> <span class="n">processor</span><span class="p">(</span><span class="n">records</span><span class="o">=</span><span class="n">batch</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">record_handler</span><span class="p">):</span>
 </span><span class="hll">        <span class="n">processed_messages</span> <span class="o">=</span> <span class="n">processor</span><span class="o">.</span><span class="n">process</span><span class="p">()</span> <span class="c1"># kick off processing, return list[tuple]</span>
 </span>
 <span class="hll">    <span class="k">return</span> <span class="n">processor</span><span class="o">.</span><span class="n">response</span><span class="p">()</span>
@@ -1991,7 +1991,7 @@
 <span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
 <span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
 <span class="hll">    <span class="n">batch</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;Records&quot;</span><span class="p">]</span>
-</span><span class="hll">    <span class="k">with</span> <span class="n">processor</span><span class="p">(</span><span class="n">records</span><span class="o">=</span><span class="n">batch</span><span class="p">,</span> <span class="n">processor</span><span class="o">=</span><span class="n">processor</span><span class="p">):</span>
+</span><span class="hll">    <span class="k">with</span> <span class="n">processor</span><span class="p">(</span><span class="n">records</span><span class="o">=</span><span class="n">batch</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">record_handler</span><span class="p">):</span>
 </span><span class="hll">        <span class="n">processed_messages</span> <span class="o">=</span> <span class="n">processor</span><span class="o">.</span><span class="n">process</span><span class="p">()</span> <span class="c1"># kick off processing, return list[tuple]</span>
 </span>
 <span class="hll">    <span class="k">return</span> <span class="n">processor</span><span class="o">.</span><span class="n">response</span><span class="p">()</span>
@@ -2460,7 +2460,7 @@
 <span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
 <span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
     <span class="n">batch</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;Records&quot;</span><span class="p">]</span>
-<span class="hll">    <span class="k">with</span> <span class="n">processor</span><span class="p">(</span><span class="n">records</span><span class="o">=</span><span class="n">batch</span><span class="p">,</span> <span class="n">processor</span><span class="o">=</span><span class="n">processor</span><span class="p">):</span>
+<span class="hll">    <span class="k">with</span> <span class="n">processor</span><span class="p">(</span><span class="n">records</span><span class="o">=</span><span class="n">batch</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">record_handler</span><span class="p">):</span>
 </span><span class="hll">        <span class="n">processed_messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">SuccessResponse</span><span class="p">,</span> <span class="n">FailureResponse</span><span class="p">]]</span> <span class="o">=</span> <span class="n">processor</span><span class="o">.</span><span class="n">process</span><span class="p">()</span>
 </span><span class="hll">
 </span><span class="hll">    <span class="k">for</span> <span class="n">messages</span> <span class="ow">in</span> <span class="n">processed_messages</span><span class="p">:</span>
@@ -3340,7 +3340,7 @@ decorator or <code>PartialSQSProcessor</code> class.</p>
 <div class="md-source-date">
   <small>
     
-      Last update: 2021-12-30
+      Last update: 2022-01-06
     
   </small>
 </div>

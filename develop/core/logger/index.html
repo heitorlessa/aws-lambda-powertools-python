@@ -2850,80 +2850,63 @@ for the given name and level to the logging module. By default, this logs all bo
     <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Buckets&quot;</span><span class="p">,</span> <span class="p">[])</span>
 </code></pre></div>
 </td></tr></table>
+<p><strong>How can I enable powertools logging for imported libraries?</strong></p>
+<p>You can copy the Logger setup to all or sub-sets of registered external loggers. Use the <code>copy_config_to_registered_logger</code> method to do this. By default all registered loggers will be modified. You can change this behaviour by providing <code>include</code> and <code>exclude</code> attributes. You can also provide optional <code>log_level</code> attribute external loggers will be configured with.</p>
+<p>```python hl_lines="10" title="Cloning Logger config to all other registered standard loggers"
+import logging</p>
+<p>from aws_lambda_powertools import Logger
+from aws_lambda_powertools.logging import utils</p>
+<p>logger = Logger()</p>
+<p>external_logger = logging.logger()</p>
+<p>utils.copy_config_to_registered_loggers(source_logger=logger)
+external_logger.info("test message")</p>
 <p><strong>What's the difference between <code>append_keys</code> and <code>extra</code>?</strong></p>
 <p>Keys added with <code>append_keys</code> will persist across multiple log messages while keys added via <code>extra</code> will only be available in a given log message operation.</p>
 <p>Here's an example where we persist <code>payment_id</code> not <code>request_id</code>. Note that <code>payment_id</code> remains in both log messages while <code>booking_id</code> is only available in the first message.</p>
 <div class="tabbed-set" data-tabs="21:2"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><label for="__tabbed_21_1">lambda_handler.py</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span>
+<p>```python hl_lines="6 10"
+from aws_lambda_powertools import Logger</p>
+<p>logger = Logger(service="payment")</p>
+<p>def handler(event, context):
+    logger.append_keys(payment_id="123456789")</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>try:
+    booking_id = book_flight()
+    logger.info(&quot;Flight booked successfully&quot;, extra={ &quot;booking_id&quot;: booking_id})
+except BookingReservationError:
+    ...
 
-<span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;payment&quot;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-<span class="hll">    <span class="n">logger</span><span class="o">.</span><span class="n">append_keys</span><span class="p">(</span><span class="n">payment_id</span><span class="o">=</span><span class="s2">&quot;123456789&quot;</span><span class="p">)</span>
-</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">booking_id</span> <span class="o">=</span> <span class="n">book_flight</span><span class="p">()</span>
-<span class="hll">        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Flight booked successfully&quot;</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="p">{</span> <span class="s2">&quot;booking_id&quot;</span><span class="p">:</span> <span class="n">booking_id</span><span class="p">})</span>
-</span>    <span class="k">except</span> <span class="n">BookingReservationError</span><span class="p">:</span>
-        <span class="o">...</span>
-
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;goodbye&quot;</span><span class="p">)</span>
+logger.info(&quot;goodbye&quot;)
 </code></pre></div>
 </td></tr></table>
+<p>```</p>
 </div>
 <input id="__tabbed_21_2" name="__tabbed_21" type="radio" /><label for="__tabbed_21_2">Example CloudWatch Logs excerpt</label><div class="tabbed-content">
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;module&gt;:10&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Flight booked successfully&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-01-12 14:09:10,859&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;service&quot;</span><span class="p">:</span> <span class="s2">&quot;payment&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;sampling_rate&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-<span class="hll">    <span class="nt">&quot;payment_id&quot;</span><span class="p">:</span> <span class="s2">&quot;123456789&quot;</span><span class="p">,</span>
-</span><span class="hll">    <span class="nt">&quot;booking_id&quot;</span><span class="p">:</span> <span class="s2">&quot;75edbad0-0857-4fc9-b547-6180e2f7959b&quot;</span>
-</span><span class="p">},</span>
-<span class="p">{</span>
-    <span class="nt">&quot;level&quot;</span><span class="p">:</span> <span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;module&gt;:14&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;goodbye&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-01-12 14:09:10,860&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;service&quot;</span><span class="p">:</span> <span class="s2">&quot;payment&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;sampling_rate&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-<span class="hll">    <span class="nt">&quot;payment_id&quot;</span><span class="p">:</span> <span class="s2">&quot;123456789&quot;</span>
-</span><span class="p">}</span>
-</code></pre></div>
-</td></tr></table>
+<p><code>json hl_lines="8-9 18"
+{
+    "level": "INFO",
+    "location": "&lt;module&gt;:10",
+    "message": "Flight booked successfully",
+    "timestamp": "2021-01-12 14:09:10,859",
+    "service": "payment",
+    "sampling_rate": 0.0,
+    "payment_id": "123456789",
+    "booking_id": "75edbad0-0857-4fc9-b547-6180e2f7959b"
+},
+{
+    "level": "INFO",
+    "location": "&lt;module&gt;:14",
+    "message": "goodbye",
+    "timestamp": "2021-01-12 14:09:10,860",
+    "service": "payment",
+    "sampling_rate": 0.0,
+    "payment_id": "123456789"
+}</code></p>
 </div>
 </div>
 <p><strong>How do I aggregate and search Powertools logs across accounts?</strong></p>
@@ -2936,7 +2919,7 @@ for the given name and level to the logging module. By default, this logs all bo
 <div class="md-source-date">
   <small>
     
-      Last update: 2022-01-01
+      Last update: 2022-01-05
     
   </small>
 </div>
