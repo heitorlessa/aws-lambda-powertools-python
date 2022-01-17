@@ -541,6 +541,16 @@
       
       
       
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
       
         <label class="md-nav__link" for="__nav_6">
           Core utilities
@@ -609,6 +619,12 @@
       
       
       
+        
+          
+        
+          
+        
+      
       
         <label class="md-nav__link" for="__nav_6_4">
           Event Handler
@@ -628,8 +644,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../core/event_handler/appsync/" class="md-nav__link">
-        Appsync
+      <a href="../core/event_handler/api_gateway/" class="md-nav__link">
+        REST API
       </a>
     </li>
   
@@ -642,8 +658,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../core/event_handler/api_gateway/" class="md-nav__link">
-        API Gateway
+      <a href="../core/event_handler/appsync/" class="md-nav__link">
+        GraphQL API
       </a>
     </li>
   
@@ -679,6 +695,30 @@
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" data-md-state="indeterminate" type="checkbox" id="__nav_7" checked>
       
       
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_7">
@@ -1080,7 +1120,7 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/awslabs/aws-lambda-powertools-python/edit/develop/docs/tutorial.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/awslabs/aws-lambda-powertools-python/edit/develop/docs/tutorial/index.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
@@ -1527,10 +1567,10 @@ Successfully created/updated stack - sam-app <span class="k">in</span> eu-centra
 <p>This approach simplifies the configuration of our infrastructure since we have added all API Gateway paths in the <code>HelloWorldFunction</code> event section.</p>
 <p>However, it forces us to understand the internal structure of the API Gateway request events, responses, and it could lead to other errors such as CORS not being handled properly, error handling, etc.</p>
 <h3 id="simplifying-with-event-handler">Simplifying with Event Handler<a class="headerlink" href="#simplifying-with-event-handler" title="Permanent link">&para;</a></h3>
-<p>We can massively simplify cross-cutting concerns while keeping it lightweight by using <a href="../core/event_handler/api_gateway/" target="_blank">Event Handler</a>.</p>
+<p>We can massively simplify cross-cutting concerns while keeping it lightweight by using <a href="./core/event_handler/api_gateway.md" target="_blank">Event Handler</a>.</p>
 <details class="tip" open="open">
 <summary>Tip</summary>
-<p>This is available for both <a href="../core/event_handler/api_gateway/" target="_blank">REST API (API Gateway, ALB)</a> and <a href="../core/event_handler/appsync/" target="_blank">GraphQL API (AppSync)</a>.</p>
+<p>This is available for both <a href="./core/event_handler/api_gateway.md" target="_blank">REST API (API Gateway, ALB)</a> and <a href="./core/event_handler/appsync.md" target="_blank">GraphQL API (AppSync)</a>.</p>
 </details>
 <p>Let's include Lambda Powertools as a dependency in <code>requirement.txt</code>, and use Event Handler to refactor our previous example.</p>
 <div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">app.py</label><div class="tabbed-content">
@@ -1579,11 +1619,11 @@ Successfully created/updated stack - sam-app <span class="k">in</span> eu-centra
 <p>Use <code>sam build &amp;&amp; sam local start-api</code> and try run it locally again.</p>
 <details class="note" open="open">
 <summary>Note</summary>
-<p>If you're coming from <a href="https://flask.palletsprojects.com/en/2.0.x/" target="_blank">Flask</a>, you will be familiar with this experience already. <a href="../core/event_handler/api_gateway/" target="_blank">Event Handler for API Gateway</a> uses <code>ApiGatewayResolver</code> to give a Flask-like experience while staying true to our tenet <code>Keep it lean</code>.</p>
+<p>If you're coming from <a href="https://flask.palletsprojects.com/en/2.0.x/" target="_blank">Flask</a>, you will be familiar with this experience already. <a href="./core/event_handler/api_gateway.md" target="_blank">Event Handler for API Gateway</a> uses <code>ApiGatewayResolver</code> to give a Flask-like experience while staying true to our tenet <code>Keep it lean</code>.</p>
 </details>
 <p>We have added the route annotation as the decorator for our methods. It enables us to use the parameters passed in the request directly, and our responses are simply dictionaries.</p>
 <p>Lastly, we used <code>return app.resolve(event, context)</code> so Event Handler can resolve routes, inject the current request, handle serialization, route validation, etc.</p>
-<p>From here, we could handle <a href="../core/event_handler/api_gateway/#handling-not-found-routes" target="_blank">404 routes</a>, <a href="../core/event_handler/api_gateway/#http://127.0.0.1:8000/core/event_handler/api_gateway/#exception-handling" target="_blank">error handling</a>, <a href="../core/event_handler/api_gateway/#http://127.0.0.1:8000/core/event_handler/api_gateway#accessing-request-details" target="_blank">access query strings, payload</a>, etc.</p>
+<p>From here, we could handle <a href="./core/event_handler/api_gateway.md#handling-not-found-routes" target="_blank">404 routes</a>, <a href="./core/event_handler/api_gateway.md#http://127.0.0.1:8000/core/event_handler/api_gateway/#exception-handling" target="_blank">error handling</a>, <a href="./core/event_handler/api_gateway.md#http://127.0.0.1:8000/core/event_handler/api_gateway#accessing-request-details" target="_blank">access query strings, payload</a>, etc.</p>
 <details class="tip" open="open">
 <summary>Tip</summary>
 <p>If you'd like to learn how python decorators work under the hood, you can follow <a href="https://realpython.com/primer-on-python-decorators/">Real Python</a>'s article.</p>
@@ -1702,7 +1742,7 @@ python-json-logger
 <summary>Surely this could be easier, right?</summary>
 <p>Yes! Powertools Logger to the rescue :-)</p>
 </details>
-<p>As we already have Lambda Powertools as a dependency, we can simply import <a href="../core/logger/" target="_blank">Logger</a>.</p>
+<p>As we already have Lambda Powertools as a dependency, we can simply import <a href="./core/logger.md" target="_blank">Logger</a>.</p>
 <table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Refactoring with Lambda Powertools Logger</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1756,8 +1796,8 @@ python-json-logger
 <ul>
 <li><strong>L5</strong>: We add Lambda Powertools Logger; the boilerplate is now done for you. By default, we set <code>INFO</code> as the logging level if <code>LOG_LEVEL</code> env var isn't set.</li>
 <li><strong>L22</strong>: We use <code>logger.inject_lambda_context</code> decorator to inject key information from Lambda context into every log.</li>
-<li><strong>L22</strong>: We also instruct Logger to use the incoming API Gateway Request ID as a <a href="../core/logger/##set_correlation_id-method">correlation id</a> automatically.</li>
-<li><strong>L22</strong>: Since we're in dev, we also use <code>log_event=True</code> to automatically log each incoming request for debugging. This can be also set via <a href="..#environment-variables" target="_blank">environment variables</a>.</li>
+<li><strong>L22</strong>: We also instruct Logger to use the incoming API Gateway Request ID as a <a href="./core/logger.md##set_correlation_id-method">correlation id</a> automatically.</li>
+<li><strong>L22</strong>: Since we're in dev, we also use <code>log_event=True</code> to automatically log each incoming request for debugging. This can be also set via <a href="./#environment-variables" target="_blank">environment variables</a>.</li>
 </ul>
 <p>This is how the logs would look like now:</p>
 <table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Our logs are now structured consistently</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1788,11 +1828,11 @@ python-json-logger
 </code></pre></div>
 </td></tr></table>
 <p>We can now search our logs by the request ID to find a specific operation. Additionally, we can also search our logs for function name, Lambda request ID, Lambda function ARN, find out whether an operation was a cold start, etc.</p>
-<p>From here, we could <a href="../core/logger/#append_keys-method" target="_blank">set specific keys</a> to add additional contextual information about a given operation, <a href="../core/logger/#logging-exceptions" target="_blank">log exceptions</a> to easily enumerate them later, <a href="../core/logger/#sampling-debug-logs" target="_blank">sample debug logs</a>, etc.</p>
+<p>From here, we could <a href="./core/logger.md#append_keys-method" target="_blank">set specific keys</a> to add additional contextual information about a given operation, <a href="./core/logger.md#logging-exceptions" target="_blank">log exceptions</a> to easily enumerate them later, <a href="./core/logger.md#sampling-debug-logs" target="_blank">sample debug logs</a>, etc.</p>
 <p>By having structured logs like this, we can easily search and analyse them in <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html" target="_blank">CloudWatch Logs Insight</a>.</p>
 <div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">CloudWatch Logs Insight Example</label><div class="tabbed-content"></div>
 </div>
-<p><img alt="CloudWatch Logs Insight Example" src="../media/cloudwatch_logs_insight_example.png" /></p>
+<p><img alt="CloudWatch Logs Insight Example" src="./media/cloudwatch_logs_insight_example.png" /></p>
 <h2 id="tracing">Tracing<a class="headerlink" href="#tracing" title="Permanent link">&para;</a></h2>
 <details class="note" open="open">
 <summary>Note</summary>
@@ -1805,9 +1845,9 @@ python-json-logger
 <p>It's a <a href="https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html" target="_blank">two-step process</a>:</p>
 <ol>
 <li>Enable tracing in your Lambda function.</li>
-<li>Instrument your application code. </li>
+<li>Instrument your application code.</li>
 </ol>
-<p>Let's explore how we can instrument our code with <a href="https://docs.aws.amazon.com/xray-sdk-for-python/latest/reference/index.html" target="_blank">AWS X-Ray SDK</a>, and then simplify it with <a href="../core/tracer/" target="_blank">Lambda Powertools Tracer</a> feature.</p>
+<p>Let's explore how we can instrument our code with <a href="https://docs.aws.amazon.com/xray-sdk-for-python/latest/reference/index.html" target="_blank">AWS X-Ray SDK</a>, and then simplify it with <a href="core/tracer.md" target="_blank">Lambda Powertools Tracer</a> feature.</p>
 <div class="tabbed-set" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">app.py</label><div class="tabbed-content">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1957,7 +1997,7 @@ aws-xray-sdk
 <li><strong>L16</strong>: Enables tracing for our Serverless Function. This will also add a managed IAM Policy named <a href="https://console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/AWSXRayDaemonWriteAccess" target="_blank">AWSXRayDaemonWriteAccess</a> to allow Lambda to send traces to AWS X-Ray.</li>
 </ul>
 <p>You can now build and deploy our updates with <code>sam build &amp;&amp; sam deploy</code>. Once deployed, try invoking the application via the API endpoint, and visit <a href="https://console.aws.amazon.com/xray/home#/traces/" target="_blank">AWS X-Ray Console</a> to see how much progress we've made so far!!</p>
-<p><img alt="AWS X-Ray Console trace view" src="../media/tracer_xray_sdk_showcase.png" /></p>
+<p><img alt="AWS X-Ray Console trace view" src="./media/tracer_xray_sdk_showcase.png" /></p>
 <h3 id="enriching-our-generated-traces">Enriching our generated traces<a class="headerlink" href="#enriching-our-generated-traces" title="Permanent link">&para;</a></h3>
 <p>What we've done helps bring an initial visibility, but we can do so much more.</p>
 <details class="question" open="open">
@@ -1970,7 +2010,7 @@ aws-xray-sdk
 </ul>
 </details>
 <p>Within AWS X-Ray, we can answer these questions by using two features: tracing <strong>Annotations</strong> and <strong>Metadata</strong>.</p>
-<p><strong>Annotations</strong> are simple key-value pairs that are indexed for use with <a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html" target="_blank">filter expressions</a>.<br />
+<p><strong>Annotations</strong> are simple key-value pairs that are indexed for use with <a href="https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html" target="_blank">filter expressions</a>.
 <strong>Metadata</strong> are key-value pairs with values of any type, including objects and lists, but that are not indexed.</p>
 <p>Let's put them into action.</p>
 <table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Enriching traces with annotations and metadata</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -2082,12 +2122,12 @@ aws-xray-sdk
 <p>If you want to understand how the Lambda execution environment (sandbox) works and why cold starts can occur, see this <a href="https://aws.amazon.com/blogs/compute/operating-lambda-performance-optimization-part-1/">blog series on Lambda performance</a>.</p>
 </details>
 <p>Repeat the process of building, deploying, and invoking your application via the API endpoint. Within the <a href="https://console.aws.amazon.com/xray/home#/traces/" target="_blank">AWS X-Ray Console</a>, you should now be able to group traces by the <code>User</code> and <code>ColdStart</code> annotation.</p>
-<p><img alt="Filtering traces by annotations" src="../media/tracer_xray_sdk_enriched.png" /></p>
+<p><img alt="Filtering traces by annotations" src="./media/tracer_xray_sdk_enriched.png" /></p>
 <p>If you choose any of the traces available, try opening the <code>handler</code> subsegment and you should see the response of your Lambda function under the <code>Metadata</code> tab.</p>
-<p><img alt="Filtering traces by metadata" src="../media/tracer_xray_sdk_enriched_2.png" /></p>
+<p><img alt="Filtering traces by metadata" src="./media/tracer_xray_sdk_enriched_2.png" /></p>
 <h3 id="simplifying-with-tracer">Simplifying with Tracer<a class="headerlink" href="#simplifying-with-tracer" title="Permanent link">&para;</a></h3>
 <p>Cross-cutting concerns like filtering traces by Cold Start, including response as well as exceptions as tracing metadata can take a considerable amount of boilerplate.</p>
-<p>We can simplify our previous patterns by using <a href="../core/tracer/" target="_blank">Lambda Powertools Tracer</a>; a thin wrapper on top of X-Ray SDK.</p>
+<p>We can simplify our previous patterns by using <a href="core/tracer.md" target="_blank">Lambda Powertools Tracer</a>; a thin wrapper on top of X-Ray SDK.</p>
 <details class="note" open="open">
 <summary>Note</summary>
 <p>You can now safely remove <code>aws-xray-sdk</code> from <code>requirements.txt</code>; keep <code>aws-lambda-powertools</code> only.</p>
@@ -2165,13 +2205,13 @@ aws-xray-sdk
 <p>You can <a href="./core/tracer/#advanced" target="_blank">opt-out some of these behaviours</a> like disabling response capturing,  explicitly patching only X modules, etc.</p>
 </details>
 <p>Repeat the process of building, deploying, and invoking your application via the API endpoint. Within the <a href="https://console.aws.amazon.com/xray/home#/traces/" target="_blank">AWS X-Ray Console</a>, you should see a similar view:</p>
-<p><img alt="AWS X-Ray Console trace view using Lambda Powertools Tracer" src="../media/tracer_utility_showcase_2.png" /></p>
+<p><img alt="AWS X-Ray Console trace view using Lambda Powertools Tracer" src="./media/tracer_utility_showcase_2.png" /></p>
 <details class="tip" open="open">
 <summary>Tip</summary>
 <p>Consider using <a href="https://console.aws.amazon.com/cloudwatch/home#servicelens:service-map/map" target="_blank">Amazon CloudWatch ServiceLens view</a> as it aggregates AWS X-Ray traces and CloudWatch metrics and logs in one view.</p>
 </details>
 <p>From here, you can browse to specific logs in CloudWatch Logs Insight, Metrics Dashboard or AWS X-Ray traces.</p>
-<p><img alt="CloudWatch ServiceLens View" src="../media/tracer_utility_showcase_3.png" /></p>
+<p><img alt="CloudWatch ServiceLens View" src="./media/tracer_utility_showcase_3.png" /></p>
 <details class="info" open="open">
 <summary>Info</summary>
 <p>For more information on Amazon CloudWatch ServiceLens, please visit <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ServiceLens.html">link</a>.</p>
@@ -2414,13 +2454,13 @@ aws-xray-sdk
 <p>It will be visible in your AWS X-RAY traces as additional external call. Given your architecture scale, this approach might lead to disadvantages such as increased cost of measuring data collection and increased Lambda latency.</p>
 </details>
 <h3 id="simplifying-with-metrics">Simplifying with Metrics<a class="headerlink" href="#simplifying-with-metrics" title="Permanent link">&para;</a></h3>
-<p><a href="../core/metrics/" target="&quot;_blank">Lambda Powertools Metrics</a> uses <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Embedded_Metric_Format.html">Amazon CloudWatch Embedded Metric Format (EMF)</a> to create custom metrics <strong>asynchronously</strong> via a native integration with Lambda.</p>
+<p><a href="./core/metrics.md" target="&quot;_blank">Lambda Powertools Metrics</a> uses <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Embedded_Metric_Format.html">Amazon CloudWatch Embedded Metric Format (EMF)</a> to create custom metrics <strong>asynchronously</strong> via a native integration with Lambda.</p>
 <p>In general terms, EMF is a specification that expects metrics in a JSON payload within CloudWatch Logs. Lambda ingests all logs emitted by a given function into CloudWatch Logs. CloudWatch automatically looks up for log entries that follow the EMF format and transforms them into a CloudWatch metric.</p>
 <details class="info" open="open">
 <summary>Info</summary>
 <p>If you are interested in the details of the EMF mechanism, follow <a href="https://aws.amazon.com/blogs/mt/enhancing-workload-observability-using-amazon-cloudwatch-embedded-metric-format/" target="_blank">blog post</a>.</p>
 </details>
-<p>Let's implement that using <a href="../core/metrics/" target="&quot;_blank">Metrics</a>:</p>
+<p>Let's implement that using <a href="./core/metrics.md" target="&quot;_blank">Metrics</a>:</p>
 <table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Refactoring with Lambda Powertools Metrics</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2505,10 +2545,10 @@ aws-xray-sdk
 <li><strong>L9</strong>: We initialize <code>Metrics</code> with our service name (<code>APP</code>) and metrics namespace (<code>MyApp</code>), reducing the need to add the <code>service</code> dimension for every metric and setting the namespace later</li>
 <li><strong>L18, 27</strong>: We use <code>add_metric</code> similarly to our custom function, except we now have an enum <code>MetricCount</code> to help us understand which Metric Units we have at our disposal</li>
 <li><strong>L33</strong>: We use <code>@metrics.log_metrics</code> decorator to ensure that our metrics are aligned with the EMF output and validated before-hand, like in case we forget to set namespace, or accidentally use a metric unit as a string that doesn't exist in CloudWatch.</li>
-<li><strong>L33</strong>: We also use <code>capture_cold_start_metric=True</code> so we don't have to handle that logic either. Note that <a href="../core/metrics/" target="_blank">Metrics</a> does not publish a warm invocation metric (ColdStart=0) for cost reasons. As such, treat the absence (sparse metric) as a non-cold start invocation.</li>
+<li><strong>L33</strong>: We also use <code>capture_cold_start_metric=True</code> so we don't have to handle that logic either. Note that <a href="./core/metrics.md" target="_blank">Metrics</a> does not publish a warm invocation metric (ColdStart=0) for cost reasons. As such, treat the absence (sparse metric) as a non-cold start invocation.</li>
 </ul>
 <p>Repeat the process of building, deploying, and invoking your application via the API endpoint a few times to generate metrics - <a href="https://www.artillery.io/" target="_blank">Artillery</a> and <a href="https://k6.io/open-source" target="_blank">K6.io</a> are quick ways to generate some load. Within <a href="https://console.aws.amazon.com/cloudwatch/home#metricsV2:graph=~()" target="&quot;_blank">CloudWatch Metrics view</a>, you should see <code>MyApp</code> custom namespace with your custom metrics there and <code>SuccessfulGreetings</code> available to graph.</p>
-<p><img alt="Custom Metrics Example" src="../media/metrics_utility_showcase.png" /></p>
+<p><img alt="Custom Metrics Example" src="./media/metrics_utility_showcase.png" /></p>
 <p>If you're curious about how the EMF portion of your function logs look like, you can quickly go to <a href="https://console.aws.amazon.com/cloudwatch/home#servicelens:service-map/map" target="_blank">CloudWatch ServiceLens view</a>, choose your function and open logs. You will see a similar entry that looks like this:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2567,7 +2607,7 @@ aws-xray-sdk
 </td></tr></table>
 <h1 id="final-considerations">Final considerations<a class="headerlink" href="#final-considerations" title="Permanent link">&para;</a></h1>
 <p>We covered a lot of ground here and we only scratched the surface of the feature set available within Lambda Powertools.</p>
-<p>When it comes to the observability features (<a href="../core/tracer/" target="_blank">Tracer</a>, <a href="../core/metrics/" target="_blank">Metrics</a>, <a href="../core/logger/" target="_blank">Logging</a>), don't stop there! The goal here is to ensure you can ask arbitrary questions to assess your system's health; these features are only part of the wider story!</p>
+<p>When it comes to the observability features (<a href="./core/tracer.md" target="_blank">Tracer</a>, <a href="./core/metrics.md" target="_blank">Metrics</a>, <a href="./core/logger.md" target="_blank">Logging</a>), don't stop there! The goal here is to ensure you can ask arbitrary questions to assess your system's health; these features are only part of the wider story!</p>
 <p>This requires a change in mindset to ensure operational excellence is part of the software development lifecycle.</p>
 <details class="tip" open="open">
 <summary>Tip</summary>
@@ -2576,7 +2616,7 @@ aws-xray-sdk
 </details>
 <details class="question" open="open">
 <summary>Have ideas for other tutorials?</summary>
-<p>You can open up a documentation issue, or connect with us on the <a href="https://github.com/awslabs/aws-lambda-powertools-python/#connect">AWS Developers Slack</a> at <code>lambda-powertools</code> channel, or via e-mail <a href="mailto:aws-lambda-powertools-feedback@amazon.com">aws-lambda-powertools-feedback@amazon.com</a>.</p>
+<p>You can open up a <a href="https://github.com/awslabs/aws-lambda-powertools-python/issues/new?assignees=&amp;labels=documentation&amp;template=documentation-improvements.md&amp;title=Tutorial%20Suggestion" target="_blank">documentation issue</a>, or connect with us on the <a href="https://github.com/awslabs/aws-lambda-powertools-python/#connect">AWS Developers Slack</a> at <code>lambda-powertools</code> channel, or via e-mail <a href="mailto:aws-lambda-powertools-feedback@amazon.com">aws-lambda-powertools-feedback@amazon.com</a>.</p>
 </details>
                 
                   
@@ -2586,7 +2626,7 @@ aws-xray-sdk
 <div class="md-source-date">
   <small>
     
-      Last update: 2022-01-15
+      Last update: 2022-01-17
     
   </small>
 </div>
@@ -2672,7 +2712,7 @@ aws-xray-sdk
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.instant", "navigation.indexes"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": {"provider": "mike"}}</script>
     
     
       <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
