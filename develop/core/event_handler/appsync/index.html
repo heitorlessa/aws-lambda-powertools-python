@@ -9,12 +9,11 @@
         <meta name="description" content="Core utility">
       
       
-      
         <meta name="author" content="Amazon Web Services">
       
       
       <link rel="icon" href="../../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.9">
     
     
       
@@ -22,10 +21,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2b4465f4.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
         
       
     
@@ -35,16 +34,15 @@
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700%7C&display=fallback">
-        <style>:root{--md-text-font-family:"Ubuntu";--md-code-font-family:""}</style>
+        <style>:root{--md-text-font:"Ubuntu";--md-code-font:""}</style>
       
-    
     
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-
 
     
     
@@ -61,9 +59,8 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="">
   
     
-    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
-      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -79,6 +76,23 @@
     <div data-md-component="announce">
       
     </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You're not viewing the latest version.
+  <a href="../../../..">
+    <strong>Click here to go to latest.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          
+        </aside>
+      </div>
+    
     
       
 
@@ -136,8 +150,7 @@
       <label class="md-header__button md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -169,8 +182,7 @@
     
     
       <div class="md-header__source">
-        
-<a href="https://github.com/awslabs/aws-lambda-powertools-python/" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/awslabs/aws-lambda-powertools-python/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -214,8 +226,7 @@
   </label>
   
     <div class="md-nav__source">
-      
-<a href="https://github.com/awslabs/aws-lambda-powertools-python/" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/awslabs/aws-lambda-powertools-python/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -458,7 +469,6 @@
       </a>
       
         
-
 
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
@@ -816,7 +826,6 @@
                   <div class="md-sidebar__inner">
                     
 
-
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -936,14 +945,14 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/awslabs/aws-lambda-powertools-python/edit/develop/docs/core/event_handler/appsync.md" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                  <h1>GraphQL API</h1>
-                
-                <p>Event handler for AWS AppSync Direct Lambda Resolver and Amplify GraphQL Transformer.</p>
+<a href="https://github.com/awslabs/aws-lambda-powertools-python/edit/develop/docs/core/event_handler/appsync.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+  <h1>GraphQL API</h1>
+
+<p>Event handler for AWS AppSync Direct Lambda Resolver and Amplify GraphQL Transformer.</p>
 <h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Automatically parse API arguments to function arguments</li>
@@ -963,7 +972,9 @@
 <summary>Tip: Designing GraphQL Schemas for the first time?</summary>
 <p>Visit <a href="https://docs.aws.amazon.com/appsync/latest/devguide/designing-your-schema.html" target="_blank">AWS AppSync schema documentation</a> for understanding how to define types, nesting, and pagination.</p>
 </details>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">schema.graphql</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">schema.graphql</label><label for="__tabbed_1_2">template.yml</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -996,7 +1007,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">template.yml</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
 <span class="normal">  3</span>
@@ -1125,137 +1136,138 @@
 <span class="normal">126</span>
 <span class="normal">127</span>
 <span class="normal">128</span>
-<span class="normal">129</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span> <span class="s">&#39;2010-09-09&#39;</span>
-<span class="nt">Transform</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span>
-<span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Hello world Direct Lambda Resolver</span>
+<span class="normal">129</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2010-09-09&#39;</span><span class="w"></span>
+<span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span><span class="w"></span>
+<span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hello world Direct Lambda Resolver</span><span class="w"></span>
 
-<span class="nt">Globals</span><span class="p">:</span>
-  <span class="nt">Function</span><span class="p">:</span>
-    <span class="nt">Timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
-    <span class="nt">Runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python3.8</span>
-    <span class="nt">Tracing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Active</span>
-    <span class="nt">Environment</span><span class="p">:</span>
-        <span class="nt">Variables</span><span class="p">:</span>
-            <span class="c1"># Powertools env vars: https://awslabs.github.io/aws-lambda-powertools-python/latest/#environment-variables</span>
-            <span class="nt">LOG_LEVEL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">INFO</span>
-            <span class="nt">POWERTOOLS_LOGGER_SAMPLE_RATE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
-            <span class="nt">POWERTOOLS_LOGGER_LOG_EVENT</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-            <span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sample_resolver</span>
+<span class="nt">Globals</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Function</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.8</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Tracing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Active</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Environment</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Variables</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="c1"># Powertools env vars: https://awslabs.github.io/aws-lambda-powertools-python/latest/#environment-variables</span><span class="w"></span>
+<span class="w">            </span><span class="nt">LOG_LEVEL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span><span class="w"></span>
+<span class="w">            </span><span class="nt">POWERTOOLS_LOGGER_SAMPLE_RATE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>
+<span class="w">            </span><span class="nt">POWERTOOLS_LOGGER_LOG_EVENT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">            </span><span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_resolver</span><span class="w"></span>
 
-<span class="nt">Resources</span><span class="p">:</span>
-  <span class="nt">HelloWorldFunction</span><span class="p">:</span>
-    <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
-    <span class="nt">Properties</span><span class="p">:</span>
-        <span class="nt">Handler</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span>
-        <span class="nt">CodeUri</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hello_world</span>
-        <span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Sample Lambda Powertools Direct Lambda Resolver</span>
-        <span class="nt">Tags</span><span class="p">:</span>
-            <span class="nt">SOLUTION</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">LambdaPowertoolsPython</span>
+<span class="nt">Resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">HelloWorldFunction</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span><span class="w"></span>
+<span class="w">        </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello_world</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample Lambda Powertools Direct Lambda Resolver</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Tags</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">SOLUTION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LambdaPowertoolsPython</span><span class="w"></span>
 
-  <span class="c1"># IAM Permissions and Roles</span>
+<span class="w">  </span><span class="c1"># IAM Permissions and Roles</span><span class="w"></span>
 
-  <span class="nt">AppSyncServiceRole</span><span class="p">:</span>
-    <span class="nt">Type</span><span class="p">:</span> <span class="s">&quot;AWS::IAM::Role&quot;</span>
-    <span class="nt">Properties</span><span class="p">:</span>
-      <span class="nt">AssumeRolePolicyDocument</span><span class="p">:</span>
-          <span class="nt">Version</span><span class="p">:</span> <span class="s">&quot;2012-10-17&quot;</span>
-          <span class="nt">Statement</span><span class="p">:</span>
-              <span class="p p-Indicator">-</span>
-<span class="hll">                <span class="nt">Effect</span><span class="p">:</span> <span class="s">&quot;Allow&quot;</span>
-</span><span class="hll">                <span class="nt">Principal</span><span class="p">:</span>
-</span><span class="hll">                    <span class="nt">Service</span><span class="p">:</span>
-</span><span class="hll">                        <span class="p p-Indicator">-</span> <span class="s">&quot;appsync.amazonaws.com&quot;</span>
-</span><span class="hll">                <span class="nt">Action</span><span class="p">:</span>
-</span><span class="hll">                    <span class="p p-Indicator">-</span> <span class="s">&quot;sts:AssumeRole&quot;</span>
+<span class="w">  </span><span class="nt">AppSyncServiceRole</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;AWS::IAM::Role&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">AssumeRolePolicyDocument</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="nt">Statement</span><span class="p">:</span><span class="w"></span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"></span>
+<span class="hll"><span class="w">                </span><span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="w"></span>
+</span><span class="hll"><span class="w">                </span><span class="nt">Principal</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">                    </span><span class="nt">Service</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">                        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;appsync.amazonaws.com&quot;</span><span class="w"></span>
+</span><span class="hll"><span class="w">                </span><span class="nt">Action</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;sts:AssumeRole&quot;</span><span class="w"></span>
 </span>
-  <span class="nt">InvokeLambdaResolverPolicy</span><span class="p">:</span>
-    <span class="nt">Type</span><span class="p">:</span> <span class="s">&quot;AWS::IAM::Policy&quot;</span>
-    <span class="nt">Properties</span><span class="p">:</span>
-      <span class="nt">PolicyName</span><span class="p">:</span> <span class="s">&quot;DirectAppSyncLambda&quot;</span>
-      <span class="nt">PolicyDocument</span><span class="p">:</span>
-          <span class="nt">Version</span><span class="p">:</span> <span class="s">&quot;2012-10-17&quot;</span>
-<span class="hll">          <span class="nt">Statement</span><span class="p">:</span>
-</span><span class="hll">              <span class="p p-Indicator">-</span>
-</span><span class="hll">                <span class="nt">Effect</span><span class="p">:</span> <span class="s">&quot;Allow&quot;</span>
-</span><span class="hll">                <span class="nt">Action</span><span class="p">:</span> <span class="s">&quot;lambda:invokeFunction&quot;</span>
-</span><span class="hll">                <span class="nt">Resource</span><span class="p">:</span>
-</span><span class="hll">                    <span class="p p-Indicator">-</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">HelloWorldFunction.Arn</span>
-</span>      <span class="nt">Roles</span><span class="p">:</span>
-          <span class="p p-Indicator">-</span> <span class="kt">!Ref</span> <span class="l l-Scalar l-Scalar-Plain">AppSyncServiceRole</span>
+<span class="w">  </span><span class="nt">InvokeLambdaResolverPolicy</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;AWS::IAM::Policy&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">PolicyName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;DirectAppSyncLambda&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">PolicyDocument</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">Version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2012-10-17&quot;</span><span class="w"></span>
+<span class="hll"><span class="w">          </span><span class="nt">Statement</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">              </span><span class="p p-Indicator">-</span><span class="w"></span>
+</span><span class="hll"><span class="w">                </span><span class="nt">Effect</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Allow&quot;</span><span class="w"></span>
+</span><span class="hll"><span class="w">                </span><span class="nt">Action</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;lambda:invokeFunction&quot;</span><span class="w"></span>
+</span><span class="hll"><span class="w">                </span><span class="nt">Resource</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">                    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HelloWorldFunction.Arn</span><span class="w"></span>
+</span><span class="w">      </span><span class="nt">Roles</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="kt">!Ref</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AppSyncServiceRole</span><span class="w"></span>
 
-  <span class="c1"># GraphQL API</span>
+<span class="w">  </span><span class="c1"># GraphQL API</span><span class="w"></span>
 
-<span class="hll">  <span class="nt">HelloWorldApi</span><span class="p">:</span>
-</span><span class="hll">    <span class="nt">Type</span><span class="p">:</span> <span class="s">&quot;AWS::AppSync::GraphQLApi&quot;</span>
-</span>    <span class="nt">Properties</span><span class="p">:</span>
-        <span class="nt">Name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">HelloWorldApi</span>
-        <span class="nt">AuthenticationType</span><span class="p">:</span> <span class="s">&quot;API_KEY&quot;</span>
-        <span class="nt">XrayEnabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="hll"><span class="w">  </span><span class="nt">HelloWorldApi</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;AWS::AppSync::GraphQLApi&quot;</span><span class="w"></span>
+</span><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HelloWorldApi</span><span class="w"></span>
+<span class="w">        </span><span class="nt">AuthenticationType</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;API_KEY&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">XrayEnabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 
-  <span class="nt">HelloWorldApiKey</span><span class="p">:</span>
-    <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::AppSync::ApiKey</span>
-    <span class="nt">Properties</span><span class="p">:</span>
-        <span class="nt">ApiId</span><span class="p">:</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">HelloWorldApi.ApiId</span>
+<span class="w">  </span><span class="nt">HelloWorldApiKey</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::AppSync::ApiKey</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">ApiId</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HelloWorldApi.ApiId</span><span class="w"></span>
 
-  <span class="nt">HelloWorldApiSchema</span><span class="p">:</span>
-    <span class="nt">Type</span><span class="p">:</span> <span class="s">&quot;AWS::AppSync::GraphQLSchema&quot;</span>
-    <span class="nt">Properties</span><span class="p">:</span>
-        <span class="nt">ApiId</span><span class="p">:</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">HelloWorldApi.ApiId</span>
-        <span class="nt">Definition</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-<span class="hll">            <span class="no">schema {</span>
-</span><span class="hll">                <span class="no">query:Query</span>
-</span><span class="hll">            <span class="no">}</span>
+<span class="w">  </span><span class="nt">HelloWorldApiSchema</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;AWS::AppSync::GraphQLSchema&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">ApiId</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HelloWorldApi.ApiId</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Definition</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="no">schema {</span><span class="w"></span>
+</span><span class="hll"><span class="w">                </span><span class="no">query:Query</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="no">}</span><span class="w"></span>
 </span><span class="hll">
-</span><span class="hll">            <span class="no">type Query {</span>
-</span><span class="hll">                <span class="no">getTodo(id: ID!): Todo</span>
-</span><span class="hll">                <span class="no">listTodos: [Todo]</span>
-</span><span class="hll">            <span class="no">}</span>
+</span><span class="hll"><span class="w">            </span><span class="no">type Query {</span><span class="w"></span>
+</span><span class="hll"><span class="w">                </span><span class="no">getTodo(id: ID!): Todo</span><span class="w"></span>
+</span><span class="hll"><span class="w">                </span><span class="no">listTodos: [Todo]</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="no">}</span><span class="w"></span>
 </span><span class="hll">
-</span><span class="hll">            <span class="no">type Todo {</span>
-</span><span class="hll">                <span class="no">id: ID!</span>
-</span><span class="hll">                <span class="no">title: String</span>
-</span><span class="hll">                <span class="no">description: String</span>
-</span><span class="hll">                <span class="no">done: Boolean</span>
-</span>            <span class="no">}</span>
+</span><span class="hll"><span class="w">            </span><span class="no">type Todo {</span><span class="w"></span>
+</span><span class="hll"><span class="w">                </span><span class="no">id: ID!</span><span class="w"></span>
+</span><span class="hll"><span class="w">                </span><span class="no">title: String</span><span class="w"></span>
+</span><span class="hll"><span class="w">                </span><span class="no">description: String</span><span class="w"></span>
+</span><span class="hll"><span class="w">                </span><span class="no">done: Boolean</span><span class="w"></span>
+</span><span class="w">            </span><span class="no">}</span><span class="w"></span>
 
-  <span class="c1"># Lambda Direct Data Source and Resolver</span>
+<span class="w">  </span><span class="c1"># Lambda Direct Data Source and Resolver</span><span class="w"></span>
 
-<span class="hll">  <span class="nt">HelloWorldFunctionDataSource</span><span class="p">:</span>
-</span><span class="hll">    <span class="nt">Type</span><span class="p">:</span> <span class="s">&quot;AWS::AppSync::DataSource&quot;</span>
-</span><span class="hll">    <span class="nt">Properties</span><span class="p">:</span>
-</span><span class="hll">        <span class="nt">ApiId</span><span class="p">:</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">HelloWorldApi.ApiId</span>
-</span><span class="hll">        <span class="nt">Name</span><span class="p">:</span> <span class="s">&quot;HelloWorldLambdaDirectResolver&quot;</span>
-</span><span class="hll">        <span class="nt">Type</span><span class="p">:</span> <span class="s">&quot;AWS_LAMBDA&quot;</span>
-</span><span class="hll">        <span class="nt">ServiceRoleArn</span><span class="p">:</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">AppSyncServiceRole.Arn</span>
-</span><span class="hll">        <span class="nt">LambdaConfig</span><span class="p">:</span>
-</span><span class="hll">            <span class="nt">LambdaFunctionArn</span><span class="p">:</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">HelloWorldFunction.Arn</span>
+<span class="hll"><span class="w">  </span><span class="nt">HelloWorldFunctionDataSource</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;AWS::AppSync::DataSource&quot;</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">ApiId</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HelloWorldApi.ApiId</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;HelloWorldLambdaDirectResolver&quot;</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;AWS_LAMBDA&quot;</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">ServiceRoleArn</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AppSyncServiceRole.Arn</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">LambdaConfig</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nt">LambdaFunctionArn</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HelloWorldFunction.Arn</span><span class="w"></span>
 </span><span class="hll">
-</span><span class="hll">  <span class="nt">ListTodosResolver</span><span class="p">:</span>
-</span><span class="hll">    <span class="nt">Type</span><span class="p">:</span> <span class="s">&quot;AWS::AppSync::Resolver&quot;</span>
-</span><span class="hll">    <span class="nt">Properties</span><span class="p">:</span>
-</span><span class="hll">        <span class="nt">ApiId</span><span class="p">:</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">HelloWorldApi.ApiId</span>
-</span><span class="hll">        <span class="nt">TypeName</span><span class="p">:</span> <span class="s">&quot;Query&quot;</span>
-</span><span class="hll">        <span class="nt">FieldName</span><span class="p">:</span> <span class="s">&quot;listTodos&quot;</span>
-</span><span class="hll">        <span class="nt">DataSourceName</span><span class="p">:</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">HelloWorldFunctionDataSource.Name</span>
+</span><span class="hll"><span class="w">  </span><span class="nt">ListTodosResolver</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;AWS::AppSync::Resolver&quot;</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">ApiId</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HelloWorldApi.ApiId</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">TypeName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Query&quot;</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">FieldName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;listTodos&quot;</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">DataSourceName</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HelloWorldFunctionDataSource.Name</span><span class="w"></span>
 </span><span class="hll">
-</span><span class="hll">  <span class="nt">GetTodoResolver</span><span class="p">:</span>
-</span><span class="hll">    <span class="nt">Type</span><span class="p">:</span> <span class="s">&quot;AWS::AppSync::Resolver&quot;</span>
-</span><span class="hll">    <span class="nt">Properties</span><span class="p">:</span>
-</span><span class="hll">        <span class="nt">ApiId</span><span class="p">:</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">HelloWorldApi.ApiId</span>
-</span><span class="hll">        <span class="nt">TypeName</span><span class="p">:</span> <span class="s">&quot;Query&quot;</span>
-</span><span class="hll">        <span class="nt">FieldName</span><span class="p">:</span> <span class="s">&quot;getTodo&quot;</span>
-</span><span class="hll">        <span class="nt">DataSourceName</span><span class="p">:</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">HelloWorldFunctionDataSource.Name</span>
+</span><span class="hll"><span class="w">  </span><span class="nt">GetTodoResolver</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;AWS::AppSync::Resolver&quot;</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">ApiId</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HelloWorldApi.ApiId</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">TypeName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Query&quot;</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">FieldName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;getTodo&quot;</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">DataSourceName</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HelloWorldFunctionDataSource.Name</span><span class="w"></span>
 </span>
 
-<span class="nt">Outputs</span><span class="p">:</span>
-  <span class="nt">HelloWorldFunction</span><span class="p">:</span>
-    <span class="nt">Description</span><span class="p">:</span> <span class="s">&quot;Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">Lambda</span><span class="nv"> </span><span class="s">Function</span><span class="nv"> </span><span class="s">ARN&quot;</span>
-    <span class="nt">Value</span><span class="p">:</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">HelloWorldFunction.Arn</span>
+<span class="nt">Outputs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">HelloWorldFunction</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">Lambda</span><span class="nv"> </span><span class="s">Function</span><span class="nv"> </span><span class="s">ARN&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HelloWorldFunction.Arn</span><span class="w"></span>
 
-  <span class="nt">HelloWorldAPI</span><span class="p">:</span>
-    <span class="nt">Value</span><span class="p">:</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">HelloWorldApi.Arn</span>
+<span class="w">  </span><span class="nt">HelloWorldAPI</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HelloWorldApi.Arn</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <h3 id="resolver-decorator">Resolver decorator<a class="headerlink" href="#resolver-decorator" title="Permanent link">&para;</a></h3>
@@ -1265,7 +1277,9 @@
 <summary>Info</summary>
 <p>GraphQL arguments are passed as function arguments.</p>
 </details>
-<div class="tabbed-set" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">app.py</label><label for="__tabbed_2_2">schema.graphql</label><label for="__tabbed_2_3">getTodo_event.json</label><label for="__tabbed_2_4">listTodos_event.json</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1362,7 +1376,7 @@
 </span></code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">schema.graphql</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1395,7 +1409,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><label for="__tabbed_2_3">getTodo_event.json</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1441,56 +1455,56 @@
 <span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span>
-<span class="normal">46</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;arguments&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;7e362732-c8cd-4405-b090-144ac9b38960&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;identity&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-    <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-    <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span> <span class="s2">&quot;1.2.3.4, 5.6.7.8&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;accept-encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;gzip, deflate, br&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;cloudfront-viewer-country&quot;</span><span class="p">:</span> <span class="s2">&quot;NL&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;cloudfront-is-tablet-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;referer&quot;</span><span class="p">:</span> <span class="s2">&quot;https://eu-west-1.console.aws.amazon.com/appsync/home?region=eu-west-1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;via&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0 9fce949f3749407c8e6a75087e168b47.cloudfront.net (CloudFront)&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;cloudfront-forwarded-proto&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;https://eu-west-1.console.aws.amazon.com&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;x-api-key&quot;</span><span class="p">:</span> <span class="s2">&quot;da1-c33ullkbkze3jg5hf5ddgcs4fq&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;content-type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span> <span class="s2">&quot;Root=1-606eb2f2-1babc433453a332c43fb4494&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;x-amz-cf-id&quot;</span><span class="p">:</span> <span class="s2">&quot;SJw16ZOPuMZMINx5Xcxa9pB84oMPSGCzNOfrbJLvd80sPa0waCXzYQ==&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;content-length&quot;</span><span class="p">:</span> <span class="s2">&quot;114&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;x-amz-user-agent&quot;</span><span class="p">:</span> <span class="s2">&quot;AWS-Console-AppSync/&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;x-forwarded-proto&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;ldcvmkdnd5az3lm3gnf5ixvcyy.appsync-api.eu-west-1.amazonaws.com&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;accept-language&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US,en;q=0.5&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;user-agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0) Gecko/20100101 Firefox/78.0&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;cloudfront-is-desktop-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;cloudfront-is-mobile-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;accept&quot;</span><span class="p">:</span> <span class="s2">&quot;*/*&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;x-forwarded-port&quot;</span><span class="p">:</span> <span class="s2">&quot;443&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;cloudfront-is-smarttv-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;prev&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-    <span class="nt">&quot;info&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;parentTypeName&quot;</span><span class="p">:</span> <span class="s2">&quot;Query&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;selectionSetList&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;title&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;id&quot;</span>
-      <span class="p">],</span>
-      <span class="nt">&quot;selectionSetGraphQL&quot;</span><span class="p">:</span> <span class="s2">&quot;{\n  title\n  id\n}&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;fieldName&quot;</span><span class="p">:</span> <span class="s2">&quot;getTodo&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;variables&quot;</span><span class="p">:</span> <span class="p">{}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;stash&quot;</span><span class="p">:</span> <span class="p">{}</span>
-<span class="p">}</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;arguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;7e362732-c8cd-4405-b090-144ac9b38960&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.2.3.4, 5.6.7.8&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;accept-encoding&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gzip, deflate, br&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-viewer-country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NL&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-is-tablet-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;referer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eu-west-1.console.aws.amazon.com/appsync/home?region=eu-west-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;via&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0 9fce949f3749407c8e6a75087e168b47.cloudfront.net (CloudFront)&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-forwarded-proto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eu-west-1.console.aws.amazon.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;x-api-key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;da1-c33ullkbkze3jg5hf5ddgcs4fq&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;content-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Root=1-606eb2f2-1babc433453a332c43fb4494&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;x-amz-cf-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SJw16ZOPuMZMINx5Xcxa9pB84oMPSGCzNOfrbJLvd80sPa0waCXzYQ==&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;content-length&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;114&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;x-amz-user-agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AWS-Console-AppSync/&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;x-forwarded-proto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ldcvmkdnd5az3lm3gnf5ixvcyy.appsync-api.eu-west-1.amazonaws.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;accept-language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US,en;q=0.5&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;user-agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0) Gecko/20100101 Firefox/78.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-is-desktop-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-is-mobile-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;accept&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*/*&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;x-forwarded-port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;443&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-is-smarttv-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;prev&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;parentTypeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Query&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;selectionSetList&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;selectionSetGraphQL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\n  title\n  id\n}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;fieldName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;getTodo&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;stash&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><label for="__tabbed_2_4">listTodos_event.json</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1534,58 +1548,61 @@
 <span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
-<span class="normal">44</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;arguments&quot;</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="nt">&quot;identity&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-    <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-    <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span> <span class="s2">&quot;1.2.3.4, 5.6.7.8&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;accept-encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;gzip, deflate, br&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;cloudfront-viewer-country&quot;</span><span class="p">:</span> <span class="s2">&quot;NL&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;cloudfront-is-tablet-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;referer&quot;</span><span class="p">:</span> <span class="s2">&quot;https://eu-west-1.console.aws.amazon.com/appsync/home?region=eu-west-1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;via&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0 9fce949f3749407c8e6a75087e168b47.cloudfront.net (CloudFront)&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;cloudfront-forwarded-proto&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;https://eu-west-1.console.aws.amazon.com&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;x-api-key&quot;</span><span class="p">:</span> <span class="s2">&quot;da1-c33ullkbkze3jg5hf5ddgcs4fq&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;content-type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span> <span class="s2">&quot;Root=1-606eb2f2-1babc433453a332c43fb4494&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;x-amz-cf-id&quot;</span><span class="p">:</span> <span class="s2">&quot;SJw16ZOPuMZMINx5Xcxa9pB84oMPSGCzNOfrbJLvd80sPa0waCXzYQ==&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;content-length&quot;</span><span class="p">:</span> <span class="s2">&quot;114&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;x-amz-user-agent&quot;</span><span class="p">:</span> <span class="s2">&quot;AWS-Console-AppSync/&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;x-forwarded-proto&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;ldcvmkdnd5az3lm3gnf5ixvcyy.appsync-api.eu-west-1.amazonaws.com&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;accept-language&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US,en;q=0.5&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;user-agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0) Gecko/20100101 Firefox/78.0&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;cloudfront-is-desktop-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;cloudfront-is-mobile-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;accept&quot;</span><span class="p">:</span> <span class="s2">&quot;*/*&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;x-forwarded-port&quot;</span><span class="p">:</span> <span class="s2">&quot;443&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;cloudfront-is-smarttv-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;prev&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-    <span class="nt">&quot;info&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;parentTypeName&quot;</span><span class="p">:</span> <span class="s2">&quot;Query&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;selectionSetList&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;id&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;title&quot;</span>
-      <span class="p">],</span>
-      <span class="nt">&quot;selectionSetGraphQL&quot;</span><span class="p">:</span> <span class="s2">&quot;{\n  id\n  title\n}&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;fieldName&quot;</span><span class="p">:</span> <span class="s2">&quot;listTodos&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;variables&quot;</span><span class="p">:</span> <span class="p">{}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;stash&quot;</span><span class="p">:</span> <span class="p">{}</span>
-<span class="p">}</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;arguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.2.3.4, 5.6.7.8&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;accept-encoding&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gzip, deflate, br&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-viewer-country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NL&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-is-tablet-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;referer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eu-west-1.console.aws.amazon.com/appsync/home?region=eu-west-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;via&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0 9fce949f3749407c8e6a75087e168b47.cloudfront.net (CloudFront)&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-forwarded-proto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eu-west-1.console.aws.amazon.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;x-api-key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;da1-c33ullkbkze3jg5hf5ddgcs4fq&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;content-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Root=1-606eb2f2-1babc433453a332c43fb4494&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;x-amz-cf-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SJw16ZOPuMZMINx5Xcxa9pB84oMPSGCzNOfrbJLvd80sPa0waCXzYQ==&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;content-length&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;114&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;x-amz-user-agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AWS-Console-AppSync/&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;x-forwarded-proto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ldcvmkdnd5az3lm3gnf5ixvcyy.appsync-api.eu-west-1.amazonaws.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;accept-language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US,en;q=0.5&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;user-agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0) Gecko/20100101 Firefox/78.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-is-desktop-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-is-mobile-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;accept&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*/*&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;x-forwarded-port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;443&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;cloudfront-is-smarttv-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;prev&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;parentTypeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Query&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;selectionSetList&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;title&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;selectionSetGraphQL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\n  id\n  title\n}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;fieldName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;listTodos&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;stash&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h2>
 <h3 id="nested-mappings">Nested mappings<a class="headerlink" href="#nested-mappings" title="Permanent link">&para;</a></h3>
 <p>You can nest <code>app.resolver()</code> decorator multiple times when resolving fields with the same return.</p>
-<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">nested_mappings.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">nested_mappings.py</label><label for="__tabbed_3_2">schema.graphql</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1624,7 +1641,7 @@
 </span></code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">schema.graphql</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1668,6 +1685,7 @@
 </span><span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <h3 id="async-functions">Async functions<a class="headerlink" href="#async-functions" title="Permanent link">&para;</a></h3>
@@ -1771,7 +1789,9 @@
 </details>
 <p>Within your function's folder, add Lambda Powertools as a dependency with <code>pipenv install aws-lambda-powertools</code>.</p>
 <p>Use the following code for <code>merchantInfo</code> and <code>searchMerchant</code> functions respectively.</p>
-<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">merchantInfo/src/app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">merchantInfo/src/app.py</label><label for="__tabbed_4_2">searchMerchant/src/app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1820,7 +1840,7 @@
 </span></code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">searchMerchant/src/app.py</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1862,8 +1882,11 @@
 </td></tr></table>
 </div>
 </div>
+</div>
 <p><strong>Example AppSync GraphQL Transformer Function resolver events</strong></p>
-<div class="tabbed-set" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Query.listLocations event</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Query.listLocations event</label><label for="__tabbed_5_2">*.commonField event</label><label for="__tabbed_5_3">Query.findMerchant event</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1887,34 +1910,34 @@
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="hll">  <span class="nt">&quot;typeName&quot;</span><span class="p">:</span> <span class="s2">&quot;Query&quot;</span><span class="p">,</span>
-</span><span class="hll">  <span class="nt">&quot;fieldName&quot;</span><span class="p">:</span> <span class="s2">&quot;listLocations&quot;</span><span class="p">,</span>
-</span><span class="hll">  <span class="nt">&quot;arguments&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class="hll">    <span class="nt">&quot;page&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-</span><span class="hll">    <span class="nt">&quot;size&quot;</span><span class="p">:</span> <span class="mi">1</span>
-</span><span class="hll">  <span class="p">},</span>
-</span>  <span class="nt">&quot;identity&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;claims&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1615366261</span>
-      <span class="err">...</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;mike&quot;</span><span class="p">,</span>
-    <span class="err">...</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span> <span class="s2">&quot;Root=1-60488877-0b0c4e6727ab2a1c545babd0&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1&quot;</span>
-      <span class="err">...</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="err">...</span>
-<span class="p">}</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">  </span><span class="nt">&quot;typeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Query&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">  </span><span class="nt">&quot;fieldName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;listLocations&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">  </span><span class="nt">&quot;arguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+</span><span class="hll"><span class="w">  </span><span class="p">},</span><span class="w"></span>
+</span><span class="w">  </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1615366261</span><span class="w"></span>
+<span class="w">      </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mike&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Root=1-60488877-0b0c4e6727ab2a1c545babd0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="err">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">*.commonField event</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1936,32 +1959,32 @@
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="hll">  <span class="nt">&quot;typeName&quot;</span><span class="p">:</span> <span class="s2">&quot;Merchant&quot;</span><span class="p">,</span>
-</span><span class="hll">  <span class="nt">&quot;fieldName&quot;</span><span class="p">:</span> <span class="s2">&quot;commonField&quot;</span><span class="p">,</span>
-</span>  <span class="nt">&quot;arguments&quot;</span><span class="p">:</span> <span class="p">{</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;identity&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;claims&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1615366261</span>
-      <span class="err">...</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;mike&quot;</span><span class="p">,</span>
-    <span class="err">...</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span> <span class="s2">&quot;Root=1-60488877-0b0c4e6727ab2a1c545babd0&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1&quot;</span>
-      <span class="err">...</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="err">...</span>
-<span class="p">}</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">  </span><span class="nt">&quot;typeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Merchant&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">  </span><span class="nt">&quot;fieldName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;commonField&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">  </span><span class="nt">&quot;arguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1615366261</span><span class="w"></span>
+<span class="w">      </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mike&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Root=1-60488877-0b0c4e6727ab2a1c545babd0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="err">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><label for="__tabbed_5_3">Query.findMerchant event</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1984,36 +2007,39 @@
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="hll">  <span class="nt">&quot;typeName&quot;</span><span class="p">:</span> <span class="s2">&quot;Query&quot;</span><span class="p">,</span>
-</span><span class="hll">  <span class="nt">&quot;fieldName&quot;</span><span class="p">:</span> <span class="s2">&quot;findMerchant&quot;</span><span class="p">,</span>
-</span><span class="hll">  <span class="nt">&quot;arguments&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class="hll">    <span class="nt">&quot;search&quot;</span><span class="p">:</span> <span class="s2">&quot;Brewers Coffee&quot;</span>
-</span><span class="hll">  <span class="p">},</span>
-</span>  <span class="nt">&quot;identity&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;claims&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1615366261</span>
-      <span class="err">...</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;mike&quot;</span><span class="p">,</span>
-    <span class="err">...</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span> <span class="s2">&quot;Root=1-60488877-0b0c4e6727ab2a1c545babd0&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1&quot;</span>
-      <span class="err">...</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="err">...</span>
-<span class="p">}</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">  </span><span class="nt">&quot;typeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Query&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">  </span><span class="nt">&quot;fieldName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;findMerchant&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">  </span><span class="nt">&quot;arguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">&quot;search&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Brewers Coffee&quot;</span><span class="w"></span>
+</span><span class="hll"><span class="w">  </span><span class="p">},</span><span class="w"></span>
+</span><span class="w">  </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1615366261</span><span class="w"></span>
+<span class="w">      </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mike&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Root=1-60488877-0b0c4e6727ab2a1c545babd0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="err">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="custom-data-models">Custom data models<a class="headerlink" href="#custom-data-models" title="Permanent link">&para;</a></h3>
 <p>You can subclass <code>AppSyncResolverEvent</code> to bring your own set of methods to handle incoming events, by using <code>data_model</code> param in the <code>resolve</code> method.</p>
-<div class="tabbed-set" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">custom_model.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">custom_model.py</label><label for="__tabbed_6_2">schema.graphql</label><label for="__tabbed_6_3">listLocations_event.json</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2068,7 +2094,7 @@
 </span></code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">schema.graphql</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2113,7 +2139,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><label for="__tabbed_6_3">listLocations_event.json</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2158,53 +2184,54 @@
 <span class="normal">42</span>
 <span class="normal">43</span>
 <span class="normal">44</span>
-<span class="normal">45</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;arguments&quot;</span><span class="p">:</span> <span class="p">{},</span>
-  <span class="nt">&quot;identity&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span> <span class="s2">&quot;1.2.3.4, 5.6.7.8&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;accept-encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;gzip, deflate, br&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;cloudfront-viewer-country&quot;</span><span class="p">:</span> <span class="s2">&quot;NL&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;cloudfront-is-tablet-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;referer&quot;</span><span class="p">:</span> <span class="s2">&quot;https://eu-west-1.console.aws.amazon.com/appsync/home?region=eu-west-1&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;via&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0 9fce949f3749407c8e6a75087e168b47.cloudfront.net (CloudFront)&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;cloudfront-forwarded-proto&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;https://eu-west-1.console.aws.amazon.com&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;x-api-key&quot;</span><span class="p">:</span> <span class="s2">&quot;da1-c33ullkbkze3jg5hf5ddgcs4fq&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;content-type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span> <span class="s2">&quot;Root=1-606eb2f2-1babc433453a332c43fb4494&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;x-amz-cf-id&quot;</span><span class="p">:</span> <span class="s2">&quot;SJw16ZOPuMZMINx5Xcxa9pB84oMPSGCzNOfrbJLvd80sPa0waCXzYQ==&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;content-length&quot;</span><span class="p">:</span> <span class="s2">&quot;114&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;x-amz-user-agent&quot;</span><span class="p">:</span> <span class="s2">&quot;AWS-Console-AppSync/&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;x-forwarded-proto&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;ldcvmkdnd5az3lm3gnf5ixvcyy.appsync-api.eu-west-1.amazonaws.com&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;accept-language&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US,en;q=0.5&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;user-agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0) Gecko/20100101 Firefox/78.0&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;cloudfront-is-desktop-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;cloudfront-is-mobile-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;accept&quot;</span><span class="p">:</span> <span class="s2">&quot;*/*&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;x-forwarded-port&quot;</span><span class="p">:</span> <span class="s2">&quot;443&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;cloudfront-is-smarttv-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;prev&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="nt">&quot;info&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;parentTypeName&quot;</span><span class="p">:</span> <span class="s2">&quot;Query&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;selectionSetList&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="s2">&quot;id&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;name&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;description&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;selectionSetGraphQL&quot;</span><span class="p">:</span> <span class="s2">&quot;{\n  id\n  name\n  description\n}&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;fieldName&quot;</span><span class="p">:</span> <span class="s2">&quot;listLocations&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;variables&quot;</span><span class="p">:</span> <span class="p">{}</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;stash&quot;</span><span class="p">:</span> <span class="p">{}</span>
-<span class="p">}</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;arguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.2.3.4, 5.6.7.8&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;accept-encoding&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gzip, deflate, br&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cloudfront-viewer-country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NL&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cloudfront-is-tablet-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;referer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eu-west-1.console.aws.amazon.com/appsync/home?region=eu-west-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;via&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0 9fce949f3749407c8e6a75087e168b47.cloudfront.net (CloudFront)&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cloudfront-forwarded-proto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://eu-west-1.console.aws.amazon.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-api-key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;da1-c33ullkbkze3jg5hf5ddgcs4fq&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;content-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Root=1-606eb2f2-1babc433453a332c43fb4494&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-amz-cf-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SJw16ZOPuMZMINx5Xcxa9pB84oMPSGCzNOfrbJLvd80sPa0waCXzYQ==&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;content-length&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;114&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-amz-user-agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AWS-Console-AppSync/&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-forwarded-proto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ldcvmkdnd5az3lm3gnf5ixvcyy.appsync-api.eu-west-1.amazonaws.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;accept-language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US,en;q=0.5&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;user-agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0) Gecko/20100101 Firefox/78.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cloudfront-is-desktop-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cloudfront-is-mobile-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;accept&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*/*&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-forwarded-port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;443&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cloudfront-is-smarttv-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;prev&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;parentTypeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Query&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;selectionSetList&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;description&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;selectionSetGraphQL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\n  id\n  name\n  description\n}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;fieldName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;listLocations&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;stash&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <h3 id="split-operations-with-router">Split operations with Router<a class="headerlink" href="#split-operations-with-router" title="Permanent link">&para;</a></h3>
@@ -2214,7 +2241,9 @@
 </details>
 <p>As you grow the number of related GraphQL operations a given Lambda function should handle, it is natural to split them into separate files to ease maintenance - That's where the <code>Router</code> feature is useful.</p>
 <p>Let's assume you have <code>app.py</code> as your Lambda function entrypoint and routes in <code>location.py</code>, this is how you'd use the <code>Router</code> feature.</p>
-<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">resolvers/location.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">resolvers/location.py</label><label for="__tabbed_7_2">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <p>We import <strong>Router</strong> instead of <strong>AppSyncResolver</strong>; syntax wise is exactly the same.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2254,7 +2283,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">app.py</label><div class="tabbed-content">
+<div class="tabbed-block">
 <p>We use <code>include_router</code> method and include all <code>location</code> operations registered in the <code>router</code> global object.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2297,11 +2326,14 @@
 </td></tr></table>
 </div>
 </div>
+</div>
 <h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
 <p>You can test your resolvers by passing a mocked or actual AppSync Lambda event that you're expecting.</p>
 <p>You can use either <code>app.resolve(event, context)</code> or simply <code>app(event, context)</code>.</p>
-<p>Here's an example from our internal functional test.</p>
-<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">test_direct_resolver.py</label><div class="tabbed-content">
+<p>Here's an example of how you can test your synchronous resolvers:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">test_resolver.py</label><label for="__tabbed_8_2">src/index.py</label><label for="__tabbed_8_3">appSyncDirectResolver.json</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2317,26 +2349,43 @@
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">test_direct_resolver</span><span class="p">():</span>
-  <span class="c1"># Check whether we can handle an example appsync direct resolver</span>
-  <span class="c1"># load_event primarily deserialize the JSON event into a dict</span>
-  <span class="n">mock_event</span> <span class="o">=</span> <span class="n">load_event</span><span class="p">(</span><span class="s2">&quot;appSyncDirectResolver.json&quot;</span><span class="p">)</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
-  <span class="n">app</span> <span class="o">=</span> <span class="n">AppSyncResolver</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">src.index</span> <span class="kn">import</span> <span class="n">app</span>  <span class="c1"># import the instance of AppSyncResolver from your code</span>
 
-  <span class="nd">@app</span><span class="o">.</span><span class="n">resolver</span><span class="p">(</span><span class="n">field_name</span><span class="o">=</span><span class="s2">&quot;createSomething&quot;</span><span class="p">)</span>
-  <span class="k">def</span> <span class="nf">create_something</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-      <span class="k">assert</span> <span class="n">app</span><span class="o">.</span><span class="n">lambda_context</span> <span class="o">==</span> <span class="p">{}</span>
-      <span class="k">return</span> <span class="nb">id</span>
+<span class="k">def</span> <span class="nf">test_direct_resolver</span><span class="p">():</span>
+  <span class="c1"># Load mock event from a file</span>
+  <span class="n">json_file_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;appSyncDirectResolver.json&quot;</span><span class="p">)</span>
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+    <span class="n">mock_event</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
 
   <span class="c1"># Call the implicit handler</span>
   <span class="n">result</span> <span class="o">=</span> <span class="n">app</span><span class="p">(</span><span class="n">mock_event</span><span class="p">,</span> <span class="p">{})</span>
 
-  <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="s2">&quot;my identifier&quot;</span>
+  <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="s2">&quot;created this value&quot;</span>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">appSyncDirectResolver.json</label><div class="tabbed-content">
+<div class="tabbed-block">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">AppSyncResolver</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">AppSyncResolver</span><span class="p">()</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">resolver</span><span class="p">(</span><span class="n">field_name</span><span class="o">=</span><span class="s2">&quot;createSomething&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">create_something</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;created this value&quot;</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2410,102 +2459,311 @@
 <span class="normal">71</span>
 <span class="normal">72</span>
 <span class="normal">73</span>
-<span class="normal">74</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;arguments&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;my identifier&quot;</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;identity&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;claims&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;192879fc-a240-4bf1-ab5a-d6a00f3063f9&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;email_verified&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="nt">&quot;iss&quot;</span><span class="p">:</span> <span class="s2">&quot;https://cognito-idp.us-west-2.amazonaws.com/us-west-xxxxxxxxxxx&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;phone_number_verified&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-      <span class="nt">&quot;cognito:username&quot;</span><span class="p">:</span> <span class="s2">&quot;jdoe&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;aud&quot;</span><span class="p">:</span> <span class="s2">&quot;7471s60os7h0uu77i1tk27sp9n&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;event_id&quot;</span><span class="p">:</span> <span class="s2">&quot;bc334ed8-a938-4474-b644-9547e304e606&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;token_use&quot;</span><span class="p">:</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;auth_time&quot;</span><span class="p">:</span> <span class="mi">1599154213</span><span class="p">,</span>
-      <span class="nt">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s2">&quot;+19999999999&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1599157813</span><span class="p">,</span>
-      <span class="nt">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1599154213</span><span class="p">,</span>
-      <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;jdoe@email.com&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;defaultAuthStrategy&quot;</span><span class="p">:</span> <span class="s2">&quot;ALLOW&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;groups&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-    <span class="nt">&quot;issuer&quot;</span><span class="p">:</span> <span class="s2">&quot;https://cognito-idp.us-west-2.amazonaws.com/us-west-xxxxxxxxxxx&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;sourceIp&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="s2">&quot;1.1.1.1&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;192879fc-a240-4bf1-ab5a-d6a00f3063f9&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;jdoe&quot;</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;source&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span> <span class="s2">&quot;1.1.1.1, 2.2.2.2&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;cloudfront-viewer-country&quot;</span><span class="p">:</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;cloudfront-is-tablet-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;via&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0 xxxxxxxxxxxxxxxx.cloudfront.net (CloudFront)&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;cloudfront-forwarded-proto&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;origin&quot;</span><span class="p">:</span> <span class="s2">&quot;https://us-west-1.console.aws.amazon.com&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;content-length&quot;</span><span class="p">:</span> <span class="s2">&quot;217&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;accept-language&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US,en;q=0.9&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;xxxxxxxxxxxxxxxx.appsync-api.us-west-1.amazonaws.com&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;x-forwarded-proto&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;user-agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;accept&quot;</span><span class="p">:</span> <span class="s2">&quot;*/*&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;cloudfront-is-mobile-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;cloudfront-is-smarttv-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;accept-encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;gzip, deflate, br&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;referer&quot;</span><span class="p">:</span> <span class="s2">&quot;https://us-west-1.console.aws.amazon.com/appsync/home?region=us-west-1&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;content-type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;sec-fetch-mode&quot;</span><span class="p">:</span> <span class="s2">&quot;cors&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;x-amz-cf-id&quot;</span><span class="p">:</span> <span class="s2">&quot;3aykhqlUwQeANU-HGY7E_guV5EkNeMMtwyOgiA==&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span> <span class="s2">&quot;Root=1-5f512f51-fac632066c5e848ae714&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;authorization&quot;</span><span class="p">:</span> <span class="s2">&quot;eyJraWQiOiJScWFCSlJqYVJlM0hrSnBTUFpIcVRXazNOW...&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;sec-fetch-dest&quot;</span><span class="p">:</span> <span class="s2">&quot;empty&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;x-amz-user-agent&quot;</span><span class="p">:</span> <span class="s2">&quot;AWS-Console-AppSync/&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;cloudfront-is-desktop-viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;sec-fetch-site&quot;</span><span class="p">:</span> <span class="s2">&quot;cross-site&quot;</span><span class="p">,</span>
-      <span class="nt">&quot;x-forwarded-port&quot;</span><span class="p">:</span> <span class="s2">&quot;443&quot;</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;prev&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="nt">&quot;info&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;selectionSetList&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="s2">&quot;id&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;field1&quot;</span><span class="p">,</span>
-      <span class="s2">&quot;field2&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;selectionSetGraphQL&quot;</span><span class="p">:</span> <span class="s2">&quot;{\n  id\n  field1\n  field2\n}&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;parentTypeName&quot;</span><span class="p">:</span> <span class="s2">&quot;Mutation&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;fieldName&quot;</span><span class="p">:</span> <span class="s2">&quot;createSomething&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;variables&quot;</span><span class="p">:</span> <span class="p">{}</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;stash&quot;</span><span class="p">:</span> <span class="p">{}</span>
-<span class="p">}</span>
+<span class="normal">74</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;arguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my identifier&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192879fc-a240-4bf1-ab5a-d6a00f3063f9&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;email_verified&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://cognito-idp.us-west-2.amazonaws.com/us-west-xxxxxxxxxxx&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;phone_number_verified&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cognito:username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jdoe&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;7471s60os7h0uu77i1tk27sp9n&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;event_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bc334ed8-a938-4474-b644-9547e304e606&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;token_use&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;auth_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1599154213</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;phone_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+19999999999&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1599157813</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1599154213</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jdoe@email.com&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;defaultAuthStrategy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ALLOW&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;groups&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;issuer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://cognito-idp.us-west-2.amazonaws.com/us-west-xxxxxxxxxxx&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;sourceIp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;1.1.1.1&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192879fc-a240-4bf1-ab5a-d6a00f3063f9&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jdoe&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.1.1.1, 2.2.2.2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cloudfront-viewer-country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cloudfront-is-tablet-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;via&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0 xxxxxxxxxxxxxxxx.cloudfront.net (CloudFront)&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cloudfront-forwarded-proto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://us-west-1.console.aws.amazon.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;content-length&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;217&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;accept-language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US,en;q=0.9&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxxxxxxxxxxx.appsync-api.us-west-1.amazonaws.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-forwarded-proto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;user-agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;accept&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*/*&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cloudfront-is-mobile-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cloudfront-is-smarttv-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;accept-encoding&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gzip, deflate, br&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;referer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://us-west-1.console.aws.amazon.com/appsync/home?region=us-west-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;content-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;sec-fetch-mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cors&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-amz-cf-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3aykhqlUwQeANU-HGY7E_guV5EkNeMMtwyOgiA==&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Root=1-5f512f51-fac632066c5e848ae714&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;authorization&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJraWQiOiJScWFCSlJqYVJlM0hrSnBTUFpIcVRXazNOW...&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;sec-fetch-dest&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;empty&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-amz-user-agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AWS-Console-AppSync/&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cloudfront-is-desktop-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;sec-fetch-site&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cross-site&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-forwarded-port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;443&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;prev&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;selectionSetList&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;field1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;field2&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;selectionSetGraphQL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\n  id\n  field1\n  field2\n}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;parentTypeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mutation&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;fieldName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;createSomething&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;stash&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
 </div>
-                
-                  
-                    
+</div>
+<p>And an example for testing asynchronous resolvers. Note that this requires the <code>pytest-asyncio</code> package:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">test_async_resolver.py</label><label for="__tabbed_9_2">src/index.py</label><label for="__tabbed_9_3">appSyncDirectResolver.json</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
-<hr>
-<div class="md-source-date">
+<span class="kn">from</span> <span class="nn">src.index</span> <span class="kn">import</span> <span class="n">app</span>  <span class="c1"># import the instance of AppSyncResolver from your code</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">asyncio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_direct_resolver</span><span class="p">():</span>
+  <span class="c1"># Load mock event from a file</span>
+  <span class="n">json_file_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;appSyncDirectResolver.json&quot;</span><span class="p">)</span>
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+    <span class="n">mock_event</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
+
+  <span class="c1"># Call the implicit handler</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">app</span><span class="p">(</span><span class="n">mock_event</span><span class="p">,</span> <span class="p">{})</span>
+
+  <span class="k">assert</span> <span class="n">result</span> <span class="o">==</span> <span class="s2">&quot;created this value&quot;</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<div class="tabbed-block">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">AppSyncResolver</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">AppSyncResolver</span><span class="p">()</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">resolver</span><span class="p">(</span><span class="n">field_name</span><span class="o">=</span><span class="s2">&quot;createSomething&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">create_something_async</span><span class="p">():</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Do async stuff</span>
+    <span class="k">return</span> <span class="s2">&quot;created this value&quot;</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<div class="tabbed-block">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;arguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my identifier&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192879fc-a240-4bf1-ab5a-d6a00f3063f9&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;email_verified&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://cognito-idp.us-west-2.amazonaws.com/us-west-xxxxxxxxxxx&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;phone_number_verified&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cognito:username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jdoe&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;7471s60os7h0uu77i1tk27sp9n&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;event_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bc334ed8-a938-4474-b644-9547e304e606&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;token_use&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;auth_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1599154213</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;phone_number&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+19999999999&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1599157813</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1599154213</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jdoe@email.com&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;defaultAuthStrategy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ALLOW&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;groups&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;issuer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://cognito-idp.us-west-2.amazonaws.com/us-west-xxxxxxxxxxx&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;sourceIp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;1.1.1.1&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;192879fc-a240-4bf1-ab5a-d6a00f3063f9&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jdoe&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.1.1.1, 2.2.2.2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cloudfront-viewer-country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cloudfront-is-tablet-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;via&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2.0 xxxxxxxxxxxxxxxx.cloudfront.net (CloudFront)&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cloudfront-forwarded-proto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://us-west-1.console.aws.amazon.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;content-length&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;217&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;accept-language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US,en;q=0.9&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;xxxxxxxxxxxxxxxx.appsync-api.us-west-1.amazonaws.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-forwarded-proto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;user-agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;accept&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*/*&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cloudfront-is-mobile-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cloudfront-is-smarttv-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;accept-encoding&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gzip, deflate, br&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;referer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://us-west-1.console.aws.amazon.com/appsync/home?region=us-west-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;content-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;sec-fetch-mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cors&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-amz-cf-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3aykhqlUwQeANU-HGY7E_guV5EkNeMMtwyOgiA==&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Root=1-5f512f51-fac632066c5e848ae714&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;authorization&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJraWQiOiJScWFCSlJqYVJlM0hrSnBTUFpIcVRXazNOW...&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;sec-fetch-dest&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;empty&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-amz-user-agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AWS-Console-AppSync/&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;cloudfront-is-desktop-viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;sec-fetch-site&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cross-site&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;x-forwarded-port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;443&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;prev&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;info&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;selectionSetList&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;field1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;field2&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;selectionSetGraphQL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\n  id\n  field1\n  field2\n}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;parentTypeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mutation&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;fieldName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;createSomething&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;stash&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</div>
+
+  <hr>
+<div class="md-source-file">
   <small>
     
-      Last update: 2022-01-17
+      Last update:
+      2022-02-04
     
   </small>
 </div>
-                  
-                
-              
-              
-                
-
 
               
             </article>
@@ -2519,8 +2777,7 @@
         
       </main>
       
-        
-<footer class="md-footer">
+        <footer class="md-footer">
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
@@ -2559,20 +2816,19 @@
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2021 Amazon Web Services
-          </div>
-        
-        
-          Made with
-          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-            Material for MkDocs
-          </a>
-        
-        
-      </div>
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 Amazon Web Services
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
       
     </div>
   </div>
@@ -2582,10 +2838,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.instant", "navigation.indexes"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.instant", "navigation.indexes", "navigation.tracking", "content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.22074ed6.min.js", "version": {"provider": "mike", "default": "latest"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.960e086b.min.js"></script>
       
         <script src="../../../javascript/aws-amplify.min.js"></script>
       

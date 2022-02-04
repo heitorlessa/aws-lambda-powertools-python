@@ -9,12 +9,11 @@
         <meta name="description" content="Utility">
       
       
-      
         <meta name="author" content="Amazon Web Services">
       
       
       <link rel="icon" href="../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.9">
     
     
       
@@ -22,10 +21,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.a57b2b03.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2b4465f4.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
         
       
     
@@ -35,16 +34,15 @@
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700%7C&display=fallback">
-        <style>:root{--md-text-font-family:"Ubuntu";--md-code-font-family:""}</style>
+        <style>:root{--md-text-font:"Ubuntu";--md-code-font:""}</style>
       
-    
     
     
       <link rel="stylesheet" href="../../stylesheets/extra.css">
     
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-
 
     
     
@@ -61,9 +59,8 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="">
   
     
-    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
-      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -79,6 +76,23 @@
     <div data-md-component="announce">
       
     </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You're not viewing the latest version.
+  <a href="../../..">
+    <strong>Click here to go to latest.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          
+        </aside>
+      </div>
+    
     
       
 
@@ -136,8 +150,7 @@
       <label class="md-header__button md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -169,8 +182,7 @@
     
     
       <div class="md-header__source">
-        
-<a href="https://github.com/awslabs/aws-lambda-powertools-python/" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/awslabs/aws-lambda-powertools-python/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -214,8 +226,7 @@
   </label>
   
     <div class="md-nav__source">
-      
-<a href="https://github.com/awslabs/aws-lambda-powertools-python/" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/awslabs/aws-lambda-powertools-python/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -608,7 +619,6 @@
       
         
 
-
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -939,7 +949,6 @@
                   <div class="md-sidebar__inner">
                     
 
-
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -1184,14 +1193,14 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/awslabs/aws-lambda-powertools-python/edit/develop/docs/utilities/data_classes.md" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                  <h1>Event Source Data Classes</h1>
-                
-                <p>Event Source Data Classes utility provides classes self-describing Lambda event sources.</p>
+<a href="https://github.com/awslabs/aws-lambda-powertools-python/edit/develop/docs/utilities/data_classes.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+  <h1>Event Source Data Classes</h1>
+
+<p>Event Source Data Classes utility provides classes self-describing Lambda event sources.</p>
 <h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Type hinting and code completion for common event types</li>
@@ -1208,7 +1217,9 @@ Lambda function.</p>
 by using the <code>event_source</code> decorator.</p>
 <p>For example, if your Lambda function is being triggered by an API Gateway proxy integration, you can use the
 <code>APIGatewayProxyEvent</code> class.</p>
-<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1224,8 +1235,11 @@ by using the <code>event_source</code> decorator.</p>
 </td></tr></table>
 </div>
 </div>
+</div>
 <p>Same example as above, but using the <code>event_source</code> decorator</p>
-<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1239,6 +1253,7 @@ by using the <code>event_source</code> decorator.</p>
         <span class="n">do_something_with</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <p><strong>Autocomplete with self-documented properties and methods</strong></p>
@@ -1347,7 +1362,9 @@ documentation inherently (via autocompletion, types and docstrings).</p>
 <p>It is used for <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-mq.html" target="_blank">Active MQ payloads</a>, also see
 the <a href="https://aws.amazon.com/blogs/compute/using-amazon-mq-as-an-event-source-for-aws-lambda/" target="_blank">AWS blog post</a>
 for more details.</p>
-<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1379,13 +1396,16 @@ for more details.</p>
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="api-gateway-authorizer">API Gateway Authorizer<a class="headerlink" href="#api-gateway-authorizer" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>New in 1.20.0</p>
 </blockquote>
 <p>It is used for <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html" target="_blank">API Gateway Rest API Lambda Authorizer payload</a>.</p>
 <p>Use <strong><code>APIGatewayAuthorizerRequestEvent</code></strong> for type <code>REQUEST</code> and <strong><code>APIGatewayAuthorizerTokenEvent</code></strong> for type <code>TOKEN</code>.</p>
-<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">app_type_request.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">app_type_request.py</label><label for="__tabbed_4_2">app_type_token.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <p>This example uses the <code>APIGatewayAuthorizerResponse</code> to decline a given request if the user is not found.</p>
 <p>When the user is found, it includes the user details in the request context that will be available to the back-end, and returns a full access policy for admin users.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1492,7 +1512,7 @@ for more details.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">app_type_token.py</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1544,13 +1564,16 @@ for more details.</p>
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="api-gateway-authorizer-v2">API Gateway Authorizer V2<a class="headerlink" href="#api-gateway-authorizer-v2" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>New in 1.20.0</p>
 </blockquote>
 <p>It is used for <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-lambda-authorizer.html" target="_blank">API Gateway HTTP API Lambda Authorizer payload version 2</a>.
 See also <a href="https://aws.amazon.com/blogs/compute/introducing-iam-and-lambda-authorizers-for-amazon-api-gateway-http-apis/" target="_blank">this blog post</a> for more details.</p>
-<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <p>This example looks up user details via <code>x-token</code> header. It uses <code>APIGatewayAuthorizerResponseV2</code> to return a deny policy when user is not found or authorized.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1603,9 +1626,12 @@ See also <a href="https://aws.amazon.com/blogs/compute/introducing-iam-and-lambd
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="api-gateway-proxy">API Gateway Proxy<a class="headerlink" href="#api-gateway-proxy" title="Permanent link">&para;</a></h3>
 <p>It is used for either API Gateway REST API or HTTP API using v1 proxy event.</p>
-<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1627,9 +1653,12 @@ See also <a href="https://aws.amazon.com/blogs/compute/introducing-iam-and-lambd
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="api-gateway-proxy-v2">API Gateway Proxy V2<a class="headerlink" href="#api-gateway-proxy-v2" title="Permanent link">&para;</a></h3>
 <p>It is used for HTTP API using v2 proxy event.</p>
-<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1645,9 +1674,12 @@ See also <a href="https://aws.amazon.com/blogs/compute/introducing-iam-and-lambd
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="application-load-balancer">Application Load Balancer<a class="headerlink" href="#application-load-balancer" title="Permanent link">&para;</a></h3>
 <p>Is it used for Application load balancer event.</p>
-<div class="tabbed-set" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="8:1"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1663,6 +1695,7 @@ See also <a href="https://aws.amazon.com/blogs/compute/introducing-iam-and-lambd
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="appsync-authorizer">AppSync Authorizer<a class="headerlink" href="#appsync-authorizer" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>New in 1.20.0</p>
@@ -1671,7 +1704,9 @@ See also <a href="https://aws.amazon.com/blogs/compute/introducing-iam-and-lambd
 See blog post <a href="https://aws.amazon.com/blogs/mobile/appsync-lambda-auth/" target="_blank">Introducing Lambda authorization for AWS AppSync GraphQL APIs</a>
 or read the Amplify documentation on using <a href="https://docs.amplify.aws/lib/graphqlapi/authz/q/platform/js#aws-lambda" target="_blank">AWS Lambda for authorization</a> with AppSync.</p>
 <p>In this example extract the <code>requestId</code> as the <code>correlation_id</code> for logging, used <code>@event_source</code> decorator and builds the AppSync authorizer using the <code>AppSyncAuthorizerResponse</code> helper.</p>
-<div class="tabbed-set" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="9:1"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1741,6 +1776,7 @@ or read the Amplify documentation on using <a href="https://docs.amplify.aws/lib
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="appsync-resolver">AppSync Resolver<a class="headerlink" href="#appsync-resolver" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>New in 1.12.0</p>
@@ -1748,7 +1784,9 @@ or read the Amplify documentation on using <a href="https://docs.amplify.aws/lib
 <p>Used when building Lambda GraphQL Resolvers with <a href="https://docs.amplify.aws/cli/graphql-transformer/function" target="_blank">Amplify GraphQL Transform Library</a> (<code>@function</code>),
 and <a href="https://aws.amazon.com/blogs/mobile/appsync-direct-lambda/" target="_blank">AppSync Direct Lambda Resolvers</a>.</p>
 <p>In this example, we also use the new Logger <code>correlation_id</code> and built-in <code>correlation_paths</code> to extract, if available, X-Ray Trace ID in AppSync request headers:</p>
-<div class="tabbed-set" data-tabs="10:3"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="10:3"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">app.py</label><label for="__tabbed_10_2">Example AppSync Event</label><label for="__tabbed_10_3">Example CloudWatch Log</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1815,7 +1853,7 @@ and <a href="https://aws.amazon.com/blogs/mobile/appsync-direct-lambda/" target=
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">Example AppSync Event</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1840,35 +1878,35 @@ and <a href="https://aws.amazon.com/blogs/mobile/appsync-direct-lambda/" target=
 <span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="hll">  <span class="nt">&quot;typeName&quot;</span><span class="p">:</span> <span class="s2">&quot;Merchant&quot;</span><span class="p">,</span>
-</span><span class="hll">  <span class="nt">&quot;fieldName&quot;</span><span class="p">:</span> <span class="s2">&quot;locations&quot;</span><span class="p">,</span>
-</span><span class="hll">  <span class="nt">&quot;arguments&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class="hll">    <span class="nt">&quot;page&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-</span><span class="hll">    <span class="nt">&quot;size&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-</span><span class="hll">    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span>
-</span><span class="hll">  <span class="p">},</span>
-</span>  <span class="nt">&quot;identity&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;claims&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1615366261</span>
-      <span class="err">...</span>
-    <span class="p">},</span>
-<span class="hll">    <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;mike&quot;</span><span class="p">,</span>
-</span>    <span class="err">...</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-<span class="hll">      <span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span> <span class="s2">&quot;Root=1-60488877-0b0c4e6727ab2a1c545babd0&quot;</span><span class="p">,</span>
-</span><span class="hll">      <span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1&quot;</span>
-</span>      <span class="err">...</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="err">...</span>
-<span class="p">}</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">  </span><span class="nt">&quot;typeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Merchant&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">  </span><span class="nt">&quot;fieldName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;locations&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">  </span><span class="nt">&quot;arguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">&quot;page&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value&quot;</span><span class="w"></span>
+</span><span class="hll"><span class="w">  </span><span class="p">},</span><span class="w"></span>
+</span><span class="w">  </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;claims&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1615366261</span><span class="w"></span>
+<span class="w">      </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mike&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">      </span><span class="nt">&quot;x-amzn-trace-id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Root=1-60488877-0b0c4e6727ab2a1c545babd0&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">      </span><span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="w"></span>
+</span><span class="w">      </span><span class="err">...</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="err">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><label for="__tabbed_10_3">Example CloudWatch Log</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1885,31 +1923,34 @@ and <a href="https://aws.amazon.com/blogs/mobile/appsync-direct-lambda/" target=
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;level&quot;</span><span class="p">:</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="s2">&quot;lambda_handler:22&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;message&quot;</span><span class="p">:{</span>
-<span class="hll">        <span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
-</span><span class="hll">        <span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="s2">&quot;mike&quot;</span>
-</span>    <span class="p">},</span>
-    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="s2">&quot;2021-03-10 12:38:40,062&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="s2">&quot;service_undefined&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;sampling_rate&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span>
-    <span class="nt">&quot;cold_start&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;function_name&quot;</span><span class="p">:</span><span class="s2">&quot;func_name&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;function_memory_size&quot;</span><span class="p">:</span><span class="mi">512</span><span class="p">,</span>
-    <span class="nt">&quot;function_arn&quot;</span><span class="p">:</span><span class="s2">&quot;func_arn&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;function_request_id&quot;</span><span class="p">:</span><span class="s2">&quot;6735a29c-c000-4ae3-94e6-1f1c934f7f94&quot;</span><span class="p">,</span>
-<span class="hll">    <span class="nt">&quot;correlation_id&quot;</span><span class="p">:</span><span class="s2">&quot;Root=1-60488877-0b0c4e6727ab2a1c545babd0&quot;</span>
-</span><span class="p">}</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;level&quot;</span><span class="p">:</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="s2">&quot;lambda_handler:22&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">&quot;x-forwarded-for&quot;</span><span class="p">:</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="s2">&quot;mike&quot;</span><span class="w"></span>
+</span><span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="s2">&quot;2021-03-10 12:38:40,062&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="s2">&quot;service_undefined&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;sampling_rate&quot;</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;cold_start&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;function_name&quot;</span><span class="p">:</span><span class="s2">&quot;func_name&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;function_memory_size&quot;</span><span class="p">:</span><span class="mi">512</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;function_arn&quot;</span><span class="p">:</span><span class="s2">&quot;func_arn&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;function_request_id&quot;</span><span class="p">:</span><span class="s2">&quot;6735a29c-c000-4ae3-94e6-1f1c934f7f94&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">&quot;correlation_id&quot;</span><span class="p">:</span><span class="s2">&quot;Root=1-60488877-0b0c4e6727ab2a1c545babd0&quot;</span><span class="w"></span>
+</span><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <h3 id="cloudwatch-logs">CloudWatch Logs<a class="headerlink" href="#cloudwatch-logs" title="Permanent link">&para;</a></h3>
 <p>CloudWatch Logs events by default are compressed and base64 encoded. You can use the helper function provided to decode,
 decompress and parse json data from the event.</p>
-<div class="tabbed-set" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="11:1"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1931,9 +1972,12 @@ decompress and parse json data from the event.</p>
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="codepipeline-job">CodePipeline Job<a class="headerlink" href="#codepipeline-job" title="Permanent link">&para;</a></h3>
 <p>Data classes and utility functions to help create continuous delivery pipelines tasks with AWS Lambda</p>
-<div class="tabbed-set" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="12:1"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2021,6 +2065,7 @@ decompress and parse json data from the event.</p>
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="cognito-user-pool">Cognito User Pool<a class="headerlink" href="#cognito-user-pool" title="Permanent link">&para;</a></h3>
 <p>Cognito User Pools have several <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html#cognito-user-identity-pools-working-with-aws-lambda-trigger-sources">different Lambda trigger sources</a>, all of which map to a different data class, which
 can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_event</code>:</p>
@@ -2075,7 +2120,9 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </tbody>
 </table>
 <h4 id="post-confirmation-example">Post Confirmation Example<a class="headerlink" href="#post-confirmation-example" title="Permanent link">&para;</a></h4>
-<div class="tabbed-set" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="13:1"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2093,13 +2140,16 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </td></tr></table>
 </div>
 </div>
+</div>
 <h4 id="define-auth-challenge-example">Define Auth Challenge Example<a class="headerlink" href="#define-auth-challenge-example" title="Permanent link">&para;</a></h4>
 <details class="note" open="open">
 <summary>Note</summary>
 <p>In this example we are modifying the wrapped dict response fields, so we need to return the json serializable wrapped event in <code>event.raw_event</code>.</p>
 </details>
 <p>This example is based on the AWS Cognito docs for <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-define-auth-challenge.html" target="_blank">Define Auth Challenge Lambda Trigger</a>.</p>
-<div class="tabbed-set" data-tabs="14:4"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="14:4"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><input id="__tabbed_14_3" name="__tabbed_14" type="radio" /><input id="__tabbed_14_4" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">app.py</label><label for="__tabbed_14_2">SPR_A response</label><label for="__tabbed_14_3">PASSWORD_VERIFIER success response</label><label for="__tabbed_14_4">CUSTOM_CHALLENGE success response</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2164,7 +2214,7 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><label for="__tabbed_14_2">SPR_A response</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2194,40 +2244,40 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 <span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
-<span class="normal">30</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;us-east-1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;userPoolId&quot;</span><span class="p">:</span> <span class="s2">&quot;us-east-1_example&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;userName&quot;</span><span class="p">:</span> <span class="s2">&quot;UserName&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;callerContext&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;awsSdkVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;awsSdkVersion&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;clientId&quot;</span><span class="p">:</span> <span class="s2">&quot;clientId&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;triggerSource&quot;</span><span class="p">:</span> <span class="s2">&quot;DefineAuthChallenge_Authentication&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;userAttributes&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;4A709A36-7D63-4785-829D-4198EF10EBDA&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;email_verified&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;First Last&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;define-auth@mail.com&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;session&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;challengeName&quot;</span><span class="p">:</span> <span class="s2">&quot;SRP_A&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;challengeResult&quot;</span><span class="p">:</span> <span class="kc">true</span>
-            <span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">},</span>
-<span class="hll">    <span class="nt">&quot;response&quot;</span><span class="p">:</span> <span class="p">{</span>
-</span><span class="hll">        <span class="nt">&quot;issueTokens&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-</span><span class="hll">        <span class="nt">&quot;failAuthentication&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-</span>        <span class="nt">&quot;challengeName&quot;</span><span class="p">:</span> <span class="s2">&quot;PASSWORD_VERIFIER&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;region&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;userPoolId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;us-east-1_example&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;userName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UserName&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;callerContext&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;awsSdkVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;awsSdkVersion&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;clientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;clientId&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;triggerSource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DefineAuthChallenge_Authentication&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;userAttributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4A709A36-7D63-4785-829D-4198EF10EBDA&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;email_verified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;First Last&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;define-auth@mail.com&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;session&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;challengeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SRP_A&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;challengeResult&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">&quot;response&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">&quot;issueTokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">&quot;failAuthentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">        </span><span class="nt">&quot;challengeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PASSWORD_VERIFIER&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_14_3" name="__tabbed_14" type="radio" /><label for="__tabbed_14_3">PASSWORD_VERIFIER success response</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2261,44 +2311,44 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
-<span class="normal">34</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;us-east-1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;userPoolId&quot;</span><span class="p">:</span> <span class="s2">&quot;us-east-1_example&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;userName&quot;</span><span class="p">:</span> <span class="s2">&quot;UserName&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;callerContext&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;awsSdkVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;awsSdkVersion&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;clientId&quot;</span><span class="p">:</span> <span class="s2">&quot;clientId&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;triggerSource&quot;</span><span class="p">:</span> <span class="s2">&quot;DefineAuthChallenge_Authentication&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;userAttributes&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;4A709A36-7D63-4785-829D-4198EF10EBDA&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;email_verified&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;First Last&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;define-auth@mail.com&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;session&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;challengeName&quot;</span><span class="p">:</span> <span class="s2">&quot;SRP_A&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;challengeResult&quot;</span><span class="p">:</span> <span class="kc">true</span>
-            <span class="p">},</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;challengeName&quot;</span><span class="p">:</span> <span class="s2">&quot;PASSWORD_VERIFIER&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;challengeResult&quot;</span><span class="p">:</span> <span class="kc">true</span>
-            <span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;response&quot;</span><span class="p">:</span> <span class="p">{</span>
-<span class="hll">        <span class="nt">&quot;issueTokens&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-</span><span class="hll">        <span class="nt">&quot;failAuthentication&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-</span><span class="hll">        <span class="nt">&quot;challengeName&quot;</span><span class="p">:</span> <span class="s2">&quot;CUSTOM_CHALLENGE&quot;</span>
-</span>    <span class="p">}</span>
-<span class="p">}</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;region&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;userPoolId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;us-east-1_example&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;userName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UserName&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;callerContext&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;awsSdkVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;awsSdkVersion&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;clientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;clientId&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;triggerSource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DefineAuthChallenge_Authentication&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;userAttributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4A709A36-7D63-4785-829D-4198EF10EBDA&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;email_verified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;First Last&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;define-auth@mail.com&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;session&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;challengeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SRP_A&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;challengeResult&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;challengeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PASSWORD_VERIFIER&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;challengeResult&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;response&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">&quot;issueTokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">&quot;failAuthentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">&quot;challengeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CUSTOM_CHALLENGE&quot;</span><span class="w"></span>
+</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_14_4" name="__tabbed_14" type="radio" /><label for="__tabbed_14_4">CUSTOM_CHALLENGE success response</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2335,50 +2385,53 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 <span class="normal">34</span>
 <span class="normal">35</span>
 <span class="normal">36</span>
-<span class="normal">37</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;us-east-1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;userPoolId&quot;</span><span class="p">:</span> <span class="s2">&quot;us-east-1_example&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;userName&quot;</span><span class="p">:</span> <span class="s2">&quot;UserName&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;callerContext&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;awsSdkVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;awsSdkVersion&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;clientId&quot;</span><span class="p">:</span> <span class="s2">&quot;clientId&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;triggerSource&quot;</span><span class="p">:</span> <span class="s2">&quot;DefineAuthChallenge_Authentication&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;request&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;userAttributes&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;4A709A36-7D63-4785-829D-4198EF10EBDA&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;email_verified&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;First Last&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;define-auth@mail.com&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;session&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;challengeName&quot;</span><span class="p">:</span> <span class="s2">&quot;SRP_A&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;challengeResult&quot;</span><span class="p">:</span> <span class="kc">true</span>
-            <span class="p">},</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;challengeName&quot;</span><span class="p">:</span> <span class="s2">&quot;PASSWORD_VERIFIER&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;challengeResult&quot;</span><span class="p">:</span> <span class="kc">true</span>
-            <span class="p">},</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;challengeName&quot;</span><span class="p">:</span> <span class="s2">&quot;CUSTOM_CHALLENGE&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;challengeResult&quot;</span><span class="p">:</span> <span class="kc">true</span>
-            <span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;response&quot;</span><span class="p">:</span> <span class="p">{</span>
-<span class="hll">        <span class="nt">&quot;issueTokens&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span><span class="hll">        <span class="nt">&quot;failAuthentication&quot;</span><span class="p">:</span> <span class="kc">false</span>
-</span>    <span class="p">}</span>
-<span class="p">}</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;region&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;userPoolId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;us-east-1_example&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;userName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UserName&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;callerContext&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;awsSdkVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;awsSdkVersion&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;clientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;clientId&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;triggerSource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DefineAuthChallenge_Authentication&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;userAttributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4A709A36-7D63-4785-829D-4198EF10EBDA&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;email_verified&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;First Last&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;define-auth@mail.com&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;session&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;challengeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SRP_A&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;challengeResult&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;challengeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PASSWORD_VERIFIER&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;challengeResult&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;challengeName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CUSTOM_CHALLENGE&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;challengeResult&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;response&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">&quot;issueTokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">&quot;failAuthentication&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+</span><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
 </div>
+</div>
 <h4 id="create-auth-challenge-example">Create Auth Challenge Example<a class="headerlink" href="#create-auth-challenge-example" title="Permanent link">&para;</a></h4>
 <p>This example is based on the AWS Cognito docs for <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-create-auth-challenge.html" target="_blank">Create Auth Challenge Lambda Trigger</a>.</p>
-<div class="tabbed-set" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="15:1"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2402,9 +2455,12 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </td></tr></table>
 </div>
 </div>
+</div>
 <h4 id="verify-auth-challenge-response-example">Verify Auth Challenge Response Example<a class="headerlink" href="#verify-auth-challenge-response-example" title="Permanent link">&para;</a></h4>
 <p>This example is based on the AWS Cognito docs for <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-verify-auth-challenge-response.html" target="_blank">Verify Auth Challenge Response Lambda Trigger</a>.</p>
-<div class="tabbed-set" data-tabs="16:1"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><label for="__tabbed_16_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="16:1"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2426,11 +2482,14 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="connect-contact-flow">Connect Contact Flow<a class="headerlink" href="#connect-contact-flow" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>New in 1.11.0</p>
 </blockquote>
-<div class="tabbed-set" data-tabs="17:1"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><label for="__tabbed_17_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="17:1"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2460,11 +2519,14 @@ can be imported from <code>aws_lambda_powertools.data_classes.cognito_user_pool_
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="dynamodb-streams">DynamoDB Streams<a class="headerlink" href="#dynamodb-streams" title="Permanent link">&para;</a></h3>
 <p>The DynamoDB data class utility provides the base class for <code>DynamoDBStreamEvent</code>, a typed class for
 attributes values (<code>AttributeValue</code>), as well as enums for stream view type (<code>StreamViewType</code>) and event type
 (<code>DynamoDBRecordEventName</code>).</p>
-<div class="tabbed-set" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><label for="__tabbed_18_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">app.py</label><label for="__tabbed_18_2">multiple_records_types.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2493,7 +2555,7 @@ attributes values (<code>AttributeValue</code>), as well as enums for stream vie
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><label for="__tabbed_18_2">multiple_records_types.py</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2529,8 +2591,11 @@ attributes values (<code>AttributeValue</code>), as well as enums for stream vie
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="eventbridge">EventBridge<a class="headerlink" href="#eventbridge" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set" data-tabs="19:1"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><label for="__tabbed_19_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="19:1"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2544,10 +2609,13 @@ attributes values (<code>AttributeValue</code>), as well as enums for stream vie
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="kinesis-streams">Kinesis streams<a class="headerlink" href="#kinesis-streams" title="Permanent link">&para;</a></h3>
 <p>Kinesis events by default contain base64 encoded data. You can use the helper function to access the data either as json
 or plain text, depending on the original payload.</p>
-<div class="tabbed-set" data-tabs="20:1"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><label for="__tabbed_20_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="20:1"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2577,11 +2645,14 @@ or plain text, depending on the original payload.</p>
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="rabbit-mq">Rabbit MQ<a class="headerlink" href="#rabbit-mq" title="Permanent link">&para;</a></h3>
 <p>It is used for <a href="https://docs.aws.amazon.com/lambda/latest/dg/with-mq.html" target="_blank">Rabbit MQ payloads</a>, also see
 the <a href="https://aws.amazon.com/blogs/compute/using-amazon-mq-for-rabbitmq-as-an-event-source-for-lambda/" target="_blank">blog post</a>
 for more details.</p>
-<div class="tabbed-set" data-tabs="21:1"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><label for="__tabbed_21_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="21:1"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2617,8 +2688,11 @@ for more details.</p>
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="s3">S3<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set" data-tabs="22:1"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><label for="__tabbed_22_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="22:1"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="__tabbed_22_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2646,9 +2720,12 @@ for more details.</p>
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="s3-object-lambda">S3 Object Lambda<a class="headerlink" href="#s3-object-lambda" title="Permanent link">&para;</a></h3>
 <p>This example is based on the AWS Blog post <a href="https://aws.amazon.com/blogs/aws/introducing-amazon-s3-object-lambda-use-your-code-to-process-data-as-it-is-being-retrieved-from-s3/" target="_blank">Introducing Amazon S3 Object Lambda – Use Your Code to Process Data as It Is Being Retrieved from S3</a>.</p>
-<div class="tabbed-set" data-tabs="23:1"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><label for="__tabbed_23_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="23:1"><input checked="checked" id="__tabbed_23_1" name="__tabbed_23" type="radio" /><div class="tabbed-labels"><label for="__tabbed_23_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2708,8 +2785,11 @@ for more details.</p>
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="ses">SES<a class="headerlink" href="#ses" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set" data-tabs="24:1"><input checked="checked" id="__tabbed_24_1" name="__tabbed_24" type="radio" /><label for="__tabbed_24_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="24:1"><input checked="checked" id="__tabbed_24_1" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="__tabbed_24_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2733,8 +2813,11 @@ for more details.</p>
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="sns">SNS<a class="headerlink" href="#sns" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set" data-tabs="25:1"><input checked="checked" id="__tabbed_25_1" name="__tabbed_25" type="radio" /><label for="__tabbed_25_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="25:1"><input checked="checked" id="__tabbed_25_1" name="__tabbed_25" type="radio" /><div class="tabbed-labels"><label for="__tabbed_25_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2758,8 +2841,11 @@ for more details.</p>
 </td></tr></table>
 </div>
 </div>
+</div>
 <h3 id="sqs">SQS<a class="headerlink" href="#sqs" title="Permanent link">&para;</a></h3>
-<div class="tabbed-set" data-tabs="26:1"><input checked="checked" id="__tabbed_26_1" name="__tabbed_26" type="radio" /><label for="__tabbed_26_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="26:1"><input checked="checked" id="__tabbed_26_1" name="__tabbed_26" type="radio" /><div class="tabbed-labels"><label for="__tabbed_26_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2777,24 +2863,17 @@ for more details.</p>
 </td></tr></table>
 </div>
 </div>
-                
-                  
-                    
+</div>
 
-<hr>
-<div class="md-source-date">
+  <hr>
+<div class="md-source-file">
   <small>
     
-      Last update: 2021-12-30
+      Last update:
+      2021-12-30
     
   </small>
 </div>
-                  
-                
-              
-              
-                
-
 
               
             </article>
@@ -2808,8 +2887,7 @@ for more details.</p>
         
       </main>
       
-        
-<footer class="md-footer">
+        <footer class="md-footer">
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
@@ -2848,20 +2926,19 @@ for more details.</p>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2021 Amazon Web Services
-          </div>
-        
-        
-          Made with
-          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-            Material for MkDocs
-          </a>
-        
-        
-      </div>
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 Amazon Web Services
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
       
     </div>
   </div>
@@ -2871,10 +2948,10 @@ for more details.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.instant", "navigation.indexes"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.instant", "navigation.indexes", "navigation.tracking", "content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js", "version": {"provider": "mike", "default": "latest"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.b1047164.min.js"></script>
+      <script src="../../assets/javascripts/bundle.960e086b.min.js"></script>
       
         <script src="../../javascript/aws-amplify.min.js"></script>
       

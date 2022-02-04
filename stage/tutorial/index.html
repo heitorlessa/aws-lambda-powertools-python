@@ -9,12 +9,11 @@
         <meta name="description" content="Powertools introduction">
       
       
-      
         <meta name="author" content="Amazon Web Services">
       
       
       <link rel="icon" href="../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.9">
     
     
       
@@ -22,10 +21,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.2b4465f4.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
         
       
     
@@ -35,16 +34,15 @@
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700%7C&display=fallback">
-        <style>:root{--md-text-font-family:"Ubuntu";--md-code-font-family:""}</style>
+        <style>:root{--md-text-font:"Ubuntu";--md-code-font:""}</style>
       
-    
     
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
     
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-
 
     
     
@@ -61,9 +59,8 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="">
   
     
-    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
-      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -79,6 +76,23 @@
     <div data-md-component="announce">
       
     </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You're not viewing the latest version.
+  <a href="../..">
+    <strong>Click here to go to latest.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          
+        </aside>
+      </div>
+    
     
       
 
@@ -136,8 +150,7 @@
       <label class="md-header__button md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -169,8 +182,7 @@
     
     
       <div class="md-header__source">
-        
-<a href="https://github.com/awslabs/aws-lambda-powertools-python/" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/awslabs/aws-lambda-powertools-python/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -214,8 +226,7 @@
   </label>
   
     <div class="md-nav__source">
-      
-<a href="https://github.com/awslabs/aws-lambda-powertools-python/" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/awslabs/aws-lambda-powertools-python/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -283,7 +294,6 @@
       </a>
       
         
-
 
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
@@ -906,7 +916,6 @@
                   <div class="md-sidebar__inner">
                     
 
-
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -1120,12 +1129,12 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/awslabs/aws-lambda-powertools-python/edit/develop/docs/tutorial/index.md" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                <p>This tutorial progressively introduces Lambda Powertools core utilities by using one feature at a time.</p>
+<a href="https://github.com/awslabs/aws-lambda-powertools-python/edit/develop/docs/tutorial/index.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<p>This tutorial progressively introduces Lambda Powertools core utilities by using one feature at a time.</p>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html" target="_blank">AWS CLI</a> and <a href="https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-getting-started-set-up-credentials.html" target="_blank">configured with your credentials</a>.</li>
@@ -1149,7 +1158,9 @@
 </ul>
 <h3 id="code-example">Code example<a class="headerlink" href="#code-example" title="Permanent link">&para;</a></h3>
 <p>Let's configure our base application to look like the following code snippet.</p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">app.py</label><label for="__tabbed_1_2">template.yaml</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1170,7 +1181,7 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">template.yaml</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1195,33 +1206,34 @@
 <span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span> <span class="s">&#39;2010-09-09&#39;</span>
-<span class="nt">Transform</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span>
-<span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Sample SAM Template for powertools-quickstart</span>
-<span class="nt">Globals</span><span class="p">:</span>
-    <span class="nt">Function</span><span class="p">:</span>
-        <span class="nt">Timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="nt">Resources</span><span class="p">:</span>
-    <span class="nt">HelloWorldFunction</span><span class="p">:</span>
-        <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
-        <span class="nt">Properties</span><span class="p">:</span>
-            <span class="nt">CodeUri</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hello_world/</span>
-            <span class="nt">Handler</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span>
-            <span class="nt">Runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python3.9</span>
-            <span class="nt">Architectures</span><span class="p">:</span>
-                <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">x86_64</span>
-            <span class="nt">Events</span><span class="p">:</span>
-                <span class="nt">HelloWorld</span><span class="p">:</span>
-                    <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
-                    <span class="nt">Properties</span><span class="p">:</span>
-                        <span class="nt">Path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/hello</span>
-                        <span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">get</span>
-<span class="nt">Outputs</span><span class="p">:</span>
-    <span class="nt">HelloWorldApi</span><span class="p">:</span>
-        <span class="nt">Description</span><span class="p">:</span> <span class="s">&quot;API</span><span class="nv"> </span><span class="s">Gateway</span><span class="nv"> </span><span class="s">endpoint</span><span class="nv"> </span><span class="s">URL</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Prod</span><span class="nv"> </span><span class="s">stage</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">function&quot;</span>
-        <span class="nt">Value</span><span class="p">:</span> <span class="kt">!Sub</span> <span class="s">&quot;https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/&quot;</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2010-09-09&#39;</span><span class="w"></span>
+<span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span><span class="w"></span>
+<span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample SAM Template for powertools-quickstart</span><span class="w"></span>
+<span class="nt">Globals</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Function</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="nt">Resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">HelloWorldFunction</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello_world/</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.9</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Architectures</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86_64</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Events</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">HelloWorld</span><span class="p">:</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Api</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/hello</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get</span><span class="w"></span>
+<span class="nt">Outputs</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">HelloWorldApi</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;API</span><span class="nv"> </span><span class="s">Gateway</span><span class="nv"> </span><span class="s">endpoint</span><span class="nv"> </span><span class="s">URL</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Prod</span><span class="nv"> </span><span class="s">stage</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">function&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span><span class="kt">!Sub</span><span class="w"> </span><span class="s">&quot;https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/&quot;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <p>Our Lambda code consists of an entry point function named <code>lambda_handler</code>, and a <code>hello</code> function.</p>
@@ -1306,7 +1318,9 @@ Successfully created/updated stack - sam-app <span class="k">in</span> eu-centra
 <h3 id="adding-a-new-route">Adding a new route<a class="headerlink" href="#adding-a-new-route" title="Permanent link">&para;</a></h3>
 <p>Let's expand our application with a new route - <code>/hello/{name}</code>. It will accept an username as a path input and return it in the response.</p>
 <p>For this to work, we could create a new Lambda function to handle incoming requests for <code>/hello/{name}</code> - It'd look like this:</p>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">hello_by_name.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">hello_by_name.py</label><label for="__tabbed_2_2">template.yaml</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1329,7 +1343,7 @@ Successfully created/updated stack - sam-app <span class="k">in</span> eu-centra
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">template.yaml</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1365,44 +1379,45 @@ Successfully created/updated stack - sam-app <span class="k">in</span> eu-centra
 <span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span> <span class="s">&quot;2010-09-09&quot;</span>
-<span class="nt">Transform</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span>
-<span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Sample SAM Template for powertools-quickstart</span>
-<span class="nt">Globals</span><span class="p">:</span>
-    <span class="nt">Function</span><span class="p">:</span>
-        <span class="nt">Timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="nt">Resources</span><span class="p">:</span>
-    <span class="nt">HelloWorldFunction</span><span class="p">:</span>
-        <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
-        <span class="nt">Properties</span><span class="p">:</span>
-            <span class="nt">CodeUri</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hello_world/</span>
-            <span class="nt">Handler</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span>
-            <span class="nt">Runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python3.9</span>
-            <span class="nt">Events</span><span class="p">:</span>
-                <span class="nt">HelloWorld</span><span class="p">:</span>
-                    <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
-                    <span class="nt">Properties</span><span class="p">:</span>
-                        <span class="nt">Path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/hello</span>
-                        <span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">get</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2010-09-09&quot;</span><span class="w"></span>
+<span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span><span class="w"></span>
+<span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample SAM Template for powertools-quickstart</span><span class="w"></span>
+<span class="nt">Globals</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Function</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="nt">Resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">HelloWorldFunction</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello_world/</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.9</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Events</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">HelloWorld</span><span class="p">:</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Api</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/hello</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get</span><span class="w"></span>
 
-<span class="hll">    <span class="nt">HelloWorldByNameFunctionName</span><span class="p">:</span>
-</span><span class="hll">        <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
-</span><span class="hll">        <span class="nt">Properties</span><span class="p">:</span>
-</span><span class="hll">            <span class="nt">CodeUri</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hello_world/</span>
-</span><span class="hll">            <span class="nt">Handler</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hello_by_name.lambda_handler</span>
-</span><span class="hll">            <span class="nt">Runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python3.9</span>
-</span><span class="hll">            <span class="nt">Events</span><span class="p">:</span>
-</span><span class="hll">                <span class="nt">HelloWorldName</span><span class="p">:</span>
-</span><span class="hll">                    <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
-</span><span class="hll">                    <span class="nt">Properties</span><span class="p">:</span>
-</span><span class="hll">                        <span class="nt">Path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/hello/{name}</span>
-</span><span class="hll">                        <span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">get</span>
-</span><span class="nt">Outputs</span><span class="p">:</span>
-    <span class="nt">HelloWorldApi</span><span class="p">:</span>
-        <span class="nt">Description</span><span class="p">:</span> <span class="s">&quot;API</span><span class="nv"> </span><span class="s">Gateway</span><span class="nv"> </span><span class="s">endpoint</span><span class="nv"> </span><span class="s">URL</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Prod</span><span class="nv"> </span><span class="s">stage</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">function&quot;</span>
-        <span class="nt">Value</span><span class="p">:</span> <span class="kt">!Sub</span> <span class="s">&quot;https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/&quot;</span>
+<span class="hll"><span class="w">    </span><span class="nt">HelloWorldByNameFunctionName</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello_world/</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello_by_name.lambda_handler</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.9</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nt">Events</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">                </span><span class="nt">HelloWorldName</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">                    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Api</span><span class="w"></span>
+</span><span class="hll"><span class="w">                    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">                        </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/hello/{name}</span><span class="w"></span>
+</span><span class="hll"><span class="w">                        </span><span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get</span><span class="w"></span>
+</span><span class="nt">Outputs</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">HelloWorldApi</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;API</span><span class="nv"> </span><span class="s">Gateway</span><span class="nv"> </span><span class="s">endpoint</span><span class="nv"> </span><span class="s">URL</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Prod</span><span class="nv"> </span><span class="s">stage</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">function&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span><span class="kt">!Sub</span><span class="w"> </span><span class="s">&quot;https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/&quot;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <details class="question" open="open">
@@ -1421,7 +1436,9 @@ Successfully created/updated stack - sam-app <span class="k">in</span> eu-centra
 <p>If you want a more detailed explanation of these two approaches, head over to the <a href="../core/event_handler/api_gateway/#considerations" target="_blank">trade-offs on each approach</a> later.</p>
 </details>
 <p>A first attempt at the routing logic might look similar to the following code snippet.</p>
-<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">app.py</label><label for="__tabbed_3_2">template.yaml</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1457,46 +1474,46 @@ Successfully created/updated stack - sam-app <span class="k">in</span> eu-centra
 <span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="kn">import</span> <span class="nn">json</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
 
 
-<span class="hll">    <span class="k">def</span> <span class="nf">hello_name</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
-</span>        <span class="n">username</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;pathParameters&quot;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;hello </span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">})}</span>
+<span class="hll"><span class="k">def</span> <span class="nf">hello_name</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+</span>    <span class="n">username</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;pathParameters&quot;</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;hello </span><span class="si">{</span><span class="n">username</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">})}</span>
 
 
-<span class="hll">    <span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
-</span>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;hello unknown!&quot;</span><span class="p">})}</span>
+<span class="hll"><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="o">**</span><span class="n">kargs</span><span class="p">):</span>
+</span>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;hello unknown!&quot;</span><span class="p">})}</span>
 
 
-<span class="hll">    <span class="k">class</span> <span class="nc">Router</span><span class="p">:</span>
-</span>        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">routes</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="hll"><span class="k">class</span> <span class="nc">Router</span><span class="p">:</span>
+</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">routes</span> <span class="o">=</span> <span class="p">{}</span>
 
-        <span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">handler</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">handler</span>
+    <span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">handler</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">handler</span>
 
-        <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">route</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
-            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot route request to the correct method. path=</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">, method=</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">route</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">route</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">routes</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot route request to the correct method. path=</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">, method=</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">route</span>
 
-<span class="hll">    <span class="n">router</span> <span class="o">=</span> <span class="n">Router</span><span class="p">()</span>
-</span><span class="hll">    <span class="n">router</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/hello&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">hello</span><span class="p">)</span>
-</span><span class="hll">    <span class="n">router</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/hello/</span><span class="si">{name}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">hello_name</span><span class="p">)</span>
+<span class="hll"><span class="n">router</span> <span class="o">=</span> <span class="n">Router</span><span class="p">()</span>
+</span><span class="hll"><span class="n">router</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/hello&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">hello</span><span class="p">)</span>
+</span><span class="hll"><span class="n">router</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/hello/</span><span class="si">{name}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">hello_name</span><span class="p">)</span>
 </span>
 
-    <span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;resource&quot;</span><span class="p">]</span>
-        <span class="n">http_method</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;httpMethod&quot;</span><span class="p">]</span>
-<span class="hll">        <span class="n">method</span> <span class="o">=</span> <span class="n">router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">http_method</span><span class="p">)</span>
-</span><span class="hll">        <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="n">event</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;resource&quot;</span><span class="p">]</span>
+    <span class="n">http_method</span> <span class="o">=</span> <span class="n">event</span><span class="p">[</span><span class="s2">&quot;httpMethod&quot;</span><span class="p">]</span>
+<span class="hll">    <span class="n">method</span> <span class="o">=</span> <span class="n">router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">http_method</span><span class="p">)</span>
+</span><span class="hll">    <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="n">event</span><span class="p">)</span>
 </span></code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">template.yaml</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1524,36 +1541,37 @@ Successfully created/updated stack - sam-app <span class="k">in</span> eu-centra
 <span class="normal">25</span>
 <span class="normal">26</span>
 <span class="normal">27</span>
-<span class="normal">28</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span> <span class="s">&quot;2010-09-09&quot;</span>
-    <span class="nt">Transform</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span>
-    <span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Sample SAM Template for powertools-quickstart</span>
-    <span class="nt">Globals</span><span class="p">:</span>
-        <span class="nt">Function</span><span class="p">:</span>
-            <span class="nt">Timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
-    <span class="nt">Resources</span><span class="p">:</span>
-        <span class="nt">HelloWorldFunction</span><span class="p">:</span>
-            <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
-            <span class="nt">Properties</span><span class="p">:</span>
-                <span class="nt">CodeUri</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hello_world/</span>
-                <span class="nt">Handler</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span>
-                <span class="nt">Runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python3.9</span>
-                <span class="nt">Events</span><span class="p">:</span>
-<span class="hll">                    <span class="nt">HelloWorld</span><span class="p">:</span>
-</span><span class="hll">                        <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
-</span><span class="hll">                        <span class="nt">Properties</span><span class="p">:</span>
-</span><span class="hll">                            <span class="nt">Path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/hello</span>
-</span><span class="hll">                            <span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">get</span>
-</span><span class="hll">                    <span class="nt">HelloWorldName</span><span class="p">:</span>
-</span><span class="hll">                        <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
-</span><span class="hll">                        <span class="nt">Properties</span><span class="p">:</span>
-</span><span class="hll">                            <span class="nt">Path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/hello/{name}</span>
-</span><span class="hll">                            <span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">get</span>
-</span>    <span class="nt">Outputs</span><span class="p">:</span>
-        <span class="nt">HelloWorldApi</span><span class="p">:</span>
-            <span class="nt">Description</span><span class="p">:</span> <span class="s">&quot;API</span><span class="nv"> </span><span class="s">Gateway</span><span class="nv"> </span><span class="s">endpoint</span><span class="nv"> </span><span class="s">URL</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Prod</span><span class="nv"> </span><span class="s">stage</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">function&quot;</span>
-            <span class="nt">Value</span><span class="p">:</span> <span class="kt">!Sub</span> <span class="s">&quot;https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/&quot;</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2010-09-09&quot;</span><span class="w"></span>
+<span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span><span class="w"></span>
+<span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample SAM Template for powertools-quickstart</span><span class="w"></span>
+<span class="nt">Globals</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Function</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="nt">Resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">HelloWorldFunction</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello_world/</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.9</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Events</span><span class="p">:</span><span class="w"></span>
+<span class="hll"><span class="w">                </span><span class="nt">HelloWorld</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">                    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Api</span><span class="w"></span>
+</span><span class="hll"><span class="w">                    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">                        </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/hello</span><span class="w"></span>
+</span><span class="hll"><span class="w">                        </span><span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get</span><span class="w"></span>
+</span><span class="hll"><span class="w">                </span><span class="nt">HelloWorldName</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">                    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Api</span><span class="w"></span>
+</span><span class="hll"><span class="w">                    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">                        </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/hello/{name}</span><span class="w"></span>
+</span><span class="hll"><span class="w">                        </span><span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get</span><span class="w"></span>
+</span><span class="nt">Outputs</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">HelloWorldApi</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;API</span><span class="nv"> </span><span class="s">Gateway</span><span class="nv"> </span><span class="s">endpoint</span><span class="nv"> </span><span class="s">URL</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Prod</span><span class="nv"> </span><span class="s">stage</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">function&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span><span class="kt">!Sub</span><span class="w"> </span><span class="s">&quot;https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/&quot;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <p>Let's break this down:</p>
@@ -1567,13 +1585,15 @@ Successfully created/updated stack - sam-app <span class="k">in</span> eu-centra
 <p>This approach simplifies the configuration of our infrastructure since we have added all API Gateway paths in the <code>HelloWorldFunction</code> event section.</p>
 <p>However, it forces us to understand the internal structure of the API Gateway request events, responses, and it could lead to other errors such as CORS not being handled properly, error handling, etc.</p>
 <h3 id="simplifying-with-event-handler">Simplifying with Event Handler<a class="headerlink" href="#simplifying-with-event-handler" title="Permanent link">&para;</a></h3>
-<p>We can massively simplify cross-cutting concerns while keeping it lightweight by using <a href="./core/event_handler/api_gateway.md" target="_blank">Event Handler</a>.</p>
+<p>We can massively simplify cross-cutting concerns while keeping it lightweight by using <a href="../core/event_handler/api_gateway/" target="_blank">Event Handler</a>.</p>
 <details class="tip" open="open">
 <summary>Tip</summary>
-<p>This is available for both <a href="./core/event_handler/api_gateway.md" target="_blank">REST API (API Gateway, ALB)</a> and <a href="./core/event_handler/appsync.md" target="_blank">GraphQL API (AppSync)</a>.</p>
+<p>This is available for both <a href="../core/event_handler/api_gateway/" target="_blank">REST API (API Gateway, ALB)</a> and <a href="../core/event_handler/appsync/" target="_blank">GraphQL API (AppSync)</a>.</p>
 </details>
 <p>Let's include Lambda Powertools as a dependency in <code>requirement.txt</code>, and use Event Handler to refactor our previous example.</p>
-<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">app.py</label><label for="__tabbed_4_2">requirements.txt</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1590,9 +1610,9 @@ Successfully created/updated stack - sam-app <span class="k">in</span> eu-centra
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 </span>
-<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 </span>
 
 <span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello/&lt;name&gt;&quot;</span><span class="p">)</span>
@@ -1610,20 +1630,21 @@ Successfully created/updated stack - sam-app <span class="k">in</span> eu-centra
 </span></code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">requirements.txt</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>aws-lambda-powertools
 </code></pre></div>
 </td></tr></table>
 </div>
 </div>
+</div>
 <p>Use <code>sam build &amp;&amp; sam local start-api</code> and try run it locally again.</p>
 <details class="note" open="open">
 <summary>Note</summary>
-<p>If you're coming from <a href="https://flask.palletsprojects.com/en/2.0.x/" target="_blank">Flask</a>, you will be familiar with this experience already. <a href="./core/event_handler/api_gateway.md" target="_blank">Event Handler for API Gateway</a> uses <code>ApiGatewayResolver</code> to give a Flask-like experience while staying true to our tenet <code>Keep it lean</code>.</p>
+<p>If you're coming from <a href="https://flask.palletsprojects.com/en/2.0.x/" target="_blank">Flask</a>, you will be familiar with this experience already. <a href="../core/event_handler/api_gateway/" target="_blank">Event Handler for API Gateway</a> uses <code>APIGatewayRestResolver</code> to give a Flask-like experience while staying true to our tenet <code>Keep it lean</code>.</p>
 </details>
 <p>We have added the route annotation as the decorator for our methods. It enables us to use the parameters passed in the request directly, and our responses are simply dictionaries.</p>
 <p>Lastly, we used <code>return app.resolve(event, context)</code> so Event Handler can resolve routes, inject the current request, handle serialization, route validation, etc.</p>
-<p>From here, we could handle <a href="./core/event_handler/api_gateway.md#handling-not-found-routes" target="_blank">404 routes</a>, <a href="./core/event_handler/api_gateway.md#http://127.0.0.1:8000/core/event_handler/api_gateway/#exception-handling" target="_blank">error handling</a>, <a href="./core/event_handler/api_gateway.md#http://127.0.0.1:8000/core/event_handler/api_gateway#accessing-request-details" target="_blank">access query strings, payload</a>, etc.</p>
+<p>From here, we could handle <a href="../core/event_handler/api_gateway/#handling-not-found-routes" target="_blank">404 routes</a>, <a href="../core/event_handler/api_gateway/#exception-handling" target="_blank">error handling</a>, <a href="../core/event_handler/api_gateway/#accessing-request-details" target="_blank">access query strings, payload</a>, etc.</p>
 <details class="tip" open="open">
 <summary>Tip</summary>
 <p>If you'd like to learn how python decorators work under the hood, you can follow <a href="https://realpython.com/primer-on-python-decorators/">Real Python</a>'s article.</p>
@@ -1634,7 +1655,9 @@ Successfully created/updated stack - sam-app <span class="k">in</span> eu-centra
 <p>This helps not only in searching, but produces consistent logs containing enough context and data to ask arbitrary questions on the status of your system. We can take advantage of CloudWatch Logs and Cloudwatch Insight for this purpose.</p>
 <h3 id="json-as-output">JSON as output<a class="headerlink" href="#json-as-output" title="Permanent link">&para;</a></h3>
 <p>The first option could be to use the standard Python Logger, and use a specialized library like <code>pythonjsonlogger</code> to create a JSON Formatter.</p>
-<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">app.py</label><label for="__tabbed_5_2">requirements.txt</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1669,7 +1692,7 @@ Successfully created/updated stack - sam-app <span class="k">in</span> eu-centra
 <span class="kn">import</span> <span class="nn">os</span>
 
 <span class="hll"><span class="kn">from</span> <span class="nn">pythonjsonlogger</span> <span class="kn">import</span> <span class="n">jsonlogger</span>
-</span><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+</span><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 </span>
 <span class="hll"><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&quot;APP&quot;</span><span class="p">)</span>
 </span><span class="hll"><span class="n">logHandler</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
@@ -1678,7 +1701,7 @@ Successfully created/updated stack - sam-app <span class="k">in</span> eu-centra
 </span><span class="hll"><span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">logHandler</span><span class="p">)</span>
 </span><span class="hll"><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LOG_LEVEL&quot;</span><span class="p">,</span> <span class="s2">&quot;INFO&quot;</span><span class="p">))</span>
 </span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello/&lt;name&gt;&quot;</span><span class="p">)</span>
@@ -1699,12 +1722,13 @@ Successfully created/updated stack - sam-app <span class="k">in</span> eu-centra
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">requirements.txt</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>aws-lambda-powertools
 python-json-logger
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <p>With just a few lines our logs will now output to <code>JSON</code> format. We've taken the following steps to make that work:</p>
@@ -1714,25 +1738,28 @@ python-json-logger
 <li><strong>L12</strong>: Sets the logging level set in the <code>LOG_LEVEL</code> environment variable, or <code>INFO</code> as a sentinel value.</li>
 </ul>
 <p>After that, we use this logger in our application code to record the required information. We see logs structured as follows:</p>
-<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">JSON output</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">JSON output</label><label for="__tabbed_6_2">Normal output</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;asctime&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-11-22 15:32:02,145&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;levelname&quot;</span><span class="p">:</span> <span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;APP&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Request from unknown received&quot;</span>
-<span class="p">}</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;asctime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-11-22 15:32:02,145&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;levelname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;APP&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Request from unknown received&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Normal output</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">INFO</span><span class="p">]</span>  <span class="mi">2021</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">22</span><span class="n">T15</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mf">02.145</span><span class="n">Z</span>        <span class="n">ba3bea3d</span><span class="o">-</span><span class="n">fe3a</span><span class="o">-</span><span class="mi">45</span><span class="n">db</span><span class="o">-</span><span class="n">a2ce</span><span class="o">-</span><span class="mf">72e813</span><span class="n">d55b91</span>    <span class="n">Request</span> <span class="kn">from</span> <span class="nn">unknown</span> <span class="n">received</span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <p>So far, so good! We can take a step further now by adding additional context to the logs.</p>
@@ -1742,7 +1769,7 @@ python-json-logger
 <summary>Surely this could be easier, right?</summary>
 <p>Yes! Powertools Logger to the rescue :-)</p>
 </details>
-<p>As we already have Lambda Powertools as a dependency, we can simply import <a href="./core/logger.md" target="_blank">Logger</a>.</p>
+<p>As we already have Lambda Powertools as a dependency, we can simply import <a href="../core/logger/" target="_blank">Logger</a>.</p>
 <table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Refactoring with Lambda Powertools Logger</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1767,12 +1794,12 @@ python-json-logger
 <span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span>
-</span><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+</span><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 <span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
 </span>
 <span class="hll"><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;APP&quot;</span><span class="p">)</span>
 </span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello/&lt;name&gt;&quot;</span><span class="p">)</span>
@@ -1796,7 +1823,7 @@ python-json-logger
 <ul>
 <li><strong>L5</strong>: We add Lambda Powertools Logger; the boilerplate is now done for you. By default, we set <code>INFO</code> as the logging level if <code>LOG_LEVEL</code> env var isn't set.</li>
 <li><strong>L22</strong>: We use <code>logger.inject_lambda_context</code> decorator to inject key information from Lambda context into every log.</li>
-<li><strong>L22</strong>: We also instruct Logger to use the incoming API Gateway Request ID as a <a href="./core/logger.md##set_correlation_id-method">correlation id</a> automatically.</li>
+<li><strong>L22</strong>: We also instruct Logger to use the incoming API Gateway Request ID as a <a href="../core/logger/##set_correlation_id-method">correlation id</a> automatically.</li>
 <li><strong>L22</strong>: Since we're in dev, we also use <code>log_event=True</code> to automatically log each incoming request for debugging. This can be also set via <a href="./#environment-variables" target="_blank">environment variables</a>.</li>
 </ul>
 <p>This is how the logs would look like now:</p>
@@ -1812,25 +1839,28 @@ python-json-logger
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;level&quot;</span><span class="p">:</span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="s2">&quot;hello:17&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Request from unknown received&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="s2">&quot;2021-10-22 16:29:58,367+0000&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="s2">&quot;APP&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;cold_start&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;function_name&quot;</span><span class="p">:</span><span class="s2">&quot;HelloWorldFunction&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;function_memory_size&quot;</span><span class="p">:</span><span class="s2">&quot;256&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;function_arn&quot;</span><span class="p">:</span><span class="s2">&quot;arn:aws:lambda:us-east-1:123456789012:function:HelloWorldFunction&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;function_request_id&quot;</span><span class="p">:</span><span class="s2">&quot;d50bb07a-7712-4b2d-9f5d-c837302221a2&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;correlation_id&quot;</span><span class="p">:</span><span class="s2">&quot;bf9b584c-e5d9-4ad5-af3d-db953f2b10dc&quot;</span>
-<span class="p">}</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;level&quot;</span><span class="p">:</span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="s2">&quot;hello:17&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="s2">&quot;Request from unknown received&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="s2">&quot;2021-10-22 16:29:58,367+0000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="s2">&quot;APP&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;cold_start&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;function_name&quot;</span><span class="p">:</span><span class="s2">&quot;HelloWorldFunction&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;function_memory_size&quot;</span><span class="p">:</span><span class="s2">&quot;256&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;function_arn&quot;</span><span class="p">:</span><span class="s2">&quot;arn:aws:lambda:us-east-1:123456789012:function:HelloWorldFunction&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;function_request_id&quot;</span><span class="p">:</span><span class="s2">&quot;d50bb07a-7712-4b2d-9f5d-c837302221a2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;correlation_id&quot;</span><span class="p">:</span><span class="s2">&quot;bf9b584c-e5d9-4ad5-af3d-db953f2b10dc&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <p>We can now search our logs by the request ID to find a specific operation. Additionally, we can also search our logs for function name, Lambda request ID, Lambda function ARN, find out whether an operation was a cold start, etc.</p>
-<p>From here, we could <a href="./core/logger.md#append_keys-method" target="_blank">set specific keys</a> to add additional contextual information about a given operation, <a href="./core/logger.md#logging-exceptions" target="_blank">log exceptions</a> to easily enumerate them later, <a href="./core/logger.md#sampling-debug-logs" target="_blank">sample debug logs</a>, etc.</p>
+<p>From here, we could <a href="../core/logger/#append_keys-method" target="_blank">set specific keys</a> to add additional contextual information about a given operation, <a href="../core/logger/#logging-exceptions" target="_blank">log exceptions</a> to easily enumerate them later, <a href="../core/logger/#sampling-debug-logs" target="_blank">sample debug logs</a>, etc.</p>
 <p>By having structured logs like this, we can easily search and analyse them in <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html" target="_blank">CloudWatch Logs Insight</a>.</p>
-<div class="tabbed-set" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">CloudWatch Logs Insight Example</label><div class="tabbed-content"></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">CloudWatch Logs Insight Example</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
 </div>
 <p><img alt="CloudWatch Logs Insight Example" src="../media/cloudwatch_logs_insight_example.png" /></p>
 <h2 id="tracing">Tracing<a class="headerlink" href="#tracing" title="Permanent link">&para;</a></h2>
@@ -1847,8 +1877,10 @@ python-json-logger
 <li>Enable tracing in your Lambda function.</li>
 <li>Instrument your application code.</li>
 </ol>
-<p>Let's explore how we can instrument our code with <a href="https://docs.aws.amazon.com/xray-sdk-for-python/latest/reference/index.html" target="_blank">AWS X-Ray SDK</a>, and then simplify it with <a href="core/tracer.md" target="_blank">Lambda Powertools Tracer</a> feature.</p>
-<div class="tabbed-set" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">app.py</label><div class="tabbed-content">
+<p>Let's explore how we can instrument our code with <a href="https://docs.aws.amazon.com/xray-sdk-for-python/latest/reference/index.html" target="_blank">AWS X-Ray SDK</a>, and then simplify it with <a href="../core/tracer/" target="_blank">Lambda Powertools Tracer</a> feature.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">app.py</label><label for="__tabbed_8_2">template.yaml</label><label for="__tabbed_8_3">requirements.txt</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1880,12 +1912,12 @@ python-json-logger
 <span class="normal">29</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="kn">from</span> <span class="nn">aws_xray_sdk.core</span> <span class="kn">import</span> <span class="n">xray_recorder</span>
 </span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span>
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;APP&quot;</span><span class="p">)</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello/&lt;name&gt;&quot;</span><span class="p">)</span>
@@ -1909,7 +1941,7 @@ python-json-logger
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">template.yaml</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1940,46 +1972,47 @@ python-json-logger
 <span class="normal">28</span>
 <span class="normal">29</span>
 <span class="normal">30</span>
-<span class="normal">31</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span> <span class="s">&quot;2010-09-09&quot;</span>
-<span class="nt">Transform</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span>
-<span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Sample SAM Template for powertools-quickstart</span>
-<span class="nt">Globals</span><span class="p">:</span>
-    <span class="nt">Function</span><span class="p">:</span>
-        <span class="nt">Timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="hll">    <span class="nt">Api</span><span class="p">:</span>
-</span><span class="hll">      <span class="nt">TracingEnabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-</span><span class="nt">Resources</span><span class="p">:</span>
-    <span class="nt">HelloWorldFunction</span><span class="p">:</span>
-        <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
-        <span class="nt">Properties</span><span class="p">:</span>
-            <span class="nt">CodeUri</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hello_world/</span>
-            <span class="nt">Handler</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span>
-            <span class="nt">Runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python3.9</span>
-<span class="hll">            <span class="nt">Tracing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Active</span>
-</span>            <span class="nt">Events</span><span class="p">:</span>
-                <span class="nt">HelloWorld</span><span class="p">:</span>
-                    <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
-                    <span class="nt">Properties</span><span class="p">:</span>
-                        <span class="nt">Path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/hello</span>
-                        <span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">get</span>
-                <span class="nt">HelloWorldName</span><span class="p">:</span>
-                    <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
-                    <span class="nt">Properties</span><span class="p">:</span>
-                        <span class="nt">Path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/hello/{name}</span>
-                        <span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">get</span>
-<span class="nt">Outputs</span><span class="p">:</span>
-    <span class="nt">HelloWorldApi</span><span class="p">:</span>
-        <span class="nt">Description</span><span class="p">:</span> <span class="s">&quot;API</span><span class="nv"> </span><span class="s">Gateway</span><span class="nv"> </span><span class="s">endpoint</span><span class="nv"> </span><span class="s">URL</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Prod</span><span class="nv"> </span><span class="s">stage</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">function&quot;</span>
-        <span class="nt">Value</span><span class="p">:</span> <span class="kt">!Sub</span> <span class="s">&quot;https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/&quot;</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2010-09-09&quot;</span><span class="w"></span>
+<span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span><span class="w"></span>
+<span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample SAM Template for powertools-quickstart</span><span class="w"></span>
+<span class="nt">Globals</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Function</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">Api</span><span class="p">:</span><span class="w"></span>
+</span><span class="hll"><span class="w">      </span><span class="nt">TracingEnabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+</span><span class="nt">Resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">HelloWorldFunction</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello_world/</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.9</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="nt">Tracing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Active</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">Events</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">HelloWorld</span><span class="p">:</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Api</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/hello</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get</span><span class="w"></span>
+<span class="w">                </span><span class="nt">HelloWorldName</span><span class="p">:</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Api</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/hello/{name}</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get</span><span class="w"></span>
+<span class="nt">Outputs</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">HelloWorldApi</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;API</span><span class="nv"> </span><span class="s">Gateway</span><span class="nv"> </span><span class="s">endpoint</span><span class="nv"> </span><span class="s">URL</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Prod</span><span class="nv"> </span><span class="s">stage</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">function&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span><span class="kt">!Sub</span><span class="w"> </span><span class="s">&quot;https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/&quot;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><label for="__tabbed_8_3">requirements.txt</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>aws-lambda-powertools
 aws-xray-sdk
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <p>Let's break it down:</p>
@@ -2062,12 +2095,12 @@ aws-xray-sdk
 <span class="normal">47</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_xray_sdk.core</span> <span class="kn">import</span> <span class="n">patch_all</span><span class="p">,</span> <span class="n">xray_recorder</span>
 
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span>
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;APP&quot;</span><span class="p">)</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 <span class="hll"><span class="n">cold_start</span> <span class="o">=</span> <span class="kc">True</span>
 </span><span class="n">patch_all</span><span class="p">()</span>
 
@@ -2127,7 +2160,7 @@ aws-xray-sdk
 <p><img alt="Filtering traces by metadata" src="../media/tracer_xray_sdk_enriched_2.png" /></p>
 <h3 id="simplifying-with-tracer">Simplifying with Tracer<a class="headerlink" href="#simplifying-with-tracer" title="Permanent link">&para;</a></h3>
 <p>Cross-cutting concerns like filtering traces by Cold Start, including response as well as exceptions as tracing metadata can take a considerable amount of boilerplate.</p>
-<p>We can simplify our previous patterns by using <a href="core/tracer.md" target="_blank">Lambda Powertools Tracer</a>; a thin wrapper on top of X-Ray SDK.</p>
+<p>We can simplify our previous patterns by using <a href="../core/tracer/" target="_blank">Lambda Powertools Tracer</a>; a thin wrapper on top of X-Ray SDK.</p>
 <details class="note" open="open">
 <summary>Note</summary>
 <p>You can now safely remove <code>aws-xray-sdk</code> from <code>requirements.txt</code>; keep <code>aws-lambda-powertools</code> only.</p>
@@ -2161,12 +2194,12 @@ aws-xray-sdk
 <span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
-</span><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+</span><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;APP&quot;</span><span class="p">)</span>
 <span class="hll"><span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;APP&quot;</span><span class="p">)</span>
-</span><span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+</span><span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello/&lt;name&gt;&quot;</span><span class="p">)</span>
@@ -2202,7 +2235,7 @@ aws-xray-sdk
 <p>Lambda Powertools optimizes for Lambda compute environment. As such, we add these and other common approaches to accelerate your development, so you don't worry about implementing every cross-cutting concern.</p>
 <details class="tip" open="open">
 <summary>Tip</summary>
-<p>You can <a href="./core/tracer/#advanced" target="_blank">opt-out some of these behaviours</a> like disabling response capturing,  explicitly patching only X modules, etc.</p>
+<p>You can <a href="../core/tracer/#advanced" target="_blank">opt-out some of these behaviours</a> like disabling response capturing,  explicitly patching only X modules, etc.</p>
 </details>
 <p>Repeat the process of building, deploying, and invoking your application via the API endpoint. Within the <a href="https://console.aws.amazon.com/xray/home#/traces/" target="_blank">AWS X-Ray Console</a>, you should see a similar view:</p>
 <p><img alt="AWS X-Ray Console trace view using Lambda Powertools Tracer" src="../media/tracer_utility_showcase_2.png" /></p>
@@ -2225,7 +2258,9 @@ aws-xray-sdk
 <p>You can <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-metrics-and-dimensions.html#api-gateway-metricdimensions" target="_blank">optionally enable detailed metrics</a> per each API route, stage, and method in API Gateway.</p>
 </details>
 <p>Let's expand our application with custom metrics using AWS SDK to see how it works, then let's upgrade it with Lambda Powertools :-)</p>
-<div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">app.py</label><label for="__tabbed_9_2">template.yaml</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2301,7 +2336,7 @@ aws-xray-sdk
 <span class="hll"><span class="kn">import</span> <span class="nn">boto3</span>
 </span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
 
 <span class="n">cold_start</span> <span class="o">=</span> <span class="kc">True</span>
@@ -2310,7 +2345,7 @@ aws-xray-sdk
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;APP&quot;</span><span class="p">)</span>
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;APP&quot;</span><span class="p">)</span>
 <span class="hll"><span class="n">metrics</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&quot;cloudwatch&quot;</span><span class="p">)</span>
-</span><span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+</span><span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 
 
 <span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
@@ -2370,7 +2405,7 @@ aws-xray-sdk
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">template.yaml</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2401,39 +2436,40 @@ aws-xray-sdk
 <span class="normal">28</span>
 <span class="normal">29</span>
 <span class="normal">30</span>
-<span class="normal">31</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span> <span class="s">&quot;2010-09-09&quot;</span>
-<span class="nt">Transform</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span>
-<span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Sample SAM Template for powertools-quickstart</span>
-<span class="nt">Globals</span><span class="p">:</span>
-    <span class="nt">Function</span><span class="p">:</span>
-        <span class="nt">Timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="nt">Resources</span><span class="p">:</span>
-    <span class="nt">HelloWorldFunction</span><span class="p">:</span>
-        <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
-        <span class="nt">Properties</span><span class="p">:</span>
-            <span class="nt">CodeUri</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hello_world/</span>
-            <span class="nt">Handler</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span>
-            <span class="nt">Runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python3.9</span>
-            <span class="nt">Tracing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Active</span>
-            <span class="nt">Events</span><span class="p">:</span>
-                <span class="nt">HelloWorld</span><span class="p">:</span>
-                    <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
-                    <span class="nt">Properties</span><span class="p">:</span>
-                        <span class="nt">Path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/hello</span>
-                        <span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">get</span>
-                <span class="nt">HelloWorldName</span><span class="p">:</span>
-                    <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
-                    <span class="nt">Properties</span><span class="p">:</span>
-                        <span class="nt">Path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/hello/{name}</span>
-                        <span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">get</span>
-            <span class="nt">Policies</span><span class="p">:</span>
-<span class="hll">                <span class="p p-Indicator">-</span> <span class="nt">CloudWatchPutMetricPolicy</span><span class="p">:</span> <span class="p p-Indicator">{}</span>
-</span><span class="hll"><span class="nt">Outputs</span><span class="p">:</span>
-</span>    <span class="nt">HelloWorldApi</span><span class="p">:</span>
-        <span class="nt">Description</span><span class="p">:</span> <span class="s">&quot;API</span><span class="nv"> </span><span class="s">Gateway</span><span class="nv"> </span><span class="s">endpoint</span><span class="nv"> </span><span class="s">URL</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Prod</span><span class="nv"> </span><span class="s">stage</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">function&quot;</span>
-        <span class="nt">Value</span><span class="p">:</span> <span class="kt">!Sub</span> <span class="s">&quot;https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/&quot;</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2010-09-09&quot;</span><span class="w"></span>
+<span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span><span class="w"></span>
+<span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample SAM Template for powertools-quickstart</span><span class="w"></span>
+<span class="nt">Globals</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Function</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="nt">Resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">HelloWorldFunction</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hello_world/</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.9</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Tracing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Active</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Events</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">HelloWorld</span><span class="p">:</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Api</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/hello</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get</span><span class="w"></span>
+<span class="w">                </span><span class="nt">HelloWorldName</span><span class="p">:</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Api</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/hello/{name}</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Policies</span><span class="p">:</span><span class="w"></span>
+<span class="hll"><span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">CloudWatchPutMetricPolicy</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"></span>
+</span><span class="hll"><span class="nt">Outputs</span><span class="p">:</span><span class="w"></span>
+</span><span class="w">    </span><span class="nt">HelloWorldApi</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;API</span><span class="nv"> </span><span class="s">Gateway</span><span class="nv"> </span><span class="s">endpoint</span><span class="nv"> </span><span class="s">URL</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Prod</span><span class="nv"> </span><span class="s">stage</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Hello</span><span class="nv"> </span><span class="s">World</span><span class="nv"> </span><span class="s">function&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span><span class="kt">!Sub</span><span class="w"> </span><span class="s">&quot;https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/&quot;</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <p>There's a lot going on, let's break this down:</p>
@@ -2454,13 +2490,13 @@ aws-xray-sdk
 <p>It will be visible in your AWS X-RAY traces as additional external call. Given your architecture scale, this approach might lead to disadvantages such as increased cost of measuring data collection and increased Lambda latency.</p>
 </details>
 <h3 id="simplifying-with-metrics">Simplifying with Metrics<a class="headerlink" href="#simplifying-with-metrics" title="Permanent link">&para;</a></h3>
-<p><a href="./core/metrics.md" target="&quot;_blank">Lambda Powertools Metrics</a> uses <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Embedded_Metric_Format.html">Amazon CloudWatch Embedded Metric Format (EMF)</a> to create custom metrics <strong>asynchronously</strong> via a native integration with Lambda.</p>
+<p><a href="../core/metrics/" target="&quot;_blank">Lambda Powertools Metrics</a> uses <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Embedded_Metric_Format.html">Amazon CloudWatch Embedded Metric Format (EMF)</a> to create custom metrics <strong>asynchronously</strong> via a native integration with Lambda.</p>
 <p>In general terms, EMF is a specification that expects metrics in a JSON payload within CloudWatch Logs. Lambda ingests all logs emitted by a given function into CloudWatch Logs. CloudWatch automatically looks up for log entries that follow the EMF format and transforms them into a CloudWatch metric.</p>
 <details class="info" open="open">
 <summary>Info</summary>
 <p>If you are interested in the details of the EMF mechanism, follow <a href="https://aws.amazon.com/blogs/mt/enhancing-workload-observability-using-amazon-cloudwatch-embedded-metric-format/" target="_blank">blog post</a>.</p>
 </details>
-<p>Let's implement that using <a href="./core/metrics.md" target="&quot;_blank">Metrics</a>:</p>
+<p>Let's implement that using <a href="../core/metrics/" target="&quot;_blank">Metrics</a>:</p>
 <table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Refactoring with Lambda Powertools Metrics</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2500,7 +2536,7 @@ aws-xray-sdk
 <span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span><span class="p">,</span> <span class="n">Metrics</span>
-</span><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+</span><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
 <span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.metrics</span> <span class="kn">import</span> <span class="n">MetricUnit</span>
 </span>
@@ -2508,7 +2544,7 @@ aws-xray-sdk
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;APP&quot;</span><span class="p">)</span>
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;APP&quot;</span><span class="p">)</span>
 <span class="hll"><span class="n">metrics</span> <span class="o">=</span> <span class="n">Metrics</span><span class="p">(</span><span class="n">namespace</span><span class="o">=</span><span class="s2">&quot;MyApp&quot;</span><span class="p">,</span> <span class="n">service</span><span class="o">=</span><span class="s2">&quot;APP&quot;</span><span class="p">)</span>
-</span><span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+</span><span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello/&lt;name&gt;&quot;</span><span class="p">)</span>
@@ -2545,7 +2581,7 @@ aws-xray-sdk
 <li><strong>L9</strong>: We initialize <code>Metrics</code> with our service name (<code>APP</code>) and metrics namespace (<code>MyApp</code>), reducing the need to add the <code>service</code> dimension for every metric and setting the namespace later</li>
 <li><strong>L18, 27</strong>: We use <code>add_metric</code> similarly to our custom function, except we now have an enum <code>MetricCount</code> to help us understand which Metric Units we have at our disposal</li>
 <li><strong>L33</strong>: We use <code>@metrics.log_metrics</code> decorator to ensure that our metrics are aligned with the EMF output and validated before-hand, like in case we forget to set namespace, or accidentally use a metric unit as a string that doesn't exist in CloudWatch.</li>
-<li><strong>L33</strong>: We also use <code>capture_cold_start_metric=True</code> so we don't have to handle that logic either. Note that <a href="./core/metrics.md" target="_blank">Metrics</a> does not publish a warm invocation metric (ColdStart=0) for cost reasons. As such, treat the absence (sparse metric) as a non-cold start invocation.</li>
+<li><strong>L33</strong>: We also use <code>capture_cold_start_metric=True</code> so we don't have to handle that logic either. Note that <a href="../core/metrics/" target="_blank">Metrics</a> does not publish a warm invocation metric (ColdStart=0) for cost reasons. As such, treat the absence (sparse metric) as a non-cold start invocation.</li>
 </ul>
 <p>Repeat the process of building, deploying, and invoking your application via the API endpoint a few times to generate metrics - <a href="https://www.artillery.io/" target="_blank">Artillery</a> and <a href="https://k6.io/open-source" target="_blank">K6.io</a> are quick ways to generate some load. Within <a href="https://console.aws.amazon.com/cloudwatch/home#metricsV2:graph=~()" target="&quot;_blank">CloudWatch Metrics view</a>, you should see <code>MyApp</code> custom namespace with your custom metrics there and <code>SuccessfulGreetings</code> available to graph.</p>
 <p><img alt="Custom Metrics Example" src="../media/metrics_utility_showcase.png" /></p>
@@ -2576,38 +2612,38 @@ aws-xray-sdk
 <span class="normal">24</span>
 <span class="normal">25</span>
 <span class="normal">26</span>
-<span class="normal">27</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-  <span class="nt">&quot;_aws&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;Timestamp&quot;</span><span class="p">:</span> <span class="mi">1638115724269</span><span class="p">,</span>
-    <span class="nt">&quot;CloudWatchMetrics&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="nt">&quot;Namespace&quot;</span><span class="p">:</span> <span class="s2">&quot;CustomMetrics&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Dimensions&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">[</span>
-            <span class="s2">&quot;method&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;service&quot;</span>
-          <span class="p">]</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;Metrics&quot;</span><span class="p">:</span> <span class="p">[</span>
-          <span class="p">{</span>
-            <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;AppMethodsInvocations&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Unit&quot;</span><span class="p">:</span> <span class="s2">&quot;Count&quot;</span>
-          <span class="p">}</span>
-        <span class="p">]</span>
-      <span class="p">}</span>
-    <span class="p">]</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;/hello/&lt;name&gt;&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;service&quot;</span><span class="p">:</span> <span class="s2">&quot;APP&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;AppMethodsInvocations&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="mi">1</span>
-  <span class="p">]</span>
-<span class="p">}</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;_aws&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;Timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1638115724269</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;CloudWatchMetrics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CustomMetrics&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Dimensions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">          </span><span class="p">[</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;method&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;service&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Metrics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">          </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AppMethodsInvocations&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;Unit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Count&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">]</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;method&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/hello/&lt;name&gt;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;APP&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;AppMethodsInvocations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="mi">1</span><span class="w"></span>
+<span class="w">  </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <h1 id="final-considerations">Final considerations<a class="headerlink" href="#final-considerations" title="Permanent link">&para;</a></h1>
 <p>We covered a lot of ground here and we only scratched the surface of the feature set available within Lambda Powertools.</p>
-<p>When it comes to the observability features (<a href="./core/tracer.md" target="_blank">Tracer</a>, <a href="./core/metrics.md" target="_blank">Metrics</a>, <a href="./core/logger.md" target="_blank">Logging</a>), don't stop there! The goal here is to ensure you can ask arbitrary questions to assess your system's health; these features are only part of the wider story!</p>
+<p>When it comes to the observability features (<a href="../core/tracer/" target="_blank">Tracer</a>, <a href="../core/metrics/" target="_blank">Metrics</a>, <a href="../core/logger/" target="_blank">Logging</a>), don't stop there! The goal here is to ensure you can ask arbitrary questions to assess your system's health; these features are only part of the wider story!</p>
 <p>This requires a change in mindset to ensure operational excellence is part of the software development lifecycle.</p>
 <details class="tip" open="open">
 <summary>Tip</summary>
@@ -2618,24 +2654,16 @@ aws-xray-sdk
 <summary>Have ideas for other tutorials?</summary>
 <p>You can open up a <a href="https://github.com/awslabs/aws-lambda-powertools-python/issues/new?assignees=&amp;labels=documentation&amp;template=documentation-improvements.md&amp;title=Tutorial%20Suggestion" target="_blank">documentation issue</a>, or connect with us on the <a href="https://github.com/awslabs/aws-lambda-powertools-python/#connect">AWS Developers Slack</a> at <code>lambda-powertools</code> channel, or via e-mail <a href="mailto:aws-lambda-powertools-feedback@amazon.com">aws-lambda-powertools-feedback@amazon.com</a>.</p>
 </details>
-                
-                  
-                    
 
-<hr>
-<div class="md-source-date">
+  <hr>
+<div class="md-source-file">
   <small>
     
-      Last update: 2022-01-18
+      Last update:
+      2022-02-04
     
   </small>
 </div>
-                  
-                
-              
-              
-                
-
 
               
             </article>
@@ -2649,8 +2677,7 @@ aws-xray-sdk
         
       </main>
       
-        
-<footer class="md-footer">
+        <footer class="md-footer">
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
@@ -2689,20 +2716,19 @@ aws-xray-sdk
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2021 Amazon Web Services
-          </div>
-        
-        
-          Made with
-          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-            Material for MkDocs
-          </a>
-        
-        
-      </div>
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 Amazon Web Services
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
       
     </div>
   </div>
@@ -2712,10 +2738,10 @@ aws-xray-sdk
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.instant", "navigation.indexes"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.instant", "navigation.indexes", "navigation.tracking", "content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js", "version": {"provider": "mike", "default": "latest"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
+      <script src="../assets/javascripts/bundle.960e086b.min.js"></script>
       
         <script src="../javascript/aws-amplify.min.js"></script>
       

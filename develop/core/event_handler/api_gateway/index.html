@@ -9,12 +9,11 @@
         <meta name="description" content="Core utility">
       
       
-      
         <meta name="author" content="Amazon Web Services">
       
       
       <link rel="icon" href="../../../media/aws-logo-light.svg">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.9">
     
     
       
@@ -22,10 +21,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.a57b2b03.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2b4465f4.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
         
       
     
@@ -35,16 +34,15 @@
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700%7C&display=fallback">
-        <style>:root{--md-text-font-family:"Ubuntu";--md-code-font-family:""}</style>
+        <style>:root{--md-text-font:"Ubuntu";--md-code-font:""}</style>
       
-    
     
     
       <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
+    <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-
 
     
     
@@ -61,9 +59,8 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="">
   
     
-    <script>function __prefix(e){return new URL("../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
-      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -79,6 +76,23 @@
     <div data-md-component="announce">
       
     </div>
+    
+      <div data-md-component="outdated" hidden>
+        <aside class="md-banner md-banner--warning">
+          
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You're not viewing the latest version.
+  <a href="../../../..">
+    <strong>Click here to go to latest.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          
+        </aside>
+      </div>
+    
     
       
 
@@ -136,8 +150,7 @@
       <label class="md-header__button md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
       </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -169,8 +182,7 @@
     
     
       <div class="md-header__source">
-        
-<a href="https://github.com/awslabs/aws-lambda-powertools-python/" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/awslabs/aws-lambda-powertools-python/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -214,8 +226,7 @@
   </label>
   
     <div class="md-nav__source">
-      
-<a href="https://github.com/awslabs/aws-lambda-powertools-python/" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/awslabs/aws-lambda-powertools-python/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
@@ -445,7 +456,6 @@
       
         
 
-
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -480,23 +490,30 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#api-gateway-decorator" class="md-nav__link">
-    API Gateway decorator
+  <a href="#event-resolvers" class="md-nav__link">
+    Event Resolvers
   </a>
   
-    <nav class="md-nav" aria-label="API Gateway decorator">
+    <nav class="md-nav" aria-label="Event Resolvers">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#http-api" class="md-nav__link">
-    HTTP API
+  <a href="#api-gateway-rest-api" class="md-nav__link">
+    API Gateway REST API
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#alb" class="md-nav__link">
-    ALB
+  <a href="#api-gateway-http-api" class="md-nav__link">
+    API Gateway HTTP API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-load-balancer" class="md-nav__link">
+    Application Load Balancer
   </a>
   
 </li>
@@ -1006,7 +1023,6 @@
                   <div class="md-sidebar__inner">
                     
 
-
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
@@ -1041,23 +1057,30 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#api-gateway-decorator" class="md-nav__link">
-    API Gateway decorator
+  <a href="#event-resolvers" class="md-nav__link">
+    Event Resolvers
   </a>
   
-    <nav class="md-nav" aria-label="API Gateway decorator">
+    <nav class="md-nav" aria-label="Event Resolvers">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#http-api" class="md-nav__link">
-    HTTP API
+  <a href="#api-gateway-rest-api" class="md-nav__link">
+    API Gateway REST API
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#alb" class="md-nav__link">
-    ALB
+  <a href="#api-gateway-http-api" class="md-nav__link">
+    API Gateway HTTP API
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-load-balancer" class="md-nav__link">
+    Application Load Balancer
   </a>
   
 </li>
@@ -1316,14 +1339,14 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/awslabs/aws-lambda-powertools-python/edit/develop/docs/core/event_handler/api_gateway.md" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                  <h1>REST API</h1>
-                
-                <p>Event handler for Amazon API Gateway REST/HTTP APIs and Application Loader Balancer (ALB).</p>
+<a href="https://github.com/awslabs/aws-lambda-powertools-python/edit/develop/docs/core/event_handler/api_gateway.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+  <h1>REST API</h1>
+
+<p>Event handler for Amazon API Gateway REST and HTTP APIs, and Application Loader Balancer (ALB).</p>
 <h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Lightweight routing to reduce boilerplate for API Gateway REST/HTTP API and ALB</li>
@@ -1331,7 +1354,7 @@
 <li>Integrates with <a href="../../../utilities/data_classes/" target="_blank">Data classes utilities</a> to easily access event and identity information</li>
 <li>Built-in support for Decimals JSON encoding</li>
 <li>Support for dynamic path expressions</li>
-<li>Router to allow for splitting up the handler accross multiple files</li>
+<li>Router to allow for splitting up the handler across multiple files</li>
 </ul>
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <h3 id="required-resources">Required resources<a class="headerlink" href="#required-resources" title="Permanent link">&para;</a></h3>
@@ -1374,54 +1397,64 @@
 <span class="normal">35</span>
 <span class="normal">36</span>
 <span class="normal">37</span>
-<span class="normal">38</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span> <span class="s">&#39;2010-09-09&#39;</span>
-<span class="nt">Transform</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span>
-<span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Hello world event handler API Gateway</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2010-09-09&#39;</span><span class="w"></span>
+<span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span><span class="w"></span>
+<span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hello world event handler API Gateway</span><span class="w"></span>
 
-<span class="nt">Globals</span><span class="p">:</span>
-    <span class="nt">Api</span><span class="p">:</span>
-    <span class="nt">TracingEnabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">Cors</span><span class="p">:</span>                           <span class="c1"># see CORS section</span>
-        <span class="nt">AllowOrigin</span><span class="p">:</span> <span class="s">&quot;&#39;https://example.com&#39;&quot;</span>
-        <span class="nt">AllowHeaders</span><span class="p">:</span> <span class="s">&quot;&#39;Content-Type,Authorization,X-Amz-Date&#39;&quot;</span>
-        <span class="nt">MaxAge</span><span class="p">:</span> <span class="s">&quot;&#39;300&#39;&quot;</span>
-    <span class="nt">BinaryMediaTypes</span><span class="p">:</span>               <span class="c1"># see Binary responses section</span>
-        <span class="p p-Indicator">-</span> <span class="s">&#39;*~1*&#39;</span>  <span class="c1"># converts to */* for any binary type</span>
-    <span class="nt">Function</span><span class="p">:</span>
-    <span class="nt">Timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
-    <span class="nt">Runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python3.8</span>
-    <span class="nt">Tracing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Active</span>
-    <span class="nt">Environment</span><span class="p">:</span>
-        <span class="nt">Variables</span><span class="p">:</span>
-            <span class="nt">LOG_LEVEL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">INFO</span>
-            <span class="nt">POWERTOOLS_LOGGER_SAMPLE_RATE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
-            <span class="nt">POWERTOOLS_LOGGER_LOG_EVENT</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-            <span class="nt">POWERTOOLS_METRICS_NAMESPACE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MyServerlessApplication</span>
-            <span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my_api-service</span>
+<span class="nt">Globals</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Api</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">TracingEnabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Cors</span><span class="p">:</span><span class="w">                           </span><span class="c1"># see CORS section</span><span class="w"></span>
+<span class="w">        </span><span class="nt">AllowOrigin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;https://example.com&#39;&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">AllowHeaders</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;Content-Type,Authorization,X-Amz-Date&#39;&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">MaxAge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;300&#39;&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">BinaryMediaTypes</span><span class="p">:</span><span class="w">               </span><span class="c1"># see Binary responses section</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;*~1*&#39;</span><span class="w">  </span><span class="c1"># converts to */* for any binary type</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Function</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.8</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Tracing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Active</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Environment</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Variables</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">LOG_LEVEL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span><span class="w"></span>
+<span class="w">            </span><span class="nt">POWERTOOLS_LOGGER_SAMPLE_RATE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>
+<span class="w">            </span><span class="nt">POWERTOOLS_LOGGER_LOG_EVENT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">            </span><span class="nt">POWERTOOLS_METRICS_NAMESPACE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MyServerlessApplication</span><span class="w"></span>
+<span class="w">            </span><span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_api-service</span><span class="w"></span>
 
-<span class="nt">Resources</span><span class="p">:</span>
-    <span class="nt">ApiFunction</span><span class="p">:</span>
-    <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
-    <span class="nt">Properties</span><span class="p">:</span>
-        <span class="nt">Handler</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span>
-        <span class="nt">CodeUri</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">api_handler/</span>
-        <span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">API handler function</span>
-        <span class="nt">Events</span><span class="p">:</span>
-            <span class="nt">ApiEvent</span><span class="p">:</span>
-                <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
-                <span class="nt">Properties</span><span class="p">:</span>
-                <span class="nt">Path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/{proxy+}</span>  <span class="c1"># Send requests on any path to the lambda function</span>
-                <span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ANY</span>  <span class="c1"># Send requests using any http method to the lambda function</span>
+<span class="nt">Resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ApiFunction</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span><span class="w"></span>
+<span class="w">        </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api_handler/</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API handler function</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Events</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">ApiEvent</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Api</span><span class="w"></span>
+<span class="w">                </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/{proxy+}</span><span class="w">  </span><span class="c1"># Send requests on any path to the lambda function</span><span class="w"></span>
+<span class="w">                </span><span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ANY</span><span class="w">  </span><span class="c1"># Send requests using any http method to the lambda function</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
-<h3 id="api-gateway-decorator">API Gateway decorator<a class="headerlink" href="#api-gateway-decorator" title="Permanent link">&para;</a></h3>
-<p>You can define your functions to match a path and HTTP method, when you use the decorator <code>ApiGatewayResolver</code>.</p>
-<p>Here's an example where we have two separate functions to resolve two paths: <code>/hello</code>.</p>
+<h3 id="event-resolvers">Event Resolvers<a class="headerlink" href="#event-resolvers" title="Permanent link">&para;</a></h3>
+<p>Before you decorate your functions to handle a given path and HTTP method(s), you need to initialize a resolver.</p>
+<p>A resolver will handle request resolution, include <a href="#split-routes-with-router">one or more routers</a>, and give you access to the current event via typed properties.</p>
+<p>For resolvers, we provide: <code>APIGatewayRestResolver</code>, <code>APIGatewayHttpResolver</code>, and <code>ALBResolver</code>.</p>
 <details class="info" open="open">
 <summary>Info</summary>
-<p>We automatically serialize <code>Dict</code> responses as JSON, trim whitespaces for compact responses, and set content-type to <code>application/json</code>.</p>
+<p>We will use <code>APIGatewayRestResolver</code> as the default across examples.</p>
 </details>
-<div class="tabbed-set" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">app.py</label><div class="tabbed-content">
+<h4 id="api-gateway-rest-api">API Gateway REST API<a class="headerlink" href="#api-gateway-rest-api" title="Permanent link">&para;</a></h4>
+<p>When using Amazon API Gateway REST API to front your Lambda functions, you can use <code>APIGatewayRestResolver</code>.</p>
+<p>Here's an example on how we can handle the <code>/hello</code> path.</p>
+<details class="info" open="open">
+<summary>Info</summary>
+<p>We automatically serialize <code>Dict</code> responses as JSON, trim whitespace for compact responses, and set content-type to <code>application/json</code>.</p>
+</details>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">app.py</label><label for="__tabbed_1_2">hello_event.json</label><label for="__tabbed_1_3">response.json</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1441,11 +1474,11 @@
 <span class="normal">17</span>
 <span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
-<span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 </span>
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>  <span class="c1"># by default API Gateway REST API (v1)</span>
+<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 </span>
 <span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello&quot;</span><span class="p">)</span>
 </span><span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
@@ -1460,7 +1493,7 @@
 </span></code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">hello_event.json</label><div class="tabbed-content">
+<div class="tabbed-block">
 <p>This utility uses <code>path</code> and <code>httpMethod</code> to route to the right function. This helps make unit tests and local invocation easier too.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1523,72 +1556,72 @@
 <span class="normal">59</span>
 <span class="normal">60</span>
 <span class="normal">61</span>
-<span class="normal">62</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="s2">&quot;/hello&quot;</span><span class="p">,</span>
-<span class="hll">    <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/hello&quot;</span><span class="p">,</span>
-</span><span class="hll">    <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
-</span>    <span class="nt">&quot;isBase64Encoded&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nt">&quot;queryStringParameters&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;foo&quot;</span><span class="p">:</span> <span class="s2">&quot;bar&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;multiValueQueryStringParameters&quot;</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="nt">&quot;pathParameters&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;hello&quot;</span><span class="p">:</span> <span class="s2">&quot;/hello&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;stageVariables&quot;</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Accept-Encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;gzip, deflate, sdch&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Accept-Language&quot;</span><span class="p">:</span> <span class="s2">&quot;en-US,en;q=0.8&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Cache-Control&quot;</span><span class="p">:</span> <span class="s2">&quot;max-age=0&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;CloudFront-Forwarded-Proto&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;CloudFront-Is-Desktop-Viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;CloudFront-Is-Mobile-Viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;CloudFront-Is-SmartTV-Viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;CloudFront-Is-Tablet-Viewer&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;CloudFront-Viewer-Country&quot;</span><span class="p">:</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Host&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890.execute-api.us-east-1.amazonaws.com&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Upgrade-Insecure-Requests&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;Custom User Agent String&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Via&quot;</span><span class="p">:</span> <span class="s2">&quot;1.1 08f323deadbeefa7af34d5feb414ce27.cloudfront.net (CloudFront)&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;X-Amz-Cf-Id&quot;</span><span class="p">:</span> <span class="s2">&quot;cDehVQoZnx43VYQb9j2-nvCh-9z396Uhbp027Y2JvkCPNLmGJHqlaA==&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;X-Forwarded-For&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1, 127.0.0.2&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;X-Forwarded-Port&quot;</span><span class="p">:</span> <span class="s2">&quot;443&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;X-Forwarded-Proto&quot;</span><span class="p">:</span> <span class="s2">&quot;https&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;multiValueHeaders&quot;</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="nt">&quot;requestContext&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;accountId&quot;</span><span class="p">:</span> <span class="s2">&quot;123456789012&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;resourceId&quot;</span><span class="p">:</span> <span class="s2">&quot;123456&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;stage&quot;</span><span class="p">:</span> <span class="s2">&quot;Prod&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;requestId&quot;</span><span class="p">:</span> <span class="s2">&quot;c6af9ac6-7b61-11e6-9a41-93e8deadbeef&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;requestTime&quot;</span><span class="p">:</span> <span class="s2">&quot;25/Jul/2020:12:34:56 +0000&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;requestTimeEpoch&quot;</span><span class="p">:</span> <span class="mi">1428582896000</span><span class="p">,</span>
-    <span class="nt">&quot;identity&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;cognitoIdentityPoolId&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;accountId&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;cognitoIdentityId&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;caller&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;accessKey&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;sourceIp&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;cognitoAuthenticationType&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;cognitoAuthenticationProvider&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;userArn&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-        <span class="nt">&quot;userAgent&quot;</span><span class="p">:</span> <span class="s2">&quot;Custom User Agent String&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="kc">null</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/Prod/hello&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;resourcePath&quot;</span><span class="p">:</span> <span class="s2">&quot;/hello&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;apiId&quot;</span><span class="p">:</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;HTTP/1.1&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="normal">62</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/hello&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/hello&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">    </span><span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">    </span><span class="nt">&quot;isBase64Encoded&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;queryStringParameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;foo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bar&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;multiValueQueryStringParameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;pathParameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;hello&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/hello&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;stageVariables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Accept&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Accept-Encoding&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gzip, deflate, sdch&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Accept-Language&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;en-US,en;q=0.8&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Cache-Control&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;max-age=0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;CloudFront-Forwarded-Proto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;CloudFront-Is-Desktop-Viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;CloudFront-Is-Mobile-Viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;CloudFront-Is-SmartTV-Viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;CloudFront-Is-Tablet-Viewer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;CloudFront-Viewer-Country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;US&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1234567890.execute-api.us-east-1.amazonaws.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Upgrade-Insecure-Requests&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;User-Agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Custom User Agent String&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Via&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.1 08f323deadbeefa7af34d5feb414ce27.cloudfront.net (CloudFront)&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;X-Amz-Cf-Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cDehVQoZnx43VYQb9j2-nvCh-9z396Uhbp027Y2JvkCPNLmGJHqlaA==&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;X-Forwarded-For&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1, 127.0.0.2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;X-Forwarded-Port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;443&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;X-Forwarded-Proto&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;multiValueHeaders&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;requestContext&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;accountId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123456789012&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;resourceId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;123456&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;stage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Prod&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;requestId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c6af9ac6-7b61-11e6-9a41-93e8deadbeef&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;requestTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;25/Jul/2020:12:34:56 +0000&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;requestTimeEpoch&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1428582896000</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;cognitoIdentityPoolId&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;accountId&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;cognitoIdentityId&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;caller&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;accessKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;sourceIp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;cognitoAuthenticationType&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;cognitoAuthenticationProvider&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;userArn&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;userAgent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Custom User Agent String&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/Prod/hello&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;resourcePath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/hello&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;apiId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1234567890&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;protocol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HTTP/1.1&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><label for="__tabbed_1_3">response.json</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1596,20 +1629,26 @@
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;message\&quot;:\&quot;hello universe\&quot;}&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;isBase64Encoded&quot;</span><span class="p">:</span> <span class="kc">false</span>
-<span class="p">}</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;statusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Content-Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;message\&quot;:\&quot;hello universe\&quot;}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;isBase64Encoded&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
 </div>
-<h4 id="http-api">HTTP API<a class="headerlink" href="#http-api" title="Permanent link">&para;</a></h4>
-<p>When using API Gateway HTTP API to front your Lambda functions, you can instruct <code>ApiGatewayResolver</code> to conform with their contract via <code>proxy_type</code> param:</p>
+</div>
+<h4 id="api-gateway-http-api">API Gateway HTTP API<a class="headerlink" href="#api-gateway-http-api" title="Permanent link">&para;</a></h4>
+<p>When using Amazon API Gateway HTTP API to front your Lambda functions, you can use <code>APIGatewayHttpResolver</code>.</p>
+<details class="note" open="open">
+<summary>Note</summary>
+<p>Using HTTP API v1 payload? Use <code>APIGatewayRestResolver</code> instead. <code>APIGatewayHttpResolver</code> defaults to v2 payload.</p>
+</details>
+<p>Here's an example on how we can handle the <code>/hello</code> path.</p>
 <table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Using HTTP API resolver</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1629,11 +1668,11 @@
 <span class="normal">17</span>
 <span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
-<span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span><span class="p">,</span> <span class="n">ProxyEventType</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayHttpResolver</span>
 </span>
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">(</span><span class="n">proxy_type</span><span class="o">=</span><span class="n">ProxyEventType</span><span class="o">.</span><span class="n">APIGatewayProxyEventV2</span><span class="p">)</span>
+<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayHttpResolver</span><span class="p">()</span>
 </span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello&quot;</span><span class="p">)</span>
 <span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
@@ -1647,8 +1686,8 @@
     <span class="k">return</span> <span class="n">app</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-<h4 id="alb">ALB<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h4>
-<p>When using ALB to front your Lambda functions, you can instruct <code>ApiGatewayResolver</code> to conform with their contract via <code>proxy_type</code> param:</p>
+<h4 id="application-load-balancer">Application Load Balancer<a class="headerlink" href="#application-load-balancer" title="Permanent link">&para;</a></h4>
+<p>When using Amazon Application Load Balancer to front your Lambda functions, you can use <code>ALBResolver</code>.</p>
 <table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Using ALB resolver</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1668,11 +1707,11 @@
 <span class="normal">17</span>
 <span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
-<span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span><span class="p">,</span> <span class="n">ProxyEventType</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">ALBResolver</span>
 </span>
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">(</span><span class="n">proxy_type</span><span class="o">=</span><span class="n">ProxyEventType</span><span class="o">.</span><span class="n">ALBEvent</span><span class="p">)</span>
+<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">ALBResolver</span><span class="p">()</span>
 </span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello&quot;</span><span class="p">)</span>
 <span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
@@ -1688,7 +1727,9 @@
 </td></tr></table>
 <h3 id="dynamic-routes">Dynamic routes<a class="headerlink" href="#dynamic-routes" title="Permanent link">&para;</a></h3>
 <p>You can use <code>/path/{dynamic_value}</code> when configuring dynamic URL paths. This allows you to define such dynamic value as part of your function signature.</p>
-<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">app.py</label><label for="__tabbed_2_2">sample_request.json</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1708,11 +1749,11 @@
 <span class="normal">17</span>
 <span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 
 <span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello/&lt;name&gt;&quot;</span><span class="p">)</span>
 </span><span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
@@ -1727,25 +1768,28 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">sample_request.json</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="s2">&quot;/hello/{name}&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/hello/lessa&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
-    <span class="err">...</span>
-<span class="p">}</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/hello/{name}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/hello/lessa&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
 </div>
+</div>
 <h4 id="nested-routes">Nested routes<a class="headerlink" href="#nested-routes" title="Permanent link">&para;</a></h4>
 <p>You can also nest paths as configured earlier in <a href="#required-resources">our sample infrastructure</a>: <code>/{message}/{name}</code>.</p>
-<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">app.py</label><label for="__tabbed_3_2">sample_request.json</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1765,11 +1809,11 @@
 <span class="normal">17</span>
 <span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 
 <span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/&lt;message&gt;/&lt;name&gt;&quot;</span><span class="p">)</span>
 </span><span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
@@ -1784,20 +1828,21 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">sample_request.json</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="s2">&quot;/{message}/{name}&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/hi/michael&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
-    <span class="err">...</span>
-<span class="p">}</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/{message}/{name}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/hi/michael&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <h4 id="catch-all-routes">Catch-all routes<a class="headerlink" href="#catch-all-routes" title="Permanent link">&para;</a></h4>
@@ -1811,7 +1856,9 @@
 <summary>Warning</summary>
 <p>We will choose the more explicit registered route that match incoming event.</p>
 </details>
-<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">app.py</label><label for="__tabbed_4_2">sample_request.json</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1821,9 +1868,9 @@
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 
 <span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;.+&quot;</span><span class="p">)</span>
 </span><span class="k">def</span> <span class="nf">catch_any_route_after_any</span><span class="p">():</span>
@@ -1834,26 +1881,29 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">sample_request.json</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="s2">&quot;/any/route/should/work&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/any/route/should/work&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
-    <span class="err">...</span>
-<span class="p">}</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/any/route/should/work&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/any/route/should/work&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <h3 id="http-methods">HTTP Methods<a class="headerlink" href="#http-methods" title="Permanent link">&para;</a></h3>
 <p>You can use named decorators to specify the HTTP method that should be handled in your functions. As well as the
 <code>get</code> method already shown above, you can use <code>post</code>, <code>put</code>, <code>patch</code>, <code>delete</code>, and <code>patch</code>.</p>
-<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">app.py</label><label for="__tabbed_5_2">sample_request.json</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1875,11 +1925,11 @@
 <span class="normal">19</span>
 <span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 
 <span class="hll"><span class="c1"># Only POST HTTP requests to the path /hello will route to this function</span>
 </span><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/hello&quot;</span><span class="p">)</span>
@@ -1896,25 +1946,28 @@
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">sample_request.json</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="s2">&quot;/hello/{name}&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/hello/lessa&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
-    <span class="err">...</span>
-<span class="p">}</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/hello/{name}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/hello/lessa&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
 </div>
+</div>
 <p>If you need to accept multiple HTTP methods in a single function, you can use the <code>route</code> method and pass a list of
 HTTP methods.</p>
-<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">app.py</label><label for="__tabbed_6_2">sample_request.json</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1936,11 +1989,11 @@ HTTP methods.</p>
 <span class="normal">19</span>
 <span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 
 <span class="hll"><span class="c1"># PUT and POST HTTP requests to the path /hello will route to this function</span>
 </span><span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/hello&quot;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;PUT&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">])</span>
@@ -1957,20 +2010,21 @@ HTTP methods.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">sample_request.json</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="s2">&quot;/hello/{name}&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/hello/lessa&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
-    <span class="err">...</span>
-<span class="p">}</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/hello/{name}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/hello/lessa&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <details class="note" open="open">
@@ -1979,7 +2033,7 @@ HTTP methods.</p>
 </details>
 <h3 id="accessing-request-details">Accessing request details<a class="headerlink" href="#accessing-request-details" title="Permanent link">&para;</a></h3>
 <p>By integrating with <a href="../../../utilities/data_classes/" target="_blank">Data classes utilities</a>, you have access to request details, Lambda context and also some convenient methods.</p>
-<p>These are made available in the response returned when instantiating <code>ApiGatewayResolver</code>, for example <code>app.current_event</code> and <code>app.lambda_context</code>.</p>
+<p>These are made available in the response returned when instantiating <code>APIGatewayRestResolver</code>, for example <code>app.current_event</code> and <code>app.lambda_context</code>.</p>
 <h4 id="query-strings-and-payload">Query strings and payload<a class="headerlink" href="#query-strings-and-payload" title="Permanent link">&para;</a></h4>
 <p>Within <code>app.current_event</code> property, you can access query strings as dictionary via <code>query_string_parameters</code>, or by name via <code>get_query_string_value</code> method.</p>
 <p>You can access the raw payload via <code>body</code> property, or if it's a JSON string you can quickly deserialize it via <code>json_body</code> property.</p>
@@ -1997,9 +2051,9 @@ HTTP methods.</p>
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_hello_you</span><span class="p">():</span>
@@ -2028,9 +2082,9 @@ HTTP methods.</p>
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_hello_you</span><span class="p">():</span>
@@ -2079,12 +2133,12 @@ HTTP methods.</p>
 <span class="normal">31</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">content_types</span>
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span><span class="p">,</span> <span class="n">Response</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span><span class="p">,</span> <span class="n">Response</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.exceptions</span> <span class="kn">import</span> <span class="n">NotFoundError</span>
 
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 
 <span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">not_found</span>
 </span><span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
@@ -2146,11 +2200,11 @@ HTTP methods.</p>
 <span class="normal">33</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">content_types</span>
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span><span class="p">,</span> <span class="n">Response</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span><span class="p">,</span> <span class="n">Response</span>
 
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 
 <span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">exception_handler</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">)</span>
 </span><span class="k">def</span> <span class="nf">handle_value_error</span><span class="p">(</span><span class="n">ex</span><span class="p">:</span> <span class="ne">ValueError</span><span class="p">):</span>
@@ -2231,7 +2285,7 @@ HTTP methods.</p>
 <span class="normal">44</span>
 <span class="normal">45</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 <span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.exceptions</span> <span class="kn">import</span> <span class="p">(</span>
 </span><span class="hll">    <span class="n">BadRequestError</span><span class="p">,</span>
 </span><span class="hll">    <span class="n">InternalServerError</span><span class="p">,</span>
@@ -2243,7 +2297,7 @@ HTTP methods.</p>
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s2">&quot;/bad-request-error&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">bad_request_error</span><span class="p">():</span>
@@ -2277,10 +2331,12 @@ HTTP methods.</p>
 </code></pre></div>
 </td></tr></table>
 <h3 id="custom-domain-api-mappings">Custom Domain API Mappings<a class="headerlink" href="#custom-domain-api-mappings" title="Permanent link">&para;</a></h3>
-<p>When using Custom Domain API Mappings feature, you must use <strong><code>strip_prefixes</code></strong> param in the <code>ApiGatewayResolver</code> constructor.</p>
+<p>When using Custom Domain API Mappings feature, you must use <strong><code>strip_prefixes</code></strong> param in the <code>APIGatewayRestResolver</code> constructor.</p>
 <p>Scenario: You have a custom domain <code>api.mydomain.dev</code> and set an API Mapping <code>payment</code> to forward requests to your Payments API, the path argument will be <code>/payment/&lt;your_actual_path&gt;</code>.</p>
 <p>This will lead to a HTTP 404 despite having your Lambda configured correctly. See the example below on how to account for this change.</p>
-<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">app.py</label><label for="__tabbed_7_2">sample_request.json</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2299,11 +2355,11 @@ HTTP methods.</p>
 <span class="normal">16</span>
 <span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">(</span><span class="n">strip_prefixes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;/payment&quot;</span><span class="p">])</span>
+<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">(</span><span class="n">strip_prefixes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;/payment&quot;</span><span class="p">])</span>
 </span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/subscriptions/&lt;subscription&gt;&quot;</span><span class="p">)</span>
 <span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
@@ -2317,20 +2373,21 @@ HTTP methods.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">sample_request.json</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;resource&quot;</span><span class="p">:</span> <span class="s2">&quot;/subscriptions/{subscription}&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/payment/subscriptions/123&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
-    <span class="err">...</span>
-<span class="p">}</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/subscriptions/{subscription}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/payment/subscriptions/123&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <details class="note" open="open">
@@ -2340,9 +2397,11 @@ HTTP methods.</p>
 </details>
 <h2 id="advanced">Advanced<a class="headerlink" href="#advanced" title="Permanent link">&para;</a></h2>
 <h3 id="cors">CORS<a class="headerlink" href="#cors" title="Permanent link">&para;</a></h3>
-<p>You can configure CORS at the <code>ApiGatewayResolver</code> constructor via <code>cors</code> parameter using the <code>CORSConfig</code> class.</p>
+<p>You can configure CORS at the <code>APIGatewayRestResolver</code> constructor via <code>cors</code> parameter using the <code>CORSConfig</code> class.</p>
 <p>This will ensure that CORS headers are always returned as part of the response when your functions match the path invoked.</p>
-<div class="tabbed-set" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">app.py</label><label for="__tabbed_8_2">response.json</label><label for="__tabbed_8_3">response_no_cors.json</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2369,13 +2428,13 @@ HTTP methods.</p>
 <span class="normal">24</span>
 <span class="normal">25</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span><span class="p">,</span> <span class="n">CORSConfig</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span><span class="p">,</span> <span class="n">CORSConfig</span>
 
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
 <span class="n">cors_config</span> <span class="o">=</span> <span class="n">CORSConfig</span><span class="p">(</span><span class="n">allow_origin</span><span class="o">=</span><span class="s2">&quot;https://example.com&quot;</span><span class="p">,</span> <span class="n">max_age</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">(</span><span class="n">cors</span><span class="o">=</span><span class="n">cors_config</span><span class="p">)</span>
+<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">(</span><span class="n">cors</span><span class="o">=</span><span class="n">cors_config</span><span class="p">)</span>
 </span>
 <span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello/&lt;name&gt;&quot;</span><span class="p">)</span>
 </span><span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
@@ -2395,7 +2454,7 @@ HTTP methods.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">response.json</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2405,20 +2464,20 @@ HTTP methods.</p>
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Access-Control-Allow-Origin&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.example.com&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Access-Control-Allow-Headers&quot;</span><span class="p">:</span> <span class="s2">&quot;Authorization,Content-Type,X-Amz-Date,X-Amz-Security-Token,X-Api-Key&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;message\&quot;:\&quot;hello lessa\&quot;}&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;isBase64Encoded&quot;</span><span class="p">:</span> <span class="kc">false</span>
-<span class="p">}</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;statusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Content-Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Access-Control-Allow-Origin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.example.com&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Access-Control-Allow-Headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Authorization,Content-Type,X-Amz-Date,X-Amz-Security-Token,X-Api-Key&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;message\&quot;:\&quot;hello lessa\&quot;}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;isBase64Encoded&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><label for="__tabbed_8_3">response_no_cors.json</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2426,16 +2485,17 @@ HTTP methods.</p>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;message\&quot;:\&quot;hello lessa\&quot;}&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;isBase64Encoded&quot;</span><span class="p">:</span> <span class="kc">false</span>
-<span class="p">}</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;statusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Content-Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;message\&quot;:\&quot;hello lessa\&quot;}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;isBase64Encoded&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <details class="tip" open="open">
@@ -2489,7 +2549,9 @@ HTTP methods.</p>
 </table>
 <h3 id="fine-grained-responses">Fine grained responses<a class="headerlink" href="#fine-grained-responses" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>Response</code> class to have full control over the response, for example you might want to add additional headers or set a custom Content-type.</p>
-<div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">app.py</label><label for="__tabbed_9_2">response.json</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2506,9 +2568,9 @@ HTTP methods.</p>
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span><span class="p">,</span> <span class="n">Response</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span><span class="p">,</span> <span class="n">Response</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_hello_you</span><span class="p">():</span>
@@ -2526,7 +2588,7 @@ HTTP methods.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">response.json</label><div class="tabbed-content">
+<div class="tabbed-block">
 <p>```json
 {
     "body": "{\"message\":\"I\'m a teapot\"}",
@@ -2539,13 +2601,16 @@ HTTP methods.</p>
 }</p>
 </div>
 </div>
+</div>
 <h3 id="compress">Compress<a class="headerlink" href="#compress" title="Permanent link">&para;</a></h3>
 <p>You can compress with gzip and base64 encode your responses via <code>compress</code> parameter.</p>
 <details class="warning" open="open">
 <summary>Warning</summary>
 <p>The client must send the <code>Accept-Encoding</code> header, otherwise a normal response will be sent.</p>
 </details>
-<div class="tabbed-set" data-tabs="10:3"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><label for="__tabbed_10_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="10:3"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">app.py</label><label for="__tabbed_10_2">sample_request.json</label><label for="__tabbed_10_3">response.json</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2555,9 +2620,9 @@ HTTP methods.</p>
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 
 <span class="hll"><span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello&quot;</span><span class="p">,</span> <span class="n">compress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span><span class="k">def</span> <span class="nf">get_hello_you</span><span class="p">():</span>
@@ -2568,7 +2633,7 @@ HTTP methods.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><label for="__tabbed_10_2">sample_request.json</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2576,18 +2641,18 @@ HTTP methods.</p>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Accept-Encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;gzip&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/hello&quot;</span><span class="p">,</span>
-    <span class="err">...</span>
-<span class="p">}</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Accept-Encoding&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gzip&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/hello&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><label for="__tabbed_10_3">response.json</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2596,17 +2661,18 @@ HTTP methods.</p>
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;H4sIAAAAAAACE6tWyk0tLk5MT1WyUspIzcnJVyjNyyxLLSpOVaoFANha8kEcAAAA&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Content-Encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;gzip&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;isBase64Encoded&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span>
-<span class="p">}</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;H4sIAAAAAAACE6tWyk0tLk5MT1WyUspIzcnJVyjNyyxLLSpOVaoFANha8kEcAAAA&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Content-Encoding&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gzip&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Content-Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;application/json&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;isBase64Encoded&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;statusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <h3 id="binary-responses">Binary responses<a class="headerlink" href="#binary-responses" title="Permanent link">&para;</a></h3>
@@ -2616,7 +2682,9 @@ HTTP methods.</p>
 <summary>Warning</summary>
 <p>This feature requires API Gateway to configure binary media types, see <a href="#required-resources">our sample infrastructure</a> for reference.</p>
 </details>
-<div class="tabbed-set" data-tabs="11:4"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><label for="__tabbed_11_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="11:4"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><input id="__tabbed_11_4" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">app.py</label><label for="__tabbed_11_2">logo.svg</label><label for="__tabbed_11_3">sample_request.json</label><label for="__tabbed_11_4">response.json</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2633,9 +2701,9 @@ HTTP methods.</p>
 <span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
-<span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span><span class="p">,</span> <span class="n">Response</span>
+<span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span><span class="p">,</span> <span class="n">Response</span>
 </span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 <span class="hll"><span class="n">logo_file</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LAMBDA_TASK_ROOT&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/logo.svg&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read_bytes</span><span class="p">()</span>
 </span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/logo&quot;</span><span class="p">)</span>
@@ -2647,7 +2715,7 @@ HTTP methods.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><label for="__tabbed_11_2">logo.svg</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2686,7 +2754,7 @@ HTTP methods.</p>
 <span class="normal">36</span>
 <span class="normal">37</span>
 <span class="normal">38</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
-<span class="c">&lt;!-- Generator: Adobe Illustrator 19.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;</span>
+<span class="cm">&lt;!-- Generator: Adobe Illustrator 19.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  --&gt;</span>
 <span class="nt">&lt;svg</span> <span class="na">version=</span><span class="s">&quot;1.1&quot;</span> <span class="na">id=</span><span class="s">&quot;Layer_1&quot;</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span> <span class="na">x=</span><span class="s">&quot;0px&quot;</span> <span class="na">y=</span><span class="s">&quot;0px&quot;</span>
         <span class="na">viewBox=</span><span class="s">&quot;0 0 304 182&quot;</span> <span class="na">style=</span><span class="s">&quot;enable-background:new 0 0 304 182;&quot;</span> <span class="na">xml:space=</span><span class="s">&quot;preserve&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;style</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span>
@@ -2726,7 +2794,7 @@ HTTP methods.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><label for="__tabbed_11_3">sample_request.json</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2734,18 +2802,18 @@ HTTP methods.</p>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;image/svg+xml&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;GET&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/logo&quot;</span><span class="p">,</span>
-    <span class="err">...</span>
-<span class="p">}</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Accept&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;image/svg+xml&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;httpMethod&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GET&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/logo&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_11_4" name="__tabbed_11" type="radio" /><label for="__tabbed_11_4">response.json</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2753,16 +2821,17 @@ HTTP methods.</p>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="nt">&quot;body&quot;</span><span class="p">:</span> <span class="s2">&quot;H4sIAAAAAAACE3VXa2scRxD87ID/w+byKTCzN899yFZMLBLHYEMg4K9BHq0l4c2duDudZIf891TVrPwiMehmd+fR3dXV1eOnz+7/mpvjtNtfbzenK9+6VTNtyvbienN5uro9vLPD6tlPj797+r21zYtpM+3OD9vdSfPzxfbt1Lyc59v9QZ8aP7au9ab5482L5pf7m+3u0Pw+317al5um1cc31chJ07XONc9vr+eLxv3YNNby/P3x8ks3/Kq5vjhdvTr/MO3+xAu83OxPV1eHw83Jen13d9fexXa7u1wH59wam5clJ/fz9eb9fy304ziuNYulpyt3c79qPtTx8XePmuP1dPd8y4nGNdGlxg9h1ewPH+bpdDVtzt/Ok317Xt5f7ra3m4uTzXTXfLHyicyf7G/OC5bf7Kb9tDtOKwXGI5rDhxtMHKb7w7rs95x41O4P7u931/N88sOv+vfkn/rV66vd3c7TyXScNtuLiydlvr75+su3O5+uZYkmL3n805vzw1VT5vM9cIOpVQM8Xw9dm0yHn+JMbHvj+IoRiJuhHYtrBxPagPfBpLbDmmD6NuB7NpxzWttpDG3EKd46vAfr29HE2XZtxMYABx4VzIxY2VmvnaMN2jkW642zAdPZRkyms76DndGZPpthgEt9MvB0wEJM91gacUpsvc3c3eO4sYXJHuf52A42jNjEp2qXRzjrMzaENtngLGOwCS4krO7xzXscoIeR4WFLNpFbEo7GNrhdOhkEGElrgUyCx3gokQYAHMOLxjvFVY1XVDNQy0AKkx4PgPSIjcALv8QDf0He9NZ3BaEFhTdgInESMPKBMwAemzxTZT1zgFP5vRekOJTg8zucquEvCULsXOx1hjY5bWKuAh1fFkbuIGABa71+4cuRcMHfuiboMB6Kw8gGW5mQtDUwBa1f4s/Kd6+1iD8oplyIvq9oebEFYBOKsXi+ORNEJBKLbBhaXzIcZ0YGbgMF9IAkdG9I4Y/N65RhaYCLi+morPSipK8RMlmdIgahbFR+s2UF+Gpe3ieip6/kayCbkHpYRUp6QgH6MGFEgLuiFQHbviLO/DkdEGkbk4ljsawtR7J1zIAFk0aTioBBpIQYbmWNJArqKQlXxh9UoSQXjZxFIGoGFmzSPM/8FD+w8IDNmxG+l1pwlr5Ey/rwzP1gay1mG5Ykj6/GrpoIRZOMYqR3GiudHijAFJPJiePVCGBr2mIlE0bEUKpIMFrQwjCEcQabB4pOmJVyPolCYWEnYJZVyU+VE4JrQC56cPWtpfSVHfhkJD60RDy6foYyRNv1NZlCXoh/YwM05C7rEU0sitKERehqrLkiYCrhvcSO53VFrzxeAqB0UxHzbMFPb/q+1ltVRoITiTnNKRWm0ownRlbpFUu/iI5uYRMEoMb/kLt+yR3BSq98xtkQXElWl5h1yg6nvcz5SrVFta1UHTz3v4koIEzIVPgRKlkkc44ykipJsip7kVMWdICDFPBMMoOwUhlbRb23NX/UjqHYesi4sK2OmDhaWpLKiE1YzxbCsUhATZUlb2q7iBX7Kj/Kc80atEz66yWyXorhGTIkRqnrSURu8fWhdNIFKT7B8UnNJPIUwYLgLVHkOD7knC4rjNpFeturrBRRbmtHkpTh5VVIncmBnYlpjhT3HhMUd1urK0rQE7AE14goJdFRWBYZHyUIcLLm3AuhwF5qO7Zg4B+KTodiJCaSOMN4SXbRC+pR1Vs8FEZGOcnCtKvNvnC/aoiKj2+dekO1GdS4VMfAQo2++KXOonIgf5ifoo6hOkm6EFDP8pItNXvVpFNdxiNErThVXG1UQXHEz/eEYWk/jEmCRcyyaKtWKbVSr1YNc6rytcLnq6AORazytbMa9nqOutgYdUPmGL72nyKmlzxMVcjpPLPdE7cC1MlQQkpyZHasjPbRFVpJ+mNPqlcln6Tekk5lg7cd/9CbJMkkXFInSmrcw4PHQS1p0HZSANa6s8CqNiN/Qh7hI0vVfK7aj6u1Lnq67n173/P1vhd6Nf+ETgJLgSyjjYGpj2SVD3JM96PM+xRRZYcMtV8NJHKn3bW+pUydGMFg1CMelUSIgjwj4nGUVULDxxJJM1zvsM/q0uZ5TQggwFnoRanI9h76gcSJDPYLz5dA/y/EgXnygRcGostStqFXv0KdD7qP6MYUTKVXr1uhEzty8QP5plqDXbZuk1mtuUZGv3jtg8JIFKHTJrt6H9AduN4TAE6q95qzMEikMmkVRq+bKQXrC0cfUrdm7h5+8b8YjP8Cgadmu5INAAA=&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;headers&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;image/svg+xml&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;isBase64Encoded&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;statusCode&quot;</span><span class="p">:</span> <span class="mi">200</span>
-<span class="p">}</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;H4sIAAAAAAACE3VXa2scRxD87ID/w+byKTCzN899yFZMLBLHYEMg4K9BHq0l4c2duDudZIf891TVrPwiMehmd+fR3dXV1eOnz+7/mpvjtNtfbzenK9+6VTNtyvbienN5uro9vLPD6tlPj797+r21zYtpM+3OD9vdSfPzxfbt1Lyc59v9QZ8aP7au9ab5482L5pf7m+3u0Pw+317al5um1cc31chJ07XONc9vr+eLxv3YNNby/P3x8ks3/Kq5vjhdvTr/MO3+xAu83OxPV1eHw83Jen13d9fexXa7u1wH59wam5clJ/fz9eb9fy304ziuNYulpyt3c79qPtTx8XePmuP1dPd8y4nGNdGlxg9h1ewPH+bpdDVtzt/Ok317Xt5f7ra3m4uTzXTXfLHyicyf7G/OC5bf7Kb9tDtOKwXGI5rDhxtMHKb7w7rs95x41O4P7u931/N88sOv+vfkn/rV66vd3c7TyXScNtuLiydlvr75+su3O5+uZYkmL3n805vzw1VT5vM9cIOpVQM8Xw9dm0yHn+JMbHvj+IoRiJuhHYtrBxPagPfBpLbDmmD6NuB7NpxzWttpDG3EKd46vAfr29HE2XZtxMYABx4VzIxY2VmvnaMN2jkW642zAdPZRkyms76DndGZPpthgEt9MvB0wEJM91gacUpsvc3c3eO4sYXJHuf52A42jNjEp2qXRzjrMzaENtngLGOwCS4krO7xzXscoIeR4WFLNpFbEo7GNrhdOhkEGElrgUyCx3gokQYAHMOLxjvFVY1XVDNQy0AKkx4PgPSIjcALv8QDf0He9NZ3BaEFhTdgInESMPKBMwAemzxTZT1zgFP5vRekOJTg8zucquEvCULsXOx1hjY5bWKuAh1fFkbuIGABa71+4cuRcMHfuiboMB6Kw8gGW5mQtDUwBa1f4s/Kd6+1iD8oplyIvq9oebEFYBOKsXi+ORNEJBKLbBhaXzIcZ0YGbgMF9IAkdG9I4Y/N65RhaYCLi+morPSipK8RMlmdIgahbFR+s2UF+Gpe3ieip6/kayCbkHpYRUp6QgH6MGFEgLuiFQHbviLO/DkdEGkbk4ljsawtR7J1zIAFk0aTioBBpIQYbmWNJArqKQlXxh9UoSQXjZxFIGoGFmzSPM/8FD+w8IDNmxG+l1pwlr5Ey/rwzP1gay1mG5Ykj6/GrpoIRZOMYqR3GiudHijAFJPJiePVCGBr2mIlE0bEUKpIMFrQwjCEcQabB4pOmJVyPolCYWEnYJZVyU+VE4JrQC56cPWtpfSVHfhkJD60RDy6foYyRNv1NZlCXoh/YwM05C7rEU0sitKERehqrLkiYCrhvcSO53VFrzxeAqB0UxHzbMFPb/q+1ltVRoITiTnNKRWm0ownRlbpFUu/iI5uYRMEoMb/kLt+yR3BSq98xtkQXElWl5h1yg6nvcz5SrVFta1UHTz3v4koIEzIVPgRKlkkc44ykipJsip7kVMWdICDFPBMMoOwUhlbRb23NX/UjqHYesi4sK2OmDhaWpLKiE1YzxbCsUhATZUlb2q7iBX7Kj/Kc80atEz66yWyXorhGTIkRqnrSURu8fWhdNIFKT7B8UnNJPIUwYLgLVHkOD7knC4rjNpFeturrBRRbmtHkpTh5VVIncmBnYlpjhT3HhMUd1urK0rQE7AE14goJdFRWBYZHyUIcLLm3AuhwF5qO7Zg4B+KTodiJCaSOMN4SXbRC+pR1Vs8FEZGOcnCtKvNvnC/aoiKj2+dekO1GdS4VMfAQo2++KXOonIgf5ifoo6hOkm6EFDP8pItNXvVpFNdxiNErThVXG1UQXHEz/eEYWk/jEmCRcyyaKtWKbVSr1YNc6rytcLnq6AORazytbMa9nqOutgYdUPmGL72nyKmlzxMVcjpPLPdE7cC1MlQQkpyZHasjPbRFVpJ+mNPqlcln6Tekk5lg7cd/9CbJMkkXFInSmrcw4PHQS1p0HZSANa6s8CqNiN/Qh7hI0vVfK7aj6u1Lnq67n173/P1vhd6Nf+ETgJLgSyjjYGpj2SVD3JM96PM+xRRZYcMtV8NJHKn3bW+pUydGMFg1CMelUSIgjwj4nGUVULDxxJJM1zvsM/q0uZ5TQggwFnoRanI9h76gcSJDPYLz5dA/y/EgXnygRcGostStqFXv0KdD7qP6MYUTKVXr1uhEzty8QP5plqDXbZuk1mtuUZGv3jtg8JIFKHTJrt6H9AduN4TAE6q95qzMEikMmkVRq+bKQXrC0cfUrdm7h5+8b8YjP8Cgadmu5INAAA=&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;headers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;Content-Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;image/svg+xml&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;isBase64Encoded&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;statusCode&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <h3 id="debug-mode">Debug mode<a class="headerlink" href="#debug-mode" title="Permanent link">&para;</a></h3>
@@ -2771,6 +2840,7 @@ HTTP methods.</p>
 <details class="danger" open="open">
 <summary>Danger</summary>
 <p>This might reveal sensitive information in your logs and relax CORS restrictions, use it sparingly.</p>
+<p>It's best to use for local development only!</p>
 </details>
 <table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Enabling debug mode</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2781,9 +2851,9 @@ HTTP methods.</p>
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 
-<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </span>
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_hello_universe</span><span class="p">():</span>
@@ -2830,10 +2900,14 @@ HTTP methods.</p>
 <span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
 <span class="kn">from</span> <span class="nn">json</span> <span class="kn">import</span> <span class="n">JSONEncoder</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 
 <span class="k">class</span> <span class="nc">CustomEncoder</span><span class="p">(</span><span class="n">JSONEncoder</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Your customer json encoder&quot;&quot;&quot;</span>
@@ -2846,15 +2920,15 @@ HTTP methods.</p>
             <span class="k">pass</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">JSONEncoder</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
+<span class="hll">        <span class="k">return</span> <span class="n">JSONEncoder</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">)</span>
+</span><span class="hll">
+</span><span class="k">def</span> <span class="nf">custom_serializer</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Your custom serializer function APIGatewayRestResolver will use&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">CustomEncoder</span><span class="p">)</span>
+<span class="hll">
+</span><span class="c1"># Assigning your custom serializer</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">(</span><span class="n">serializer</span><span class="o">=</span><span class="n">custom_serializer</span><span class="p">)</span>
 
-<span class="hll"><span class="k">def</span> <span class="nf">custom_serializer</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span class="hll">    <span class="sd">&quot;&quot;&quot;Your custom serializer function ApiGatewayResolver will use&quot;&quot;&quot;</span>
-</span>    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">CustomEncoder</span><span class="p">)</span>
-
-<span class="c1"># Assigning your custom serializer</span>
-<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">(</span><span class="n">serializer</span><span class="o">=</span><span class="n">custom_serializer</span><span class="p">)</span>
-</span>
 <span class="k">class</span> <span class="nc">Color</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
     <span class="n">RED</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">BLUE</span> <span class="o">=</span> <span class="mi">2</span>
@@ -2871,8 +2945,10 @@ HTTP methods.</p>
 <h3 id="split-routes-with-router">Split routes with Router<a class="headerlink" href="#split-routes-with-router" title="Permanent link">&para;</a></h3>
 <p>As you grow the number of routes a given Lambda function should handle, it is natural to split routes into separate files to ease maintenance - That's where the <code>Router</code> feature is useful.</p>
 <p>Let's assume you have <code>app.py</code> as your Lambda function entrypoint and routes in <code>users.py</code>, this is how you'd use the <code>Router</code> feature.</p>
-<div class="tabbed-set" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><label for="__tabbed_12_1">users.py</label><div class="tabbed-content">
-<p>We import <strong>Router</strong> instead of <strong>ApiGatewayResolver</strong>; syntax wise is exactly the same.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">users.py</label><label for="__tabbed_12_2">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>We import <strong>Router</strong> instead of <strong>APIGatewayRestResolver</strong>; syntax wise is exactly the same.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2927,7 +3003,7 @@ HTTP methods.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><label for="__tabbed_12_2">app.py</label><div class="tabbed-content">
+<div class="tabbed-block">
 <p>We use <code>include_router</code> method and include all user routers registered in the <code>router</code> global object.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2946,13 +3022,13 @@ HTTP methods.</p>
 <span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
 
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span>
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.typing</span> <span class="kn">import</span> <span class="n">LambdaContext</span>
 
 <span class="hll"><span class="kn">import</span> <span class="nn">users</span>
 </span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="hll"><span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 </span><span class="hll"><span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">users</span><span class="o">.</span><span class="n">router</span><span class="p">)</span>
 </span>
 
@@ -2962,10 +3038,13 @@ HTTP methods.</p>
 </td></tr></table>
 </div>
 </div>
+</div>
 <h4 id="route-prefix">Route prefix<a class="headerlink" href="#route-prefix" title="Permanent link">&para;</a></h4>
 <p>In the previous example, <code>users.py</code> routes had a <code>/users</code> prefix. This might grow over time and become repetitive.</p>
 <p>When necessary, you can set a prefix when including a router object. This means you could remove <code>/users</code> prefix in <code>users.py</code> altogether.</p>
-<div class="tabbed-set" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><label for="__tabbed_13_1">app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">app.py</label><label for="__tabbed_13_2">users.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2980,12 +3059,12 @@ HTTP methods.</p>
 <span class="normal">12</span>
 <span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
 
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.typing</span> <span class="kn">import</span> <span class="n">LambdaContext</span>
 
 <span class="kn">import</span> <span class="nn">users</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 <span class="hll"><span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">users</span><span class="o">.</span><span class="n">router</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/users&quot;</span><span class="p">)</span> <span class="c1"># prefix &#39;/users&#39; to any route in `users.router`</span>
 </span>
 
@@ -2994,7 +3073,7 @@ HTTP methods.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><label for="__tabbed_13_2">users.py</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3036,9 +3115,12 @@ HTTP methods.</p>
 </td></tr></table>
 </div>
 </div>
+</div>
 <h4 id="sample-layout">Sample layout<a class="headerlink" href="#sample-layout" title="Permanent link">&para;</a></h4>
 <p>This sample project contains a Users function with two distinct set of routes, <code>/users</code> and <code>/health</code>. The layout optimizes for code sharing, no custom build tooling, and it uses <a href="../../..#lambda-layer">Lambda Layers</a> to install Lambda Powertools.</p>
-<div class="tabbed-set" data-tabs="14:5"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><label for="__tabbed_14_1">Project layout</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="14:5"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><input id="__tabbed_14_3" name="__tabbed_14" type="radio" /><input id="__tabbed_14_4" name="__tabbed_14" type="radio" /><input id="__tabbed_14_5" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Project layout</label><label for="__tabbed_14_2">template.yml</label><label for="__tabbed_14_3">src/users/main.py</label><label for="__tabbed_14_4">src/users/routers/health.py</label><label for="__tabbed_14_5">tests/functional/test_users.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3091,7 +3173,7 @@ HTTP methods.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><label for="__tabbed_14_2">template.yml</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3146,65 +3228,65 @@ HTTP methods.</p>
 <span class="normal">52</span>
 <span class="normal">53</span>
 <span class="normal">54</span>
-<span class="normal">55</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span> <span class="s">&#39;2010-09-09&#39;</span>
-<span class="nt">Transform</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span>
-<span class="nt">Description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Example service with multiple routes</span>
-<span class="nt">Globals</span><span class="p">:</span>
-    <span class="nt">Function</span><span class="p">:</span>
-        <span class="nt">Timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
-        <span class="nt">MemorySize</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">512</span>
-        <span class="nt">Runtime</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python3.9</span>
-        <span class="nt">Tracing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Active</span>
-        <span class="nt">Architectures</span><span class="p">:</span>
-            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">x86_64</span>
-        <span class="nt">Environment</span><span class="p">:</span>
-            <span class="nt">Variables</span><span class="p">:</span>
-                <span class="nt">LOG_LEVEL</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">INFO</span>
-                <span class="nt">POWERTOOLS_LOGGER_LOG_EVENT</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-                <span class="nt">POWERTOOLS_METRICS_NAMESPACE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MyServerlessApplication</span>
-                <span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">users</span>
-<span class="nt">Resources</span><span class="p">:</span>
-    <span class="nt">UsersService</span><span class="p">:</span>
-        <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span>
-        <span class="nt">Properties</span><span class="p">:</span>
-<span class="hll">            <span class="nt">Handler</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">users.main.lambda_handler</span>
-</span><span class="hll">            <span class="nt">CodeUri</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">src</span>
-</span>            <span class="nt">Layers</span><span class="p">:</span>
-                <span class="c1"># Latest version: https://awslabs.github.io/aws-lambda-powertools-python/latest/#lambda-layer</span>
-                <span class="p p-Indicator">-</span> <span class="kt">!Sub</span> <span class="l l-Scalar l-Scalar-Plain">arn:aws:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPython:4</span>
-            <span class="nt">Events</span><span class="p">:</span>
-                <span class="nt">ByUser</span><span class="p">:</span>
-                    <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
-                    <span class="nt">Properties</span><span class="p">:</span>
-                        <span class="nt">Path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/users/{name}</span>
-                        <span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">GET</span>
-                <span class="nt">AllUsers</span><span class="p">:</span>
-                    <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
-                    <span class="nt">Properties</span><span class="p">:</span>
-                        <span class="nt">Path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/users</span>
-                        <span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">GET</span>
-                <span class="nt">HealthCheck</span><span class="p">:</span>
-                    <span class="nt">Type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Api</span>
-                    <span class="nt">Properties</span><span class="p">:</span>
-                        <span class="nt">Path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/status</span>
-                        <span class="nt">Method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">GET</span>
-<span class="nt">Outputs</span><span class="p">:</span>
-    <span class="nt">UsersApiEndpoint</span><span class="p">:</span>
-        <span class="nt">Description</span><span class="p">:</span> <span class="s">&quot;API</span><span class="nv"> </span><span class="s">Gateway</span><span class="nv"> </span><span class="s">endpoint</span><span class="nv"> </span><span class="s">URL</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Prod</span><span class="nv"> </span><span class="s">environment</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Users</span><span class="nv"> </span><span class="s">Function&quot;</span>
-        <span class="nt">Value</span><span class="p">:</span> <span class="kt">!Sub</span> <span class="s">&quot;https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod&quot;</span>
-    <span class="nt">AllUsersURL</span><span class="p">:</span>
-        <span class="nt">Description</span><span class="p">:</span> <span class="s">&quot;URL</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">fetch</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">registered</span><span class="nv"> </span><span class="s">users&quot;</span>
-        <span class="nt">Value</span><span class="p">:</span> <span class="kt">!Sub</span> <span class="s">&quot;https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/users&quot;</span>
-    <span class="nt">ByUserURL</span><span class="p">:</span>
-        <span class="nt">Description</span><span class="p">:</span> <span class="s">&quot;URL</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">retrieve</span><span class="nv"> </span><span class="s">details</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">user&quot;</span>
-        <span class="nt">Value</span><span class="p">:</span> <span class="kt">!Sub</span> <span class="s">&quot;https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/users/test&quot;</span>
-    <span class="nt">UsersServiceFunctionArn</span><span class="p">:</span>
-        <span class="nt">Description</span><span class="p">:</span> <span class="s">&quot;Users</span><span class="nv"> </span><span class="s">Lambda</span><span class="nv"> </span><span class="s">Function</span><span class="nv"> </span><span class="s">ARN&quot;</span>
-        <span class="nt">Value</span><span class="p">:</span> <span class="kt">!GetAtt</span> <span class="l l-Scalar l-Scalar-Plain">UsersService.Arn</span>
+<span class="normal">55</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2010-09-09&#39;</span><span class="w"></span>
+<span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span><span class="w"></span>
+<span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example service with multiple routes</span><span class="w"></span>
+<span class="nt">Globals</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Function</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
+<span class="w">        </span><span class="nt">MemorySize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.9</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Tracing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Active</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Architectures</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86_64</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Environment</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Variables</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">LOG_LEVEL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span><span class="w"></span>
+<span class="w">                </span><span class="nt">POWERTOOLS_LOGGER_LOG_EVENT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">                </span><span class="nt">POWERTOOLS_METRICS_NAMESPACE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MyServerlessApplication</span><span class="w"></span>
+<span class="w">                </span><span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">users</span><span class="w"></span>
+<span class="nt">Resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">UsersService</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">users.main.lambda_handler</span><span class="w"></span>
+</span><span class="hll"><span class="w">            </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src</span><span class="w"></span>
+</span><span class="w">            </span><span class="nt">Layers</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="c1"># Latest version: https://awslabs.github.io/aws-lambda-powertools-python/latest/#lambda-layer</span><span class="w"></span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="kt">!Sub</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPython:4</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Events</span><span class="p">:</span><span class="w"></span>
+<span class="w">                </span><span class="nt">ByUser</span><span class="p">:</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Api</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/users/{name}</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span><span class="w"></span>
+<span class="w">                </span><span class="nt">AllUsers</span><span class="p">:</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Api</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/users</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span><span class="w"></span>
+<span class="w">                </span><span class="nt">HealthCheck</span><span class="p">:</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Api</span><span class="w"></span>
+<span class="w">                    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/status</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span><span class="w"></span>
+<span class="nt">Outputs</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">UsersApiEndpoint</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;API</span><span class="nv"> </span><span class="s">Gateway</span><span class="nv"> </span><span class="s">endpoint</span><span class="nv"> </span><span class="s">URL</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Prod</span><span class="nv"> </span><span class="s">environment</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Users</span><span class="nv"> </span><span class="s">Function&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span><span class="kt">!Sub</span><span class="w"> </span><span class="s">&quot;https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">AllUsersURL</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;URL</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">fetch</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">registered</span><span class="nv"> </span><span class="s">users&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span><span class="kt">!Sub</span><span class="w"> </span><span class="s">&quot;https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/users&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">ByUserURL</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;URL</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">retrieve</span><span class="nv"> </span><span class="s">details</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">user&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span><span class="kt">!Sub</span><span class="w"> </span><span class="s">&quot;https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/users/test&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">UsersServiceFunctionArn</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Users</span><span class="nv"> </span><span class="s">Lambda</span><span class="nv"> </span><span class="s">Function</span><span class="nv"> </span><span class="s">ARN&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">Value</span><span class="p">:</span><span class="w"> </span><span class="kt">!GetAtt</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UsersService.Arn</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_14_3" name="__tabbed_14" type="radio" /><label for="__tabbed_14_3">src/users/main.py</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3225,25 +3307,23 @@ HTTP methods.</p>
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
 
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span><span class="p">,</span> <span class="n">Tracer</span>
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ProxyEventType</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging.correlation_paths</span> <span class="kn">import</span> <span class="n">APPLICATION_LOAD_BALANCER</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.typing</span> <span class="kn">import</span> <span class="n">LambdaContext</span>
 
-<span class="hll"><span class="kn">from</span> <span class="nn">.routers</span> <span class="kn">import</span> <span class="n">health</span><span class="p">,</span> <span class="n">users</span>
-</span>
-<span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">.routers</span> <span class="kn">import</span> <span class="n">health</span><span class="p">,</span> <span class="n">users</span>
+<span class="hll">
+</span><span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">(</span><span class="n">proxy_type</span><span class="o">=</span><span class="n">ProxyEventType</span><span class="o">.</span><span class="n">APIGatewayProxyEvent</span><span class="p">)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>
 
-<span class="hll"><span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">health</span><span class="o">.</span><span class="n">router</span><span class="p">)</span>
-</span><span class="hll"><span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">users</span><span class="o">.</span><span class="n">router</span><span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">health</span><span class="o">.</span><span class="n">router</span><span class="p">)</span>
+<span class="hll"><span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">users</span><span class="o">.</span><span class="n">router</span><span class="p">)</span>
+</span><span class="hll">
 </span>
-
 <span class="nd">@logger</span><span class="o">.</span><span class="n">inject_lambda_context</span><span class="p">(</span><span class="n">correlation_id_path</span><span class="o">=</span><span class="n">API_GATEWAY_REST</span><span class="p">)</span>
 <span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
 <span class="k">def</span> <span class="nf">lambda_handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">):</span>
@@ -3251,7 +3331,7 @@ HTTP methods.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_14_4" name="__tabbed_14" type="radio" /><label for="__tabbed_14_4">src/users/routers/health.py</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3280,7 +3360,7 @@ HTTP methods.</p>
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_14_5" name="__tabbed_14" type="radio" /><label for="__tabbed_14_5">tests/functional/test_users.py</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3304,6 +3384,7 @@ HTTP methods.</p>
     <span class="k">assert</span> <span class="n">ret</span><span class="p">[</span><span class="s2">&quot;body&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">expected</span>
 </code></pre></div>
 </td></tr></table>
+</div>
 </div>
 </div>
 <h3 id="considerations">Considerations<a class="headerlink" href="#considerations" title="Permanent link">&para;</a></h3>
@@ -3356,7 +3437,9 @@ your development, building, deployment tooling need to accommodate the distinct 
 </ul>
 <h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
 <p>You can test your routes by passing a proxy event request where <code>path</code> and <code>httpMethod</code>.</p>
-<div class="tabbed-set" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><label for="__tabbed_15_1">test_app.py</label><div class="tabbed-content">
+<div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">test_app.py</label><label for="__tabbed_15_2">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3411,7 +3494,7 @@ your development, building, deployment tooling need to accommodate the distinct 
 </code></pre></div>
 </td></tr></table>
 </div>
-<input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><label for="__tabbed_15_2">app.py</label><div class="tabbed-content">
+<div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3428,10 +3511,10 @@ your development, building, deployment tooling need to accommodate the distinct 
 <span class="normal">14</span>
 <span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span>
 <span class="kn">from</span> <span class="nn">aws_lambda_powertools.logging</span> <span class="kn">import</span> <span class="n">correlation_paths</span>
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler.api_gateway</span> <span class="kn">import</span> <span class="n">ApiGatewayResolver</span>
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.event_handler</span> <span class="kn">import</span> <span class="n">APIGatewayRestResolver</span>
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">ApiGatewayResolver</span><span class="p">()</span>  <span class="c1"># by default API Gateway REST API (v1)</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">APIGatewayRestResolver</span><span class="p">()</span>  <span class="c1"># API Gateway REST API (v1)</span>
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/hello&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_hello_universe</span><span class="p">():</span>
@@ -3445,28 +3528,27 @@ your development, building, deployment tooling need to accommodate the distinct 
 </td></tr></table>
 </div>
 </div>
+</div>
 <h2 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h2>
 <p><strong>What's the difference between this utility and frameworks like Chalice?</strong></p>
 <p>Chalice is a full featured microframework that manages application and infrastructure. This utility, however, is largely focused on routing to reduce boilerplate and expects you to setup and manage infrastructure with your framework of choice.</p>
 <p>That said, <a href="https://aws.github.io/chalice/topics/middleware.html" target="_blank">Chalice has native integration with Lambda Powertools</a> if you're looking for a more opinionated and web framework feature set.</p>
-                
-                  
-                    
+<p><strong>What happened to <code>ApiGatewayResolver</code>?</strong></p>
+<p>It's been superseded by more explicit resolvers like <code>APIGatewayRestResolver</code>, <code>APIGatewayHttpResolver</code>, and <code>ALBResolver</code>.</p>
+<p><code>ApiGatewayResolver</code> handled multiple types of event resolvers for convenience via <code>proxy_type</code> param. However,
+it made it impossible for static checkers like Mypy and IDEs IntelliSense to know what properties a <code>current_event</code> would have due to late bound resolution.</p>
+<p>This provided a suboptimal experience for customers not being able to find all properties available besides common ones between API Gateway REST, HTTP, and ALB - while manually annotating <code>app.current_event</code> would work it is not the experience we want to provide to customers.</p>
+<p><code>ApiGatewayResolver</code> will be deprecated in v2 and have appropriate warnings as soon as we have a v2 draft.</p>
 
-<hr>
-<div class="md-source-date">
+  <hr>
+<div class="md-source-file">
   <small>
     
-      Last update: 2022-01-17
+      Last update:
+      2022-02-03
     
   </small>
 </div>
-                  
-                
-              
-              
-                
-
 
               
             </article>
@@ -3480,8 +3562,7 @@ your development, building, deployment tooling need to accommodate the distinct 
         
       </main>
       
-        
-<footer class="md-footer">
+        <footer class="md-footer">
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
@@ -3520,20 +3601,19 @@ your development, building, deployment tooling need to accommodate the distinct 
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-          <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2021 Amazon Web Services
-          </div>
-        
-        
-          Made with
-          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-            Material for MkDocs
-          </a>
-        
-        
-      </div>
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021 Amazon Web Services
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
       
     </div>
   </div>
@@ -3543,10 +3623,10 @@ your development, building, deployment tooling need to accommodate the distinct 
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.instant", "navigation.indexes"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.instant", "navigation.indexes", "navigation.tracking", "content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../assets/javascripts/workers/search.22074ed6.min.js", "version": {"provider": "mike", "default": "latest"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.960e086b.min.js"></script>
       
         <script src="../../../javascript/aws-amplify.min.js"></script>
       
