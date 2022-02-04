@@ -30,7 +30,7 @@ email-validator = {version = "*", optional = true }
 
 [tool.poetry.dev-dependencies]
 coverage = {extras = ["toml"], version = "^6.2"}
-pytest = "^6.2.5"
+pytest = "^7.0.0"
 black = "^21.12b0"
 flake8 = "^4.0.1"
 flake8-black = "^0.2.3"
@@ -50,10 +50,10 @@ radon = "^5.1.0"
 xenon = "^0.8.0"
 flake8-eradicate = "^1.2.0"
 flake8-bugbear = "^22.1.11"
-mkdocs-material = "^7.3.6"
 mkdocs-git-revision-date-plugin = "^0.3.1"
 mike = "^0.6.0"
 mypy = "^0.931"
+mkdocs-material = "^8.1.9"
 
 
 [tool.poetry.extras]
