@@ -2352,7 +2352,7 @@ aws-xray-sdk
 <span class="hll"><span class="k">def</span> <span class="nf">add_greeting_metric</span><span class="p">(</span><span class="n">service</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;APP&quot;</span><span class="p">):</span>
 </span><span class="hll">    <span class="n">function_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;AWS_LAMBDA_FUNCTION_NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;undefined&quot;</span><span class="p">)</span>
 </span><span class="hll">    <span class="n">service_dimension</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;service&quot;</span><span class="p">,</span> <span class="s2">&quot;Value&quot;</span><span class="p">:</span> <span class="n">service</span><span class="p">}</span>
-</span><span class="hll">    <span class="n">function_dimension</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;function_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Value&quot;</span><span class="p">:</span> <span class="n">function_name</span><span class="p">}</span>
+</span><span class="hll">    <span class="n">function_dimension</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;function_name&quot;</span><span class="p">,</span> <span class="s2">&quot;Value&quot;</span><span class="p">:</span> <span class="n">function_name</span><span class="p">}</span>
 </span><span class="hll">    <span class="n">is_cold_start</span> <span class="o">=</span> <span class="kc">True</span>
 </span><span class="hll">
 </span><span class="hll">    <span class="k">global</span> <span class="n">cold_start</span>
@@ -2660,7 +2660,7 @@ aws-xray-sdk
   <small>
     
       Last update:
-      2022-02-04
+      2022-02-09
     
   </small>
 </div>

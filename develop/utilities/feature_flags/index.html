@@ -1871,27 +1871,29 @@
 <h3 id="adjusting-in-memory-cache">Adjusting in-memory cache<a class="headerlink" href="#adjusting-in-memory-cache" title="Permanent link">&para;</a></h3>
 <p>By default, we cache configuration retrieved from the Store for 5 seconds for performance and reliability reasons.</p>
 <p>You can override <code>max_age</code> parameter when instantiating the store.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>```python hl_lines=&quot;7&quot;
-from aws_lambda_powertools.utilities.feature_flags import FeatureFlags, AppConfigStore
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.feature_flags</span> <span class="kn">import</span> <span class="n">FeatureFlags</span><span class="p">,</span> <span class="n">AppConfigStore</span>
 
-app_config = AppConfigStore(
-    environment=&quot;dev&quot;,
-    application=&quot;product-catalogue&quot;,
-    name=&quot;features&quot;,
-    max_age=300
-)
-```
+<span class="n">app_config</span> <span class="o">=</span> <span class="n">AppConfigStore</span><span class="p">(</span>
+    <span class="n">environment</span><span class="o">=</span><span class="s2">&quot;dev&quot;</span><span class="p">,</span>
+    <span class="n">application</span><span class="o">=</span><span class="s2">&quot;product-catalogue&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;features&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="n">max_age</span><span class="o">=</span><span class="mi">300</span>
+</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
+</div>
+</div>
+</div>
 <h3 id="getting-fetched-configuration">Getting fetched configuration<a class="headerlink" href="#getting-fetched-configuration" title="Permanent link">&para;</a></h3>
 <details class="info" open="open">
 <summary>When is this useful?</summary>
@@ -1899,7 +1901,7 @@ app_config = AppConfigStore(
 <p>This means you don't need to make another call only to fetch app configuration.</p>
 </details>
 <p>You can access the configuration fetched from the store via <code>get_raw_configuration</code> property within the store instance.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">app.py</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:1"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">app.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -2120,7 +2122,7 @@ app_config = AppConfigStore(
 <h3 id="envelope">Envelope<a class="headerlink" href="#envelope" title="Permanent link">&para;</a></h3>
 <p>There are scenarios where you might want to include feature flags as part of an existing application configuration.</p>
 <p>For this to work, you need to use a JMESPath expression via the <code>envelope</code> parameter to extract that key as the feature flags configuration.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">app.py</label><label for="__tabbed_7_2">configuration.json</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">app.py</label><label for="__tabbed_8_2">configuration.json</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2282,9 +2284,13 @@ app_config = AppConfigStore(
 <span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
-<span class="normal">26</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">botocore.config</span> <span class="kn">import</span> <span class="n">Config</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">botocore.config</span> <span class="kn">import</span> <span class="n">Config</span>
 
 <span class="kn">import</span> <span class="nn">jmespath</span>
+
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.feature_flags</span> <span class="kn">import</span> <span class="n">AppConfigStore</span>
 
 <span class="n">boto_config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">read_timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">retries</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;total_max_attempts&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
 
@@ -2364,11 +2370,7 @@ app_config = AppConfigStore(
 <span class="normal">45</span>
 <span class="normal">46</span>
 <span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
-
-<span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.feature_flags</span> <span class="kn">import</span> <span class="n">FeatureFlags</span><span class="p">,</span> <span class="n">AppConfigStore</span><span class="p">,</span> <span class="n">RuleAction</span>
+<span class="normal">48</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.feature_flags</span> <span class="kn">import</span> <span class="n">FeatureFlags</span><span class="p">,</span> <span class="n">AppConfigStore</span><span class="p">,</span> <span class="n">RuleAction</span>
 
 
 <span class="k">def</span> <span class="nf">init_feature_flags</span><span class="p">(</span><span class="n">mocker</span><span class="p">,</span> <span class="n">mock_schema</span><span class="p">,</span> <span class="n">envelope</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FeatureFlags</span><span class="p">:</span>
@@ -2482,7 +2484,7 @@ app_config = AppConfigStore(
   <small>
     
       Last update:
-      2022-02-03
+      2022-02-09
     
   </small>
 </div>
