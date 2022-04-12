@@ -1028,7 +1028,10 @@
 <p><strong>Extra dependency</strong></p>
 <details class="warning" open="open">
 <summary>Warning</summary>
-<p>This will increase the overall package size by approximately 75MB due to Pydantic dependency.</p>
+<p>This will increase the compressed package size by &gt;10MB due to the Pydantic dependency.</p>
+<p>To reduce the impact on the package size at the expense of 30%-50% of its performance <a href="https://pydantic-docs.helpmanual.io/install/#performance-vs-package-size-trade-off">Pydantic can also be
+installed without binary files</a>:</p>
+<p><code>SKIP_CYTHON=1 pip install --no-binary pydantic aws-lambda-powertools[pydantic]</code></p>
 </details>
 <p>Install parser's extra dependencies using <strong><code>pip install aws-lambda-powertools[pydantic]</code></strong>.</p>
 <h2 id="defining-models">Defining models<a class="headerlink" href="#defining-models" title="Permanent link">&para;</a></h2>
@@ -1938,7 +1941,7 @@ Codes:
   <small>
     
       Last update:
-      2022-03-07
+      2022-04-12
     
   </small>
 </div>
