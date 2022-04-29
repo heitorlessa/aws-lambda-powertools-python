@@ -744,6 +744,26 @@
     Testing your code
   </a>
   
+    <nav class="md-nav" aria-label="Testing your code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mocking-parameter-values" class="md-nav__link">
+    Mocking parameter values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clearing-cache" class="md-nav__link">
+    Clearing cache
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1079,6 +1099,26 @@
   <a href="#testing-your-code" class="md-nav__link">
     Testing your code
   </a>
+  
+    <nav class="md-nav" aria-label="Testing your code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mocking-parameter-values" class="md-nav__link">
+    Mocking parameter values
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clearing-cache" class="md-nav__link">
+    Clearing cache
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1949,9 +1989,8 @@
 </div>
 </div>
 <h2 id="testing-your-code">Testing your code<a class="headerlink" href="#testing-your-code" title="Permanent link">&para;</a></h2>
-<p>For unit testing your applications, you can mock the calls to the parameters utility to avoid calling AWS APIs. This
-can be achieved in a number of ways - in this example, we use the <a href="https://docs.pytest.org/en/latest/how-to/monkeypatch.html">pytest monkeypatch fixture</a>
-to patch the <code>parameters.get_parameter</code> method:</p>
+<h3 id="mocking-parameter-values">Mocking parameter values<a class="headerlink" href="#mocking-parameter-values" title="Permanent link">&para;</a></h3>
+<p>For unit testing your applications, you can mock the calls to the parameters utility to avoid calling AWS APIs. This can be achieved in a number of ways - in this example, we use the <a href="https://docs.pytest.org/en/latest/how-to/monkeypatch.html">pytest monkeypatch fixture</a> to patch the <code>parameters.get_parameter</code> method:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">tests.py</label><label for="__tabbed_5_2">src/index.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2065,13 +2104,133 @@ object named <code>get_parameter_mock</code>.</p>
 </div>
 </div>
 </div>
+<h3 id="clearing-cache">Clearing cache<a class="headerlink" href="#clearing-cache" title="Permanent link">&para;</a></h3>
+<p>Parameters utility caches all parameter values for performance and cost reasons. However, this can have unintended interference in tests using the same parameter name.</p>
+<p>Within your tests, you can use <code>clear_cache</code> method available in <a href="#built-in-provider-class">every provider</a>. When using multiple providers or higher level functions like <code>get_parameter</code>, use <code>clear_caches</code> standalone function to clear cache globally.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">clear_cache method</label><label for="__tabbed_8_2">global clear_caches</label><label for="__tabbed_8_3">app.py</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pytest</span>
+
+<span class="kn">from</span> <span class="nn">src</span> <span class="kn">import</span> <span class="n">app</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;function&quot;</span><span class="p">,</span> <span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">clear_parameters_cache</span><span class="p">():</span>
+    <span class="k">yield</span>
+<span class="hll">    <span class="n">app</span><span class="o">.</span><span class="n">ssm_provider</span><span class="o">.</span><span class="n">clear_cache</span><span class="p">()</span> <span class="c1"># This will clear SSMProvider cache</span>
+</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span> <span class="nf">mock_parameter_response</span><span class="p">(</span><span class="n">monkeypatch</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">mockreturn</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;mock_value&quot;</span>
+
+    <span class="n">monkeypatch</span><span class="o">.</span><span class="n">setattr</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">ssm_provider</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="n">mockreturn</span><span class="p">)</span>
+
+<span class="c1"># Pass our fixture as an argument to all tests where we want to mock the get_parameter response</span>
+<span class="k">def</span> <span class="nf">test_handler</span><span class="p">(</span><span class="n">mock_parameter_response</span><span class="p">):</span>
+    <span class="n">return_val</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">handler</span><span class="p">({},</span> <span class="p">{})</span>
+    <span class="k">assert</span> <span class="n">return_val</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;mock_value&#39;</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<div class="tabbed-block">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pytest</span>
+
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities</span> <span class="kn">import</span> <span class="n">parameters</span>
+<span class="kn">from</span> <span class="nn">src</span> <span class="kn">import</span> <span class="n">app</span>
+
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">&quot;function&quot;</span><span class="p">,</span> <span class="n">autouse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">clear_parameters_cache</span><span class="p">():</span>
+    <span class="k">yield</span>
+<span class="hll">    <span class="n">parameters</span><span class="o">.</span><span class="n">clear_caches</span><span class="p">()</span> <span class="c1"># This will clear all providers cache</span>
+</span>
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span> <span class="nf">mock_parameter_response</span><span class="p">(</span><span class="n">monkeypatch</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">mockreturn</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;mock_value&quot;</span>
+
+    <span class="n">monkeypatch</span><span class="o">.</span><span class="n">setattr</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">ssm_provider</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="n">mockreturn</span><span class="p">)</span>
+
+<span class="c1"># Pass our fixture as an argument to all tests where we want to mock the get_parameter response</span>
+<span class="k">def</span> <span class="nf">test_handler</span><span class="p">(</span><span class="n">mock_parameter_response</span><span class="p">):</span>
+    <span class="n">return_val</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">handler</span><span class="p">({},</span> <span class="p">{})</span>
+    <span class="k">assert</span> <span class="n">return_val</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;mock_value&#39;</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<div class="tabbed-block">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities</span> <span class="kn">import</span> <span class="n">parameters</span>
+<span class="kn">from</span> <span class="nn">botocore.config</span> <span class="kn">import</span> <span class="n">Config</span>
+
+<span class="n">ssm_provider</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">SSMProvider</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">Config</span><span class="p">(</span><span class="n">region_name</span><span class="o">=</span><span class="s2">&quot;us-west-1&quot;</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">ssm_provider</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/my/parameter&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      2022-02-09
+      2022-04-29
     
   </small>
 </div>
