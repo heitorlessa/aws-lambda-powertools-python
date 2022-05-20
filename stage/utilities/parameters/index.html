@@ -293,7 +293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="https://github.com/awslabs/aws-lambda-powertools-roadmap/projects/1" target="_blank" class="md-nav__link">
+      <a href="../../roadmap/" class="md-nav__link">
         Roadmap
       </a>
     </li>
@@ -728,6 +728,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#bring-your-own-boto-client" class="md-nav__link">
+    Bring your own boto client
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#customizing-boto-configuration" class="md-nav__link">
     Customizing boto configuration
   </a>
@@ -1084,6 +1091,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#bring-your-own-boto-client" class="md-nav__link">
+    Bring your own boto client
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#customizing-boto-configuration" class="md-nav__link">
     Customizing boto configuration
   </a>
@@ -1404,6 +1418,7 @@
 <details class="example" open="open">
 <summary>Example</summary>
 <p>DynamoDB table with <code>id</code> partition key and <code>value</code> as attribute</p>
+</details>
 <table>
 <thead>
 <tr>
@@ -1418,7 +1433,6 @@
 </tr>
 </tbody>
 </table>
-</details>
 <p>With this table, <code>dynamodb_provider.get("my-param")</code> will return <code>my-value</code>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">app.py</label><label for="__tabbed_1_2">DynamoDB Local example</label></div>
 <div class="tabbed-content">
@@ -1456,6 +1470,7 @@
 <details class="example" open="open">
 <summary>Example</summary>
 <p>DynamoDB table with <code>id</code> primary key, <code>sk</code> as sort key<code>and</code>value` as attribute</p>
+</details>
 <table>
 <thead>
 <tr>
@@ -1482,7 +1497,6 @@
 </tr>
 </tbody>
 </table>
-</details>
 <p>With this table, <code>dynamodb_provider.get_multiple("my-hash-key")</code> will return a dictionary response in the shape of <code>sk:value</code>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">app.py</label><label for="__tabbed_2_2">parameters dict response</label></div>
 <div class="tabbed-content">
@@ -1932,13 +1946,87 @@
 </tr>
 </tbody>
 </table>
+<h3 id="bring-your-own-boto-client">Bring your own boto client<a class="headerlink" href="#bring-your-own-boto-client" title="Permanent link">&para;</a></h3>
+<p>You can use <code>boto3_client</code> parameter via any of the available <a href="#built-in-provider-class">Provider Classes</a>. Some providers expect a low level boto3 client while others expect a high level boto3 client, here is the mapping for each of them:</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Type</th>
+<th>Boto client construction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#ssmprovider">SSMProvider</a></td>
+<td>low level</td>
+<td><code>boto3.client("ssm")</code></td>
+</tr>
+<tr>
+<td><a href="#secretsprovider">SecretsProvider</a></td>
+<td>low level</td>
+<td><code>boto3.client("secrets")</code></td>
+</tr>
+<tr>
+<td><a href="#appconfigprovider">AppConfigProvider</a></td>
+<td>low level</td>
+<td><code>boto3.client("appconfig")</code></td>
+</tr>
+<tr>
+<td><a href="#dynamodbprovider">DynamoDBProvider</a></td>
+<td>high level</td>
+<td><code>boto3.resource("dynamodb")</code></td>
+</tr>
+</tbody>
+</table>
+<p>Bringing them together in a single code snippet would look like this:</p>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Example: passing a custom boto3 client for each provider</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">boto3</span>
+<span class="kn">from</span> <span class="nn">botocore.config</span> <span class="kn">import</span> <span class="n">Config</span>
+
+<span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities</span> <span class="kn">import</span> <span class="n">parameters</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">region_name</span><span class="o">=</span><span class="s2">&quot;us-west-1&quot;</span><span class="p">)</span>
+
+<span class="c1"># construct boto clients with any custom configuration</span>
+<span class="n">ssm</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&quot;ssm&quot;</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="n">secrets</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&quot;secrets&quot;</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="n">appconfig</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&quot;appconfig&quot;</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="n">dynamodb</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s2">&quot;dynamodb&quot;</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+
+<span class="n">ssm_provider</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">SSMProvider</span><span class="p">(</span><span class="n">boto3_client</span><span class="o">=</span><span class="n">ssm</span><span class="p">)</span>
+<span class="n">secrets_provider</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">SecretsProvider</span><span class="p">(</span><span class="n">boto3_client</span><span class="o">=</span><span class="n">secrets</span><span class="p">)</span>
+<span class="n">appconf_provider</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">AppConfigProvider</span><span class="p">(</span><span class="n">boto3_client</span><span class="o">=</span><span class="n">appconfig</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="s2">&quot;my_env&quot;</span><span class="p">,</span> <span class="n">application</span><span class="o">=</span><span class="s2">&quot;my_app&quot;</span><span class="p">)</span>
+<span class="n">dynamodb_provider</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">DynamoDBProvider</span><span class="p">(</span><span class="n">boto3_client</span><span class="o">=</span><span class="n">dynamodb</span><span class="p">,</span> <span class="n">table_name</span><span class="o">=</span><span class="s2">&quot;my-table&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<details class="question" open="open">
+<summary>When is this useful?</summary>
+<p>Injecting a custom boto3 client can make unit/snapshot testing easier, including SDK customizations.</p>
+</details>
 <h3 id="customizing-boto-configuration">Customizing boto configuration<a class="headerlink" href="#customizing-boto-configuration" title="Permanent link">&para;</a></h3>
-<p>The <strong><code>config</code></strong> and <strong><code>boto3_session</code></strong> parameters enable you to pass in a custom <a href="https://botocore.amazonaws.com/v1/documentation/api/latest/reference/config.html">botocore config object</a> or a custom <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html">boto3 session</a> when constructing any of the built-in provider classes.</p>
+<p>The <strong><code>config</code></strong> , <strong><code>boto3_session</code></strong>, and <strong><code>boto3_client</code></strong>  parameters enable you to pass in a custom <a href="https://botocore.amazonaws.com/v1/documentation/api/latest/reference/config.html">botocore config object</a> , <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html">boto3 session</a>, or  a <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/boto3.html">boto3 client</a> when constructing any of the built-in provider classes.</p>
 <details class="tip" open="open">
 <summary>Tip</summary>
 <p>You can use a custom session for retrieving parameters cross-account/region and for snapshot testing.</p>
+<p>When using VPC private endpoints, you can pass a custom client altogether. It's also useful for testing when injecting fake instances.</p>
 </details>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Custom session</label><label for="__tabbed_4_2">Custom config</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Custom session</label><label for="__tabbed_4_2">Custom config</label><label for="__tabbed_4_3">Custom client</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1978,6 +2066,29 @@
 </span>
 <span class="hll"><span class="n">boto_config</span> <span class="o">=</span> <span class="n">Config</span><span class="p">()</span>
 </span><span class="hll"><span class="n">ssm_provider</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">SSMProvider</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">boto_config</span><span class="p">)</span>
+</span>
+<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="c1"># Retrieve a single parameter</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">ssm_provider</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/my/parameter&quot;</span><span class="p">)</span>
+    <span class="o">...</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<div class="tabbed-block">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities</span> <span class="kn">import</span> <span class="n">parameters</span>
+<span class="hll"><span class="kn">import</span> <span class="nn">boto3</span>
+</span>
+<span class="hll"><span class="n">boto3_client</span><span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s2">&quot;ssm&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="n">ssm_provider</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">SSMProvider</span><span class="p">(</span><span class="n">boto3_client</span><span class="o">=</span><span class="n">boto3_client</span><span class="p">)</span>
 </span>
 <span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
     <span class="c1"># Retrieve a single parameter</span>
@@ -2230,7 +2341,7 @@ object named <code>get_parameter_mock</code>.</p>
   <small>
     
       Last update:
-      2022-04-29
+      2022-05-19
     
   </small>
 </div>
