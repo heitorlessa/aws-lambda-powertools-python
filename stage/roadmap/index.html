@@ -939,7 +939,8 @@
 <h3 id="python-36-deprecation">Python 3.6 deprecation<a class="headerlink" href="#python-36-deprecation" title="Permanent link">&para;</a></h3>
 <p>We will remove support for Python 3.6 after July 18th, following AWS Lambda <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy" target="_blank">deprecation notice for Python 3.6 runtime</a>. We will monitor the deprecation notice in the event of any extension.</p>
 <h3 id="reduce-release-operational-overhead">Reduce release operational overhead<a class="headerlink" href="#reduce-release-operational-overhead" title="Permanent link">&para;</a></h3>
-<p>We are working on a consistent label and automation strategy across all Lambda Powertools projects (<a href="https://awslabs.github.io/aws-lambda-powertools-java/" target="_blank">Java</a>, <a href="https://awslabs.github.io/aws-lambda-powertools-typescript/latest/" target="_blank">TypeScript</a>). This will be our baseline to automate areas where we don't need human intervention, and reduce our manual effort to areas where clear communication is crucial.</p>
+<p>We are working on a consistent label and automation strategy across all Lambda Powertools projects (<a href="https://awslabs.github.io/aws-lambda-powertools-java/" target="_blank">Java</a>, <a href="https://awslabs.github.io/aws-lambda-powertools-typescript/latest/" target="_blank">TypeScript</a>).</p>
+<p>This will be our baseline to automate areas where we don't need human intervention, and reduce our manual effort to areas where clear communication is crucial.</p>
 <h3 id="revamp-roadmap">Revamp roadmap<a class="headerlink" href="#revamp-roadmap" title="Permanent link">&para;</a></h3>
 <p>We are beta testing the <a href="https://github.com/orgs/awslabs/projects/51/views/1?query=is%3Aopen+sort%3Aupdated-desc" target="_blank">new GitHub Projects Beta</a> to provide more visibility on our current activities. This also includes new GitHub Issue Forms Beta to streamline feature requests, bug reports, RFCs, etc., including a new mechanism to add external links like <code>Ask a Question</code>.</p>
 <p>Once complete, we will repurpose our <a href="https://github.com/awslabs/aws-lambda-powertools-roadmap" target="_blank">central roadmap repository</a> to provide a landing page for all Powertools languages, including an experiment to better highlight feature parity across them.</p>
@@ -974,8 +975,14 @@
 </center></p>
 <p>Our end-to-end mechanism follows four major steps:</p>
 <ul>
-<li><strong>Feature Request</strong>. Ideas start with a <a href="https://github.com/awslabs/aws-lambda-powertools-python/issues/new?assignees=&amp;labels=feature-request%2Ctriage&amp;template=feature_request.yml&amp;title=Feature+request%3A+TITLE" target="_blank">feature request issue template</a> to highlight their use case at a high level. Maintainers review each  request based on <strong>(1)</strong> <a href="..#tenets" target="_blank">project tenets</a>, <strong>(2)</strong> customers reaction (👍) and use cases, and comment whether we'll need a RFC for further discussion before any work begins.</li>
-<li><strong>Request-for-comments (RFC)</strong>. Design proposals use our <a href="https://github.com/awslabs/aws-lambda-powertools-python/issues/new?assignees=&amp;labels=RFC%2Ctriage&amp;template=rfc.yml&amp;title=RFC%3A+TITLE" target="_blank">RFC issue template</a> to describe its implementation, challenges, developer experience, dependencies, and alternative solutions. This helps refine the initial idea with community feedback before a decision is made.</li>
+<li><strong>Feature Request</strong>. Ideas start with a <a href="https://github.com/awslabs/aws-lambda-powertools-python/issues/new?assignees=&amp;labels=feature-request%2Ctriage&amp;template=feature_request.yml&amp;title=Feature+request%3A+TITLE" target="_blank">feature request</a> to outline their use case at a high level. For complex use cases, maintainers might ask for/write a RFC.<ul>
+<li>Maintainers review requests based on <a href="..#tenets" target="_blank">project tenets</a>, customers reaction (👍), and use cases.</li>
+</ul>
+</li>
+<li><strong>Request-for-comments (RFC)</strong>. Design proposals use our <a href="https://github.com/awslabs/aws-lambda-powertools-python/issues/new?assignees=&amp;labels=RFC%2Ctriage&amp;template=rfc.yml&amp;title=RFC%3A+TITLE" target="_blank">RFC issue template</a> to describe its implementation, challenges, developer experience, dependencies, and alternative solutions.<ul>
+<li>This helps refine the initial idea with community feedback before a decision is made.</li>
+</ul>
+</li>
 <li><strong>Decision</strong>. After carefully reviewing and discussing them, maintainers make a final decision on whether to start implementation, defer or reject it, and update everyone with the next steps.</li>
 <li><strong>Implementation</strong>. For approved features, maintainers give priority to the original authors for implementation unless it is a sensitive task that is best handled by maintainers.</li>
 </ul>
@@ -998,7 +1005,7 @@
   <small>
     
       Last update:
-      2022-06-02
+      2022-06-23
     
   </small>
 </div>

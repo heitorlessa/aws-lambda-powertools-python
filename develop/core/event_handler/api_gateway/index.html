@@ -1349,7 +1349,7 @@
   <h1>REST API</h1>
 
 <p>Event handler for Amazon API Gateway REST and HTTP APIs, and Application Loader Balancer (ALB).</p>
-<h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
+<h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Lightweight routing to reduce boilerplate for API Gateway REST/HTTP API and ALB</li>
 <li>Seamless support for CORS, binary and Gzip compression</li>
@@ -1360,8 +1360,11 @@
 </ul>
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <h3 id="required-resources">Required resources<a class="headerlink" href="#required-resources" title="Permanent link">&para;</a></h3>
-<p>You must have an existing <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html" target="_blank">API Gateway Proxy integration</a> or <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/lambda-functions.html" target="_blank">ALB</a> configured to invoke your Lambda function. There is no additional permissions or dependencies required to use this utility.</p>
+<p>You must have an existing <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html" target="_blank">API Gateway Proxy integration</a> or <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/lambda-functions.html" target="_blank">ALB</a> configured to invoke your Lambda function.</p>
 <p>This is the sample infrastructure for API Gateway we are using for the examples in this documentation.</p>
+<details class="info" open="open">
+<summary>There is no additional permissions or dependencies required to use this utility.</summary>
+</details>
 <table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">AWS Serverless Application Model (SAM) example</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1399,44 +1402,50 @@
 <span class="normal">35</span>
 <span class="normal">36</span>
 <span class="normal">37</span>
-<span class="normal">38</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2010-09-09&#39;</span><span class="w"></span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2010-09-09&quot;</span><span class="w"></span>
 <span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span><span class="w"></span>
 <span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hello world event handler API Gateway</span><span class="w"></span>
 
 <span class="nt">Globals</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">Api</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Api</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">TracingEnabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">    </span><span class="nt">Cors</span><span class="p">:</span><span class="w">                           </span><span class="c1"># see CORS section</span><span class="w"></span>
-<span class="w">        </span><span class="nt">AllowOrigin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;https://example.com&#39;&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="nt">AllowHeaders</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;Content-Type,Authorization,X-Amz-Date&#39;&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="nt">MaxAge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;300&#39;&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">BinaryMediaTypes</span><span class="p">:</span><span class="w">               </span><span class="c1"># see Binary responses section</span><span class="w"></span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;*~1*&#39;</span><span class="w">  </span><span class="c1"># converts to */* for any binary type</span><span class="w"></span>
-<span class="w">    </span><span class="nt">Function</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Cors</span><span class="p">:</span><span class="w"> </span><span class="c1"># see CORS section</span><span class="w"></span>
+<span class="w">      </span><span class="nt">AllowOrigin</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;https://example.com&#39;&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">AllowHeaders</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;Content-Type,Authorization,X-Amz-Date&#39;&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">MaxAge</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&#39;300&#39;&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">BinaryMediaTypes</span><span class="p">:</span><span class="w"> </span><span class="c1"># see Binary responses section</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*~1*&quot;</span><span class="w"> </span><span class="c1"># converts to */* for any binary type</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Function</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">Timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
 <span class="w">    </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.8</span><span class="w"></span>
 <span class="w">    </span><span class="nt">Tracing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Active</span><span class="w"></span>
 <span class="w">    </span><span class="nt">Environment</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">Variables</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="nt">LOG_LEVEL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span><span class="w"></span>
-<span class="w">            </span><span class="nt">POWERTOOLS_LOGGER_SAMPLE_RATE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>
-<span class="w">            </span><span class="nt">POWERTOOLS_LOGGER_LOG_EVENT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">            </span><span class="nt">POWERTOOLS_METRICS_NAMESPACE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MyServerlessApplication</span><span class="w"></span>
-<span class="w">            </span><span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_api-service</span><span class="w"></span>
+<span class="w">      </span><span class="nt">Variables</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">LOG_LEVEL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">INFO</span><span class="w"></span>
+<span class="w">        </span><span class="nt">POWERTOOLS_LOGGER_SAMPLE_RATE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span><span class="w"></span>
+<span class="w">        </span><span class="nt">POWERTOOLS_LOGGER_LOG_EVENT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">        </span><span class="nt">POWERTOOLS_METRICS_NAMESPACE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MyServerlessApplication</span><span class="w"></span>
+<span class="w">        </span><span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_api-service</span><span class="w"></span>
 
 <span class="nt">Resources</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">ApiFunction</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">ApiFunction</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span><span class="w"></span>
 <span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span><span class="w"></span>
-<span class="w">        </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api_handler/</span><span class="w"></span>
-<span class="w">        </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API handler function</span><span class="w"></span>
-<span class="w">        </span><span class="nt">Events</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="nt">ApiEvent</span><span class="p">:</span><span class="w"></span>
-<span class="w">                </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Api</span><span class="w"></span>
-<span class="w">                </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
-<span class="w">                </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/{proxy+}</span><span class="w">  </span><span class="c1"># Send requests on any path to the lambda function</span><span class="w"></span>
-<span class="w">                </span><span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ANY</span><span class="w">  </span><span class="c1"># Send requests using any http method to the lambda function</span><span class="w"></span>
+<span class="w">      </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span><span class="w"></span>
+<span class="w">      </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api_handler/</span><span class="w"></span>
+<span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API handler function</span><span class="w"></span>
+<span class="w">      </span><span class="nt">Events</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">ApiEvent</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Api</span><span class="w"></span>
+<span class="w">          </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="c1"># NOTE: this is a catch-all rule to simply the documentation.</span><span class="w"></span>
+<span class="w">            </span><span class="c1"># explicit routes and methods are recommended for prod instead</span><span class="w"></span>
+<span class="w">            </span><span class="c1"># for example, Path: /hello, Method: GET</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/{proxy+}</span><span class="w"> </span><span class="c1"># Send requests on any path to the lambda function</span><span class="w"></span>
+<span class="w">            </span><span class="nt">Method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ANY</span><span class="w"> </span><span class="c1"># Send requests using any http method to the lambda function</span><span class="w"></span>
 </code></pre></div>
 </td></tr></table>
 <h3 id="event-resolvers">Event Resolvers<a class="headerlink" href="#event-resolvers" title="Permanent link">&para;</a></h3>
@@ -3422,15 +3431,15 @@ HTTP methods.</p>
 <h4 id="micro-function">Micro function<a class="headerlink" href="#micro-function" title="Permanent link">&para;</a></h4>
 <p><img alt="Micro function sample" src="../../../media/micro-function.png" /></p>
 <p>A micro function means that your final code artifact will be different to each function deployed. This is generally the approach to start if you're looking for fine-grain control and/or high load on certain parts of your service.</p>
-<p><em><strong>Benefits</strong></em></p>
+<p><strong>Benefits</strong></p>
 <ul>
 <li><strong>Granular scaling</strong>. A micro function can benefit from the <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-scaling.html" target="_blank">Lambda scaling model</a> to scale differently depending on each part of your application. Concurrency controls and provisioned concurrency can also be used at a granular level for capacity management.</li>
 <li><strong>Discoverability</strong>. Micro functions are easier do visualize when using distributed tracing. Their high-level architectures can be self-explanatory, and complexity is highly visible — assuming each function is named to the business purpose it serves.</li>
 <li><strong>Package size</strong>. An independent function can be significant smaller (KB vs MB) depending on external dependencies it require to perform its purpose. Conversely, a monolithic approach can benefit from <a href="https://docs.aws.amazon.com/lambda/latest/dg/invocation-layers.html" target="_blank">Lambda Layers</a> to optimize builds for external dependencies.</li>
 </ul>
-<p><em><strong>Downsides</strong></em></p>
+<p><strong>Downsides</strong></p>
 <ul>
-<li><strong>Upfront investment</strong>. Python ecosystem doesn't use a bundler — you need a custom build tooling to ensure each function only has what it needs and account for <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html" target="_blank">C bindings for runtime compatibility</a>. Operations become more elaborate — you need to standardize tracing labels/annotations, structured logging, and metrics to pinpoint root causes.<ul>
+<li><strong>Upfront investment</strong>. You need custom build tooling to bundle assets, including <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html" target="_blank">C bindings for runtime compatibility</a>. `Operations become more elaborate — you need to standardize tracing labels/annotations, structured logging, and metrics to pinpoint root causes.<ul>
 <li>Engineering discipline is necessary for both approaches. Micro-function approach however requires further attention in consistency as the number of functions grow, just like any distributed system.</li>
 </ul>
 </li>
@@ -3551,7 +3560,7 @@ it made it impossible for static checkers like Mypy and IDEs IntelliSense to kno
   <small>
     
       Last update:
-      2022-02-21
+      2022-06-23
     
   </small>
 </div>

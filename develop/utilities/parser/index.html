@@ -1784,7 +1784,11 @@ installed without binary files</a>:</p>
 <summary>Tip: Looking to auto-generate models from JSON, YAML, JSON Schemas, OpenApi, etc?</summary>
 <p>Use Koudai Aono's <a href="https://github.com/koxudaxi/datamodel-code-generator">data model code generation tool for Pydantic</a></p>
 </details>
-<p>There are number of advanced use cases well documented in Pydantic's doc such as creating <a href="https://pydantic-docs.helpmanual.io/usage/models/#faux-immutability">immutable models</a>, <a href="https://pydantic-docs.helpmanual.io/usage/models/#field-with-dynamic-default-value">declaring fields with dynamic values</a>) e.g. UUID, and <a href="https://pydantic-docs.helpmanual.io/usage/models/#helper-functions">helper functions to parse models from files, str</a>, etc.</p>
+<p>There are number of advanced use cases well documented in Pydantic's doc such as creating <a href="https://pydantic-docs.helpmanual.io/usage/models/#faux-immutability">immutable models</a>, <a href="https://pydantic-docs.helpmanual.io/usage/models/#field-with-dynamic-default-value">declaring fields with dynamic values</a>.</p>
+<details class="tip" open="open">
+<summary>Pydantic helper functions</summary>
+<p>Pydantic also offers <a href="https://pydantic-docs.helpmanual.io/usage/models/#helper-functions">functions</a> to parse models from files, dicts, string, etc.</p>
+</details>
 <p>Two possible unknown use cases are Models and exception' serialization. Models have methods to <a href="https://pydantic-docs.helpmanual.io/usage/exporting_models/">export them</a> as <code>dict</code>, <code>JSON</code>, <code>JSON Schema</code>, and Validation exceptions can be exported as JSON.</p>
 <table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Converting data models in various formats</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1882,21 +1886,21 @@ installed without binary files</a>:</p>
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Summary report @ 14:36:07(+0200) 2020-10-23
-Scenarios launched:  10
-Scenarios completed: 10
-Requests completed:  2000
-Mean response/sec: 114.81
-Response time (msec):
-    min: 54.9
-    max: 1684.9
-    median: 68
-    p95: 109.1
-    p99: 180.3
-Scenario counts:
-    0: 10 (100%)
-Codes:
-    200: 2000
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">Summary</span> <span class="nx">report</span> <span class="err">@</span> <span class="mf">14</span><span class="o">:</span><span class="mf">36</span><span class="o">:</span><span class="mo">07</span><span class="p">(</span><span class="o">+</span><span class="mo">0200</span><span class="p">)</span> <span class="mf">2020</span><span class="o">-</span><span class="mf">10</span><span class="o">-</span><span class="mf">23</span>
+<span class="nx">Scenarios</span> <span class="nx">launched</span><span class="o">:</span>  <span class="mf">10</span>
+<span class="nx">Scenarios</span> <span class="nx">completed</span><span class="o">:</span> <span class="mf">10</span>
+<span class="nx">Requests</span> <span class="nx">completed</span><span class="o">:</span>  <span class="mf">2000</span>
+<span class="nx">Mean</span> <span class="nx">response</span><span class="o">/</span><span class="nx">sec</span><span class="o">:</span> <span class="mf">114.81</span>
+<span class="nx">Response</span> <span class="nx">time</span> <span class="p">(</span><span class="nx">msec</span><span class="p">)</span><span class="o">:</span>
+    <span class="nx">min</span><span class="o">:</span> <span class="mf">54.9</span>
+    <span class="nx">max</span><span class="o">:</span> <span class="mf">1684.9</span>
+    <span class="nx">median</span><span class="o">:</span> <span class="mf">68</span>
+    <span class="nx">p95</span><span class="o">:</span> <span class="mf">109.1</span>
+    <span class="nx">p99</span><span class="o">:</span> <span class="mf">180.3</span>
+<span class="nx">Scenario</span> <span class="nx">counts</span><span class="o">:</span>
+    <span class="mf">0</span><span class="o">:</span> <span class="mf">10</span> <span class="p">(</span><span class="mf">100</span><span class="o">%</span><span class="p">)</span>
+<span class="nx">Codes</span><span class="o">:</span>
+    <span class="mf">200</span><span class="o">:</span> <span class="mf">2000</span>
 </code></pre></div>
 </td></tr></table>
 <p><strong>With parser</strong></p>
@@ -1918,21 +1922,21 @@ Codes:
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Summary report @ 14:29:23(+0200) 2020-10-23
-Scenarios launched:  10
-Scenarios completed: 10
-Requests completed:  2000
-Mean response/sec: 111.67
-Response time (msec):
-    min: 54.3
-    max: 1887.2
-    median: 66.1
-    p95: 113.3
-    p99: 193.1
-Scenario counts:
-    0: 10 (100%)
-Codes:
-    200: 2000
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nx">Summary</span> <span class="nx">report</span> <span class="err">@</span> <span class="mf">14</span><span class="o">:</span><span class="mf">29</span><span class="o">:</span><span class="mf">23</span><span class="p">(</span><span class="o">+</span><span class="mo">0200</span><span class="p">)</span> <span class="mf">2020</span><span class="o">-</span><span class="mf">10</span><span class="o">-</span><span class="mf">23</span>
+<span class="nx">Scenarios</span> <span class="nx">launched</span><span class="o">:</span>  <span class="mf">10</span>
+<span class="nx">Scenarios</span> <span class="nx">completed</span><span class="o">:</span> <span class="mf">10</span>
+<span class="nx">Requests</span> <span class="nx">completed</span><span class="o">:</span>  <span class="mf">2000</span>
+<span class="nx">Mean</span> <span class="nx">response</span><span class="o">/</span><span class="nx">sec</span><span class="o">:</span> <span class="mf">111.67</span>
+<span class="nx">Response</span> <span class="nx">time</span> <span class="p">(</span><span class="nx">msec</span><span class="p">)</span><span class="o">:</span>
+    <span class="nx">min</span><span class="o">:</span> <span class="mf">54.3</span>
+    <span class="nx">max</span><span class="o">:</span> <span class="mf">1887.2</span>
+    <span class="nx">median</span><span class="o">:</span> <span class="mf">66.1</span>
+    <span class="nx">p95</span><span class="o">:</span> <span class="mf">113.3</span>
+    <span class="nx">p99</span><span class="o">:</span> <span class="mf">193.1</span>
+<span class="nx">Scenario</span> <span class="nx">counts</span><span class="o">:</span>
+    <span class="mf">0</span><span class="o">:</span> <span class="mf">10</span> <span class="p">(</span><span class="mf">100</span><span class="o">%</span><span class="p">)</span>
+<span class="nx">Codes</span><span class="o">:</span>
+    <span class="mf">200</span><span class="o">:</span> <span class="mf">2000</span>
 </code></pre></div>
 </td></tr></table>
 
@@ -1941,7 +1945,7 @@ Codes:
   <small>
     
       Last update:
-      2022-04-12
+      2022-06-23
     
   </small>
 </div>

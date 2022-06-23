@@ -1158,6 +1158,8 @@
 <li><code>ReportBatchItemFailures</code> is set in your SQS, Kinesis, or DynamoDB event source properties</li>
 <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#sqs-batchfailurereporting-syntax" target="_blank">A specific response</a> is returned so Lambda knows which records should not be deleted during partial responses</li>
 </ol>
+<!-- HTML tags are required in admonition content thus increasing line length beyond our limits -->
+<!-- markdownlint-disable MD013 -->
 <details class="warning" open="open">
 <summary>Warning: This utility lowers the chance of processing records more than once; it does not guarantee it</summary>
 <p>We recommend implementing processing logic in an <a href="../idempotency/" target="_blank">idempotent manner</a> wherever possible.</p>
@@ -3432,7 +3434,7 @@ decorator or <code>PartialSQSProcessor</code> class.</p>
   <small>
     
       Last update:
-      2022-01-18
+      2022-06-23
     
   </small>
 </div>
