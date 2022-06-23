@@ -1048,24 +1048,52 @@
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <h3 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h3>
 <p>Before your use this utility, your AWS Lambda function <a href="https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html#services-xray-permissions">must have permissions</a> to send traces to AWS X-Ray.</p>
-<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">AWS Serverless Application Model (SAM) example</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">Resources</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">HelloWorldFunction</span><span class="p">:</span><span class="w"></span>
+<table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">AWS Serverless Application Model (SAM) example</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">AWSTemplateFormatVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2010-09-09&quot;</span><span class="w"></span>
+<span class="nt">Transform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless-2016-10-31</span><span class="w"></span>
+<span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS Lambda Powertools Tracer doc examples</span><span class="w"></span>
+
+<span class="nt">Globals</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">Function</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.9</span><span class="w"></span>
+<span class="hll"><span class="w">    </span><span class="nt">Tracing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Active</span><span class="w"></span>
+</span><span class="w">    </span><span class="nt">Environment</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">Variables</span><span class="p">:</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span><span class="w"></span>
+</span><span class="w">    </span><span class="nt">Layers</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Find the latest Layer version in the official documentation</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># https://awslabs.github.io/aws-lambda-powertools-python/latest/#lambda-layer</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="kt">!Sub</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:lambda:${AWS::Region}:017000801446:layer:AWSLambdaPowertoolsPython:21</span><span class="w"></span>
+
+<span class="nt">Resources</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">CaptureLambdaHandlerExample</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span><span class="w"></span>
 <span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.8</span><span class="w"></span>
-<span class="hll"><span class="w">      </span><span class="nt">Tracing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Active</span><span class="w"></span>
-</span><span class="w">      </span><span class="nt">Environment</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">Variables</span><span class="p">:</span><span class="w"></span>
-<span class="hll"><span class="w">          </span><span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span><span class="w"></span>
-</span></code></pre></div>
+<span class="w">      </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src</span><span class="w"></span>
+<span class="w">      </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">capture_lambda_handler.handler</span><span class="w"></span>
+</code></pre></div>
 </td></tr></table>
 <h3 id="lambda-handler">Lambda handler<a class="headerlink" href="#lambda-handler" title="Permanent link">&para;</a></h3>
 <p>You can quickly start by initializing <code>Tracer</code> and use <code>capture_lambda_handler</code> decorator for your Lambda handler.</p>
@@ -1078,16 +1106,26 @@
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Tracer</span>
-</span>
-<span class="hll"><span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span> <span class="c1"># Sets service via env var</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="hll"><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Tracer</span>
+</span><span class="kn">from</span> <span class="nn">aws_lambda_powertools.utilities.typing</span> <span class="kn">import</span> <span class="n">LambdaContext</span>
+
+<span class="hll"><span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>  <span class="c1"># Sets service via POWERTOOLS_SERVICE_NAME env var</span>
 </span><span class="c1"># OR tracer = Tracer(service=&quot;example&quot;)</span>
 
+
+<span class="k">def</span> <span class="nf">collect_payment</span><span class="p">(</span><span class="n">charge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;dummy payment collected for charge: </span><span class="si">{</span><span class="n">charge_id</span><span class="si">}</span><span class="s2">&quot;</span>
+
+
 <span class="hll"><span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_lambda_handler</span>
-</span><span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
-    <span class="n">charge_id</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;charge_id&#39;</span><span class="p">)</span>
-    <span class="n">payment</span> <span class="o">=</span> <span class="n">collect_payment</span><span class="p">(</span><span class="n">charge_id</span><span class="p">)</span>
-    <span class="o">...</span>
+</span><span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">LambdaContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">charge_id</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;charge_id&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">collect_payment</span><span class="p">(</span><span class="n">charge_id</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 <p><code>capture_lambda_handler</code> performs these additional tasks to ease operations:</p>
