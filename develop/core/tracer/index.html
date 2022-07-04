@@ -1081,7 +1081,7 @@
 <span class="hll"><span class="w">    </span><span class="nt">Tracing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Active</span><span class="w"></span>
 </span><span class="w">    </span><span class="nt">Environment</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="nt">Variables</span><span class="p">:</span><span class="w"></span>
-<span class="hll"><span class="w">        </span><span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">POWERTOOLS_SERVICE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">payment</span><span class="w"></span>
 </span><span class="w">    </span><span class="nt">Layers</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="c1"># Find the latest Layer version in the official documentation</span><span class="w"></span>
 <span class="w">      </span><span class="c1"># https://awslabs.github.io/aws-lambda-powertools-python/latest/#lambda-layer</span><span class="w"></span>
@@ -1286,9 +1286,9 @@ side effects for file-like objects like boto S3 <a href="https://botocore.amazon
 
 <span class="n">tracer</span> <span class="o">=</span> <span class="n">Tracer</span><span class="p">()</span>
 
-<span class="hll">
-</span><span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">collect_payment</span><span class="p">(</span><span class="n">charge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+
+<span class="hll"><span class="nd">@tracer</span><span class="o">.</span><span class="n">capture_method</span>
+</span><span class="k">async</span> <span class="k">def</span> <span class="nf">collect_payment</span><span class="p">(</span><span class="n">charge_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="n">tracer</span><span class="o">.</span><span class="n">put_annotation</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;PaymentId&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">charge_id</span><span class="p">)</span>
     <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;dummy payment collected for charge: </span><span class="si">{</span><span class="n">charge_id</span><span class="si">}</span><span class="s2">&quot;</span>
@@ -1934,7 +1934,7 @@ side effects for file-like objects like boto S3 <a href="https://botocore.amazon
   <small>
     
       Last update:
-      2022-06-24
+      2022-07-01
     
   </small>
 </div>

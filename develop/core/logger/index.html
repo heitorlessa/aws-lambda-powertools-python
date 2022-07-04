@@ -677,6 +677,47 @@
     FAQ
   </a>
   
+    <nav class="md-nav" aria-label="FAQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-can-i-enable-boto3-and-botocore-library-logging" class="md-nav__link">
+    How can I enable boto3 and botocore library logging?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-can-i-enable-powertools-logging-for-imported-libraries" class="md-nav__link">
+    How can I enable Powertools logging for imported libraries?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-can-i-add-standard-library-logging-attributes-to-a-log-record" class="md-nav__link">
+    How can I add standard library logging attributes to a log record?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whats-the-difference-between-append_keys-and-extra" class="md-nav__link">
+    What's the difference between append_keys and extra?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-aggregate-and-search-powertools-logs-across-accounts" class="md-nav__link">
+    How do I aggregate and search Powertools logs across accounts?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1283,6 +1324,47 @@
   <a href="#faq" class="md-nav__link">
     FAQ
   </a>
+  
+    <nav class="md-nav" aria-label="FAQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-can-i-enable-boto3-and-botocore-library-logging" class="md-nav__link">
+    How can I enable boto3 and botocore library logging?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-can-i-enable-powertools-logging-for-imported-libraries" class="md-nav__link">
+    How can I enable Powertools logging for imported libraries?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-can-i-add-standard-library-logging-attributes-to-a-log-record" class="md-nav__link">
+    How can I add standard library logging attributes to a log record?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whats-the-difference-between-append_keys-and-extra" class="md-nav__link">
+    What's the difference between append_keys and extra?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-aggregate-and-search-powertools-logs-across-accounts" class="md-nav__link">
+    How do I aggregate and search Powertools logs across accounts?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3239,7 +3321,7 @@
 <p>This feature should be used with care, as it explicitly disables our ability to filter propagated messages to the root logger (if configured).</p>
 </details>
 <h2 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h2>
-<p><strong>How can I enable boto3 and botocore library logging?</strong></p>
+<h3 id="how-can-i-enable-boto3-and-botocore-library-logging">How can I enable boto3 and botocore library logging?<a class="headerlink" href="#how-can-i-enable-boto3-and-botocore-library-logging" title="Permanent link">&para;</a></h3>
 <p>You can enable the <code>botocore</code> and <code>boto3</code> logs by using the <code>set_stream_logger</code> method, this method will add a stream handler
 for the given name and level to the logging module. By default, this logs all boto3 messages to stdout.</p>
 <table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Enabling AWS SDK logging</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -3279,7 +3361,7 @@ for the given name and level to the logging module. By default, this logs all bo
     <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Buckets&quot;</span><span class="p">,</span> <span class="p">[])</span>
 </code></pre></div>
 </td></tr></table>
-<p><strong>How can I enable powertools logging for imported libraries?</strong></p>
+<h3 id="how-can-i-enable-powertools-logging-for-imported-libraries">How can I enable Powertools logging for imported libraries?<a class="headerlink" href="#how-can-i-enable-powertools-logging-for-imported-libraries" title="Permanent link">&para;</a></h3>
 <p>You can copy the Logger setup to all or sub-sets of registered external loggers. Use the <code>copy_config_to_registered_logger</code> method to do this.</p>
 <p>By default all registered loggers will be modified. You can change this behavior by providing <code>include</code> and <code>exclude</code> attributes. You can also provide optional <code>log_level</code> attribute external loggers will be configured with.</p>
 <table class="highlighttable"><tr><th colspan="2" class="filename"><div class="highlight"><span class="filename">Cloning Logger config to all other registered standard loggers</span></div></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -3299,16 +3381,95 @@ for the given name and level to the logging module. By default, this logs all bo
 
 <span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">()</span>
 
-<span class="n">external_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">logger</span><span class="p">()</span>
+<span class="n">external_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span>
 
 <span class="hll"><span class="n">utils</span><span class="o">.</span><span class="n">copy_config_to_registered_loggers</span><span class="p">(</span><span class="n">source_logger</span><span class="o">=</span><span class="n">logger</span><span class="p">)</span>
 </span><span class="n">external_logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;test message&quot;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-<p><strong>What's the difference between <code>append_keys</code> and <code>extra</code>?</strong></p>
+<h3 id="how-can-i-add-standard-library-logging-attributes-to-a-log-record">How can I add standard library logging attributes to a log record?<a class="headerlink" href="#how-can-i-add-standard-library-logging-attributes-to-a-log-record" title="Permanent link">&para;</a></h3>
+<p>The Python standard library log records contains a <a href="https://docs.python.org/3/library/logging.html#logrecord-attributes" target="_blank">large set of atttributes</a>, however only a few are included in Powertools Logger log record by default.</p>
+<p>You can include any of these logging attributes as key value arguments (<code>kwargs</code>) when instantiating <code>Logger</code> or <code>LambdaPowertoolsFormatter</code>.</p>
+<p>You can also add them later anywhere in your code with <code>append_keys</code>, or remove them with <code>remove_keys</code> methods.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="21:2"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><input id="__tabbed_21_2" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">collect.py</label><label for="__tabbed_21_2">Example CloudWatch Logs excerpt</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">aws_lambda_powertools</span> <span class="kn">import</span> <span class="n">Logger</span>
+
+<span class="hll"><span class="n">logger</span> <span class="o">=</span> <span class="n">Logger</span><span class="p">(</span><span class="n">service</span><span class="o">=</span><span class="s2">&quot;payment&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%(name)s</span><span class="s2">&quot;</span><span class="p">)</span>
+</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Name should be equal service value&quot;</span><span class="p">)</span>
+
+<span class="n">additional_log_attributes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;process&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">%(process)d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;processName&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">%(processName)s</span><span class="s2">&quot;</span><span class="p">}</span>
+<span class="hll"><span class="n">logger</span><span class="o">.</span><span class="n">append_keys</span><span class="p">(</span><span class="o">**</span><span class="n">additional_log_attributes</span><span class="p">)</span>
+</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This will include process ID and name&quot;</span><span class="p">)</span>
+<span class="hll"><span class="n">logger</span><span class="o">.</span><span class="n">remove_keys</span><span class="p">([</span><span class="s2">&quot;processName&quot;</span><span class="p">])</span>
+</span>
+<span class="c1"># further messages will not include processName</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<div class="tabbed-block">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;module&gt;:16&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Name should be equal service value&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;payment&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">        </span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;payment&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-07-01 07:09:46,330+0000&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;module&gt;:23&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This will include process ID and name&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;payment&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="nt">&quot;process&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="hll"><span class="w">        </span><span class="nt">&quot;processName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MainProcess&quot;</span><span class="p">,</span><span class="w"></span>
+</span><span class="w">        </span><span class="nt">&quot;service&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;payment&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-07-01 07:09:46,330+0000&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+</div>
+<p>For log records originating from Powertools Logger, the <code>name</code> attribute will be the same as <code>service</code>, for log records coming from standard library logger, it will be the name of the logger (i.e. what was used as name argument to <code>logging.getLogger</code>).</p>
+<h3 id="whats-the-difference-between-append_keys-and-extra">What's the difference between <code>append_keys</code> and <code>extra</code>?<a class="headerlink" href="#whats-the-difference-between-append_keys-and-extra" title="Permanent link">&para;</a></h3>
 <p>Keys added with <code>append_keys</code> will persist across multiple log messages while keys added via <code>extra</code> will only be available in a given log message operation.</p>
 <p>Here's an example where we persist <code>payment_id</code> not <code>request_id</code>. Note that <code>payment_id</code> remains in both log messages while <code>booking_id</code> is only available in the first message.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="21:2"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><input id="__tabbed_21_2" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">collect.py</label><label for="__tabbed_21_2">Example CloudWatch Logs excerpt</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="22:2"><input checked="checked" id="__tabbed_22_1" name="__tabbed_22" type="radio" /><input id="__tabbed_22_2" name="__tabbed_22" type="radio" /><div class="tabbed-labels"><label for="__tabbed_22_1">collect.py</label><label for="__tabbed_22_2">Example CloudWatch Logs excerpt</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -3416,7 +3577,7 @@ for the given name and level to the logging module. By default, this logs all bo
 </div>
 </div>
 </div>
-<p><strong>How do I aggregate and search Powertools logs across accounts?</strong></p>
+<h3 id="how-do-i-aggregate-and-search-powertools-logs-across-accounts">How do I aggregate and search Powertools logs across accounts?<a class="headerlink" href="#how-do-i-aggregate-and-search-powertools-logs-across-accounts" title="Permanent link">&para;</a></h3>
 <p>As of now, ElasticSearch (ELK) or 3rd party solutions are best suited to this task. Please refer to this <a href="https://github.com/awslabs/aws-lambda-powertools-python/issues/460">discussion for more details</a></p>
 
   <hr>
@@ -3424,7 +3585,7 @@ for the given name and level to the logging module. By default, this logs all bo
   <small>
     
       Last update:
-      2022-06-24
+      2022-07-01
     
   </small>
 </div>
