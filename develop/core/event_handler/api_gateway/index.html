@@ -1422,7 +1422,7 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*~1*&quot;</span><span class="w"> </span><span class="c1"># converts to */* for any binary type</span><span class="w"></span>
 <span class="w">  </span><span class="nt">Function</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">Timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
-<span class="w">    </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.8</span><span class="w"></span>
+<span class="w">    </span><span class="nt">Runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3.9</span><span class="w"></span>
 <span class="w">    </span><span class="nt">Tracing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Active</span><span class="w"></span>
 <span class="w">    </span><span class="nt">Environment</span><span class="p">:</span><span class="w"></span>
 <span class="w">      </span><span class="nt">Variables</span><span class="p">:</span><span class="w"></span>
@@ -1435,8 +1435,8 @@
 <span class="w">  </span><span class="nt">ApiFunction</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">Type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS::Serverless::Function</span><span class="w"></span>
 <span class="w">    </span><span class="nt">Properties</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app.lambda_handler</span><span class="w"></span>
-<span class="w">      </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api_handler/</span><span class="w"></span>
+<span class="w">      </span><span class="nt">Handler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">getting_started_rest_api_resolver.lambda_handler</span><span class="w"></span>
+<span class="w">      </span><span class="nt">CodeUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../src</span><span class="w"></span>
 <span class="w">      </span><span class="nt">Description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API handler function</span><span class="w"></span>
 <span class="w">      </span><span class="nt">Events</span><span class="p">:</span><span class="w"></span>
 <span class="w">        </span><span class="nt">AnyApiEvent</span><span class="p">:</span><span class="w"></span>
@@ -3320,7 +3320,7 @@
 </td></tr></table>
 <h3 id="split-routes-with-router">Split routes with Router<a class="headerlink" href="#split-routes-with-router" title="Permanent link">&para;</a></h3>
 <p>As you grow the number of routes a given Lambda function should handle, it is natural to split routes into separate files to ease maintenance - That's where the <code>Router</code> feature is useful.</p>
-<p>Let's assume you have <code>app.py</code> as your Lambda function entrypoint and routes in <code>split_route_module.py</code>, this is how you'd use the <code>Router</code> feature.</p>
+<p>Let's assume you have <code>split_route.py</code> as your Lambda function entrypoint and routes in <code>split_route_module.py</code>. This is how you'd use the <code>Router</code> feature.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">split_route_module.py</label><label for="__tabbed_10_2">split_route.py</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -3795,7 +3795,7 @@ it made it impossible for static checkers like Mypy and IDEs IntelliSense to kno
   <small>
     
       Last update:
-      2022-07-08
+      2022-07-11
     
   </small>
 </div>
