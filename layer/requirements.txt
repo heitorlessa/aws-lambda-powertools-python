@@ -27,9 +27,9 @@ cdk-lambda-powertools-python-layer==2.0.49 \
     --hash=sha256:8055fc691539f16e22a40e3d3df9c3f59fb28012437b08c47c639aefb001f1b2 \
     --hash=sha256:9b0a7b7344f9ccb486564af728cefeac743687bfb131631e6d9171a55800dbac
     # via -r requirements.txt
-constructs==10.1.43 \
-    --hash=sha256:69fd6da574c9506f44ca61e112af7d5db08ebb29b4bedc67b6d200b616f4abce \
-    --hash=sha256:f37e8c3432f94f403b50bf69476bea55719bcc3fa0d3a0e60bf0975dfe492867
+constructs==10.1.45 \
+    --hash=sha256:a5969b2c4325c889a5287e383211333b75523517ed0133cf08c3cc2c587f150d \
+    --hash=sha256:f02c186bd2891ddc627b106bbe11ed373df72a2fae7056e9cefa0a3219639c7d
     # via
     #   -r requirements.txt
     #   aws-cdk-lib
@@ -40,9 +40,9 @@ exceptiongroup==1.0.0rc8 \
     # via
     #   -r requirements.txt
     #   cattrs
-jsii==1.61.0 \
-    --hash=sha256:542a72cd1a144d36fa530dc359b5295b82d9e7ecdd76d5c7b4b61195f132a746 \
-    --hash=sha256:b2899f24bcc95ce009bc256558c81cde8cff9f830eddbe9b0d581c40558a1ff0
+jsii==1.62.0 \
+    --hash=sha256:c22ac7373260fbabdb012faba717a8a4dbd933120cee373905030fd66956a65a \
+    --hash=sha256:d124b0f350fd206e0488d3bb83dc58832f11e64fc728fd3a10096872d8a3a938
     # via
     #   -r requirements.txt
     #   aws-cdk-lib
