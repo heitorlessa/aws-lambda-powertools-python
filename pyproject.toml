@@ -85,6 +85,8 @@ aws-sdk = ["boto3"]
 
 [tool.poetry.group.dev.dependencies]
 cfn-lint = "0.67.0"
+pillow = "^9.2.0" # mkdocs-material deps for social cards
+cairosvg = "^2.5.2" # mkdocs-material deps for social cards
 
 [tool.coverage.run]
 source = ["aws_lambda_powertools"]
