@@ -96,6 +96,8 @@ plugins:
   - git-revision-date
   - search
   - mkdocstrings:
+      watch:
+        - aws_lambda_powertools
       handlers:
         python:
           docstring_style: numpy
