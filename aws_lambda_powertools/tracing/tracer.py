@@ -152,7 +152,7 @@ class Tracer:
         patch_modules: Optional[Sequence[str]] = None,
         provider: Optional[BaseProvider] = None,
     ):
-        self.__build_config(
+        self._build_config(
             service=service, disabled=disabled, auto_patch=auto_patch, patch_modules=patch_modules, provider=provider
         )
         self.provider: BaseProvider = self._config["provider"]
@@ -734,7 +734,7 @@ class Tracer:
 
         return False
 
-    def __build_config(
+    def _build_config(
         self,
         service: Optional[str] = None,
         disabled: Optional[bool] = None,
