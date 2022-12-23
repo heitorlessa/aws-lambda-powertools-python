@@ -46,16 +46,16 @@ class Tracer:
 
     Parameters
     ----------
-    service: str
+    service : str
         Service name that will be appended in all tracing metadata
-    auto_patch: bool
+    auto_patch : bool
         Patch existing imported modules during initialization, by default True
-    disabled: bool
+    disabled : bool
         Flag to explicitly disable tracing, useful when running/testing locally
         `Env POWERTOOLS_TRACE_DISABLED="true"`
-    patch_modules: Optional[Sequence[str]]
+    patch_modules : Optional[Sequence[str]]
         Tuple of modules supported by tracing provider to patch, by default all modules are patched
-    provider: BaseProvider
+    provider : BaseProvider
         Tracing provider, by default it is aws_xray_sdk.core.xray_recorder
 
     Returns

@@ -100,8 +100,8 @@ plugins:
         - aws_lambda_powertools
       handlers:
         python:
-          docstring_style: numpy
           options:
+            docstring_style: numpy
             show_root_members_full_path: true
 
 extra_css:
