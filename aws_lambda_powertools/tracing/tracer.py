@@ -34,13 +34,13 @@ class Tracer:
     service : str
         Service name to use as tracing metadata
 
-        env: `POWERTOOLS_SERVICE_NAME=order`
+        <br/> env: `POWERTOOLS_SERVICE_NAME=order`
     auto_patch : bool
         Patch imported modules during initialization, by default True
     disabled : bool
         Flag to explicitly disable tracing, useful when running/testing locally
 
-        env: `POWERTOOLS_TRACE_DISABLED=false`
+        <br/> env: `POWERTOOLS_TRACE_DISABLED=false`
     patch_modules : Optional[Sequence[str]]
         Tuple of modules supported by tracing provider to patch, by default all modules are patched
     provider : BaseProvider
@@ -222,11 +222,11 @@ class Tracer:
         capture_response : bool, optional
             Do not include handler's response as metadata, by default True
 
-            env: `POWERTOOLS_TRACER_CAPTURE_RESPONSE=true`
+            <br/> env: `POWERTOOLS_TRACER_CAPTURE_RESPONSE=true`
         capture_error : bool, optional
             Do not include handler's error as metadata, by default True
 
-            env: `POWERTOOLS_TRACER_CAPTURE_ERROR=true`
+            <br/> env: `POWERTOOLS_TRACER_CAPTURE_ERROR=true`
 
         Example
         -------
