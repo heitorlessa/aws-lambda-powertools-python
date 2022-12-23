@@ -9,7 +9,8 @@ nav:
   - Changelog: changelog.md
   - Tutorial: tutorial/index.md
   - Roadmap: roadmap.md
-  - API reference: api/" target="_blank
+  - API reference:
+      - Tracer: api/tracer.md
   - Upgrade guide: upgrade.md
   - We Made This (Community): we_made_this.md
   - Core utilities:
@@ -94,6 +95,12 @@ copyright: Copyright &copy; 2022 Amazon Web Services
 plugins:
   - git-revision-date
   - search
+  - mkdocstrings:
+      handlers:
+        python:
+          docstring_style: numpy
+          options:
+            show_root_members_full_path: true
 
 extra_css:
   - stylesheets/extra.css
