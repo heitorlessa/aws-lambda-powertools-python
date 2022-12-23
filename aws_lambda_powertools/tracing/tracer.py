@@ -211,44 +211,51 @@ class Tracer:
         capture_response: Optional[bool] = None,
         capture_error: Optional[bool] = None,
     ):
-        """Decorator to create subsegment for lambda handlers
+        """Decorator to create subsegment for Lambda handlers
 
-        As Lambda follows (event, context) signature we can remove some of the boilerplate
-        and also capture any exception any Lambda function throws or its response as metadata
+        We run the decorated handler, capture any exception and response as tracing metadata.
 
         Parameters
         ----------
         lambda_handler : Callable
-            Method to annotate on
+            Decorated Lambda handler
         capture_response : bool, optional
-            Instructs tracer to not include handler's response as metadata
+            Do not include handler's response as metadata, by default True
 
             env: `POWERTOOLS_TRACER_CAPTURE_RESPONSE=true`
         capture_error : bool, optional
-            Instructs tracer to not include handler's error as metadata, by default True
+            Do not include handler's error as metadata, by default True
 
             env: `POWERTOOLS_TRACER_CAPTURE_ERROR=true`
 
         Example
         -------
-        **Lambda function using capture_lambda_handler decorator**
+        **Disabling response and error auto-capturing**
 
-            tracer = Tracer(service="payment")
-            @tracer.capture_lambda_handler
-            def handler(event, context):
-                ...
+        ```python
+        from aws_lambda_powertools import Logger, Tracer
+        from aws_lambda_powertools.utilities.typing import LambdaContext
 
-        **Preventing Tracer to log response as metadata**
+        tracer = Tracer()
 
-            tracer = Tracer(service="payment")
-            @tracer.capture_lambda_handler(capture_response=False)
-            def handler(event, context):
-                ...
+
+        @tracer.capture_method(capture_response=False, capture_error=False)
+        def collect_payment(charge_id: str) -> str:
+            tracer.put_annotation(key="PaymentId", value=charge_id)
+            return f"dummy payment collected for charge: {charge_id}"
+
+
+        @tracer.capture_lambda_handler(capture_response=False)
+        def handler(event: dict, context: LambdaContext) -> str:
+            charge_id = event.get("charge_id", "")
+            return collect_payment(charge_id=charge_id)
+
+        ```
 
         Raises
         ------
-        err
-            Exception raised by method
+        Exception
+            Propagates any exception raised by Lambda handler
         """
         # If handler is None we've been called with parameters
         # Return a partial function with args filled
