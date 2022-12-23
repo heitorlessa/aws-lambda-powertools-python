@@ -33,30 +33,22 @@ class Tracer:
     is useful when you are using your own middlewares and want to utilize an existing Tracer.
     Make sure to set `auto_patch=False` in subsequent Tracer instances to avoid double patching.
 
-    Environment variables
-    ---------------------
-    POWERTOOLS_TRACE_DISABLED : str
-        disable tracer (e.g. `"true", "True", "TRUE"`)
-    POWERTOOLS_SERVICE_NAME : str
-        service name
-    POWERTOOLS_TRACER_CAPTURE_RESPONSE : str
-        disable auto-capture response as metadata (e.g. `"true", "True", "TRUE"`)
-    POWERTOOLS_TRACER_CAPTURE_ERROR : str
-        disable auto-capture error as metadata (e.g. `"true", "True", "TRUE"`)
-
     Parameters
     ----------
     service : str
-        Service name that will be appended in all tracing metadata
+        Service name to use as tracing metadata
+
+        env: `POWERTOOLS_SERVICE_NAME=order`
     auto_patch : bool
-        Patch existing imported modules during initialization, by default True
+        Patch imported modules during initialization, by default True
     disabled : bool
         Flag to explicitly disable tracing, useful when running/testing locally
-        `Env POWERTOOLS_TRACE_DISABLED="true"`
+
+        env: `POWERTOOLS_TRACE_DISABLED=false`
     patch_modules : Optional[Sequence[str]]
         Tuple of modules supported by tracing provider to patch, by default all modules are patched
     provider : BaseProvider
-        Tracing provider, by default it is aws_xray_sdk.core.xray_recorder
+        Tracing provider, by default `aws_xray_sdk.core.xray_recorder`
 
     Returns
     -------
@@ -257,8 +249,12 @@ class Tracer:
             Method to annotate on
         capture_response : bool, optional
             Instructs tracer to not include handler's response as metadata
+
+            env: `POWERTOOLS_TRACER_CAPTURE_RESPONSE=true`
         capture_error : bool, optional
             Instructs tracer to not include handler's error as metadata, by default True
+
+            env: `POWERTOOLS_TRACER_CAPTURE_ERROR=true`
 
         Example
         -------
