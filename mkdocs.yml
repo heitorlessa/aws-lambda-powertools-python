@@ -9,10 +9,11 @@ nav:
   - Changelog: changelog.md
   - Tutorial: tutorial/index.md
   - Roadmap: roadmap.md
-  - API reference:
-      - Tracer: api/tracer.md
   - Upgrade guide: upgrade.md
   - We Made This (Community): we_made_this.md
+  - API reference:
+      - Docs:
+          - Tracer: api/tracer.md
   - Core utilities:
       - core/tracer.md
       - core/logger.md
