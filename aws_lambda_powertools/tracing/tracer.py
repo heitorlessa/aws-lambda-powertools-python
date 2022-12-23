@@ -20,18 +20,14 @@ aws_xray_sdk = LazyLoader(constants.XRAY_SDK_MODULE, globals(), constants.XRAY_S
 
 
 class Tracer:
-    """Tracer using AWS-XRay to provide decorators with known defaults for Lambda functions
+    """Tracer provides decorators with known defaults to trace Lambda handler and general Python code.
 
-    When running locally, it detects whether it's running via SAM CLI,
-    and if it is it returns dummy segments/subsegments instead.
+    By default, it uses AWS X-Ray as a tracing provider, and auto-patch [libraries supported by the X-Ray SDK](https://docs.aws.amazon.com/xray-sdk-for-python/latest/reference/thirdparty.html#patching-supported-libraries).
 
-    By default, it patches all available libraries supported by X-Ray SDK. Patching is
-    automatically disabled when running locally via SAM CLI or by any other means. \n
-    Ref: https://docs.aws.amazon.com/xray-sdk-for-python/latest/reference/thirdparty.html
+    For convenience, we also do:
 
-    Tracer keeps a copy of its configuration as it can be instantiated more than once. This
-    is useful when you are using your own middlewares and want to utilize an existing Tracer.
-    Make sure to set `auto_patch=False` in subsequent Tracer instances to avoid double patching.
+    - Auto-disable tracing when you run outside Lambda runtime
+    - Keep a copy of its instantiated configuration to ease reuse across your files or middlewares
 
     Parameters
     ----------
@@ -125,7 +121,7 @@ class Tracer:
     Limitations
     -----------
     * Async handler not supported
-    """
+    """  # noqa: E501
 
     _default_config: Dict[str, Any] = {
         "service": "",
