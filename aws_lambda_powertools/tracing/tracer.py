@@ -55,72 +55,23 @@ class Tracer:
     -------
     **A Lambda function using Tracer**
 
-        from aws_lambda_powertools import Tracer
-        tracer = Tracer(service="greeting")
+    ```python title="lambda_handler.py"
+    from aws_lambda_powertools import Tracer
 
-        @tracer.capture_method
-        def greeting(name: str) -> Dict:
-            return {
-                "name": name
-            }
+    tracer = Tracer(service="greeting")
 
-        @tracer.capture_lambda_handler
-        def handler(event: dict, context: Any) -> Dict:
-            print("Received event from Lambda...")
-            response = greeting(name="Heitor")
-            return response
+    @tracer.capture_method
+    def greeting(name: str) -> Dict:
+        return { "name": name }
 
-    **Booking Lambda function using Tracer that adds additional annotation/metadata**
-
-        from aws_lambda_powertools import Tracer
-        tracer = Tracer(service="booking")
-
-        @tracer.capture_method
-        def confirm_booking(booking_id: str) -> Dict:
-                resp = add_confirmation(booking_id)
-
-                tracer.put_annotation("BookingConfirmation", resp["requestId"])
-                tracer.put_metadata("Booking confirmation", resp)
-
-                return resp
-
-        @tracer.capture_lambda_handler
-        def handler(event: dict, context: Any) -> Dict:
-            print("Received event from Lambda...")
-            booking_id = event.get("booking_id")
-            response = confirm_booking(booking_id=booking_id)
-            return response
-
-    **A Lambda function using service name via POWERTOOLS_SERVICE_NAME**
-
-        export POWERTOOLS_SERVICE_NAME="booking"
-        from aws_lambda_powertools import Tracer
-        tracer = Tracer()
-
-        @tracer.capture_lambda_handler
-        def handler(event: dict, context: Any) -> Dict:
-            print("Received event from Lambda...")
-            response = greeting(name="Lessa")
-            return response
-
-    **Reuse an existing instance of Tracer anywhere in the code**
-
-        # lambda_handler.py
-        from aws_lambda_powertools import Tracer
-        tracer = Tracer()
-
-        @tracer.capture_lambda_handler
-        def handler(event: dict, context: Any) -> Dict:
-            ...
-
-        # utils.py
-        from aws_lambda_powertools import Tracer
-        tracer = Tracer()
-        ...
+    @tracer.capture_lambda_handler
+    def handler(event: dict, context: Any) -> Dict:
+        return greeting(name="Heitor")
+    ```
 
     Limitations
     -----------
-    * Async handler not supported
+    * Async Lambda handler not supported
     """  # noqa: E501
 
     _default_config: Dict[str, Any] = {
@@ -166,6 +117,32 @@ class Tracer:
             Annotation key
         value : Union[str, numbers.Number, bool]
             Value for annotation
+
+        Example
+        -------
+
+        **Booking Lambda function using Tracer that adds additional annotation/metadata**
+
+        ```python
+        from aws_lambda_powertools import Tracer
+        tracer = Tracer(service="booking")
+
+        @tracer.capture_method
+        def confirm_booking(booking_id: str) -> Dict:
+            resp = add_confirmation(booking_id)
+
+            tracer.put_annotation("BookingConfirmation", resp["requestId"])
+            tracer.put_metadata("Booking confirmation", resp)
+
+            return resp
+
+        @tracer.capture_lambda_handler
+        def handler(event: dict, context: Any) -> Dict:
+            print("Received event from Lambda...")
+            booking_id = event.get("booking_id")
+            response = confirm_booking(booking_id=booking_id)
+            return response
+        ```
 
         Example
         -------
