@@ -213,7 +213,7 @@ class Tracer:
     ):
         """Decorator to create subsegment for Lambda handlers
 
-        We run the decorated handler, capture any exception and response as tracing metadata.
+        It captures any exception and response as tracing metadata, and create a subsegment named `## <lambda_handler_name>`.
 
         Parameters
         ----------
@@ -256,7 +256,7 @@ class Tracer:
         ------
         Exception
             Propagates any exception raised by Lambda handler
-        """
+        """  # noqa: E501
         # If handler is None we've been called with parameters
         # Return a partial function with args filled
         if lambda_handler is None:
@@ -330,17 +330,17 @@ class Tracer:
     ) -> AnyCallableT:
         """Decorator to create subsegment for arbitrary functions
 
-        It also captures both response and exceptions as metadata
-        and creates a subsegment named `## <method_module.method_qualifiedname>`
-        # see here: [Qualified name for classes and functions](https://peps.python.org/pep-3155/)
+        It captures any exception and response as tracing metadata, and create a subsegment named `## <method_module.method_qualifiedname>`.
 
-        When running [async functions concurrently](https://docs.python.org/3/library/asyncio-task.html#id6),
-        methods may impact each others subsegment, and can trigger
-        and AlreadyEndedException from X-Ray due to async nature.
+        !!! warning "Concurrent async coroutines"
 
-        For this use case, either use `capture_method` only where
-        `async.gather` is called, or use `in_subsegment_async`
-        context manager via our escape hatch mechanism - See examples.
+            When running [async functions concurrently](https://docs.python.org/3/library/asyncio-task.html#id6),
+            methods may impact each others subsegment, and can trigger
+            and `AlreadyEndedException` from X-Ray due to async nature.
+
+            For this use case, see use `capture_method` only where `async.gather` is called.
+
+        !!! danger "USE CROSS REF"
 
         Parameters
         ----------
@@ -476,7 +476,7 @@ class Tracer:
         ------
         err
             Exception raised by method
-        """
+        """  # noqa: E501
         # If method is None we've been called with parameters
         # Return a partial function with args filled
         if method is None:
