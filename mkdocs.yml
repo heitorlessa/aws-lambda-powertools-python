@@ -12,7 +12,7 @@ nav:
   - Upgrade guide: upgrade.md
   - We Made This (Community): we_made_this.md
   - API reference:
-      - Docs:
+      - APIs:
           - Tracer: api/tracer.md
   - Core utilities:
       - core/tracer.md
@@ -96,6 +96,7 @@ copyright: Copyright &copy; 2022 Amazon Web Services
 plugins:
   - git-revision-date
   - search
+  - autorefs
   - mkdocstrings:
       watch:
         - aws_lambda_powertools
@@ -104,6 +105,7 @@ plugins:
           options:
             docstring_style: numpy
             show_root_members_full_path: true
+            # show_if_no_docstring: true
 
 extra_css:
   - stylesheets/extra.css
