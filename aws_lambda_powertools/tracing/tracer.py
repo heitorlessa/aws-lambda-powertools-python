@@ -34,13 +34,13 @@ class Tracer:
     service : str
         Service name to use as tracing metadata
 
-        <br/> env: `POWERTOOLS_SERVICE_NAME=order`
+        <br/> env var: `POWERTOOLS_SERVICE_NAME=order`
     auto_patch : bool
         Patch imported modules during initialization, by default True
     disabled : bool
         Flag to explicitly disable tracing, useful when running/testing locally
 
-        <br/> env: `POWERTOOLS_TRACE_DISABLED=false`
+        <br/> env var: `POWERTOOLS_TRACE_DISABLED=false`
     patch_modules : Optional[Sequence[str]]
         Tuple of modules supported by tracing provider to patch, by default all modules are patched
     provider : BaseProvider
@@ -222,11 +222,11 @@ class Tracer:
         capture_response : bool, optional
             Do not include handler's response as metadata, by default True
 
-            <br/> env: `POWERTOOLS_TRACER_CAPTURE_RESPONSE=true`
+            <br/> env var: `POWERTOOLS_TRACER_CAPTURE_RESPONSE=true`
         capture_error : bool, optional
             Do not include handler's error as metadata, by default True
 
-            <br/> env: `POWERTOOLS_TRACER_CAPTURE_ERROR=true`
+            <br/> env var: `POWERTOOLS_TRACER_CAPTURE_ERROR=true`
 
         Example
         -------
@@ -330,152 +330,70 @@ class Tracer:
     ) -> AnyCallableT:
         """Decorator to create subsegment for arbitrary functions
 
-        It captures any exception and response as tracing metadata, and create a subsegment named `## <method_module.method_qualifiedname>`.
+        It captures any exception and response as tracing metadata, and create a subsegment named `## <module>.<method_qualifiedname>`.
 
-        !!! warning "Concurrent async coroutines"
+        !!! warning "Concurrent async coroutines - AlreadyEndedException"
+            Decorated functions called via [`async.gather`](https://docs.python.org/3/library/asyncio-task.html#running-tasks-concurrently) may trigger `AlreadyEndedException` from X-Ray SDK due to out of order segment closure.
 
-            When running [async functions concurrently](https://docs.python.org/3/library/asyncio-task.html#id6),
-            methods may impact each others subsegment, and can trigger
-            and `AlreadyEndedException` from X-Ray due to async nature.
-
-            For this use case, see use `capture_method` only where `async.gather` is called.
-
-        !!! danger "USE CROSS REF"
+            For this use case, see [Concurrent Asynchronous Functions][concurrent-asynchronous-functions] docs on how to safely do so.
 
         Parameters
         ----------
         method : Callable
-            Method to annotate on
+            Function or method to annotate
         capture_response : bool, optional
-            Instructs tracer to not include method's response as metadata
+            Instructs tracer to not include method's response as metadata, by default `True`
+
+            <br/> env var: `POWERTOOLS_TRACER_CAPTURE_RESPONSE=true`
         capture_error : bool, optional
-            Instructs tracer to not include handler's error as metadata, by default True
+            Instructs tracer to not include handler's error as metadata, by default `True`
+
+            <br/> env var: `POWERTOOLS_TRACER_CAPTURE_ERROR=true`
 
         Example
         -------
-        **Custom function using capture_method decorator**
+        **Sync and async functions, generators, and context generators**
 
-            tracer = Tracer(service="payment")
-            @tracer.capture_method
-            def some_function()
+        ```python hl_lines="5 10 20 27"
+        from aws_lambda_powertools import Tracer
 
-        **Custom async method using capture_method decorator**
+        tracer = Tracer(service="booking")
 
-            from aws_lambda_powertools import Tracer
-            tracer = Tracer(service="booking")
+        # Sync function
+        @tracer.capture_method
+        def some_function():
+            ...
 
-            @tracer.capture_method
-            async def confirm_booking(booking_id: str) -> Dict:
-                resp = call_to_booking_service()
+        # Async function
+        @tracer.capture_method
+        async def confirm_booking(booking_id: str) -> Dict:
+            resp = call_to_booking_service()
 
-                tracer.put_annotation("BookingConfirmation", resp["requestId"])
-                tracer.put_metadata("Booking confirmation", resp)
+            tracer.put_annotation("BookingConfirmation", resp["requestId"])
+            tracer.put_metadata("Booking confirmation", resp)
 
-                return resp
+            return resp
 
-            def lambda_handler(event: dict, context: Any) -> Dict:
-                booking_id = event.get("booking_id")
-                asyncio.run(confirm_booking(booking_id=booking_id))
+        # Generator
+        @tracer.capture_method
+        def bookings_generator(booking_id):
+            resp = call_to_booking_service()
+            yield resp[0]
+            yield resp[1]
 
-        **Custom generator function using capture_method decorator**
-
-            from aws_lambda_powertools import Tracer
-            tracer = Tracer(service="booking")
-
-            @tracer.capture_method
-            def bookings_generator(booking_id):
-                resp = call_to_booking_service()
-                yield resp[0]
-                yield resp[1]
-
-            def lambda_handler(event: dict, context: Any) -> Dict:
-                gen = bookings_generator(booking_id=booking_id)
-                result = list(gen)
-
-        **Custom generator context manager using capture_method decorator**
-
-            from aws_lambda_powertools import Tracer
-            tracer = Tracer(service="booking")
-
-            @tracer.capture_method
-            @contextlib.contextmanager
-            def booking_actions(booking_id):
-                resp = call_to_booking_service()
-                yield "example result"
-                cleanup_stuff()
-
-            def lambda_handler(event: dict, context: Any) -> Dict:
-                booking_id = event.get("booking_id")
-
-                with booking_actions(booking_id=booking_id) as booking:
-                    result = booking
-
-        **Tracing nested async calls**
-
-            from aws_lambda_powertools import Tracer
-            tracer = Tracer(service="booking")
-
-            @tracer.capture_method
-            async def get_identity():
-                ...
-
-            @tracer.capture_method
-            async def long_async_call():
-                ...
-
-            @tracer.capture_method
-            async def async_tasks():
-                await get_identity()
-                ret = await long_async_call()
-
-                return { "task": "done", **ret }
-
-        **Safely tracing concurrent async calls with decorator**
-
-        This may not needed once [this bug is closed](https://github.com/aws/aws-xray-sdk-python/issues/164)
-
-            from aws_lambda_powertools import Tracer
-            tracer = Tracer(service="booking")
-
-            async def get_identity():
-                async with aioboto3.client("sts") as sts:
-                    account = await sts.get_caller_identity()
-                    return account
-
-            async def long_async_call():
-                ...
-
-            @tracer.capture_method
-            async def async_tasks():
-                _, ret = await asyncio.gather(get_identity(), long_async_call(), return_exceptions=True)
-
-                return { "task": "done", **ret }
-
-        **Safely tracing each concurrent async calls with escape hatch**
-
-        This may not needed once [this bug is closed](https://github.com/aws/aws-xray-sdk-python/issues/164)
-
-            from aws_lambda_powertools import Tracer
-            tracer = Tracer(service="booking")
-
-            async def get_identity():
-                async tracer.provider.in_subsegment_async("## get_identity"):
-                    ...
-
-            async def long_async_call():
-                async tracer.provider.in_subsegment_async("## long_async_call"):
-                    ...
-
-            @tracer.capture_method
-            async def async_tasks():
-                _, ret = await asyncio.gather(get_identity(), long_async_call(), return_exceptions=True)
-
-                return { "task": "done", **ret }
+        # Context generator
+        @tracer.capture_method
+        @contextlib.contextmanager
+        def booking_actions(booking_id):
+            resp = call_to_booking_service()
+            yield "example result"
+            cleanup_stuff()
+        ```
 
         Raises
         ------
-        err
-            Exception raised by method
+        Exception
+            Propagates any exception raised by decorated function/method
         """  # noqa: E501
         # If method is None we've been called with parameters
         # Return a partial function with args filled
