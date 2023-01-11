@@ -681,8 +681,8 @@ class Tracer:
 
         !!! note "X-Ray provider  only (default); return immediately for other providers."
 
-        See
-        ---
+        See also
+        --------
         - [X-Ray httplib requests doc](https://github.com/aws/aws-xray-sdk-python#ignoring-httplib-requests)
 
         Parameters
