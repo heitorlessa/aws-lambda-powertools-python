@@ -187,15 +187,19 @@ class Tracer:
         self.provider.put_metadata(key=key, value=value, namespace=namespace)
 
     def patch(self, modules: Optional[Sequence[str]] = None):
-        """Patch modules for instrumentation.
+        """Patch supported libraries for instrumentation.
 
-        Patches all supported modules by default if none are given.
+        See also
+        --------
+        - [X-Ray provider: supported libraries](https://docs.aws.amazon.com/xray/latest/devguide/xray-sdk-python-patching.html)
 
         Parameters
         ----------
         modules : Optional[Sequence[str]]
-            List of modules to be patched, optional by default
-        """
+            List of modules/libraries to patch.
+
+            By default, all supported libraries are patched.
+        """  # noqa: E501
         if self.disabled:
             logger.debug("Tracing has been disabled, aborting patch")
             return
