@@ -111,6 +111,8 @@ class Tracer:
     def put_annotation(self, key: str, value: Union[str, numbers.Number, bool]):
         """Adds annotation to existing segment or subsegment
 
+        Annotations are `key=value` pairs often used for indexing traces. It eases searching and grouping key operations in your application.
+
         Parameters
         ----------
         key : str
@@ -121,36 +123,26 @@ class Tracer:
         Example
         -------
 
-        **Booking Lambda function using Tracer that adds additional annotation/metadata**
+        **Adding payment ID as a trace annotation**
 
-        ```python
+        ```python hl_lines="8"
         from aws_lambda_powertools import Tracer
-        tracer = Tracer(service="booking")
+        from aws_lambda_powertools.utilities.typing import LambdaContext
 
-        @tracer.capture_method
-        def confirm_booking(booking_id: str) -> Dict:
-            resp = add_confirmation(booking_id)
+        tracer = Tracer()
 
-            tracer.put_annotation("BookingConfirmation", resp["requestId"])
-            tracer.put_metadata("Booking confirmation", resp)
 
-            return resp
+        def collect_payment(charge_id: str) -> str:
+            tracer.put_annotation(key="PaymentId", value=charge_id)
+            return f"dummy payment collected for charge: {charge_id}"
+
 
         @tracer.capture_lambda_handler
-        def handler(event: dict, context: Any) -> Dict:
-            print("Received event from Lambda...")
-            booking_id = event.get("booking_id")
-            response = confirm_booking(booking_id=booking_id)
-            return response
+        def handler(event: dict, context: LambdaContext) -> str:
+            charge_id = event.get("charge_id", "")
+            return collect_payment(charge_id=charge_id)
         ```
-
-        Example
-        -------
-        Custom annotation for a pseudo service named payment
-
-            tracer = Tracer(service="payment")
-            tracer.put_annotation("PaymentStatus", "CONFIRMED")
-        """
+        """  # noqa: E501
         if self.disabled:
             logger.debug("Tracing has been disabled, aborting put_annotation")
             return
