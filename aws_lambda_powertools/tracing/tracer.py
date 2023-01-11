@@ -677,21 +677,20 @@ class Tracer:
         return "aws_xray_sdk" in self.provider.__module__
 
     def ignore_endpoint(self, hostname: Optional[str] = None, urls: Optional[List[str]] = None):
-        """If you want to ignore certain httplib requests you can do so based on the hostname or URL that is being
-        requested.
+        """Skip hostname or URLs from being traced.
 
-        > NOTE: If the provider is not xray, nothing will be added to ignore list
+        !!! note "X-Ray provider  only (default); return immediately for other providers."
 
-        Documentation
-        --------------
-        - https://github.com/aws/aws-xray-sdk-python#ignoring-httplib-requests
+        See
+        ---
+        - [X-Ray httplib requests doc](https://github.com/aws/aws-xray-sdk-python#ignoring-httplib-requests)
 
         Parameters
         ----------
         hostname : Optional, str
-            The hostname is matched using the Python fnmatch library which does Unix glob style matching.
+            Hostname to skip. Unix glob style matching supported.
         urls: Optional, List[str]
-            List of urls to ignore. Example `tracer.ignore_endpoint(urls=["/ignored-url"])`
+            List of urls to ignore, e.g., `["/ignored-url"]`
         """
         if not self._is_xray_provider():
             return
