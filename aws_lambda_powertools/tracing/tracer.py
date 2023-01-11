@@ -153,6 +153,8 @@ class Tracer:
     def put_metadata(self, key: str, value: Any, namespace: Optional[str] = None):
         """Adds metadata to existing segment or subsegment
 
+        Metadata is any additional information that can further explain an operation or health of your application.
+
         Parameters
         ----------
         key : str
@@ -164,11 +166,31 @@ class Tracer:
 
         Example
         -------
-        Custom metadata for a pseudo service named payment
+        **Adding payment transaction details as tracing metadata**
 
-            tracer = Tracer(service="payment")
-            response = collect_payment()
-            tracer.put_metadata("Payment collection", response)
+        ```python hl_lines="19"
+        from aws_lambda_powertools import Tracer
+        from aws_lambda_powertools.utilities.typing import LambdaContext
+
+        tracer = Tracer(service="payment")
+
+
+        def collect_payment(charge_id: str) -> str:
+            return f"dummy payment collected for charge: {charge_id}"
+
+
+        @tracer.capture_lambda_handler
+        def handler(event: dict, context: LambdaContext) -> str:
+            payment_context = {
+                "charge_id": event.get("charge_id", ""),
+                "merchant_id": event.get("merchant_id", ""),
+                "request_id": context.aws_request_id,
+            }
+            payment_context["receipt_id"] = collect_payment(charge_id=payment_context["charge_id"])
+            tracer.put_metadata(key="payment_response", value=payment_context)
+
+            return payment_context["receipt_id"]
+        ```
         """
         if self.disabled:
             logger.debug("Tracing has been disabled, aborting put_metadata")
