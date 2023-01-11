@@ -187,7 +187,7 @@ class Tracer:
         self.provider.put_metadata(key=key, value=value, namespace=namespace)
 
     def patch(self, modules: Optional[Sequence[str]] = None):
-        """Patch supported libraries for instrumentation.
+        """Patches supported libraries for instrumentation.
 
         See also
         --------
@@ -681,7 +681,7 @@ class Tracer:
         return "aws_xray_sdk" in self.provider.__module__
 
     def ignore_endpoint(self, hostname: Optional[str] = None, urls: Optional[List[str]] = None):
-        """Skip hostname or URLs from being traced.
+        """Skips hostname or URLs from being traced.
 
         !!! note "X-Ray provider  only (default); return immediately for other providers."
 
