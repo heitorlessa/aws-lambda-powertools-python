@@ -199,6 +199,18 @@ class Tracer:
             List of modules/libraries to patch.
 
             By default, all supported libraries are patched.
+
+        Example
+        -------
+        **Patching `requests` http client library only**
+
+        ```python
+        from aws_lambda_powertools import Tracer
+
+        tracer = Tracer()
+        tracer.patch(modules=["requests"])
+        ```
+
         """  # noqa: E501
         if self.disabled:
             logger.debug("Tracing has been disabled, aborting patch")
